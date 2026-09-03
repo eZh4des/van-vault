@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "34482677787",
+    "firebase_url": "https://vanvault-d6ba4-default-rtdb.firebaseio.com",
+    "project_id": "vanvault-d6ba4",
+    "storage_bucket": "vanvault-d6ba4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34482677787:android:16fd095e35d061ca9a70be",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0U3Xf2TCtDWoQhk3dyIkBnepTWZv1qJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34482677787:android:b85db4f9260e8ed19a70be",
+        "android_client_info": {
+          "package_name": "com.example.vanvault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0U3Xf2TCtDWoQhk3dyIkBnepTWZv1qJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
