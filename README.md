@@ -1,6 +1,6 @@
-# vanVault
+# VanVault
 
-**vanVault** es una aplicación para Android desarrollada en **Kotlin** que utiliza principios modernos de desarrollo.
+**VanVault** es una aplicación para Android desarrollada en **Kotlin** que utiliza principios modernos de desarrollo.
 
 ## 🛠️ Tecnologías y Herramientas
 
