@@ -8,10 +8,13 @@ import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.vanvault.ui.components.NavItem
+import com.example.vanvault.ui.screens.AccountDetailsScreen
 import com.example.vanvault.ui.screens.ForgotPasswordScreen
 import com.example.vanvault.ui.screens.HomeScreen
 import com.example.vanvault.ui.screens.InventoryScreen
 import com.example.vanvault.ui.screens.LoginScreen
+import com.example.vanvault.ui.screens.ProfileScreen
 import com.example.vanvault.ui.screens.RegisterScreen
 import com.example.vanvault.ui.theme.VanVaultTheme
 import com.google.firebase.auth.FirebaseAuth
@@ -71,9 +74,35 @@ class MainActivity : ComponentActivity() {
                     composable("home") {
                         InventoryScreen(
                             onNavigate = { navItem -> 
-                                // Navegación a implementar para el resto de items
-                                // if (navItem == NavItem.PROFILE) { ... }
+                                when(navItem) {
+                                    NavItem.PROFILE -> navController.navigate("profile") { launchSingleTop = true }
+                                    // navItem.SALES y HOME se añadirán luego
+                                    else -> {}
+                                }
                             }
+                        )
+                    }
+                    composable("profile") {
+                        ProfileScreen(
+                            onNavigate = { navItem ->
+                                when(navItem) {
+                                    NavItem.HOME, NavItem.INVENTORY -> navController.navigate("home") {
+                                        popUpTo("home") { inclusive = false }
+                                    }
+                                    else -> {}
+                                }
+                            },
+                            onAccountClick = { navController.navigate("account_details") },
+                            onLogoutClick = {
+                                navController.navigate("login") {
+                                    popUpTo(0) { inclusive = true }
+                                }
+                            }
+                        )
+                    }
+                    composable("account_details") {
+                        AccountDetailsScreen(
+                            onBackClick = { navController.navigateUp() }
                         )
                     }
                 }

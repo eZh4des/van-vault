@@ -3,6 +3,7 @@ package com.example.vanvault.ui.screens
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -240,13 +241,26 @@ fun RegisterScreen(
                                     auth.createUserWithEmailAndPassword(email, password)
                                         .addOnCompleteListener { task ->
                                             if (task.isSuccessful) {
-                                                auth.currentUser?.sendEmailVerification()
-                                                    ?.addOnCompleteListener { verificationTask ->
-                                                        isLoading = false
-                                                        if (verificationTask.isSuccessful) {
-                                                            isRegistered = true
+                                                val user = auth.currentUser
+                                                val profileUpdates = UserProfileChangeRequest.Builder()
+                                                    .setDisplayName(name)
+                                                    .build()
+
+                                                user?.updateProfile(profileUpdates)
+                                                    ?.addOnCompleteListener { profileTask ->
+                                                        if (profileTask.isSuccessful) {
+                                                            user.sendEmailVerification()
+                                                                .addOnCompleteListener { verificationTask ->
+                                                                    isLoading = false
+                                                                    if (verificationTask.isSuccessful) {
+                                                                        isRegistered = true
+                                                                    } else {
+                                                                        Toast.makeText(context, "Error al enviar correo: ${verificationTask.exception?.localizedMessage}", Toast.LENGTH_LONG).show()
+                                                                    }
+                                                                }
                                                         } else {
-                                                            Toast.makeText(context, "Error al enviar correo de validación: ${verificationTask.exception?.localizedMessage}", Toast.LENGTH_LONG).show()
+                                                            isLoading = false
+                                                            Toast.makeText(context, "Error al guardar el nombre", Toast.LENGTH_LONG).show()
                                                         }
                                                     }
                                             } else {
