@@ -1,33 +1,14 @@
 {
   "project_info": {
-    "project_number": "34482677787",
-    "firebase_url": "https://vanvault-d6ba4-default-rtdb.firebaseio.com",
-    "project_id": "vanvault-d6ba4",
-    "storage_bucket": "vanvault-d6ba4.firebasestorage.app"
+    "project_number": "317119723442",
+    "firebase_url": "https://van-vault-bf675-default-rtdb.firebaseio.com",
+    "project_id": "van-vault-bf675",
+    "storage_bucket": "van-vault-bf675.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:34482677787:android:16fd095e35d061ca9a70be",
-        "android_client_info": {
-          "package_name": "com.example.myapplication"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyA0U3Xf2TCtDWoQhk3dyIkBnepTWZv1qJo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:34482677787:android:b85db4f9260e8ed19a70be",
+        "mobilesdk_app_id": "1:317119723442:android:e29f4f5f83b028108496ab",
         "android_client_info": {
           "package_name": "com.example.vanvault"
         }
@@ -35,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA0U3Xf2TCtDWoQhk3dyIkBnepTWZv1qJo"
+          "current_key": "AIzaSyBNC1JK44J11fHwB-6ofMWmEnsugQkaCNg"
         }
       ],
       "services": {

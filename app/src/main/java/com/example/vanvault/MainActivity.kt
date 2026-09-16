@@ -5,12 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.*
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.vanvault.ui.screens.ForgotPasswordScreen
+import com.example.vanvault.ui.screens.HomeScreen
 import com.example.vanvault.ui.screens.LoginScreen
 import com.example.vanvault.ui.screens.RegisterScreen
 import com.example.vanvault.ui.theme.VanVaultTheme
-import com.google.firebase.database.database
-import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,28 +21,63 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VanVaultTheme {
-                var currentScreen by remember { mutableStateOf("login") }
+                val navController = rememberNavController()
+                val auth = FirebaseAuth.getInstance()
+                val currentUser = auth.currentUser
 
-                when (currentScreen) {
-                    "login" -> LoginScreen(
-                        onRegisterClick = { currentScreen = "register" },
-                        onForgotPasswordClick = { currentScreen = "forgot_password" }
-                    )
-                    "register" -> RegisterScreen(
-                        onBackClick = { currentScreen = "login" },
-                        onLoginClick = { currentScreen = "login" }
-                    )
-                    "forgot_password" -> ForgotPasswordScreen(
-                        onBackClick = { currentScreen = "login" }
-                    )
+                // region: validate user credentials
+                val startDestination = if (currentUser != null && currentUser.isEmailVerified) {
+                    "home"
+                } else {
+                    "login"
+                }
+                // endregion
+
+                NavHost(
+                    navController = navController, 
+                    startDestination = startDestination,
+                    enterTransition = { androidx.compose.animation.fadeIn() },
+                    exitTransition = { androidx.compose.animation.fadeOut() },
+                    popEnterTransition = { androidx.compose.animation.fadeIn() },
+                    popExitTransition = { androidx.compose.animation.fadeOut() }
+                ) {
+                    composable("login") {
+                        LoginScreen(
+                            onRegisterClick = { navController.navigate("register") },
+                            onForgotPasswordClick = { navController.navigate("forgot_password") },
+                            onLoginSuccess = {
+                                navController.navigate("home") {
+                                    popUpTo("login") { inclusive = true }
+                                }
+                            }
+                        )
+                    }
+                    composable("register") {
+                        RegisterScreen(
+                            onBackClick = { navController.navigateUp() },
+                            onLoginClick = {
+                                navController.navigate("login") {
+                                    popUpTo("login") { inclusive = true }
+                                }
+                            }
+                        )
+                    }
+                    composable("forgot_password") {
+                        ForgotPasswordScreen(
+                            onBackClick = { navController.navigateUp() }
+                        )
+                    }
+                    composable("home") {
+                        HomeScreen(
+                            onLogoutClick = {
+                                navController.navigate("login") {
+                                    popUpTo("home") { inclusive = true }
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }
-    }
-    fun testdatabase() {
-        val database = Firebase.database
-        val myRef = database.getReference("message")
-
-        myRef.setValue("Hello, World!")
     }
 }
