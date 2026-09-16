@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.database.FirebaseDatabase
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -249,6 +250,17 @@ fun RegisterScreen(
                                                 user?.updateProfile(profileUpdates)
                                                     ?.addOnCompleteListener { profileTask ->
                                                         if (profileTask.isSuccessful) {
+                                                            // Guardar en Realtime Database
+                                                            val database = FirebaseDatabase.getInstance().reference
+                                                            val userData = mapOf(
+                                                                "name" to name,
+                                                                "email" to email,
+                                                                "phone" to "No registrado"
+                                                            )
+                                                            user.uid.let { uid ->
+                                                                database.child("users").child(uid).setValue(userData)
+                                                            }
+
                                                             user.sendEmailVerification()
                                                                 .addOnCompleteListener { verificationTask ->
                                                                     isLoading = false

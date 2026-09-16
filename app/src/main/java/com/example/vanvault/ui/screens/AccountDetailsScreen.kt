@@ -10,7 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.ChevronRight
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,6 +18,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,13 +29,46 @@ fun AccountDetailsScreen(
     onBackClick: () -> Unit
 ) {
     val user = FirebaseAuth.getInstance().currentUser
-    val email = user?.email ?: "juan.diaz@gmail.com"
-    val name = user?.displayName.takeIf { !it.isNullOrBlank() } ?: "Juan Díaz"
+    val userEmail = user?.email ?: ""
+    
+    // Estados para la base de datos
+    var name by remember { mutableStateOf(user?.displayName ?: "") }
+    var phone by remember { mutableStateOf("Cargando...") }
+
+    // Recuperar datos de la base de datos
+    LaunchedEffect(userEmail) {
+        user?.uid?.let { uid ->
+            val ref = FirebaseDatabase.getInstance().getReference("users").child(uid)
+            ref.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val dbName = snapshot.child("name").getValue(String::class.java)
+                    val dbPhone = snapshot.child("phone").getValue(String::class.java)
+                    
+                    if (!dbName.isNullOrBlank()) {
+                        name = dbName
+                    }
+                    if (!dbPhone.isNullOrBlank()) {
+                        phone = dbPhone
+                    } else {
+                        phone = "No registrado"
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    phone = "Error al cargar"
+                }
+            })
+        } ?: run {
+            phone = "No registrado"
+        }
+    }
+
     val initials = name.split(" ")
         .mapNotNull { it.firstOrNull()?.toString() }
         .take(2)
         .joinToString("")
         .uppercase()
+        .takeIf { it.isNotBlank() } ?: "U" // 'U' de Usuario si está vacío
 
     Scaffold(
         containerColor = Color.White,
@@ -98,7 +135,7 @@ fun AccountDetailsScreen(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = email,
+                    text = userEmail,
                     fontSize = 14.sp,
                     color = Color(0xFF71717A)
                 )
@@ -107,8 +144,8 @@ fun AccountDetailsScreen(
             // Información Personal Section
             SectionHeader(title = "INFORMACIÓN PERSONAL")
             AccountListItem(label = "Nombre completo", value = name, showDivider = true)
-            AccountListItem(label = "Correo electrónico", value = email, showDivider = true)
-            AccountListItem(label = "Teléfono", value = "No registrado", showDivider = false)
+            AccountListItem(label = "Correo electrónico", value = userEmail, showDivider = true)
+            AccountListItem(label = "Teléfono", value = phone, showDivider = false)
 
             // Seguridad Section
             SectionHeader(title = "SEGURIDAD")
