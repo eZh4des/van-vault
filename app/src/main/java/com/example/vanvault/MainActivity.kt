@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     "login"
                 }
                 // endregion
-                
+
                 NavHost(
                     navController = navController, 
                     startDestination = startDestination,
