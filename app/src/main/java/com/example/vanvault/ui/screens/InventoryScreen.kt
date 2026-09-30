@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -22,15 +23,46 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.vanvault.data.models.Product
 import com.example.vanvault.ui.components.NavItem
 import com.example.vanvault.ui.components.VanVaultBottomNavBar
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import java.text.NumberFormat
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InventoryScreen(
-    onNavigate: (NavItem) -> Unit = {}
+    onNavigate: (NavItem) -> Unit = {},
+    onAddProductClick: () -> Unit = {}
 ) {
     var fabExpanded by remember { mutableStateOf(false) }
+    var products by remember { mutableStateOf<List<Product>>(emptyList()) }
+    var isLoading by remember { mutableStateOf(true) }
+
+    LaunchedEffect(Unit) {
+        val dbRef = FirebaseDatabase.getInstance().getReference("inventory")
+        dbRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val productList = mutableListOf<Product>()
+                for (child in snapshot.children) {
+                    val prod = child.getValue(Product::class.java)
+                    if (prod != null) {
+                        productList.add(prod)
+                    }
+                }
+                products = productList
+                isLoading = false
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                isLoading = false
+            }
+        })
+    }
 
     Scaffold(
         containerColor = Color(0xFFFAFAFA),
@@ -71,7 +103,10 @@ fun InventoryScreen(
                         verticalArrangement = Arrangement.spacedBy(12.dp),
                         modifier = Modifier.padding(bottom = 16.dp)
                     ) {
-                        FabOption(text = "Agregar producto", onClick = { fabExpanded = false })
+                        FabOption(text = "Agregar producto", onClick = { 
+                            fabExpanded = false
+                            onAddProductClick()
+                        })
                         FabOption(text = "Editar producto", onClick = { fabExpanded = false })
                         FabOption(text = "Eliminar producto", onClick = { fabExpanded = false })
                     }
@@ -112,24 +147,50 @@ fun InventoryScreen(
             }
 
             // Inventory List
-            // AGREGADO modifier = Modifier.weight(1f) para que el scroll de la lista sea fluido
-            LazyColumn(
-                modifier = Modifier.weight(1f).fillMaxWidth(),
-                contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items(5) { index ->
-                    InventoryItemCard(
-                        title = "Alicate de Presión Pro 10\"",
-                        subtitle = "SKU: AL-00921",
-                        statusLabel = "DISPONIBLE",
-                        quantity = "18 unidades",
-                        priceLabel = "PRECIO UNITARIO",
-                        price = "$890.00"
-                    )
+            if (isLoading) {
+                Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    CircularProgressIndicator(color = Color(0xFFDC2626))
                 }
-                item {
-                    Spacer(modifier = Modifier.height(100.dp)) // Espacio extra para el FAB expandido
+            } else if (products.isEmpty()) {
+                Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    Text("No hay productos en el inventario", color = Color.Gray)
+                }
+            } else {
+                LazyColumn(
+                    modifier = Modifier.weight(1f).fillMaxWidth(),
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(products) { product ->
+                        val statusLabel = when {
+                            product.quantity <= 0 -> "AGOTADO"
+                            product.quantity < 5 -> "INSUFICIENTE"
+                            else -> "DISPONIBLE"
+                        }
+                        
+                        val quantityColor = when {
+                            product.quantity <= 0 -> Color(0xFFDC2626) // Rojo
+                            product.quantity < 5 -> Color(0xFFF97316) // Naranja
+                            else -> Color(0xFF059669) // Verde
+                        }
+
+                        val format = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
+                        format.maximumFractionDigits = 0
+                        val formattedPrice = format.format(product.unitPrice)
+
+                        InventoryItemCard(
+                            title = product.name,
+                            subtitle = "SKU: ${product.modelOrBarcode}",
+                            statusLabel = statusLabel,
+                            quantity = "${product.quantity} unidades",
+                            quantityColor = quantityColor,
+                            priceLabel = "PRECIO UNITARIO",
+                            price = formattedPrice
+                        )
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(100.dp)) // Espacio extra para el FAB expandido
+                    }
                 }
             }
         }
@@ -185,6 +246,7 @@ fun InventoryItemCard(
     subtitle: String,
     statusLabel: String,
     quantity: String,
+    quantityColor: Color = Color(0xFFDC2626),
     priceLabel: String,
     price: String
 ) {
@@ -228,7 +290,7 @@ fun InventoryItemCard(
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = quantity,
-                        color = Color(0xFFDC2626), // Rojo
+                        color = quantityColor,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium
                     )
