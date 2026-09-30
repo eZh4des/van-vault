@@ -8,11 +8,14 @@ import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.vanvault.ui.components.NavItem
+import com.example.vanvault.ui.screens.AddProductScreen
 import com.example.vanvault.ui.screens.ForgotPasswordScreen
 import com.example.vanvault.ui.screens.HomeScreen
 import com.example.vanvault.ui.screens.InventoryScreen
 import com.example.vanvault.ui.screens.LoginScreen
 import com.example.vanvault.ui.screens.RegisterScreen
+import com.example.vanvault.ui.screens.ScannerScreen
 import com.example.vanvault.ui.theme.VanVaultTheme
 import com.google.firebase.auth.FirebaseAuth
 
@@ -71,8 +74,30 @@ class MainActivity : ComponentActivity() {
                     composable("home") {
                         InventoryScreen(
                             onNavigate = { navItem -> 
-                                // Navegación a implementar para el resto de items
-                                // if (navItem == NavItem.PROFILE) { ... }
+                                when(navItem) {
+                                    NavItem.PROFILE -> navController.navigate("profile") { launchSingleTop = true }
+                                    // navItem.SALES y HOME se añadirán luego
+                                    else -> {}
+                                }
+                            },
+                            onAddProductClick = { navController.navigate("add_product") }
+                        )
+                    }
+                    composable("add_product") {
+                        AddProductScreen(
+                            navController = navController,
+                            onBackClick = { navController.navigateUp() },
+                            onScannerClick = { navController.navigate("scanner") }
+                        )
+                    }
+                    composable("scanner") {
+                        ScannerScreen(
+                            onBackClick = { navController.navigateUp() },
+                            onBarcodeScanned = { barcode ->
+                                navController.previousBackStackEntry
+                                    ?.savedStateHandle
+                                    ?.set("scanned_barcode", barcode)
+                                navController.navigateUp()
                             }
                         )
                     }
