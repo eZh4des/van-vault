@@ -1,0 +1,1251 @@
+{
+  "dvr": [
+    {
+      "uuid": "01a10df6-b8b0-bd40-fa6a-22677828d8b6",
+      "model": "DS-7104HGHI-M1",
+      "name": "DVR 4CH 1080P TURBO HD TVI/AHD/CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense",
+      "quantity": 0,
+      "unitPrice": 165000
+    },
+    {
+      "uuid": "01a10df6-b8b3-4a42-fa14-2fe485a2decf",
+      "model": "DS-7104HQHI-M1",
+      "name": "DVR 4CH TURBO 4MP lite 1BAHIA/10TB H.265+ ANALITICAS 30FPS HDMI/VGA PLASTICO Acúsense HIKVISION",
+      "quantity": 0,
+      "unitPrice": 230000
+    },
+    {
+      "uuid": "01a10df6-b8b4-d3e0-f7e6-b35331aba9ec",
+      "model": "DS-7108HGHI-M1",
+      "name": "DVR 8CH TURBO 1080p LITE 1BAHIA/4TB H.265+/H.265 1CANAL DE AUDIO HDMI/VGA Acúsense",
+      "quantity": 0,
+      "unitPrice": 210000
+    },
+    {
+      "uuid": "01a10df6-b8b5-82e7-f515-0407a6c8f01b",
+      "model": "DS-7108HQHI-M1/SC",
+      "name": "DVR 8CH H.265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI/CVI/AHD HASTA 1080P@15FPS",
+      "quantity": 0,
+      "unitPrice": 358000
+    },
+    {
+      "uuid": "01a10df6-b8b6-9293-fa91-77f06f673213",
+      "model": "DS-7116HGHI-M1",
+      "name": "DVR 16CH TURBO 1080P 1BAHIA/6TB H.265 25FPS HDMI/VGA PLASTICO HIKVISION",
+      "quantity": 0,
+      "unitPrice": 385000
+    },
+    {
+      "uuid": "01a10df6-b8b7-b0bb-fbdc-07b0e194efd8",
+      "model": "IDS-7116HQHI-M1/",
+      "name": "DVR 16CH TURBO 5MP/3K LITE ANALITICAS 30FPS HDMI/VGA PLASTICO",
+      "quantity": 0,
+      "unitPrice": 568000
+    },
+    {
+      "uuid": "01a10df6-b8b8-c701-fc7a-50580b930588",
+      "model": "DVR-104G-M1/C",
+      "name": "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA/6TB H.264+ 1CH IP HDMI/VGA AcuSense",
+      "quantity": 0,
+      "unitPrice": 148000
+    },
+    {
+      "uuid": "01a10df6-b8b9-7b4a-f421-3b608ada8615",
+      "model": "DVR-108G- M1/C",
+      "name": "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI/VGA HILOOK Acúsense",
+      "quantity": 0,
+      "unitPrice": 188000
+    },
+    {
+      "uuid": "01a10df6-b8ba-66df-f752-f3510830f399",
+      "model": "DVR-116G-M1C",
+      "name": "DVR 16CH TURBO 1080P lite 1BAHIA/10TBH.265+ 2CH IP 30FPS HDMI/VGA HILOOK AcuSense",
+      "quantity": 0,
+      "unitPrice": 310000
+    },
+    {
+      "uuid": "01a10df6-b8bb-08c8-f8d6-fa3cb1ea0dd1",
+      "model": "DH-XVR1B04-I",
+      "name": "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP",
+      "quantity": 0,
+      "unitPrice": 168000
+    },
+    {
+      "uuid": "01a10df6-b8bc-7c4c-f2c4-4f2c65d73ac4",
+      "model": "DH-XVR1B08-I",
+      "name": "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP",
+      "quantity": 0,
+      "unitPrice": 200000
+    },
+    {
+      "uuid": "01a10df6-b8bd-1da8-f00a-d3de11043dd4",
+      "model": "DH-XVR1B16-I",
+      "name": "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP",
+      "quantity": 0,
+      "unitPrice": 395000
+    }
+  ],
+  "cameras": [
+    {
+      "uuid": "01a10df6-b8be-8b5e-fb13-871e09dc21e9",
+      "model": "DS-2CE16D0T-IRPF",
+      "name": "CAMARA 2MP TIPO BALA PLASTICA IP66 1/3 CMOS LENTE 2.8MM",
+      "quantity": 0,
+      "unitPrice": 75000
+    },
+    {
+      "uuid": "01a10df6-b8bf-47ba-fa05-e57f554ad435",
+      "model": "DS-2CE16D0T-ITPFS HIBRIDA",
+      "name": "CAMARA 2MP TIPO BALA PLASTICA IP66 1/3 CMOS LENTE 2.8MM CON MICROFONO HIBRIDA",
+      "quantity": 0,
+      "unitPrice": 85000
+    },
+    {
+      "uuid": "01a10df6-b8c0-5fe2-f570-f8acf2b5bdb8",
+      "model": "DS-2CD1023G0E-I",
+      "name": "CAMARA BALA 2MP IP 2.8 MM IR30M IP67 HIKVISION",
+      "quantity": 0,
+      "unitPrice": 193000
+    },
+    {
+      "uuid": "01a10df6-b8c1-53ca-fafc-464453c371bc",
+      "model": "DS-2CE56D0T-IRPF",
+      "name": "CÁMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2.8 MM IP66",
+      "quantity": 0,
+      "unitPrice": 56000
+    },
+    {
+      "uuid": "01a10df6-b8c2-b908-f2b8-826171e82c11",
+      "model": "DS-2CE56DOT-IRMF",
+      "name": "CÁMARA DOMO TURBO HD 2MP METALICA LENTE E 2.8 MM IP66",
+      "quantity": 0,
+      "unitPrice": 80000
+    },
+    {
+      "uuid": "01a10df6-b8c3-10de-f730-182d3b1f3442",
+      "model": "DS-2CE76D0T-ITPFS HIBRIDA",
+      "name": "CAMARA DOMO 2M INCORPORADO AU F1.2 DNR EXIR 2.0 S P TURRET MICROFONO DIO COAXIAL 0.01 Lux/ mart IR20m IR PLASTICA",
+      "quantity": 0,
+      "unitPrice": 80000
+    },
+    {
+      "uuid": "01a10df6-b8c4-6317-fa36-f5db20f48728",
+      "model": "DS-2CD1323G2-IUF",
+      "name": "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION",
+      "quantity": 0,
+      "unitPrice": 183000
+    },
+    {
+      "uuid": "01a10df6-b8c5-6051-ffa2-2d0d38f781de",
+      "model": "THC-T120-PC",
+      "name": "CAMARA DOMO 1080P INT TURRET 0.02LUXF2.8 EXIR IR20m PLASTICA HILOOK",
+      "quantity": 0,
+      "unitPrice": 47000
+    },
+    {
+      "uuid": "01a10df6-b8c6-bd2a-fef0-ddac71a8ce5f",
+      "model": "THC-T150-P",
+      "name": "CAMARA TURBO 5MP INT TURRET 2.8MM EXIR IR20m IP66 HILOOK",
+      "quantity": 0,
+      "unitPrice": 75000
+    },
+    {
+      "uuid": "01a10df6-b8c7-84d5-f150-e41e7b81a522",
+      "model": "THC-B120-P",
+      "name": "CAMARA TURBO 1080P MINI BALA PLASTICA",
+      "quantity": 0,
+      "unitPrice": 49000
+    },
+    {
+      "uuid": "01a10df6-b8c8-9de7-f714-c39fda05810c",
+      "model": "THC-B150-P",
+      "name": "CAMARA TURBO 5MP INT MINI BALA 2.8MM IR20m IP66 SEMIMETALICA HILOOK",
+      "quantity": 0,
+      "unitPrice": 85000
+    },
+    {
+      "uuid": "01a10df6-b8c9-348a-f3ef-be557e1b2454",
+      "model": "IPC-B121H (2.8mm)(C)",
+      "name": "CAMARA IP 1080P MP BALA H265+ DWDR D/NF2.8 POE IR30m IP67 SEMIMETAL HILOOK",
+      "quantity": 0,
+      "unitPrice": 142000
+    },
+    {
+      "uuid": "01a10df6-b8ca-50b3-fb0a-8b7773b1dccc",
+      "model": "THC-T129-P",
+      "name": "CAMARA TURBO 1080P TURRET F2.8mm 0.001 LUX F1.0 24/7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK",
+      "quantity": 0,
+      "unitPrice": 72000
+    },
+    {
+      "uuid": "01a10df6-b8cb-94bf-f67f-e16088f2ab4a",
+      "model": "THC-T127-LPS HIBRIDA",
+      "name": "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO",
+      "quantity": 0,
+      "unitPrice": 68000
+    },
+    {
+      "uuid": "01a10df6-b8cc-04cc-f243-193a650961b9",
+      "model": "THC-B129-P",
+      "name": "CAMARA TURBO 1080P BALA F2.8mm 0.001 LUX F1.0 24/7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK",
+      "quantity": 0,
+      "unitPrice": 81000
+    },
+    {
+      "uuid": "01a10df6-b8cd-1358-f456-09d6d564fb9e",
+      "model": "THC-B127-LPS HIBRIDA",
+      "name": "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO",
+      "quantity": 0,
+      "unitPrice": 75000
+    },
+    {
+      "uuid": "01a10df6-b8ce-19a0-f596-ab53f0eb6f75",
+      "model": "CS-C2C-A0-1E2WF",
+      "name": "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H.265, IR HASTA 10",
+      "quantity": 0,
+      "unitPrice": 89000
+    },
+    {
+      "uuid": "01a10df6-b8cf-e441-fdfc-c08819d9803b",
+      "model": "CS-H6C-R105-1L3W",
+      "name": "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE",
+      "quantity": 0,
+      "unitPrice": 110000
+    },
+    {
+      "uuid": "01a10df6-b8d0-83c9-fc05-5feba4cfc4cf",
+      "model": "CS-H4-R201-1H3WK",
+      "name": "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS",
+      "quantity": 0,
+      "unitPrice": 172000
+    },
+    {
+      "uuid": "01a10df6-b8d1-6f7f-fb5b-f0c73f8e3aa9",
+      "model": "CS-H8C-R100-1K3W",
+      "name": "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K",
+      "quantity": 0,
+      "unitPrice": 200000
+    },
+    {
+      "uuid": "01a10df6-b8d2-ab7f-ffba-e14ae1f7a4de",
+      "model": "CS-H9C-R105",
+      "name": "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ",
+      "quantity": 0,
+      "unitPrice": 0
+    },
+    {
+      "uuid": "01a10df6-b8d3-c82c-f0ba-4764b24dff9b",
+      "model": "CS-H3C-R100-1K2W",
+      "name": "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m",
+      "quantity": 0,
+      "unitPrice": 145000
+    },
+    {
+      "uuid": "01a10df6-b8d4-12a9-f77f-2d646228c1af",
+      "model": "CS-H3C-R100-1K3W",
+      "name": "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m",
+      "quantity": 0,
+      "unitPrice": 160000
+    },
+    {
+      "uuid": "01a10df6-b8d5-90ad-f8b6-5006d5679517",
+      "model": "CS-H3c-R100-1J4WKFL",
+      "name": "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL",
+      "quantity": 0,
+      "unitPrice": 198000
+    },
+    {
+      "uuid": "01a10df6-b8d6-8b9b-f4cf-79f2ecd8b01f",
+      "model": "DH-HAC-T1A21N-0280",
+      "name": "DOMO PLÁSTICO Resolución 1080P 2.8MM",
+      "quantity": 0,
+      "unitPrice": 1000
+    },
+    {
+      "uuid": "01a10df6-b8d7-16a4-ffac-a92ef1383577",
+      "model": "DH-HAC-T1A21N-A-",
+      "name": "CAMARA DOMO 1080P CON AUDIO DAHUA 2.8 20MTRS",
+      "quantity": 0,
+      "unitPrice": 68000
+    },
+    {
+      "uuid": "01a10df6-b8d8-8fde-f328-3de84ea74145",
+      "model": "DH-IPC-HDW1239VP",
+      "name": "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2.8MM 30MTRS",
+      "quantity": 0,
+      "unitPrice": 200000
+    },
+    {
+      "uuid": "01a10df6-b8d9-d185-f056-85e109a3a3e0",
+      "model": "DH-HAC-T1A29N-02",
+      "name": "CAMARA DOMO FULL COLOR 1080P 2.8MM PLASTICA",
+      "quantity": 0,
+      "unitPrice": 75000
+    },
+    {
+      "uuid": "01a10df6-b8da-735e-f00b-4f4f178ddd35",
+      "model": "HDW1200CLQN",
+      "name": "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2.8 20M",
+      "quantity": 0,
+      "unitPrice": 80000
+    },
+    {
+      "uuid": "01a10df6-b8db-4b31-f629-8f1926fc0256",
+      "model": "DH-HAC-B1A21N-0280B",
+      "name": "BALA PLÁSTICA 1080P Lente 2.8mm",
+      "quantity": 0,
+      "unitPrice": 60000
+    },
+    {
+      "uuid": "01a10df6-b8dc-ac62-fff3-c3132e449c48",
+      "model": "DH-HAC-HFW1209CN-LED- 0280B",
+      "name": "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV",
+      "quantity": 0,
+      "unitPrice": 100000
+    },
+    {
+      "uuid": "01a10df6-b8dd-f4bc-f3c9-b09803d98736",
+      "model": "HAC-HFW1200CLN-1",
+      "name": "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2.8 20M",
+      "quantity": 0,
+      "unitPrice": 85000
+    },
+    {
+      "uuid": "01a10df6-b8de-8d2d-f61b-b05a083ff9f3",
+      "model": "IPC-S2EN-3R1S-IM",
+      "name": "CAMARA IMOU RANGER 3MP/2K 3.6MM SMART FULL COLOR",
+      "quantity": 0,
+      "unitPrice": 120000
+    }
+  ],
+  "sensors": [
+    {
+      "uuid": "01a10df6-b8df-0dab-f4c1-b46559bbe1f4",
+      "model": "MS31",
+      "name": "CONTACTO MAGNETICO COLOR BLANCO",
+      "quantity": 0,
+      "unitPrice": 8000
+    },
+    {
+      "uuid": "01a10df6-b8e0-4707-f56d-88a508b5e9a8",
+      "model": "MS38",
+      "name": "CONTACTO MAGNETICO CON CABLE",
+      "quantity": 0,
+      "unitPrice": 6000
+    },
+    {
+      "uuid": "01a10df6-b8e1-59f1-fe12-bcf9acdeeda9",
+      "model": "GV-60L",
+      "name": "CONTACTO MAGNETICO METALICO",
+      "quantity": 0,
+      "unitPrice": 35000
+    },
+    {
+      "uuid": "01a10df6-b8e2-3576-fd5e-d15aff9efd4b",
+      "model": "PMD2P",
+      "name": "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX",
+      "quantity": 0,
+      "unitPrice": 125000
+    },
+    {
+      "uuid": "01a10df6-b8e3-03d7-f6d9-97b83127946e",
+      "model": "LY-DH4T",
+      "name": "SENSOR DE HUMO",
+      "quantity": 0,
+      "unitPrice": 90000
+    },
+    {
+      "uuid": "01a10df6-b8e4-e5a9-f9f7-b15f46442dcc",
+      "model": "DS-PDP18-EG2",
+      "name": "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85.9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD",
+      "quantity": 0,
+      "unitPrice": 32000
+    },
+    {
+      "uuid": "01a10df6-b8e5-add3-f93a-b2ed9ca1a9fe",
+      "model": "NV5W3C",
+      "name": "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO",
+      "quantity": 0,
+      "unitPrice": 60000
+    },
+    {
+      "uuid": "01a10df6-b8e6-b9af-fcc7-1aeaf04795bc",
+      "model": "LC200",
+      "name": "SENSOR LC200S DSC",
+      "quantity": 0,
+      "unitPrice": 50000
+    },
+    {
+      "uuid": "01a10df6-b8e7-8e18-f36a-24bb7bdd8334",
+      "model": "LC204",
+      "name": "SENSOR DE MOVIMIENTO LC204 DSC",
+      "quantity": 0,
+      "unitPrice": 150000
+    }
+  ],
+  "alarms": [
+    {
+      "uuid": "01a10df6-b8e8-24c7-f62e-b186d52b0f1e",
+      "model": "K636",
+      "name": "TECLADO PARA ALARMA K636 PARADOX",
+      "quantity": 0,
+      "unitPrice": 138000
+    },
+    {
+      "uuid": "01a10df6-b8e9-fbe5-f6d0-2764ee1c976d",
+      "model": "K10H",
+      "name": "TECLADO 10 ZONAS LED CABLEADO",
+      "quantity": 0,
+      "unitPrice": 150000
+    },
+    {
+      "uuid": "01a10df6-b8ea-3864-f184-4d66fb4d77e2",
+      "model": "K32LCD",
+      "name": "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32",
+      "quantity": 0,
+      "unitPrice": 200000
+    },
+    {
+      "uuid": "01a10df6-b8eb-d7ff-f32d-8263ce94667d",
+      "model": "K32LCD PLUS",
+      "name": "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP/MG",
+      "quantity": 0,
+      "unitPrice": 230000
+    },
+    {
+      "uuid": "01a10df6-b8ec-a5c8-f3ae-ed827c4a223b",
+      "model": "SP4000D6Q",
+      "name": "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32",
+      "quantity": 0,
+      "unitPrice": 175000
+    },
+    {
+      "uuid": "01a10df6-b8ed-3173-f3e4-474557708b5d",
+      "model": "SP6000M8X",
+      "name": "CENTRAL DE ALARMA 8X2 ZONAS MAX 32",
+      "quantity": 0,
+      "unitPrice": 255000
+    },
+    {
+      "uuid": "01a10df6-b8ee-a8d9-f417-648311a6fc85",
+      "model": "GV-D40",
+      "name": "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA",
+      "quantity": 0,
+      "unitPrice": 50000
+    },
+    {
+      "uuid": "01a10df6-b8ef-4a07-f337-b9339e51944c",
+      "model": "GV-S501",
+      "name": "SIRENA CÓNICA 20W PARA ALARMA",
+      "quantity": 0,
+      "unitPrice": 35000
+    },
+    {
+      "uuid": "01a10df6-b8f0-328b-f805-44291a8f354b",
+      "model": "GV-S508",
+      "name": "SIRENA 30W PARA ALARMA",
+      "quantity": 0,
+      "unitPrice": 50000
+    },
+    {
+      "uuid": "01a10df6-b8f1-327c-faf7-ee5edb3a2972",
+      "model": "SIRENA110V",
+      "name": "SIRENA 110V NEGRA GONGORA",
+      "quantity": 0,
+      "unitPrice": 160000
+    },
+    {
+      "uuid": "01a10df6-b8f2-2364-f125-a3430cedc547",
+      "model": "GABINETEGRAN",
+      "name": "CAJA METALICA PARA ALARMA 28X28X7.6 CM",
+      "quantity": 0,
+      "unitPrice": 50000
+    }
+  ],
+  "chargers": [
+    {
+      "uuid": "01a10df6-b8f3-23d7-ff42-abd21a2e3f21",
+      "model": "12V/1 A",
+      "name": "CARGADOR 12V/1 A CON LED INDICADOR",
+      "quantity": 0,
+      "unitPrice": 5000
+    },
+    {
+      "uuid": "01a10df6-b8f4-e7e4-fd7c-83a71312f742",
+      "model": "12V/2",
+      "name": "CARGADOR 12v/2 A",
+      "quantity": 0,
+      "unitPrice": 10000
+    },
+    {
+      "uuid": "01a10df6-b8f5-fcc5-f935-db81cd7a343f",
+      "model": "12V/3",
+      "name": "CARGADOR 12v/3 A",
+      "quantity": 0,
+      "unitPrice": 20000
+    },
+    {
+      "uuid": "01a10df6-b8f6-d865-ff16-65244ed48a9a",
+      "model": "12V/5",
+      "name": "CARGADOR 12v/5 A",
+      "quantity": 0,
+      "unitPrice": 25000
+    }
+  ],
+  "disk": [
+    {
+      "uuid": "01a10df6-b8f7-10af-f952-d5af04635600",
+      "model": "MICROSD64EZVIZ",
+      "name": "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA",
+      "quantity": 0,
+      "unitPrice": 65000
+    },
+    {
+      "uuid": "01a10df6-b8f8-6622-f160-5cffcf849f94",
+      "model": "2TB-SEAGATE",
+      "name": "DISCO DURO DE 2 TB SEAGATE DE 3.5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24/7 3 AÑOS GARANTIA",
+      "quantity": 0,
+      "unitPrice": 530000
+    }
+  ],
+  "network_devices": [
+    {
+      "uuid": "01a10df6-b8f9-d096-f6ac-a4e34b9b1f83",
+      "model": "TL-SF1005D",
+      "name": "SWITCH 5P 10/100 TP LINK BASE 100 TP LINK",
+      "quantity": 0,
+      "unitPrice": 45000
+    },
+    {
+      "uuid": "01a10df6-b8fa-923b-f05b-fb84baac6aa9",
+      "model": "MS105",
+      "name": "SWITCH 5P MERCUSYS BASE 100",
+      "quantity": 0,
+      "unitPrice": 40000
+    },
+    {
+      "uuid": "01a10df6-b8fb-e176-f7c8-4b05bce427fd",
+      "model": "SWITCH 5 P PIX-",
+      "name": "SWITCH 5 PUERTOS PIX-LINK 10/100",
+      "quantity": 0,
+      "unitPrice": 35000
+    },
+    {
+      "uuid": "01a10df6-b8fc-9156-f588-74c1cdaafc41",
+      "model": "S105",
+      "name": "SWITCH 5P 10/100 TENDA",
+      "quantity": 0,
+      "unitPrice": 40000
+    },
+    {
+      "uuid": "01a10df6-b8fd-214f-fdf3-e1a502bdeeda",
+      "model": "SG108M",
+      "name": "SWITCH 8P GIGABIT TENDA MAC 8K",
+      "quantity": 0,
+      "unitPrice": 90000
+    },
+    {
+      "uuid": "01a10df6-b8fe-1055-fde0-cf64edfd6496",
+      "model": "TL-SF1008D",
+      "name": "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK",
+      "quantity": 0,
+      "unitPrice": 65000
+    },
+    {
+      "uuid": "01a10df6-b8ff-f981-fea3-cb462c712e45",
+      "model": "MS108",
+      "name": "SWITCH 8P MERCUSYS 10/100",
+      "quantity": 0,
+      "unitPrice": 55000
+    },
+    {
+      "uuid": "01a10df6-b900-7153-fedb-ba9dee6c534b",
+      "model": "DS-3E0508D-O(O-STD)",
+      "name": "SWITCH 8P GIGABIT HIKVISION / NO ADMINISTRABLE",
+      "quantity": 0,
+      "unitPrice": 85000
+    },
+    {
+      "uuid": "01a10df6-b901-daa3-ff04-c8c199a8668b",
+      "model": "TL-SG1016D",
+      "name": "SWITCH 16P GIGABIT TP LINK",
+      "quantity": 0,
+      "unitPrice": 284000
+    },
+    {
+      "uuid": "01a10df6-b902-0de2-fb00-fdcd678e8077",
+      "model": "TL-WR820N TP-LINK",
+      "name": "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK",
+      "quantity": 0,
+      "unitPrice": 80000
+    },
+    {
+      "uuid": "01a10df6-b903-94f2-f218-0c456214ac12",
+      "model": "N301",
+      "name": "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO",
+      "quantity": 0,
+      "unitPrice": 65000
+    },
+    {
+      "uuid": "01a10df6-b904-a2f5-ff91-9672672c75ea",
+      "model": "DS-3WR3N/US",
+      "name": "ROUTER 2 ANTENAS HIKVISION 300MBPS",
+      "quantity": 0,
+      "unitPrice": 50000
+    },
+    {
+      "uuid": "01a10df6-b905-6003-f646-35476a330e9d",
+      "model": "SWV-4X1",
+      "name": "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR",
+      "quantity": 0,
+      "unitPrice": 30000
+    },
+    {
+      "uuid": "01a10df6-b906-236e-f264-8180f6a40847",
+      "model": "KVM-02",
+      "name": "SWITCH KVM 2 PUERTOS USB",
+      "quantity": 0,
+      "unitPrice": 45000
+    },
+    {
+      "uuid": "01a10df6-b907-85fc-feb8-76e8fbc33e39",
+      "model": "REGLETA 7P",
+      "name": "HUB SWITCH USB 3.0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS",
+      "quantity": 0,
+      "unitPrice": 28000
+    },
+    {
+      "uuid": "01a10df6-b908-a1a8-f783-84496f4d3bea",
+      "model": "LS1005G",
+      "name": "SWITCH 5P TPLINK GIGABIT 10/100/1000",
+      "quantity": 0,
+      "unitPrice": 70000
+    }
+  ],
+  "racks": [
+    {
+      "uuid": "01a10df6-b909-3736-f90a-f2773ac95d4b",
+      "model": "GABINETE",
+      "name": "GABINETE RACK 17X34X34 BABY",
+      "quantity": 0,
+      "unitPrice": 50000
+    },
+    {
+      "uuid": "01a10df6-b90a-fa99-f50c-414e4c9389fc",
+      "model": "GABINETE",
+      "name": "GABINETE RACK 17X40X34 M",
+      "quantity": 0,
+      "unitPrice": 60000
+    },
+    {
+      "uuid": "01a10df6-b90b-dc8d-f15d-36b5a87e0b2f",
+      "model": "GABINETE NEGRO Y BLANCO",
+      "name": "GABINETE RACK VERTICAL NEGRO/BLANCO",
+      "quantity": 0,
+      "unitPrice": 60000
+    },
+    {
+      "uuid": "01a10df6-b90c-09ce-f1a3-a5e87c4a7343",
+      "model": "GABINETE",
+      "name": "GABINETE RACK 52X32X18 L",
+      "quantity": 0,
+      "unitPrice": 70000
+    },
+    {
+      "uuid": "01a10df6-b90d-bab3-f7c0-8b29838390d6",
+      "model": "GABINETE",
+      "name": "GABINETE RACK 52X51X17 XL",
+      "quantity": 0,
+      "unitPrice": 85000
+    }
+  ],
+  "tether": [
+    {
+      "uuid": "01a10df6-b90e-3cc5-f3d2-3a4a657b3a4b",
+      "model": "CABLE UTP CAT 5",
+      "name": "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M",
+      "quantity": 0,
+      "unitPrice": 50000
+    },
+    {
+      "uuid": "01a10df6-b90f-612d-f3ba-fe8c8ff22205",
+      "model": "LPSUTPCAT5E100EXT",
+      "name": "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M",
+      "quantity": 0,
+      "unitPrice": 65000
+    },
+    {
+      "uuid": "01a10df6-b910-0c98-f297-9993da7884ef",
+      "model": "LPSUTPCAT6100EXT",
+      "name": "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M",
+      "quantity": 0,
+      "unitPrice": 75000
+    },
+    {
+      "uuid": "01a10df6-b911-f8fa-f7bd-3793b5ed04c8",
+      "model": "CAT6100% COBRE",
+      "name": "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE",
+      "quantity": 0,
+      "unitPrice": 235000
+    },
+    {
+      "uuid": "01a10df6-b912-61dc-fd5e-df7f5c3e08c1",
+      "model": "XL500-C",
+      "name": "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO",
+      "quantity": 0,
+      "unitPrice": 135000
+    },
+    {
+      "uuid": "01a10df6-b913-703c-fb44-2dbf1f9f8298",
+      "model": "LPSUTPCAT5EXT",
+      "name": "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA. LPS",
+      "quantity": 0,
+      "unitPrice": 155000
+    },
+    {
+      "uuid": "01a10df6-b914-6508-fa24-eb3deadae20e",
+      "model": "LPSUTPCAT6EXT",
+      "name": "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE",
+      "quantity": 0,
+      "unitPrice": 165000
+    },
+    {
+      "uuid": "01a10df6-b915-ab95-f8c3-e21ae15ad4a7",
+      "model": "DS-1LN5E COBRE",
+      "name": "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE",
+      "quantity": 0,
+      "unitPrice": 420000
+    },
+    {
+      "uuid": "01a10df6-b916-1a9b-fd3c-77efca4495d0",
+      "model": "LPS100% COBRE305M",
+      "name": "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE",
+      "quantity": 0,
+      "unitPrice": 550000
+    },
+    {
+      "uuid": "01a10df6-b917-9d2e-f244-c998642b33c7",
+      "model": "PATCH CORD-YELLOW",
+      "name": "CABLE DE RED 2 MTS AMARILLO",
+      "quantity": 0,
+      "unitPrice": 3000
+    },
+    {
+      "uuid": "01a10df6-b918-ff9f-f4ca-eb669355ec2d",
+      "model": "PATCH CORD-BLUET",
+      "name": "CABLE DE RED 1 MTS AZUL",
+      "quantity": 0,
+      "unitPrice": 6000
+    },
+    {
+      "uuid": "01a10df6-b919-c0ec-ffab-6c9d3df3d418",
+      "model": "PATCH CORD-BLUET",
+      "name": "CABLE DE RED 2 MTS AZUL",
+      "quantity": 0,
+      "unitPrice": 7500
+    },
+    {
+      "uuid": "01a10df6-b91a-e670-fdb6-0afd06520b10",
+      "model": "PATCH CORD-BLUET",
+      "name": "CABLE DE RED 3 MTS AZUL",
+      "quantity": 0,
+      "unitPrice": 10000
+    }
+  ],
+  "wire": [
+    {
+      "uuid": "01a10df6-b91b-b188-fa19-3c010bcb8612",
+      "model": "CABLE NEOPRENO",
+      "name": "CABLE NEOPRENO 2X20 200M",
+      "quantity": 0,
+      "unitPrice": 110000
+    },
+    {
+      "uuid": "01a10df6-b91c-cedb-f2fe-2796b5765ac7",
+      "model": "HDMI1.8",
+      "name": "CABLE HDMI 1.8 MTS",
+      "quantity": 0,
+      "unitPrice": 8000
+    },
+    {
+      "uuid": "01a10df6-b91d-889f-ff91-7a0353e37748",
+      "model": "HDMI3",
+      "name": "CABLE HDMI 3 MTS ENCAUCHETADO",
+      "quantity": 0,
+      "unitPrice": 12000
+    },
+    {
+      "uuid": "01a10df6-b91e-c903-fd49-14662f85ab67",
+      "model": "HDMI5",
+      "name": "CABLE HDMI 5 MTS",
+      "quantity": 0,
+      "unitPrice": 18000
+    },
+    {
+      "uuid": "01a10df6-b91f-fc4e-fca4-765b63895250",
+      "model": "HDMI7",
+      "name": "CABLE HDMI 7 MTS",
+      "quantity": 0,
+      "unitPrice": 20000
+    },
+    {
+      "uuid": "01a10df6-b920-fa6d-fd67-7807e80b6ee0",
+      "model": "HDMI10",
+      "name": "CABLE HDMI 10 MTS",
+      "quantity": 0,
+      "unitPrice": 30000
+    },
+    {
+      "uuid": "01a10df6-b921-fb03-f72f-a9e543402dec",
+      "model": "CHP-15",
+      "name": "CABLE HDMI 15 MTS",
+      "quantity": 0,
+      "unitPrice": 40000
+    },
+    {
+      "uuid": "01a10df6-b922-a887-f1c4-0383ee6e9966",
+      "model": "HDMI25",
+      "name": "CABLE HDMI 25 MTS",
+      "quantity": 0,
+      "unitPrice": 85000
+    },
+    {
+      "uuid": "01a10df6-b923-6e2f-f30b-ebd501a91675",
+      "model": "HDMI A MICRO HDMI",
+      "name": "CABLE HDMI A MICRO HDMI 1.8M",
+      "quantity": 0,
+      "unitPrice": 8000
+    },
+    {
+      "uuid": "01a10df6-b924-037c-f4e0-a01101948ff0",
+      "model": "HDMI A MINI HDMI",
+      "name": "CABLE HDMI A MINI HDMI 3M",
+      "quantity": 0,
+      "unitPrice": 12000
+    },
+    {
+      "uuid": "01a10df6-b925-fd7f-fb33-01ba30c62ae4",
+      "model": "CABLE VGA1.8M",
+      "name": "1.8 MTS CON DOBLE FILTRO PARA MONITOR",
+      "quantity": 0,
+      "unitPrice": 6000
+    },
+    {
+      "uuid": "01a10df6-b926-1309-fd0a-4815b4c75f54",
+      "model": "CABLE VGA3M",
+      "name": "3 MTS CON DOBLE FILTRO PARA MONITOR",
+      "quantity": 0,
+      "unitPrice": 9000
+    },
+    {
+      "uuid": "01a10df6-b927-22ed-faab-90e190165a44",
+      "model": "CABLE VGA5M",
+      "name": "5 MTS CON DOBLE FILTRO PARA MONITOR",
+      "quantity": 0,
+      "unitPrice": 15000
+    },
+    {
+      "uuid": "01a10df6-b928-3bc5-fc68-9882d63af7da",
+      "model": "CABLE VGA7M",
+      "name": "7 MTS CON DOBLE FILTRO PARA MONITOR",
+      "quantity": 0,
+      "unitPrice": 22000
+    },
+    {
+      "uuid": "01a10df6-b929-e8cd-f5d9-9fbdc0cf25d7",
+      "model": "CABLE VGA10M",
+      "name": "10 MTS CON DOBLE FILTRO PARA MONITOR",
+      "quantity": 0,
+      "unitPrice": 26000
+    },
+    {
+      "uuid": "01a10df6-b92a-f335-f782-00e1a2aacb0e",
+      "model": "CABLE VGA15M",
+      "name": "15 MTS CON DOBLE FILTRO PARA MONITOR",
+      "quantity": 0,
+      "unitPrice": 34000
+    },
+    {
+      "uuid": "01a10df6-b92b-54e1-f075-5b9901b593b1",
+      "model": "CABLE VGA30M",
+      "name": "30 MTS CON DOBLE FILTRO PARA MONITOR",
+      "quantity": 0,
+      "unitPrice": 75000
+    },
+    {
+      "uuid": "01a10df6-b92c-5553-f53a-ead05ae39e46",
+      "model": "CABLE 2X1",
+      "name": "CABLE 2X1 2 RCA A PLUG JACK 3.5MM",
+      "quantity": 0,
+      "unitPrice": 8500
+    },
+    {
+      "uuid": "01a10df6-b92d-9104-fa04-4d9f3fbe7c5c",
+      "model": "CABLE OPTICO",
+      "name": "CABLE OPTICO AUDIO 5M",
+      "quantity": 0,
+      "unitPrice": 16500
+    },
+    {
+      "uuid": "01a10df6-b92e-be25-ff93-ac0c845ebdb0",
+      "model": "Cable USB/ USB 50 CM",
+      "name": "CABLE USB/ USB 50 CM",
+      "quantity": 0,
+      "unitPrice": 4000
+    },
+    {
+      "uuid": "01a10df6-b92f-4931-fdb6-e7ac4710f635",
+      "model": "CABLEUSB1.5M",
+      "name": "CABLE EXTENSIÓN USB 1.5 MTS, MACHO /HEMBRA CON FILTRO",
+      "quantity": 0,
+      "unitPrice": 7000
+    },
+    {
+      "uuid": "01a10df6-b930-2229-fc65-0d981b037cb3",
+      "model": "CABLEUSB5M",
+      "name": "EXTENSIÓN USB DE 5.0M DESOXIGENADO",
+      "quantity": 0,
+      "unitPrice": 18000
+    },
+    {
+      "uuid": "01a10df6-b931-02e5-fe32-c7103773a68e",
+      "model": "CABLEUSB10M",
+      "name": "EXTENSIÓN USB DE 10M DESOXIGENADO",
+      "quantity": 0,
+      "unitPrice": 28000
+    }
+  ],
+  "connectors": [
+    {
+      "uuid": "01a10df6-b932-6ef2-f066-4796a7eede58",
+      "model": "VGA A RCA",
+      "name": "ADAPTADOR/CONVERTIDOR VGA A RCA",
+      "quantity": 0,
+      "unitPrice": 25000
+    },
+    {
+      "uuid": "01a10df6-b933-325d-fbde-8b5af530ed5c",
+      "model": "HDMI A RCA",
+      "name": "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P",
+      "quantity": 0,
+      "unitPrice": 25000
+    },
+    {
+      "uuid": "01a10df6-b934-6a59-fa20-4d811584df51",
+      "model": "HDMI A VGA",
+      "name": "CONVERTIR ADAPTADOR DE HDMI A VGA",
+      "quantity": 0,
+      "unitPrice": 25000
+    },
+    {
+      "uuid": "01a10df6-b935-2cfc-f3f3-82f45702ae96",
+      "model": "ADAPTADOR MINI HDMI A HDMI",
+      "name": "ADAPTADOR MINI HDMI A HDMI",
+      "quantity": 0,
+      "unitPrice": 3000
+    },
+    {
+      "uuid": "01a10df6-b936-d031-fe2a-82500da24e18",
+      "model": "UPS BT-601",
+      "name": "UPS INTERACTIVA FORZA 600VA/360W 120V",
+      "quantity": 0,
+      "unitPrice": 150000
+    },
+    {
+      "uuid": "01a10df6-b937-b2d3-ff60-e2a313132752",
+      "model": "BORNERADC",
+      "name": "CONECTOR BORNERA HEMBRA/MACHO",
+      "quantity": 0,
+      "unitPrice": 1000
+    },
+    {
+      "uuid": "01a10df6-b938-e9c2-fcc2-f69adb7aa744",
+      "model": "BORNERABNC",
+      "name": "CONECTOR BNC MACHO CON BORNERA",
+      "quantity": 0,
+      "unitPrice": 1500
+    },
+    {
+      "uuid": "01a10df6-b939-7185-f1f0-0aa398b7c6b0",
+      "model": "BORNERARCA",
+      "name": "CONECTOR BORNERA RCA MACHO 2 PINES",
+      "quantity": 0,
+      "unitPrice": 1500
+    },
+    {
+      "uuid": "01a10df6-b93a-41d1-fa23-7c57b9e43c00",
+      "model": "BORNERARCA",
+      "name": "CONECTOR BORNERA BNC HEMBRA A RCA MACHO",
+      "quantity": 0,
+      "unitPrice": 800
+    },
+    {
+      "uuid": "01a10df6-b93b-7c4a-f6fc-c8ece4ce1684",
+      "model": "CONECTOR RJ45CAT5",
+      "name": "CONECTOR RJ45 CAT 5",
+      "quantity": 0,
+      "unitPrice": 200
+    },
+    {
+      "uuid": "01a10df6-b93c-0366-f927-3076b2b77cdb",
+      "model": "RJ45 DOBLE",
+      "name": "CONECTOR RJ45 CAT 6 DOBLE HOLE",
+      "quantity": 0,
+      "unitPrice": 300
+    },
+    {
+      "uuid": "01a10df6-b93d-1f7f-f10e-1002537afdf2",
+      "model": "CONECTOR RJ45CAT6",
+      "name": "CONECTOR RJ45 CATEGORIA 6 PLASTICO X UNIDAD",
+      "quantity": 0,
+      "unitPrice": 300
+    },
+    {
+      "uuid": "01a10df6-b93e-91c8-fcd9-4f3223c1e167",
+      "model": "CONECTOR DE RED RJ45",
+      "name": "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD",
+      "quantity": 0,
+      "unitPrice": 500
+    },
+    {
+      "uuid": "01a10df6-b93f-e4bf-f7a3-1431384b1aa8",
+      "model": "PONCHADORA RJ45",
+      "name": "PONCHADORA RJ45",
+      "quantity": 0,
+      "unitPrice": 25000
+    },
+    {
+      "uuid": "01a10df6-b940-d0f8-f004-e93a2f31622c",
+      "model": "CAPUCHONES",
+      "name": "CAPUCHONES RJ45 AZULES",
+      "quantity": 0,
+      "unitPrice": 400
+    },
+    {
+      "uuid": "01a10df6-b941-17f2-ff49-6af92b8d8a1f",
+      "model": "JACK CAT 6",
+      "name": "JACK CAT 6 UTP BLUE WG",
+      "quantity": 0,
+      "unitPrice": 6000
+    },
+    {
+      "uuid": "01a10df6-b942-924b-f626-db76ad04ab8d",
+      "model": "LP3317V2WH",
+      "name": "FACE PLATE DOBLE",
+      "quantity": 0,
+      "unitPrice": 5500
+    },
+    {
+      "uuid": "01a10df6-b943-27d3-fef0-741b4453dd51",
+      "model": "LP3317H1WH",
+      "name": "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST",
+      "quantity": 0,
+      "unitPrice": 4000
+    },
+    {
+      "uuid": "01a10df6-b944-0c63-f639-69f281aea233",
+      "model": "HDMI EXTENDER 60M",
+      "name": "EXTENDER HDMI ACTIVO 60M",
+      "quantity": 0,
+      "unitPrice": 75000
+    },
+    {
+      "uuid": "01a10df6-b945-acae-f93d-698fce87a03d",
+      "model": "HDMI EXTENDER 30M",
+      "name": "HDMI EXTENDER 30M PASIVO 1 LINEA",
+      "quantity": 0,
+      "unitPrice": 20000
+    },
+    {
+      "uuid": "01a10df6-b946-ff03-f5ef-7b8917a3b4db",
+      "model": "EXTENDERHDMI30M",
+      "name": "EXTENDER HDMI 30M 2 LINEA PASIVO",
+      "quantity": 0,
+      "unitPrice": 25000
+    },
+    {
+      "uuid": "01a10df6-b947-c030-f7dc-8f66b1fd311b",
+      "model": "EXTENDER USB RJ45 45 MTS",
+      "name": "EXTENDER USB RJ45 45 MTS",
+      "quantity": 0,
+      "unitPrice": 36000
+    },
+    {
+      "uuid": "01a10df6-b948-bdfc-fb9b-f237edb33718",
+      "model": "SPLITTER HDMI",
+      "name": "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD",
+      "quantity": 0,
+      "unitPrice": 40000
+    },
+    {
+      "uuid": "01a10df6-b949-20f9-fc9c-8a817fc9124a",
+      "model": "SPLITTER HDMI",
+      "name": "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD",
+      "quantity": 0,
+      "unitPrice": 50000
+    },
+    {
+      "uuid": "01a10df6-b94a-f96e-f727-057f4ba4fed8",
+      "model": "HDMIVGA",
+      "name": "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO",
+      "quantity": 0,
+      "unitPrice": 25000
+    },
+    {
+      "uuid": "01a10df6-b94b-1749-f4c9-d8e00caf47eb",
+      "model": "RCA A HDMI",
+      "name": "CONVERTIDOR DE RCA A HDMI",
+      "quantity": 0,
+      "unitPrice": 25000
+    },
+    {
+      "uuid": "01a10df6-b94c-7eaf-f669-47b6ce8565cf",
+      "model": "HHC-90",
+      "name": "CODO HDMI MACHO- HEMBRA",
+      "quantity": 0,
+      "unitPrice": 3500
+    },
+    {
+      "uuid": "01a10df6-b94d-2ad5-f5aa-ff5bac6f2d02",
+      "model": "HHH-90",
+      "name": "HDMI HEMBRA A HDMI HEMBRA 90 GRADOS",
+      "quantity": 0,
+      "unitPrice": 4000
+    },
+    {
+      "uuid": "01a10df6-b94e-efe1-fc7d-29391fd7ff26",
+      "model": "VIDEO BALUN PROMO",
+      "name": "VIDEO BALUN HD",
+      "quantity": 0,
+      "unitPrice": 5000
+    },
+    {
+      "uuid": "01a10df6-b94f-b120-f418-ee1d2ff6bb10",
+      "model": "VIDEO BALUN 4K",
+      "name": "VIDEO BALUN HASTA 8MP",
+      "quantity": 0,
+      "unitPrice": 10000
+    },
+    {
+      "uuid": "01a10df6-b950-b4c1-fa18-d1d1c2006230",
+      "model": "DISTRIBUIDOR",
+      "name": "DISTRIBUIDOR DE ENERGÍA 6 SALIDAS",
+      "quantity": 0,
+      "unitPrice": 7000
+    },
+    {
+      "uuid": "01a10df6-b951-db09-fe61-1d4deca4019f",
+      "model": "DISTRIBUIDOR",
+      "name": "DISTRIBUIDOR DE ENERGÍA 8 SALIDAS",
+      "quantity": 0,
+      "unitPrice": 8000
+    },
+    {
+      "uuid": "01a10df6-b952-79d6-f6af-434cdaf25235",
+      "model": "CLAVIJA MACHO",
+      "name": "CLAVIJA AEREA 110V MACHO",
+      "quantity": 0,
+      "unitPrice": 2500
+    },
+    {
+      "uuid": "01a10df6-b953-a3d8-f6b0-edf50f2a70a4",
+      "model": "CLAVIJA HEMBRA",
+      "name": "CLAVIJA AEREA 110V HEMBRA",
+      "quantity": 0,
+      "unitPrice": 2000
+    },
+    {
+      "uuid": "01a10df6-b954-4a29-f3fb-8cecbfee6b86",
+      "model": "FVR-1001",
+      "name": "REGULADOR VOLTAJE FORZA 1000 VA",
+      "quantity": 0,
+      "unitPrice": 70000
+    }
+  ],
+  "accessories": [
+    {
+      "uuid": "01a10df6-b955-80dd-fb6a-1675c9ee7924",
+      "model": "PROTECTOR LAMINA",
+      "name": "PROTECTOR LAMINA CAM BALA PEQUEÑA",
+      "quantity": 0,
+      "unitPrice": 22000
+    },
+    {
+      "uuid": "01a10df6-b956-a2bf-f030-43f1c32a2999",
+      "model": "PROTECTOR LAMINA",
+      "name": "PROTECTOR LAMINA CAM DOMO PEQUEÑA",
+      "quantity": 0,
+      "unitPrice": 20000
+    },
+    {
+      "uuid": "01a10df6-b957-b02e-facd-ff32ebc75692",
+      "model": "PROTECTOR DOMO",
+      "name": "PROTECTOR VARILLA DOMO PEQUEÑO BLANCO/NEGRO",
+      "quantity": 0,
+      "unitPrice": 20000
+    },
+    {
+      "uuid": "01a10df6-b958-9e6c-fb68-96da14430ea7",
+      "model": "PB67A",
+      "name": "BOTON DE PANICO",
+      "quantity": 0,
+      "unitPrice": 5000
+    },
+    {
+      "uuid": "01a10df6-b959-3b67-f220-d6a08f8a49b6",
+      "model": "DH-HAP100",
+      "name": "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC",
+      "quantity": 0,
+      "unitPrice": 45000
+    },
+    {
+      "uuid": "01a10df6-b95a-2809-fa10-be2db4795c6c",
+      "model": "BRAZO EXPANSIVO",
+      "name": "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO",
+      "quantity": 0,
+      "unitPrice": 30000
+    },
+    {
+      "uuid": "01a10df6-b95b-69a6-f9b6-e8a82588d247",
+      "model": "CAJA 15*15",
+      "name": "CAJA DE PASO CON TORNILLO PLÁSTICO 15X15",
+      "quantity": 0,
+      "unitPrice": 10000
+    },
+    {
+      "uuid": "01a10df6-b95c-c8fa-f8f5-bea539567ced",
+      "model": "CAJA 10*10",
+      "name": "CAJA DE PASO CON TORNILLO 10X10",
+      "quantity": 0,
+      "unitPrice": 3000
+    },
+    {
+      "uuid": "01a10df6-b95d-2fe6-faaf-fdfca410f112",
+      "model": "CAJA 4x2",
+      "name": "CAJA 4X2",
+      "quantity": 0,
+      "unitPrice": 2500
+    },
+    {
+      "uuid": "01a10df6-b95e-1189-f5e4-b255be8aecc4",
+      "model": "MICRÓFONO",
+      "name": "MICROFONO CCTV 12V",
+      "quantity": 0,
+      "unitPrice": 12000
+    },
+    {
+      "uuid": "01a10df6-b95f-ea84-fff8-59f85d313689",
+      "model": "JR8",
+      "name": "MOUSE INALAMBRICOS JR8 USB JERTECH",
+      "quantity": 0,
+      "unitPrice": 30000
+    },
+    {
+      "uuid": "01a10df6-b960-c510-fbb3-2c8b2261aa89",
+      "model": "NX-7000",
+      "name": "MOUSE INALAMBRICO GENIUS NEGRO NX-7000",
+      "quantity": 0,
+      "unitPrice": 40000
+    }
+  ]
+}

@@ -57,13 +57,13 @@ fun ScannerScreen(
     var camera by remember { mutableStateOf<Camera?>(null) }
 
     Scaffold(
-        containerColor = Color.Black,
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
-                title = { Text("Escanear Código", color = Color.White, fontWeight = FontWeight.SemiBold) },
+                title = { Text("Escanear Código", color = MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.SemiBold) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Regresar", tint = Color.White)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Regresar", tint = MaterialTheme.colorScheme.onBackground)
                     }
                 },
                 actions = {
@@ -78,7 +78,7 @@ fun ScannerScreen(
                             Icon(
                                 imageVector = if (isFlashOn) Icons.Default.FlashOn else Icons.Default.FlashOff,
                                 contentDescription = "Alternar Flash",
-                                tint = if (isFlashOn) Color(0xFFFACC15) else Color.White // Amarillo si está encendido
+                                tint = if (isFlashOn) Color(0xFFFACC15) else MaterialTheme.colorScheme.onBackground // Amarillo si está encendido
                             )
                         }
                     }
@@ -175,7 +175,7 @@ fun ScannerScreen(
                         
                         Text(
                             text = "Apunta la cámara al código de barras",
-                            color = Color.White,
+                            color = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier
                                 .align(Alignment.BottomCenter)
                                 .padding(bottom = 64.dp)
@@ -189,7 +189,7 @@ fun ScannerScreen(
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(
                             "La cámara es necesaria para escanear productos.",
-                            color = Color.White,
+                            color = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.padding(16.dp)
                         )
                         Button(

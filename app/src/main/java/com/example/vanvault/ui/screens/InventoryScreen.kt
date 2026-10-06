@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,6 +43,7 @@ fun InventoryScreen(
     var fabExpanded by remember { mutableStateOf(false) }
     var products by remember { mutableStateOf<List<Product>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
+    var isRefreshing by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         val dbRef = FirebaseDatabase.getInstance().getReference("inventory")
@@ -65,7 +67,7 @@ fun InventoryScreen(
     }
 
     Scaffold(
-        containerColor = Color(0xFFFAFAFA),
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
                 title = {
@@ -114,8 +116,8 @@ fun InventoryScreen(
 
                 FloatingActionButton(
                     onClick = { fabExpanded = !fabExpanded },
-                    containerColor = Color(0xFFDC2626),
-                    contentColor = Color.White,
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary,
                     shape = RoundedCornerShape(16.dp)
                 ) {
                     Icon(
@@ -149,47 +151,70 @@ fun InventoryScreen(
             // Inventory List
             if (isLoading) {
                 Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator(color = Color(0xFFDC2626))
+                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                 }
             } else if (products.isEmpty()) {
                 Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
                     Text("No hay productos en el inventario", color = Color.Gray)
                 }
             } else {
-                LazyColumn(
-                    modifier = Modifier.weight(1f).fillMaxWidth(),
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                PullToRefreshBox(
+                    isRefreshing = isRefreshing,
+                    onRefresh = {
+                        isRefreshing = true
+                        val dbRef = FirebaseDatabase.getInstance().getReference("inventory")
+                        dbRef.get().addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val snapshot = task.result
+                                val productList = mutableListOf<Product>()
+                                for (child in snapshot.children) {
+                                    val prod = child.getValue(Product::class.java)
+                                    if (prod != null) {
+                                        productList.add(prod)
+                                    }
+                                }
+                                products = productList
+                            }
+                            isRefreshing = false
+                        }
+                    },
+                    modifier = Modifier.weight(1f).fillMaxWidth()
                 ) {
-                    items(products) { product ->
-                        val statusLabel = when {
-                            product.quantity <= 0 -> "AGOTADO"
-                            product.quantity < 5 -> "INSUFICIENTE"
-                            else -> "DISPONIBLE"
-                        }
-                        
-                        val quantityColor = when {
-                            product.quantity <= 0 -> Color(0xFFDC2626) // Rojo
-                            product.quantity < 5 -> Color(0xFFF97316) // Naranja
-                            else -> Color(0xFF059669) // Verde
-                        }
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        contentPadding = PaddingValues(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        items(products) { product ->
+                            val statusLabel = when {
+                                product.quantity <= 0 -> "AGOTADO"
+                                product.quantity < 5 -> "INSUFICIENTE"
+                                else -> "DISPONIBLE"
+                            }
+                            
+                            val quantityColor = when {
+                                product.quantity <= 0 -> Color(0xFFDC2626) // Rojo
+                                product.quantity < 5 -> Color(0xFFF97316) // Naranja
+                                else -> Color(0xFF059669) // Verde
+                            }
 
-                        val format = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
-                        format.maximumFractionDigits = 0
-                        val formattedPrice = format.format(product.unitPrice)
+                            val format = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
+                            format.maximumFractionDigits = 0
+                            val formattedPrice = format.format(product.unitPrice)
 
-                        InventoryItemCard(
-                            title = product.name,
-                            subtitle = "SKU: ${product.modelOrBarcode}",
-                            statusLabel = statusLabel,
-                            quantity = "${product.quantity} unidades",
-                            quantityColor = quantityColor,
-                            priceLabel = "PRECIO UNITARIO",
-                            price = formattedPrice
-                        )
-                    }
-                    item {
-                        Spacer(modifier = Modifier.height(100.dp)) // Espacio extra para el FAB expandido
+                            InventoryItemCard(
+                                title = product.name,
+                                subtitle = "SKU: ${product.modelOrBarcode}",
+                                statusLabel = statusLabel,
+                                quantity = "${product.quantity} unidades",
+                                quantityColor = quantityColor,
+                                priceLabel = "PRECIO UNITARIO",
+                                price = formattedPrice
+                            )
+                        }
+                        item {
+                            Spacer(modifier = Modifier.height(100.dp)) // Espacio extra para el FAB expandido
+                        }
                     }
                 }
             }
@@ -201,13 +226,13 @@ fun InventoryScreen(
 fun FabOption(text: String, onClick: () -> Unit) {
     Surface(
         shape = RoundedCornerShape(12.dp),
-        color = Color(0xFFDC2626),
+        color = MaterialTheme.colorScheme.primary,
         shadowElevation = 4.dp,
         modifier = Modifier.clickable { onClick() }
     ) {
         Text(
             text = text,
-            color = Color.White,
+            color = MaterialTheme.colorScheme.surface,
             fontWeight = FontWeight.Medium,
             fontSize = 14.sp,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
@@ -220,7 +245,7 @@ fun FilterChipCustom(text: String, isSelected: Boolean) {
     Box(
         modifier = Modifier
             .background(
-                color = if (isSelected) Color(0xFFFEE2E2) else Color.White,
+                color = if (isSelected) Color(0xFFFEE2E2) else MaterialTheme.colorScheme.onPrimary,
                 shape = RoundedCornerShape(17.dp)
             )
             .border(
@@ -253,7 +278,7 @@ fun InventoryItemCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
         border = BorderStroke(1.dp, Color(0xFFE4E4E7))
     ) {
@@ -266,13 +291,13 @@ fun InventoryItemCard(
                 text = title,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 16.sp,
-                color = Color(0xFF1C1C1E)
+                color = MaterialTheme.colorScheme.onBackground
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = subtitle,
                 fontSize = 14.sp,
-                color = Color(0xFF71717A)
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.height(16.dp))
             Row(
@@ -284,7 +309,7 @@ fun InventoryItemCard(
                     Text(
                         text = statusLabel,
                         fontSize = 10.sp,
-                        color = Color(0xFF71717A),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Normal
                     )
                     Spacer(modifier = Modifier.height(4.dp))
@@ -299,13 +324,13 @@ fun InventoryItemCard(
                     Text(
                         text = priceLabel,
                         fontSize = 10.sp,
-                        color = Color(0xFF71717A),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Normal
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = price,
-                        color = Color(0xFF1C1C1E),
+                        color = MaterialTheme.colorScheme.onBackground,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
                     )

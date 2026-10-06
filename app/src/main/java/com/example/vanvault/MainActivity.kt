@@ -77,12 +77,40 @@ class MainActivity : ComponentActivity() {
                         InventoryScreen(
                             onNavigate = { navItem -> 
                                 when(navItem) {
-                                    NavItem.PROFILE -> navController.navigate("profile") { launchSingleTop = true }
-                                    // navItem.SALES y HOME se añadirán luego
+                                    NavItem.PROFILE -> navController.navigate("profile") {
+                                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
                                     else -> {}
                                 }
                             },
                             onAddProductClick = { navController.navigate("add_product") }
+                        )
+                    }
+                    composable("profile") {
+                        ProfileScreen(
+                            onNavigate = { navItem ->
+                                when(navItem) {
+                                    NavItem.HOME, NavItem.INVENTORY -> navController.navigate("home") {
+                                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                    else -> {}
+                                }
+                            },
+                            onAccountClick = { navController.navigate("account_details") },
+                            onLogoutClick = {
+                                navController.navigate("login") {
+                                    popUpTo(0) { inclusive = true }
+                                }
+                            }
+                        )
+                    }
+                    composable("account_details") {
+                        AccountDetailsScreen(
+                            onBackClick = { navController.navigateUp() }
                         )
                     }
                     composable("add_product") {

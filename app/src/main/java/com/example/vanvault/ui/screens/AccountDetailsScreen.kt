@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.FirebaseAuth
@@ -71,7 +72,7 @@ fun AccountDetailsScreen(
         .takeIf { it.isNotBlank() } ?: "U" // 'U' de Usuario si está vacío
 
     Scaffold(
-        containerColor = Color.White,
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             Column {
                 TopAppBar(
@@ -80,7 +81,7 @@ fun AccountDetailsScreen(
                             text = "Mi cuenta",
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 20.sp,
-                            color = Color(0xFF1C1C1E)
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                     },
                     navigationIcon = {
@@ -88,15 +89,15 @@ fun AccountDetailsScreen(
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = "Regresar",
-                                tint = Color(0xFF1C1C1E)
+                                tint = MaterialTheme.colorScheme.onBackground
                             )
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.White
+                        containerColor = MaterialTheme.colorScheme.background
                     )
                 )
-                HorizontalDivider(color = Color(0xFFE4E4E7), thickness = 1.dp)
+                HorizontalDivider(color = MaterialTheme.colorScheme.outline, thickness = 1.dp)
             }
         }
     ) { innerPadding ->
@@ -116,12 +117,12 @@ fun AccountDetailsScreen(
                 Box(
                     modifier = Modifier
                         .size(80.dp)
-                        .background(Color(0xFFFEE2E2), CircleShape),
+                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f), CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = initials,
-                        color = Color(0xFFDC2626),
+                        color = MaterialTheme.colorScheme.primary,
                         fontSize = 32.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -131,13 +132,13 @@ fun AccountDetailsScreen(
                     text = name,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 20.sp,
-                    color = Color(0xFF1C1C1E)
+                    color = MaterialTheme.colorScheme.onBackground
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = userEmail,
                     fontSize = 14.sp,
-                    color = Color(0xFF71717A)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 
@@ -162,13 +163,13 @@ fun SectionHeader(title: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFFF4F4F5))
+            .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(horizontal = 16.dp, vertical = 12.dp)
     ) {
         Text(
             text = title,
             fontSize = 12.sp,
-            color = Color(0xFF71717A),
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontWeight = FontWeight.SemiBold
         )
     }
@@ -188,26 +189,34 @@ fun AccountListItem(label: String, value: String?, showDivider: Boolean) {
                 text = label,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
-                color = Color(0xFF1C1C1E)
+                color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.weight(0.4f) // Le damos el 40% del espacio a la columna 1 (Label)
             )
-            Spacer(modifier = Modifier.weight(1f))
+            
+            Spacer(modifier = Modifier.width(16.dp)) // Margen de separación obligatorio
+            
             if (value != null) {
                 Text(
                     text = value,
                     fontSize = 14.sp,
-                    color = Color(0xFF71717A)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier.weight(0.6f) // Le damos el 60% del espacio a la columna 2 (Valor) para que pueda crecer a la izquierda
                 )
                 Spacer(modifier = Modifier.width(8.dp))
+            } else {
+                Spacer(modifier = Modifier.weight(0.6f))
             }
+            
             Icon(
                 imageVector = Icons.Outlined.ChevronRight,
                 contentDescription = null,
-                tint = Color(0xFF71717A)
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
         if (showDivider) {
             HorizontalDivider(
-                color = Color(0xFFE4E4E7),
+                color = MaterialTheme.colorScheme.outline,
                 thickness = 1.dp
             )
         }

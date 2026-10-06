@@ -29,7 +29,7 @@ fun ProfileScreen(
     onLogoutClick: () -> Unit
 ) {
     Scaffold(
-        containerColor = Color(0xFFFAFAFA),
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
                 title = {
@@ -88,13 +88,13 @@ fun SettingsOption(
     isDestructive: Boolean = false,
     onClick: () -> Unit = {}
 ) {
-    val contentColor = if (isDestructive) Color(0xFFDC2626) else Color(0xFF1C1C1E)
-    val iconColor = if (isDestructive) Color(0xFFDC2626) else Color(0xFF71717A)
+    val contentColor = if (isDestructive) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground
+    val iconColor = if (isDestructive) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
 
     Surface(
-        color = Color.White,
+        color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(1.dp, Color(0xFFE4E4E7)),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() }
@@ -123,7 +123,7 @@ fun SettingsOption(
                 Icon(
                     imageVector = Icons.Outlined.ChevronRight,
                     contentDescription = "Ir",
-                    tint = Color(0xFF71717A)
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }

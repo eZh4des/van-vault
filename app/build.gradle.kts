@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.runtime.livedata)
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.mlkit.barcode.scanning)
