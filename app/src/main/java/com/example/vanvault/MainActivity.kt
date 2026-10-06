@@ -14,6 +14,8 @@ import com.example.vanvault.ui.screens.ForgotPasswordScreen
 import com.example.vanvault.ui.screens.HomeScreen
 import com.example.vanvault.ui.screens.InventoryScreen
 import com.example.vanvault.ui.screens.LoginScreen
+import com.example.vanvault.ui.screens.ProfileScreen
+import com.example.vanvault.ui.screens.AccountDetailsScreen
 import com.example.vanvault.ui.screens.RegisterScreen
 import com.example.vanvault.ui.screens.ScannerScreen
 import com.example.vanvault.ui.theme.VanVaultTheme

@@ -10,6 +10,7 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Inventory2
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Receipt
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -32,23 +33,24 @@ fun VanVaultBottomNavBar(
     currentRoute: NavItem,
     onNavigate: (NavItem) -> Unit
 ) {
+    val outlineColor = MaterialTheme.colorScheme.outline
     NavigationBar(
         modifier = Modifier
             .fillMaxWidth()
             .drawBehind {
                 drawLine(
-                    color = Color(0xFFE4E4E7),
+                    color = outlineColor,
                     start = Offset(0f, 0f),
                     end = Offset(size.width, 0f),
                     strokeWidth = 1.dp.toPx()
                 )
             },
-        containerColor = Color.White,
+        containerColor = MaterialTheme.colorScheme.surface,
         tonalElevation = 0.dp
     ) {
-        val selectedColor = Color(0xFFDC2626)
-        val unselectedColor = Color(0xFF71717A)
-        val indicatorColor = Color(0xFFFEE2E2)
+        val selectedColor = MaterialTheme.colorScheme.primary
+        val unselectedColor = MaterialTheme.colorScheme.onSurfaceVariant
+        val indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
 
         val colors = NavigationBarItemDefaults.colors(
             selectedIconColor = selectedColor,

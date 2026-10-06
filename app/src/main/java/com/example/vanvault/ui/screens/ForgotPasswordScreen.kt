@@ -45,13 +45,13 @@ fun ForgotPasswordScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.White,
-                    titleContentColor = Color.Black,
-                    navigationIconContentColor = Color.Black
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onBackground
                 )
             )
         },
-        containerColor = Color.White
+        containerColor = MaterialTheme.colorScheme.surface
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -65,23 +65,22 @@ fun ForgotPasswordScreen(
             if (isSent) {
                 Text(
                     text = "¡Correo Enviado!",
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = Color(0xFFDC2626),
+                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground),
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 Text(
                     text = "Si la cuenta existe, hemos enviado un enlace de recuperación a $email. Por favor, revisa tu correo y haz clic en el enlace para restablecer tu contraseña.",
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(bottom = 32.dp),
-                    color = Color.Black,
+                    color = MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center
                 )
                 Button(
                     onClick = onBackClick,
                     modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDC2626))
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                 ) {
-                    Text("Volver al Inicio de Sesión", color = Color.White)
+                    Text("Volver al Inicio de Sesión", color = MaterialTheme.colorScheme.onPrimary)
                 }
             } else {
                 // Icon in Circle
@@ -105,7 +104,7 @@ fun ForgotPasswordScreen(
                     text = "Recuperar contraseña",
                     style = MaterialTheme.typography.headlineSmall.copy(
                         fontWeight = FontWeight.Bold,
-                        color = Color.Black
+                        color = MaterialTheme.colorScheme.onBackground
                     ),
                     textAlign = TextAlign.Center
                 )
@@ -115,7 +114,7 @@ fun ForgotPasswordScreen(
                 Text(
                     text = "Ingresa tu correo electrónico asociado a tu cuenta para enviarte un enlace de recuperación.",
                     style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.Gray,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         lineHeight = 20.sp
                     ),
                     textAlign = TextAlign.Center
@@ -128,7 +127,7 @@ fun ForgotPasswordScreen(
                     Text(
                         text = "Correo electrónico",
                         style = MaterialTheme.typography.bodySmall.copy(
-                            color = Color.Gray,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontWeight = FontWeight.Medium
                         )
                     )
@@ -137,16 +136,16 @@ fun ForgotPasswordScreen(
                         value = email,
                         onValueChange = { email = it },
                         modifier = Modifier.fillMaxWidth(),
-                        placeholder = { Text("correo@ejemplo.com", color = Color.LightGray) },
+                        placeholder = { Text("correo@ejemplo.com", color = MaterialTheme.colorScheme.onSurfaceVariant) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                         shape = RoundedCornerShape(12.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedTextColor = Color.Black,
-                            unfocusedTextColor = Color.Black,
-                            unfocusedBorderColor = Color(0xFFE4E4E7),
-                            focusedBorderColor = Color(0xFFDC2626),
-                            cursorColor = Color(0xFFDC2626)
-                        ),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        cursorColor = MaterialTheme.colorScheme.primary
+                    ),
                         singleLine = true
                     )
                 }
@@ -176,16 +175,16 @@ fun ForgotPasswordScreen(
                         .height(50.dp),
                     shape = RoundedCornerShape(25.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFFDC2626)
+                        containerColor = MaterialTheme.colorScheme.primary
                     ),
                     enabled = !isLoading
                 ) {
                     if (isLoading) {
-                        CircularProgressIndicator(modifier = Modifier.size(24.dp), color = Color.White)
+                        CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.onPrimary)
                     } else {
                         Text(
                             text = "Enviar enlace",
-                            color = Color.White,
+                            color = MaterialTheme.colorScheme.onPrimary,
                             fontWeight = FontWeight.Bold,
                             fontSize = 16.sp
                         )
@@ -203,7 +202,7 @@ fun ForgotPasswordScreen(
                 Text(
                     text = "Volver al inicio de sesión",
                     style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.Gray,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Medium
                     )
                 )
