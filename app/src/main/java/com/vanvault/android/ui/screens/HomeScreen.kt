@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.screens
+package com.vanvault.android.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

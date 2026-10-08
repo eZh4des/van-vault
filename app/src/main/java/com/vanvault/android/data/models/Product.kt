@@ -1,4 +1,4 @@
-package com.example.vanvault.data.models
+package com.vanvault.android.data.models
 
 data class Product(
     val id: String = "",

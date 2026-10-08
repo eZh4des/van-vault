@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.screens
+package com.vanvault.android.ui.screens
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.BorderStroke
@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -24,13 +25,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.vanvault.data.models.Product
-import com.example.vanvault.ui.components.NavItem
-import com.example.vanvault.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.data.models.Product
+import com.vanvault.android.ui.components.NavItem
+import com.vanvault.android.ui.components.VanVaultBottomNavBar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.vanvault.android.data.repository.ProductRepository
+import com.vanvault.android.data.repository.ProductSearch
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -38,12 +44,22 @@ import java.util.Locale
 @Composable
 fun InventoryScreen(
     onNavigate: (NavItem) -> Unit = {},
-    onAddProductClick: () -> Unit = {}
+    onAddProductClick: () -> Unit = {},
+    onEditProductClick: () -> Unit = {}
 ) {
     var fabExpanded by remember { mutableStateOf(false) }
-    var products by remember { mutableStateOf<List<Product>>(emptyList()) }
+    var allProducts by remember { mutableStateOf<List<Product>>(emptyList()) }
+    var searchResults by remember { mutableStateOf<List<Product>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
     var isRefreshing by remember { mutableStateOf(false) }
+
+    // Search states
+    var isSearchActive by remember { mutableStateOf(false) }
+    var searchQuery by remember { mutableStateOf("") }
+    var isSearching by remember { mutableStateOf(false) }
+    var searchJob by remember { mutableStateOf<Job?>(null) }
+    val scope = rememberCoroutineScope()
+    val repository = remember { ProductRepository() }
 
     LaunchedEffect(Unit) {
         val dbRef = FirebaseDatabase.getInstance().getReference("inventory")
@@ -56,36 +72,85 @@ fun InventoryScreen(
                         productList.add(prod)
                     }
                 }
-                products = productList
-                isLoading = false
+                allProducts = productList
+                if (!isSearchActive) isLoading = false
             }
 
             override fun onCancelled(error: DatabaseError) {
-                isLoading = false
+                if (!isSearchActive) isLoading = false
             }
         })
     }
 
+    val displayProducts = if (isSearchActive && searchQuery.isNotBlank()) searchResults else allProducts
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        "Inventario",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 24.sp
-                    )
-                },
-                actions = {
-                    IconButton(onClick = { /* TODO */ }) {
-                        Icon(Icons.Default.Search, contentDescription = "Buscar")
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent
+            if (isSearchActive) {
+                TopAppBar(
+                    title = {
+                        TextField(
+                            value = searchQuery,
+                            onValueChange = { newQuery ->
+                                searchQuery = newQuery
+                                searchJob?.cancel()
+                                searchJob = scope.launch {
+                                    delay(300) // debounce
+                                    if (newQuery.isNotBlank()) {
+                                        isSearching = true
+                                        val result = repository.search(newQuery)
+                                        searchResults = when (result) {
+                                            is ProductSearch.Results -> result.products
+                                            else -> emptyList()
+                                        }
+                                        isSearching = false
+                                    } else {
+                                        searchResults = emptyList()
+                                    }
+                                }
+                            },
+                            placeholder = { Text("Buscar producto...") },
+                            singleLine = true,
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = TextFieldDefaults.colors(
+                                focusedContainerColor = Color.Transparent,
+                                unfocusedContainerColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent
+                            )
+                        )
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = { 
+                            isSearchActive = false
+                            searchQuery = ""
+                            searchResults = emptyList()
+                        }) {
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Cerrar búsqueda")
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
                 )
-            )
+            } else {
+                TopAppBar(
+                    title = {
+                        Text(
+                            "Inventario",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 24.sp
+                        )
+                    },
+                    actions = {
+                        IconButton(onClick = { isSearchActive = true }) {
+                            Icon(Icons.Default.Search, contentDescription = "Buscar")
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color.Transparent
+                    )
+                )
+            }
         },
         bottomBar = {
             VanVaultBottomNavBar(
@@ -109,7 +174,10 @@ fun InventoryScreen(
                             fabExpanded = false
                             onAddProductClick()
                         })
-                        FabOption(text = "Editar producto", onClick = { fabExpanded = false })
+                        FabOption(text = "Editar producto", onClick = { 
+                            fabExpanded = false
+                            onEditProductClick()
+                        })
                         FabOption(text = "Eliminar producto", onClick = { fabExpanded = false })
                     }
                 }
@@ -149,13 +217,16 @@ fun InventoryScreen(
             }
 
             // Inventory List
-            if (isLoading) {
+            if (isLoading || isSearching) {
                 Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                 }
-            } else if (products.isEmpty()) {
+            } else if (displayProducts.isEmpty()) {
                 Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                    Text("No hay productos en el inventario", color = Color.Gray)
+                    Text(
+                        if (isSearchActive && searchQuery.isNotBlank()) "No se encontraron resultados" else "No hay productos en el inventario",
+                        color = Color.Gray
+                    )
                 }
             } else {
                 PullToRefreshBox(
@@ -173,7 +244,7 @@ fun InventoryScreen(
                                         productList.add(prod)
                                     }
                                 }
-                                products = productList
+                                allProducts = productList
                             }
                             isRefreshing = false
                         }
@@ -185,7 +256,7 @@ fun InventoryScreen(
                         contentPadding = PaddingValues(16.dp),
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        items(products) { product ->
+                        items(displayProducts) { product ->
                             val statusLabel = when {
                                 product.quantity <= 0 -> "AGOTADO"
                                 product.quantity < 5 -> "INSUFICIENTE"
@@ -193,9 +264,9 @@ fun InventoryScreen(
                             }
                             
                             val quantityColor = when {
-                                product.quantity <= 0 -> Color(0xFFDC2626) // Rojo
-                                product.quantity < 5 -> Color(0xFFF97316) // Naranja
-                                else -> Color(0xFF059669) // Verde
+                                product.quantity <= 0 -> Color(0xFFDC2626) // Red
+                                product.quantity < 5 -> Color(0xFFF97316) // Orange
+                                else -> Color(0xFF059669) // Green
                             }
 
                             val format = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
@@ -213,7 +284,7 @@ fun InventoryScreen(
                             )
                         }
                         item {
-                            Spacer(modifier = Modifier.height(100.dp)) // Espacio extra para el FAB expandido
+                            Spacer(modifier = Modifier.height(100.dp)) // Extra space for expanded FAB
                         }
                     }
                 }

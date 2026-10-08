@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.screens
+package com.vanvault.android.ui.screens
 
 import android.Manifest
 import android.util.Log
@@ -51,9 +51,9 @@ fun ScannerScreen(
 
     val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)
     
-    // Estado del flash
+    // Flash state
     var isFlashOn by remember { mutableStateOf(false) }
-    // Referencia a la cámara para poder controlar el flash
+    // Camera reference to control flash
     var camera by remember { mutableStateOf<Camera?>(null) }
 
     Scaffold(
@@ -67,7 +67,7 @@ fun ScannerScreen(
                     }
                 },
                 actions = {
-                    // Solo mostramos el botón del flash si tenemos permiso de cámara
+                    // Only show flash button if camera permission is granted
                     if (cameraPermissionState.status.isGranted) {
                         IconButton(
                             onClick = {
@@ -78,7 +78,7 @@ fun ScannerScreen(
                             Icon(
                                 imageVector = if (isFlashOn) Icons.Default.FlashOn else Icons.Default.FlashOff,
                                 contentDescription = "Alternar Flash",
-                                tint = if (isFlashOn) Color(0xFFFACC15) else MaterialTheme.colorScheme.onBackground // Amarillo si está encendido
+                                tint = if (isFlashOn) Color(0xFFFACC15) else MaterialTheme.colorScheme.onBackground // Yellow if on
                             )
                         }
                     }
@@ -96,7 +96,7 @@ fun ScannerScreen(
         ) {
             when {
                 cameraPermissionState.status.isGranted -> {
-                    // Cámara activa
+                    // Active camera
                     Box(modifier = Modifier.fillMaxSize()) {
                         AndroidView(
                             factory = { ctx ->
@@ -117,7 +117,7 @@ fun ScannerScreen(
                                         it.setSurfaceProvider(previewView.surfaceProvider)
                                     }
 
-                                    // Configurar ML Kit
+                                    // Configure ML Kit
                                     val options = BarcodeScannerOptions.Builder()
                                         .setBarcodeFormats(
                                             Barcode.FORMAT_EAN_13,
@@ -136,7 +136,7 @@ fun ScannerScreen(
 
                                     imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(ctx)) { imageProxy ->
                                         processImageProxy(scanner, imageProxy) { barcode ->
-                                            // Se encontró un código, devolverlo a la pantalla anterior
+                                            // Code found, return it to the previous screen
                                             onBarcodeScanned(barcode)
                                         }
                                     }
@@ -151,7 +151,7 @@ fun ScannerScreen(
                                             preview,
                                             imageAnalysis
                                         )
-                                        // Asegurarnos de que el estado del flash coincida al iniciar
+                                        // Ensure flash state matches on start
                                         camera?.cameraControl?.enableTorch(isFlashOn)
                                     } catch (exc: Exception) {
                                         Log.e("Scanner", "Error al inicializar cámara", exc)
@@ -163,12 +163,12 @@ fun ScannerScreen(
                             modifier = Modifier.fillMaxSize()
                         )
                         
-                        // Overlay de enfoque rectangular
+                        // Rectangular focus overlay
                         Box(
                             modifier = Modifier
                                 .align(Alignment.Center)
-                                .fillMaxWidth(0.85f) // 85% del ancho de la pantalla
-                                .height(150.dp) // Altura reducida para que sea rectangular
+                                .fillMaxWidth(0.85f) // 85% screen width
+                                .height(150.dp) // Reduced height for rectangle shape
                                 .border(2.dp, Color(0xFFDC2626), RoundedCornerShape(16.dp))
                                 .background(Color.Transparent)
                         )
@@ -185,7 +185,7 @@ fun ScannerScreen(
                     }
                 }
                 cameraPermissionState.status.shouldShowRationale || !cameraPermissionState.status.isGranted -> {
-                    // No hay permiso
+                    // No permission
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(
                             "La cámara es necesaria para escanear productos.",
@@ -220,12 +220,12 @@ private fun processImageProxy(
                     val rawValue = barcode.rawValue
                     if (rawValue != null) {
                         onBarcodeScanned(rawValue)
-                        break // Tomamos el primer código que lea y salimos
+                        break // Take first read code and exit
                     }
                 }
             }
             .addOnCompleteListener {
-                // Hay que cerrar la imagen para que reciba el siguiente frame
+                // Close image to receive next frame
                 imageProxy.close()
             }
     } else {
