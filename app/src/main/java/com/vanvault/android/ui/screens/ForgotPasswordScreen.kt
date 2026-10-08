@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.screens
+package com.vanvault.android.ui.screens
 
 import android.widget.Toast
 import androidx.compose.foundation.background

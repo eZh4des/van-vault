@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.screens
+package com.vanvault.android.ui.screens
 
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
@@ -23,8 +23,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.vanvault.ui.components.VanVaultDialog
-import com.example.vanvault.R
+import com.vanvault.android.ui.components.VanVaultDialog
+import com.vanvault.android.R
 
 @Composable
 fun LoginScreen(
