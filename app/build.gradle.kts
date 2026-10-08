@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.vanvault"
+    namespace = "com.vanvault.android"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.vanvault"
+        applicationId = "com.vanvault.android"
         minSdk = 29
         targetSdk = 37
         versionCode = 1

@@ -1,0 +1,3478 @@
+{
+ "inventory": {
+  "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": {
+   "model": "DS-7104HGHI-M1",
+   "quantity": 0,
+   "unitPrice": 165000
+  },
+  "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": {
+   "model": "DS-7104HQHI-M1",
+   "quantity": 0,
+   "unitPrice": 230000
+  },
+  "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": {
+   "model": "DS-7108HGHI-M1",
+   "quantity": 0,
+   "unitPrice": 210000
+  },
+  "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": {
+   "model": "DS-7108HQHI-M1/SC",
+   "quantity": 0,
+   "unitPrice": 358000
+  },
+  "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": {
+   "model": "DS-7116HGHI-M1",
+   "quantity": 0,
+   "unitPrice": 385000
+  },
+  "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": {
+   "model": "IDS-7116HQHI-M1/",
+   "quantity": 0,
+   "unitPrice": 568000
+  },
+  "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": {
+   "model": "DVR-104G-M1/C",
+   "quantity": 0,
+   "unitPrice": 148000
+  },
+  "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": {
+   "model": "DVR-108G-M1/C",
+   "quantity": 0,
+   "unitPrice": 188000
+  },
+  "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": {
+   "model": "DVR-116G-M1C",
+   "quantity": 0,
+   "unitPrice": 310000
+  },
+  "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": {
+   "model": "DH-XVR1B04-I",
+   "quantity": 0,
+   "unitPrice": 168000
+  },
+  "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": {
+   "model": "DH-XVR1B08-I",
+   "quantity": 0,
+   "unitPrice": 200000
+  },
+  "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": {
+   "model": "DH-XVR1B16-I",
+   "quantity": 0,
+   "unitPrice": 395000
+  },
+  "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": {
+   "model": "DS-2CE16D0T-IRPF",
+   "quantity": 0,
+   "unitPrice": 75000
+  },
+  "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": {
+   "model": "DS-2CE16D0T-ITPFS HIBRIDA",
+   "quantity": 0,
+   "unitPrice": 85000
+  },
+  "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": {
+   "model": "DS-2CD1023G0E-I",
+   "quantity": 0,
+   "unitPrice": 193000
+  },
+  "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": {
+   "model": "DS-2CE56D0T-IRPF",
+   "quantity": 0,
+   "unitPrice": 56000
+  },
+  "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": {
+   "model": "DS-2CE56DOT-IRMF",
+   "quantity": 0,
+   "unitPrice": 80000
+  },
+  "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": {
+   "model": "DS-2CE76D0T-ITPFS HIBRIDA",
+   "quantity": 0,
+   "unitPrice": 80000
+  },
+  "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": {
+   "model": "DS-2CD1323G2-IUF",
+   "quantity": 0,
+   "unitPrice": 183000
+  },
+  "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": {
+   "model": "THC-T120-PC",
+   "quantity": 0,
+   "unitPrice": 47000
+  },
+  "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": {
+   "model": "THC-T150-P",
+   "quantity": 0,
+   "unitPrice": 75000
+  },
+  "CAMARA TURBO 1080P MINI BALA PLASTICA": {
+   "model": "THC-B120-P",
+   "quantity": 0,
+   "unitPrice": 49000
+  },
+  "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": {
+   "model": "THC-B150-P",
+   "quantity": 0,
+   "unitPrice": 85000
+  },
+  "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": {
+   "model": "IPC-B121H (2.8mm)(C)",
+   "quantity": 0,
+   "unitPrice": 142000
+  },
+  "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": {
+   "model": "THC-T129-P",
+   "quantity": 0,
+   "unitPrice": 72000
+  },
+  "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": {
+   "model": "THC-T127-LPS HIBRIDA",
+   "quantity": 0,
+   "unitPrice": 68000
+  },
+  "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": {
+   "model": "THC-B129-P",
+   "quantity": 0,
+   "unitPrice": 81000
+  },
+  "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": {
+   "model": "THC-B127-LPS HIBRIDA",
+   "quantity": 0,
+   "unitPrice": 75000
+  },
+  "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": {
+   "model": "CS-C2C-A0-1E2WF",
+   "quantity": 0,
+   "unitPrice": 89000
+  },
+  "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": {
+   "model": "CS-H6C-R105-1L3W",
+   "quantity": 0,
+   "unitPrice": 110000
+  },
+  "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": {
+   "model": "CS-H4-R201-1H3WK",
+   "quantity": 0,
+   "unitPrice": 172000
+  },
+  "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": {
+   "model": "CS-H8C-R100-1K3W",
+   "quantity": 0,
+   "unitPrice": 200000
+  },
+  "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": {
+   "model": "CS-H9C-R105",
+   "quantity": 0,
+   "unitPrice": 0
+  },
+  "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": {
+   "model": "CS-H3C-R100-1K2W",
+   "quantity": 0,
+   "unitPrice": 145000
+  },
+  "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": {
+   "model": "CS-H3C-R100-1K3W",
+   "quantity": 0,
+   "unitPrice": 160000
+  },
+  "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": {
+   "model": "CS-H3c-R100-1J4WKFL",
+   "quantity": 0,
+   "unitPrice": 198000
+  },
+  "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": {
+   "model": "DH-HAC-T1A21N-0280",
+   "quantity": 0,
+   "unitPrice": 1000
+  },
+  "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": {
+   "model": "DH-HAC-T1A21N-A-",
+   "quantity": 0,
+   "unitPrice": 68000
+  },
+  "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": {
+   "model": "DH-IPC-HDW1239VP",
+   "quantity": 0,
+   "unitPrice": 200000
+  },
+  "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": {
+   "model": "DH-HAC-T1A29N-02",
+   "quantity": 0,
+   "unitPrice": 75000
+  },
+  "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": {
+   "model": "HDW1200CLQN",
+   "quantity": 0,
+   "unitPrice": 80000
+  },
+  "CAMARA BALA PLASTICA 1080P Lente 2_8mm": {
+   "model": "DH-HAC-B1A21N-0280B",
+   "quantity": 0,
+   "unitPrice": 60000
+  },
+  "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": {
+   "model": "DH-HAC-HFW1209CN-LED- 0280B",
+   "quantity": 0,
+   "unitPrice": 100000
+  },
+  "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": {
+   "model": "HAC-HFW1200CLN-1",
+   "quantity": 0,
+   "unitPrice": 85000
+  },
+  "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": {
+   "model": "IPC-S2EN-3R1S-IM",
+   "quantity": 0,
+   "unitPrice": 120000
+  },
+  "CONTACTO MAGNETICO COLOR BLANCO": {
+   "model": "MS31",
+   "quantity": 0,
+   "unitPrice": 8000
+  },
+  "CONTACTO MAGNETICO CON CABLE": {
+   "model": "MS38",
+   "quantity": 0,
+   "unitPrice": 6000
+  },
+  "CONTACTO MAGNETICO METALICO": {
+   "model": "GV-60L",
+   "quantity": 0,
+   "unitPrice": 35000
+  },
+  "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX": {
+   "model": "PMD2P",
+   "quantity": 0,
+   "unitPrice": 125000
+  },
+  "SENSOR DE HUMO": {
+   "model": "LY-DH4T",
+   "quantity": 0,
+   "unitPrice": 90000
+  },
+  "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": {
+   "model": "DS-PDP18-EG2",
+   "quantity": 0,
+   "unitPrice": 32000
+  },
+  "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": {
+   "model": "NV5W3C",
+   "quantity": 0,
+   "unitPrice": 60000
+  },
+  "SENSOR LC200S DSC": {
+   "model": "LC200",
+   "quantity": 0,
+   "unitPrice": 50000
+  },
+  "SENSOR DE MOVIMIENTO LC204 DSC": {
+   "model": "LC204",
+   "quantity": 0,
+   "unitPrice": 150000
+  },
+  "TECLADO PARA ALARMA K636 PARADOX": {
+   "model": "K636",
+   "quantity": 0,
+   "unitPrice": 138000
+  },
+  "TECLADO 10 ZONAS LED CABLEADO": {
+   "model": "K10H",
+   "quantity": 0,
+   "unitPrice": 150000
+  },
+  "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": {
+   "model": "K32LCD",
+   "quantity": 0,
+   "unitPrice": 200000
+  },
+  "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": {
+   "model": "K32LCD PLUS",
+   "quantity": 0,
+   "unitPrice": 230000
+  },
+  "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": {
+   "model": "SP4000D6Q",
+   "quantity": 0,
+   "unitPrice": 175000
+  },
+  "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": {
+   "model": "SP6000M8X",
+   "quantity": 0,
+   "unitPrice": 255000
+  },
+  "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": {
+   "model": "GV-D40",
+   "quantity": 0,
+   "unitPrice": 50000
+  },
+  "SIRENA CÓNICA 20W PARA ALARMA": {
+   "model": "GV-S501",
+   "quantity": 0,
+   "unitPrice": 35000
+  },
+  "SIRENA 30W PARA ALARMA": {
+   "model": "GV-S508",
+   "quantity": 0,
+   "unitPrice": 50000
+  },
+  "SIRENA 110V NEGRA GONGORA": {
+   "model": "SIRENA110V",
+   "quantity": 0,
+   "unitPrice": 160000
+  },
+  "CAJA METALICA PARA ALARMA 28X28X7_6 CM": {
+   "model": "GABINETEGRAN",
+   "quantity": 0,
+   "unitPrice": 50000
+  },
+  "CARGADOR 12V_1 A CON LED INDICADOR": {
+   "model": "12V/1 A",
+   "quantity": 0,
+   "unitPrice": 5000
+  },
+  "CARGADOR 12v_2 A": {
+   "model": "12V/2",
+   "quantity": 0,
+   "unitPrice": 10000
+  },
+  "CARGADOR 12v_3 A": {
+   "model": "12V/3",
+   "quantity": 0,
+   "unitPrice": 20000
+  },
+  "CARGADOR 12v_5 A": {
+   "model": "12V/5",
+   "quantity": 0,
+   "unitPrice": 25000
+  },
+  "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": {
+   "model": "MICROSD64EZVIZ",
+   "quantity": 0,
+   "unitPrice": 65000
+  },
+  "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": {
+   "model": "2TB-SEAGATE",
+   "quantity": 0,
+   "unitPrice": 530000
+  },
+  "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": {
+   "model": "TL-SF1005D",
+   "quantity": 0,
+   "unitPrice": 45000
+  },
+  "SWITCH 5P MERCUSYS BASE 100": {
+   "model": "MS105",
+   "quantity": 0,
+   "unitPrice": 40000
+  },
+  "SWITCH 5 PUERTOS PIX-LINK 10_100": {
+   "model": "SWITCH 5 P PIX-",
+   "quantity": 0,
+   "unitPrice": 35000
+  },
+  "SWITCH 5P 10_100 TENDA": {
+   "model": "S105",
+   "quantity": 0,
+   "unitPrice": 40000
+  },
+  "SWITCH 8P GIGABIT TENDA MAC 8K": {
+   "model": "SG108M",
+   "quantity": 0,
+   "unitPrice": 90000
+  },
+  "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": {
+   "model": "TL-SF1008D",
+   "quantity": 0,
+   "unitPrice": 65000
+  },
+  "SWITCH 8P MERCUSYS 10_100": {
+   "model": "MS108",
+   "quantity": 0,
+   "unitPrice": 55000
+  },
+  "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": {
+   "model": "DS-3E0508D-O(O-STD)",
+   "quantity": 0,
+   "unitPrice": 85000
+  },
+  "SWITCH 16P GIGABIT TP LINK": {
+   "model": "TL-SG1016D",
+   "quantity": 0,
+   "unitPrice": 284000
+  },
+  "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": {
+   "model": "TL-WR820N TP-LINK",
+   "quantity": 0,
+   "unitPrice": 80000
+  },
+  "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": {
+   "model": "N301",
+   "quantity": 0,
+   "unitPrice": 65000
+  },
+  "ROUTER 2 ANTENAS HIKVISION 300MBPS": {
+   "model": "DS-3WR3N/US",
+   "quantity": 0,
+   "unitPrice": 50000
+  },
+  "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR": {
+   "model": "SWV-4X1",
+   "quantity": 0,
+   "unitPrice": 30000
+  },
+  "SWITCH KVM 2 PUERTOS USB": {
+   "model": "KVM-02",
+   "quantity": 0,
+   "unitPrice": 45000
+  },
+  "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": {
+   "model": "REGLETA 7P",
+   "quantity": 0,
+   "unitPrice": 28000
+  },
+  "SWITCH 5P TPLINK GIGABIT 10_100_1000": {
+   "model": "LS1005G",
+   "quantity": 0,
+   "unitPrice": 70000
+  },
+  "GABINETE RACK 17X34X34 BABY": {
+   "model": "GABINETE",
+   "quantity": 0,
+   "unitPrice": 50000
+  },
+  "GABINETE RACK 17X40X34 M": {
+   "model": "GABINETE",
+   "quantity": 0,
+   "unitPrice": 60000
+  },
+  "GABINETE RACK VERTICAL NEGRO_BLANCO": {
+   "model": "GABINETE NEGRO Y BLANCO",
+   "quantity": 0,
+   "unitPrice": 60000
+  },
+  "GABINETE RACK 52X32X18 L": {
+   "model": "GABINETE",
+   "quantity": 0,
+   "unitPrice": 70000
+  },
+  "GABINETE RACK 52X51X17 XL": {
+   "model": "GABINETE",
+   "quantity": 0,
+   "unitPrice": 85000
+  },
+  "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": {
+   "model": "CABLE UTP CAT 5",
+   "quantity": 0,
+   "unitPrice": 50000
+  },
+  "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M": {
+   "model": "LPSUTPCAT5E100EXT",
+   "quantity": 0,
+   "unitPrice": 65000
+  },
+  "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M": {
+   "model": "LPSUTPCAT6100EXT",
+   "quantity": 0,
+   "unitPrice": 75000
+  },
+  "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": {
+   "model": "CAT6100% COBRE",
+   "quantity": 0,
+   "unitPrice": 235000
+  },
+  "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO": {
+   "model": "XL500-C",
+   "quantity": 0,
+   "unitPrice": 135000
+  },
+  "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": {
+   "model": "LPSUTPCAT5EXT",
+   "quantity": 0,
+   "unitPrice": 155000
+  },
+  "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": {
+   "model": "LPSUTPCAT6EXT",
+   "quantity": 0,
+   "unitPrice": 165000
+  },
+  "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": {
+   "model": "DS-1LN5E COBRE",
+   "quantity": 0,
+   "unitPrice": 420000
+  },
+  "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": {
+   "model": "LPS100% COBRE305M",
+   "quantity": 0,
+   "unitPrice": 550000
+  },
+  "CABLE DE RED 2 MTS AMARILLO": {
+   "model": "PATCH CORD-YELLOW",
+   "quantity": 0,
+   "unitPrice": 3000
+  },
+  "CABLE DE RED 1 MTS AZUL": {
+   "model": "PATCH CORD-BLUET",
+   "quantity": 0,
+   "unitPrice": 6000
+  },
+  "CABLE DE RED 2 MTS AZUL": {
+   "model": "PATCH CORD-BLUET",
+   "quantity": 0,
+   "unitPrice": 7500
+  },
+  "CABLE DE RED 3 MTS AZUL": {
+   "model": "PATCH CORD-BLUET",
+   "quantity": 0,
+   "unitPrice": 10000
+  },
+  "CABLE NEOPRENO 2X20 200M": {
+   "model": "CABLE NEOPRENO",
+   "quantity": 0,
+   "unitPrice": 110000
+  },
+  "CABLE HDMI 1_8 MTS": {
+   "model": "HDMI1.8",
+   "quantity": 0,
+   "unitPrice": 8000
+  },
+  "CABLE HDMI 3 MTS ENCAUCHETADO": {
+   "model": "HDMI3",
+   "quantity": 0,
+   "unitPrice": 12000
+  },
+  "CABLE HDMI 5 MTS": {
+   "model": "HDMI5",
+   "quantity": 0,
+   "unitPrice": 18000
+  },
+  "CABLE HDMI 7 MTS": {
+   "model": "HDMI7",
+   "quantity": 0,
+   "unitPrice": 20000
+  },
+  "CABLE HDMI 10 MTS": {
+   "model": "HDMI10",
+   "quantity": 0,
+   "unitPrice": 30000
+  },
+  "CABLE HDMI 15 MTS": {
+   "model": "CHP-15",
+   "quantity": 0,
+   "unitPrice": 40000
+  },
+  "CABLE HDMI 25 MTS": {
+   "model": "HDMI25",
+   "quantity": 0,
+   "unitPrice": 85000
+  },
+  "CABLE HDMI A MICRO HDMI 1_8M": {
+   "model": "HDMI A MICRO HDMI",
+   "quantity": 0,
+   "unitPrice": 8000
+  },
+  "CABLE HDMI A MINI HDMI 3M": {
+   "model": "HDMI A MINI HDMI",
+   "quantity": 0,
+   "unitPrice": 12000
+  },
+  "1_8 MTS CON DOBLE FILTRO PARA MONITOR": {
+   "model": "CABLE VGA1.8M",
+   "quantity": 0,
+   "unitPrice": 6000
+  },
+  "3 MTS CON DOBLE FILTRO PARA MONITOR": {
+   "model": "CABLE VGA3M",
+   "quantity": 0,
+   "unitPrice": 9000
+  },
+  "5 MTS CON DOBLE FILTRO PARA MONITOR": {
+   "model": "CABLE VGA5M",
+   "quantity": 0,
+   "unitPrice": 15000
+  },
+  "7 MTS CON DOBLE FILTRO PARA MONITOR": {
+   "model": "CABLE VGA7M",
+   "quantity": 0,
+   "unitPrice": 22000
+  },
+  "10 MTS CON DOBLE FILTRO PARA MONITOR": {
+   "model": "CABLE VGA10M",
+   "quantity": 0,
+   "unitPrice": 26000
+  },
+  "15 MTS CON DOBLE FILTRO PARA MONITOR": {
+   "model": "CABLE VGA15M",
+   "quantity": 0,
+   "unitPrice": 34000
+  },
+  "30 MTS CON DOBLE FILTRO PARA MONITOR": {
+   "model": "CABLE VGA30M",
+   "quantity": 0,
+   "unitPrice": 75000
+  },
+  "CABLE 2X1 2 RCA A PLUG JACK 3_5MM": {
+   "model": "CABLE 2X1",
+   "quantity": 0,
+   "unitPrice": 8500
+  },
+  "CABLE OPTICO AUDIO 5M": {
+   "model": "CABLE OPTICO",
+   "quantity": 0,
+   "unitPrice": 16500
+  },
+  "CABLE USB_ USB 50 CM": {
+   "model": "Cable USB/ USB 50 CM",
+   "quantity": 0,
+   "unitPrice": 4000
+  },
+  "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": {
+   "model": "CABLEUSB1.5M",
+   "quantity": 0,
+   "unitPrice": 7000
+  },
+  "EXTENSIÓN USB DE 5_0M DESOXIGENADO": {
+   "model": "CABLEUSB5M",
+   "quantity": 0,
+   "unitPrice": 18000
+  },
+  "EXTENSIÓN USB DE 10M DESOXIGENADO": {
+   "model": "CABLEUSB10M",
+   "quantity": 0,
+   "unitPrice": 28000
+  },
+  "ADAPTADOR_CONVERTIDOR VGA A RCA": {
+   "model": "VGA A RCA",
+   "quantity": 0,
+   "unitPrice": 25000
+  },
+  "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": {
+   "model": "HDMI A RCA",
+   "quantity": 0,
+   "unitPrice": 25000
+  },
+  "CONVERTIR ADAPTADOR DE HDMI A VGA": {
+   "model": "HDMI A VGA",
+   "quantity": 0,
+   "unitPrice": 25000
+  },
+  "ADAPTADOR MINI HDMI A HDMI": {
+   "model": "ADAPTADOR MINI HDMI A HDMI",
+   "quantity": 0,
+   "unitPrice": 3000
+  },
+  "UPS INTERACTIVA FORZA 600VA_360W 120V": {
+   "model": "UPS BT-601",
+   "quantity": 0,
+   "unitPrice": 150000
+  },
+  "CONECTOR BORNERA HEMBRA_MACHO": {
+   "model": "BORNERADC",
+   "quantity": 0,
+   "unitPrice": 1000
+  },
+  "CONECTOR BNC MACHO CON BORNERA": {
+   "model": "BORNERABNC",
+   "quantity": 0,
+   "unitPrice": 1500
+  },
+  "CONECTOR BORNERA RCA MACHO 2 PINES": {
+   "model": "BORNERARCA",
+   "quantity": 0,
+   "unitPrice": 1500
+  },
+  "CONECTOR BORNERA BNC HEMBRA A RCA MACHO": {
+   "model": "BORNERARCA",
+   "quantity": 0,
+   "unitPrice": 800
+  },
+  "CONECTOR RJ45 CAT 5": {
+   "model": "CONECTOR RJ45CAT5",
+   "quantity": 0,
+   "unitPrice": 200
+  },
+  "CONECTOR RJ45 CAT 6 DOBLE HOLE": {
+   "model": "RJ45 DOBLE",
+   "quantity": 0,
+   "unitPrice": 300
+  },
+  "CONECTOR RJ45 CATEGORIA 6 PLASTICO X UNIDAD": {
+   "model": "CONECTOR RJ45CAT6",
+   "quantity": 0,
+   "unitPrice": 300
+  },
+  "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": {
+   "model": "CONECTOR DE RED RJ45",
+   "quantity": 0,
+   "unitPrice": 500
+  },
+  "PONCHADORA RJ45": {
+   "model": "PONCHADORA RJ45",
+   "quantity": 0,
+   "unitPrice": 25000
+  },
+  "CAPUCHONES RJ45 AZULES": {
+   "model": "CAPUCHONES",
+   "quantity": 0,
+   "unitPrice": 400
+  },
+  "JACK CAT 6 UTP BLUE WG": {
+   "model": "JACK CAT 6",
+   "quantity": 0,
+   "unitPrice": 6000
+  },
+  "FACE PLATE DOBLE": {
+   "model": "LP3317V2WH",
+   "quantity": 0,
+   "unitPrice": 5500
+  },
+  "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": {
+   "model": "LP3317H1WH",
+   "quantity": 0,
+   "unitPrice": 4000
+  },
+  "EXTENDER HDMI ACTIVO 60M": {
+   "model": "HDMI EXTENDER 60M",
+   "quantity": 0,
+   "unitPrice": 75000
+  },
+  "HDMI EXTENDER 30M PASIVO 1 LINEA": {
+   "model": "HDMI EXTENDER 30M",
+   "quantity": 0,
+   "unitPrice": 20000
+  },
+  "EXTENDER HDMI 30M 2 LINEA PASIVO": {
+   "model": "EXTENDERHDMI30M",
+   "quantity": 0,
+   "unitPrice": 25000
+  },
+  "EXTENDER USB RJ45 45 MTS": {
+   "model": "EXTENDER USB RJ45 45 MTS",
+   "quantity": 0,
+   "unitPrice": 36000
+  },
+  "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": {
+   "model": "SPLITTER HDMI",
+   "quantity": 0,
+   "unitPrice": 40000
+  },
+  "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": {
+   "model": "SPLITTER HDMI",
+   "quantity": 0,
+   "unitPrice": 50000
+  },
+  "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": {
+   "model": "HDMIVGA",
+   "quantity": 0,
+   "unitPrice": 25000
+  },
+  "CONVERTIDOR DE RCA A HDMI": {
+   "model": "RCA A HDMI",
+   "quantity": 0,
+   "unitPrice": 25000
+  },
+  "CODO HDMI MACHO- HEMBRA": {
+   "model": "HHC-90",
+   "quantity": 0,
+   "unitPrice": 3500
+  },
+  "HDMI HEMBRA A HDMI HEMBRA 90 GRADOS": {
+   "model": "HHH-90",
+   "quantity": 0,
+   "unitPrice": 4000
+  },
+  "VIDEO BALUN HD": {
+   "model": "VIDEO BALUN PROMO",
+   "quantity": 0,
+   "unitPrice": 5000
+  },
+  "VIDEO BALUN HASTA 8MP": {
+   "model": "VIDEO BALUN 4K",
+   "quantity": 0,
+   "unitPrice": 10000
+  },
+  "DISTRIBUIDOR DE ENERGÍA 6 SALIDAS": {
+   "model": "DISTRIBUIDOR",
+   "quantity": 0,
+   "unitPrice": 7000
+  },
+  "DISTRIBUIDOR DE ENERGÍA 8 SALIDAS": {
+   "model": "DISTRIBUIDOR",
+   "quantity": 0,
+   "unitPrice": 8000
+  },
+  "CLAVIJA AEREA 110V MACHO": {
+   "model": "CLAVIJA MACHO",
+   "quantity": 0,
+   "unitPrice": 2500
+  },
+  "CLAVIJA AEREA 110V HEMBRA": {
+   "model": "CLAVIJA HEMBRA",
+   "quantity": 0,
+   "unitPrice": 2000
+  },
+  "REGULADOR VOLTAJE FORZA 1000 VA": {
+   "model": "FVR-1001",
+   "quantity": 0,
+   "unitPrice": 70000
+  },
+  "PROTECTOR LAMINA CAM BALA PEQUEÑA": {
+   "model": "PROTECTOR LAMINA",
+   "quantity": 0,
+   "unitPrice": 22000
+  },
+  "PROTECTOR LAMINA CAM DOMO PEQUEÑA": {
+   "model": "PROTECTOR LAMINA",
+   "quantity": 0,
+   "unitPrice": 20000
+  },
+  "PROTECTOR VARILLA DOMO PEQUEÑO BLANCO_NEGRO": {
+   "model": "PROTECTOR DOMO",
+   "quantity": 0,
+   "unitPrice": 20000
+  },
+  "BOTON DE PANICO": {
+   "model": "PB67A",
+   "quantity": 0,
+   "unitPrice": 5000
+  },
+  "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": {
+   "model": "DH-HAP100",
+   "quantity": 0,
+   "unitPrice": 45000
+  },
+  "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": {
+   "model": "BRAZO EXPANSIVO",
+   "quantity": 0,
+   "unitPrice": 30000
+  },
+  "CAJA DE PASO CON TORNILLO PLASTICO 15X15": {
+   "model": "CAJA 15*15",
+   "quantity": 0,
+   "unitPrice": 10000
+  },
+  "CAJA DE PASO CON TORNILLO 10X10": {
+   "model": "CAJA 10*10",
+   "quantity": 0,
+   "unitPrice": 3000
+  },
+  "CAJA 4X2": {
+   "model": "CAJA 4x2",
+   "quantity": 0,
+   "unitPrice": 2500
+  },
+  "MICROFONO CCTV 12V": {
+   "model": "MICRÓFONO",
+   "quantity": 0,
+   "unitPrice": 12000
+  },
+  "MOUSE INALAMBRICOS JR8 USB JERTECH": {
+   "model": "JR8",
+   "quantity": 0,
+   "unitPrice": 30000
+  },
+  "MOUSE INALAMBRICO GENIUS NEGRO NX-7000": {
+   "model": "NX-7000",
+   "quantity": 0,
+   "unitPrice": 40000
+  }
+ },
+ "searchIndex": {
+  "hd": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": true,
+   "VIDEO BALUN HD": true
+  },
+  "720p": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true
+  },
+  "1080p": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true,
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P MINI BALA PLASTICA": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true,
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true,
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true,
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true
+  },
+  "incluido": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true
+  },
+  "30fps": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true
+  },
+  "m1": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true
+  },
+  "cvbs": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true
+  },
+  "hdmi": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "CABLE HDMI 1_8 MTS": true,
+   "CABLE HDMI 3 MTS ENCAUCHETADO": true,
+   "CABLE HDMI 5 MTS": true,
+   "CABLE HDMI 7 MTS": true,
+   "CABLE HDMI 10 MTS": true,
+   "CABLE HDMI 15 MTS": true,
+   "CABLE HDMI 25 MTS": true,
+   "CABLE HDMI A MICRO HDMI 1_8M": true,
+   "CABLE HDMI A MINI HDMI 3M": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true,
+   "CONVERTIR ADAPTADOR DE HDMI A VGA": true,
+   "ADAPTADOR MINI HDMI A HDMI": true,
+   "EXTENDER HDMI ACTIVO 60M": true,
+   "HDMI EXTENDER 30M PASIVO 1 LINEA": true,
+   "EXTENDER HDMI 30M 2 LINEA PASIVO": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": true,
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true,
+   "CONVERTIDOR DE RCA A HDMI": true,
+   "CODO HDMI MACHO- HEMBRA": true,
+   "HDMI HEMBRA A HDMI HEMBRA 90 GRADOS": true
+  },
+  "6tb": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true
+  },
+  "hasta": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true,
+   "VIDEO BALUN HASTA 8MP": true,
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true
+  },
+  "turbo": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 1080P MINI BALA PLASTICA": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "sata": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true
+  },
+  "no": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true
+  },
+  "ahd": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true
+  },
+  "vga": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR": true,
+   "ADAPTADOR_CONVERTIDOR VGA A RCA": true,
+   "CONVERTIR ADAPTADOR DE HDMI A VGA": true,
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true
+  },
+  "tvi": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true
+  },
+  "7104hghi": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true
+  },
+  "ds": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true,
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true,
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true,
+   "ROUTER 2 ANTENAS HIKVISION 300MBPS": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true
+  },
+  "audio": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true,
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true,
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CABLE OPTICO AUDIO 5M": true
+  },
+  "acusense": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true
+  },
+  "dvr": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true
+  },
+  "4ch": {
+   "DVR 4CH 1080P TURBO HD TVI_AHD_CVBS 720P@30FPS VGA HDMI 1 AUDIO 1 SATA HASTA 6TB (NO INCLUIDO) Acúsense": true,
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "7104hqhi": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true
+  },
+  "4mp": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "10tb": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true
+  },
+  "1bahia": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true
+  },
+  "plastico": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CONECTOR RJ45 CATEGORIA 6 PLASTICO X UNIDAD": true,
+   "CAJA DE PASO CON TORNILLO PLASTICO 15X15": true
+  },
+  "265": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true
+  },
+  "analiticas": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true
+  },
+  "lite": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true
+  },
+  "hikvision": {
+   "DVR 4CH TURBO 4MP lite 1BAHIA_10TB H_265+ ANALITICAS 30FPS HDMI_VGA PLASTICO Acúsense HIKVISION": true,
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true,
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true,
+   "ROUTER 2 ANTENAS HIKVISION 300MBPS": true
+  },
+  "4tb": {
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true
+  },
+  "de": {
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX": true,
+   "SENSOR DE HUMO": true,
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true,
+   "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": true,
+   "SENSOR DE MOVIMIENTO LC204 DSC": true,
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true,
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true,
+   "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": true,
+   "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": true,
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true,
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true,
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true,
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true,
+   "CABLE DE RED 2 MTS AMARILLO": true,
+   "CABLE DE RED 1 MTS AZUL": true,
+   "CABLE DE RED 2 MTS AZUL": true,
+   "CABLE DE RED 3 MTS AZUL": true,
+   "EXTENSIÓN USB DE 5_0M DESOXIGENADO": true,
+   "EXTENSIÓN USB DE 10M DESOXIGENADO": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true,
+   "CONVERTIR ADAPTADOR DE HDMI A VGA": true,
+   "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": true,
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true,
+   "CONVERTIDOR DE RCA A HDMI": true,
+   "DISTRIBUIDOR DE ENERGÍA 6 SALIDAS": true,
+   "DISTRIBUIDOR DE ENERGÍA 8 SALIDAS": true,
+   "BOTON DE PANICO": true,
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true,
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true,
+   "CAJA DE PASO CON TORNILLO PLASTICO 15X15": true,
+   "CAJA DE PASO CON TORNILLO 10X10": true
+  },
+  "8ch": {
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true,
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "7108hghi": {
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true
+  },
+  "1canal": {
+   "DVR 8CH TURBO 1080p LITE 1BAHIA_4TB H_265+_H_265 1CANAL DE AUDIO HDMI_VGA Acúsense": true
+  },
+  "2ch": {
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "cvi": {
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true
+  },
+  "3mp": {
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "ip": {
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true,
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true
+  },
+  "7108hqhi": {
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true
+  },
+  "sc": {
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true
+  },
+  "15fps": {
+   "DVR 8CH H_265+ TVI 2CH 3MP@15FPS IP 2CH 4MP TVI_CVI_AHD HASTA 1080P@15FPS": true
+  },
+  "25fps": {
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true
+  },
+  "7116hghi": {
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true
+  },
+  "16ch": {
+   "DVR 16CH TURBO 1080P 1BAHIA_6TB H_265 25FPS HDMI_VGA PLASTICO HIKVISION": true,
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "3k": {
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true
+  },
+  "ids": {
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true
+  },
+  "5mp": {
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true
+  },
+  "7116hqhi": {
+   "DVR 16CH TURBO 5MP_3K LITE ANALITICAS 30FPS HDMI_VGA PLASTICO": true
+  },
+  "104g": {
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true
+  },
+  "264": {
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true
+  },
+  "hd1080p": {
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true
+  },
+  "mini": {
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "CAMARA TURBO 1080P MINI BALA PLASTICA": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CABLE HDMI A MINI HDMI 3M": true,
+   "ADAPTADOR MINI HDMI A HDMI": true
+  },
+  "1ch": {
+   "MINI DVR 4CH TURBO HD1080p Lite 1BAHIA_6TB H_264+ 1CH IP HDMI_VGA AcuSense": true,
+   "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "hilook": {
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true,
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true
+  },
+  "h265": {
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true
+  },
+  "108g": {
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true
+  },
+  "10ch": {
+   "MINI DVR 8CH TURBO HD 1080P LITE 4TB H265+ 10CH HDMI_VGA HILOOK Acúsense": true
+  },
+  "m1c": {
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true
+  },
+  "10tbh": {
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true
+  },
+  "116g": {
+   "DVR 16CH TURBO 1080P lite 1BAHIA_10TBH_265+ 2CH IP 30FPS HDMI_VGA HILOOK AcuSense": true
+  },
+  "dh": {
+   "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true,
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true,
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "xvr": {
+   "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "xvr1b04": {
+   "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "2mp": {
+   "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true
+  },
+  "bidireccional": {
+   "XVR 4CH+1CH AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true,
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "xvr1b08": {
+   "XVR 8CH+2CH IP AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "xvr1b16": {
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "ch": {
+   "XVR 16CH+2 CH IP AUDIO BIDIRECCIONAL 2MP": true
+  },
+  "cmos": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true
+  },
+  "irpf": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true
+  },
+  "ip66": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "2ce16d0t": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true
+  },
+  "8mm": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true
+  },
+  "tipo": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true,
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "bala": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA TURBO 1080P MINI BALA PLASTICA": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true,
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "PROTECTOR LAMINA CAM BALA PEQUEÑA": true
+  },
+  "plastica": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P MINI BALA PLASTICA": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true,
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true,
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "camara": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true,
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 1080P MINI BALA PLASTICA": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true,
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true,
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true,
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "lente": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM": true,
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true,
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true
+  },
+  "con": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true,
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true,
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true,
+   "CONTACTO MAGNETICO CON CABLE": true,
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true,
+   "CARGADOR 12V_1 A CON LED INDICADOR": true,
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true,
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "3 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "5 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "7 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true,
+   "CONECTOR BNC MACHO CON BORNERA": true,
+   "CAJA DE PASO CON TORNILLO PLASTICO 15X15": true,
+   "CAJA DE PASO CON TORNILLO 10X10": true
+  },
+  "microfono": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true,
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true,
+   "MICROFONO CCTV 12V": true
+  },
+  "hibrida": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true
+  },
+  "itpfs": {
+   "CAMARA 2MP TIPO BALA PLASTICA IP66 1_3 CMOS LENTE 2_8MM CON MICROFONO HIBRIDA": true,
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "ip67": {
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true
+  },
+  "ir30m": {
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true
+  },
+  "mm": {
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true,
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true
+  },
+  "2cd1023g0e": {
+   "CAMARA BALA 2MP IP 2_8 MM IR30M IP67 HIKVISION": true
+  },
+  "domo": {
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true,
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true,
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true,
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "PROTECTOR LAMINA CAM DOMO PEQUEÑA": true,
+   "PROTECTOR VARILLA DOMO PEQUEÑO BLANCO_NEGRO": true
+  },
+  "2ce56d0t": {
+   "CAMARA DOMO TURBO HD 2MP PLÁSTICO LENTE E 2_8 MM IP66": true
+  },
+  "irmf": {
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true
+  },
+  "metalica": {
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true,
+   "CAJA METALICA PARA ALARMA 28X28X7_6 CM": true
+  },
+  "2ce56dot": {
+   "CAMARA DOMO TURBO HD 2MP METALICA LENTE E 2_8 MM IP66": true
+  },
+  "turret": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "au": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "2m": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "ir20m": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true
+  },
+  "2ce76d0t": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "lux": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "f1": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "dio": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "incorporado": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "ir": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "exir": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true
+  },
+  "01": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "mart": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "dnr": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "coaxial": {
+   "CAMARA DOMO 2M INCORPORADO AU F1_2 DNR EXIR 2_0 S P TURRET MICROFONO DIO COAXIAL 0_01 Lux_ mart IR20m IR PLASTICA": true
+  },
+  "iuf": {
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true
+  },
+  "2cd1323g2": {
+   "CAMARA DOMO IP 1080P CON MICROFONO HIKVISION": true
+  },
+  "pc": {
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR": true,
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true
+  },
+  "02luxf2": {
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true
+  },
+  "thc": {
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 1080P MINI BALA PLASTICA": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true
+  },
+  "int": {
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true,
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true,
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true
+  },
+  "t120": {
+   "CAMARA DOMO 1080P INT TURRET 0_02LUXF2_8 EXIR IR20m PLASTICA HILOOK": true
+  },
+  "t150": {
+   "CAMARA TURBO 5MP INT TURRET 2_8MM EXIR IR20m IP66 HILOOK": true
+  },
+  "b120": {
+   "CAMARA TURBO 1080P MINI BALA PLASTICA": true
+  },
+  "b150": {
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true
+  },
+  "semimetalica": {
+   "CAMARA TURBO 5MP INT MINI BALA 2_8MM IR20m IP66 SEMIMETALICA HILOOK": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true
+  },
+  "mp": {
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true
+  },
+  "poe": {
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true
+  },
+  "dwdr": {
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true
+  },
+  "ipc": {
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "semimetal": {
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true
+  },
+  "b121h": {
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true
+  },
+  "nf2": {
+   "CAMARA IP 1080P MP BALA H265+ DWDR D_NF2_8 POE IR30m IP67 SEMIMETAL HILOOK": true
+  },
+  "blanca": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "t129": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "20m": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true
+  },
+  "luz": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "wdr": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "rango": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "001": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "colorvu": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "24": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "3d": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": true
+  },
+  "f2": {
+   "CAMARA TURBO 1080P TURRET F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true,
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "t127": {
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true
+  },
+  "vu": {
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true
+  },
+  "lps": {
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true,
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true
+  },
+  "color": {
+   "CAMARA DOMO 1080P HILOOK HIBRIDA COLOR VU CON AUDIO": true,
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true,
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true,
+   "CONTACTO MAGNETICO COLOR BLANCO": true,
+   "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": true
+  },
+  "b129": {
+   "CAMARA TURBO 1080P BALA F2_8mm 0_001 LUX F1_0 24_7 COLORVU 3D DNR WDR RANGO DE LUZ BLANCA 20M IP66 PLASTICA HILOOK": true
+  },
+  "b127": {
+   "CAMARA BALA 1080P HILOOK COLOR VU HIBRIDA CON AUDIO": true
+  },
+  "ezviz": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true,
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true,
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true
+  },
+  "fhd": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true
+  },
+  "a0": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true
+  },
+  "2mpx": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true
+  },
+  "cs": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "c2c": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true
+  },
+  "10": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "TECLADO 10 ZONAS LED CABLEADO": true,
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true,
+   "SWITCH 5 PUERTOS PIX-LINK 10_100": true,
+   "SWITCH 5P 10_100 TENDA": true,
+   "SWITCH 8P MERCUSYS 10_100": true,
+   "SWITCH 5P TPLINK GIGABIT 10_100_1000": true,
+   "CABLE HDMI 10 MTS": true,
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "CAJA DE PASO CON TORNILLO 10X10": true
+  },
+  "1e2wf": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true
+  },
+  "hogar": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true
+  },
+  "inteligente": {
+   "CAMARA HOGAR INTELIGENTE EZVIZ 2MPX FHD 1080P, LENTE 4 MM, H_265, IR HASTA 10": true,
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "1l3w": {
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true
+  },
+  "c6n": {
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true
+  },
+  "pt": {
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true
+  },
+  "wifi": {
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true,
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true
+  },
+  "360": {
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true
+  },
+  "h6c": {
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true
+  },
+  "seguimiento": {
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true
+  },
+  "r105": {
+   "CAMARA HOGAR WIFI C6N PT 3MP WIFI 360° AUDIO BIDIRECCIONAL SEGUIMIENTO INTELIGENTE": true,
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true
+  },
+  "30mtrs": {
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true
+  },
+  "1h3wk": {
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true
+  },
+  "h4": {
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true
+  },
+  "2k": {
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true,
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "iinterior": {
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true
+  },
+  "r201": {
+   "CAMARA WIFI DOMO H4 EZVIZ IINTERIOR 2K 30MTRS": true
+  },
+  "configurables": {
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true
+  },
+  "exterior": {
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true,
+   "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M": true,
+   "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": true,
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true,
+   "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": true,
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true
+  },
+  "1k3w": {
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true
+  },
+  "h8c": {
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true
+  },
+  "cobertura": {
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "motorizada": {
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true
+  },
+  "r100": {
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "preset": {
+   "CAMARA WIFI H8C PT INTELIGENTE EXTERIOR COBERTURA DE 360° MOTORIZADA PRESET CONFIGURABLES ,3 MP 2K": true
+  },
+  "gira": {
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true
+  },
+  "h9c": {
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true
+  },
+  "doble": {
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true,
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true,
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "3 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "5 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "7 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "CONECTOR RJ45 CAT 6 DOBLE HOLE": true,
+   "FACE PLATE DOBLE": true
+  },
+  "robotica": {
+   "CAMARA WIFI DOBLE LENTE 5MP ROBOTICA GIRA 360° EZVIZ": true
+  },
+  "h3c": {
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "vision": {
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "nocturna": {
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "30m": {
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true,
+   "HDMI EXTENDER 30M PASIVO 1 LINEA": true,
+   "EXTENDER HDMI 30M 2 LINEA PASIVO": true
+  },
+  "1k2w": {
+   "CAMARA WIFI INTELIGENTE EXTERIOR 2MP VISION NOCTURNA A COLOR IR 30m": true
+  },
+  "c3tn": {
+   "CAMARA WIFI INTELIGENTE EXTERIOR 3MP C3TN VISION NOCTURNA A COLOR IR 30m": true,
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "1j4wkfl": {
+   "CAMARA WIFI INTELIGENTE EXTERIOR 4MP C3TN VISION NOCTURNA A COLOR IR 30m AUDIO BIDIRECCIONAL": true
+  },
+  "hac": {
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true,
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true,
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true
+  },
+  "0280": {
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true
+  },
+  "t1a21n": {
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true,
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true
+  },
+  "resolucion": {
+   "CAMARA DOMO PLASTICA Resolución 1080P 2_8MM": true
+  },
+  "20mtrs": {
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true
+  },
+  "dahua": {
+   "CAMARA DOMO 1080P CON AUDIO DAHUA 2_8 20MTRS": true,
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true
+  },
+  "dual": {
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true
+  },
+  "smart": {
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "hdw1239vp": {
+   "CAMARA DOMO IP DAHUA SEMIMETALICA SMART DUAL 2MP 2_8MM 30MTRS": true
+  },
+  "full": {
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true,
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true
+  },
+  "02": {
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true,
+   "SWITCH KVM 2 PUERTOS USB": true
+  },
+  "t1a29n": {
+   "CAMARA DOMO FULL COLOR 1080P 2_8MM PLASTICA": true
+  },
+  "hdw1200clqn": {
+   "CAMARA DOMO SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true
+  },
+  "0280b": {
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true,
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true
+  },
+  "b1a21n": {
+   "CAMARA BALA PLASTICA 1080P Lente 2_8mm": true
+  },
+  "en": {
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true,
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true,
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true
+  },
+  "fov": {
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true
+  },
+  "led": {
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true,
+   "TECLADO 10 ZONAS LED CABLEADO": true,
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true,
+   "CARGADOR 12V_1 A CON LED INDICADOR": true
+  },
+  "fullcolor": {
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true
+  },
+  "hfw1209cn": {
+   "CAMARA 4 EN 1 FULLCOLOR 1080P TIPO BALA SEMIMETALICA 2,8MM FOV": true
+  },
+  "hfw1200cln": {
+   "CAMARA BALA SMART DUAL + FULL COLOR AUDIO 2MP 2_8 20M": true
+  },
+  "imou": {
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "3r1s": {
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "s2en": {
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "6mm": {
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "ranger": {
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "im": {
+   "CAMARA IMOU RANGER 3MP_2K 3_6MM SMART FULL COLOR": true
+  },
+  "ms31": {
+   "CONTACTO MAGNETICO COLOR BLANCO": true
+  },
+  "blanco": {
+   "CONTACTO MAGNETICO COLOR BLANCO": true,
+   "GABINETE RACK VERTICAL NEGRO_BLANCO": true,
+   "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO": true,
+   "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": true,
+   "PROTECTOR VARILLA DOMO PEQUEÑO BLANCO_NEGRO": true,
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true
+  },
+  "magnetico": {
+   "CONTACTO MAGNETICO COLOR BLANCO": true,
+   "CONTACTO MAGNETICO CON CABLE": true,
+   "CONTACTO MAGNETICO METALICO": true
+  },
+  "contacto": {
+   "CONTACTO MAGNETICO COLOR BLANCO": true,
+   "CONTACTO MAGNETICO CON CABLE": true,
+   "CONTACTO MAGNETICO METALICO": true
+  },
+  "cable": {
+   "CONTACTO MAGNETICO CON CABLE": true,
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true,
+   "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M": true,
+   "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": true,
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true,
+   "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": true,
+   "CABLE DE RED 2 MTS AMARILLO": true,
+   "CABLE DE RED 1 MTS AZUL": true,
+   "CABLE DE RED 2 MTS AZUL": true,
+   "CABLE DE RED 3 MTS AZUL": true,
+   "CABLE NEOPRENO 2X20 200M": true,
+   "CABLE HDMI 1_8 MTS": true,
+   "CABLE HDMI 3 MTS ENCAUCHETADO": true,
+   "CABLE HDMI 5 MTS": true,
+   "CABLE HDMI 7 MTS": true,
+   "CABLE HDMI 10 MTS": true,
+   "CABLE HDMI 15 MTS": true,
+   "CABLE HDMI 25 MTS": true,
+   "CABLE HDMI A MICRO HDMI 1_8M": true,
+   "CABLE HDMI A MINI HDMI 3M": true,
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "3 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "5 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "7 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "CABLE 2X1 2 RCA A PLUG JACK 3_5MM": true,
+   "CABLE OPTICO AUDIO 5M": true,
+   "CABLE USB_ USB 50 CM": true,
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true,
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true
+  },
+  "ms38": {
+   "CONTACTO MAGNETICO CON CABLE": true
+  },
+  "gv": {
+   "CONTACTO MAGNETICO METALICO": true,
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true,
+   "SIRENA CÓNICA 20W PARA ALARMA": true,
+   "SIRENA 30W PARA ALARMA": true
+  },
+  "60l": {
+   "CONTACTO MAGNETICO METALICO": true
+  },
+  "metalico": {
+   "CONTACTO MAGNETICO METALICO": true
+  },
+  "movimiento": {
+   "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX": true,
+   "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": true,
+   "SENSOR DE MOVIMIENTO LC204 DSC": true
+  },
+  "optico": {
+   "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX": true,
+   "CABLE OPTICO AUDIO 5M": true
+  },
+  "paradox": {
+   "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX": true,
+   "TECLADO PARA ALARMA K636 PARADOX": true,
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true
+  },
+  "inalambrico": {
+   "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX": true,
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true,
+   "MOUSE INALAMBRICO GENIUS NEGRO NX-7000": true
+  },
+  "detector": {
+   "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX": true,
+   "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": true
+  },
+  "pmd2p": {
+   "DETECTOR DE MOVIMIENTO OPTICO INALAMBRICO PARADOX": true
+  },
+  "ly": {
+   "SENSOR DE HUMO": true
+  },
+  "humo": {
+   "SENSOR DE HUMO": true
+  },
+  "dh4t": {
+   "SENSOR DE HUMO": true
+  },
+  "sensor": {
+   "SENSOR DE HUMO": true,
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true,
+   "SENSOR LC200S DSC": true,
+   "SENSOR DE MOVIMIENTO LC204 DSC": true
+  },
+  "deteccion18mtrs": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "angulo": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "mascotas": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "85": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "eg2": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "pdp18": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "16": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "pir": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "10kg": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "vcd": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "alarma": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true,
+   "TECLADO PARA ALARMA K636 PARADOX": true,
+   "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": true,
+   "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": true,
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true,
+   "SIRENA CÓNICA 20W PARA ALARMA": true,
+   "SIRENA 30W PARA ALARMA": true,
+   "CAJA METALICA PARA ALARMA 28X28X7_6 CM": true
+  },
+  "inmunidad": {
+   "SENSOR DE ALARMA PIR RANGO DE DETECCION18MTRS ANGULO 85_9° COBERTURA INMUNIDAD A MASCOTAS HASTA 10KG 9-16 VCD": true
+  },
+  "infrarrojo": {
+   "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": true
+  },
+  "alto": {
+   "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": true
+  },
+  "digital": {
+   "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": true
+  },
+  "rendimiento": {
+   "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": true
+  },
+  "nv5w3c": {
+   "DETECTOR DE MOVIMIENTO DIGITAL INFRARROJO DE ALTO RENDIMIENTO": true
+  },
+  "lc200": {
+   "SENSOR LC200S DSC": true
+  },
+  "lc200s": {
+   "SENSOR LC200S DSC": true
+  },
+  "dsc": {
+   "SENSOR LC200S DSC": true,
+   "SENSOR DE MOVIMIENTO LC204 DSC": true
+  },
+  "lc204": {
+   "SENSOR DE MOVIMIENTO LC204 DSC": true
+  },
+  "k636": {
+   "TECLADO PARA ALARMA K636 PARADOX": true
+  },
+  "para": {
+   "TECLADO PARA ALARMA K636 PARADOX": true,
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true,
+   "SIRENA CÓNICA 20W PARA ALARMA": true,
+   "SIRENA 30W PARA ALARMA": true,
+   "CAJA METALICA PARA ALARMA 28X28X7_6 CM": true,
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true,
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "3 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "5 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "7 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "teclado": {
+   "TECLADO PARA ALARMA K636 PARADOX": true,
+   "TECLADO 10 ZONAS LED CABLEADO": true,
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true,
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "k10h": {
+   "TECLADO 10 ZONAS LED CABLEADO": true
+  },
+  "zonas": {
+   "TECLADO 10 ZONAS LED CABLEADO": true,
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true,
+   "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": true,
+   "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": true
+  },
+  "cableado": {
+   "TECLADO 10 ZONAS LED CABLEADO": true
+  },
+  "32": {
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true,
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true,
+   "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": true,
+   "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": true
+  },
+  "modelo": {
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true
+  },
+  "k32lcd": {
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true,
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "modulo": {
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true
+  },
+  "k32": {
+   "PARADOX K32 + MÓDULO DE TECLADO LED CON CABLE DE 32 ZONAS MODELO: K32": true
+  },
+  "mg": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "lcd": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "zona": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "plus": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "visualizacion": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "sp": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "entrada": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": true
+  },
+  "real": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "compatible": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "caracteres": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "tiempo": {
+   "TECLADO 32 CARACTERES LCD VISUALIZACION DE ZONA EN TIEMPO REAL 1 ENTRADA DE ZONA COMPATIBLE SP_MG": true
+  },
+  "4x2": {
+   "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": true,
+   "CAJA 4X2": true
+  },
+  "expandible": {
+   "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": true
+  },
+  "sp4000d6q": {
+   "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": true
+  },
+  "central": {
+   "CENTRAL DE ALARMA 4X2 ZONAS EXPANDIBLE A 32": true,
+   "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": true
+  },
+  "8x2": {
+   "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": true
+  },
+  "sp6000m8x": {
+   "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": true
+  },
+  "max": {
+   "CENTRAL DE ALARMA 8X2 ZONAS MAX 32": true
+  },
+  "panel": {
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true
+  },
+  "16v": {
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true
+  },
+  "transformador": {
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true
+  },
+  "40vac": {
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true
+  },
+  "d40": {
+   "TRANSFORMADOR 16V 40VAC PARA PANEL DE ALARMA": true
+  },
+  "sirena": {
+   "SIRENA CÓNICA 20W PARA ALARMA": true,
+   "SIRENA 30W PARA ALARMA": true,
+   "SIRENA 110V NEGRA GONGORA": true
+  },
+  "conica": {
+   "SIRENA CÓNICA 20W PARA ALARMA": true
+  },
+  "s501": {
+   "SIRENA CÓNICA 20W PARA ALARMA": true
+  },
+  "20w": {
+   "SIRENA CÓNICA 20W PARA ALARMA": true
+  },
+  "s508": {
+   "SIRENA 30W PARA ALARMA": true
+  },
+  "30w": {
+   "SIRENA 30W PARA ALARMA": true
+  },
+  "gongora": {
+   "SIRENA 110V NEGRA GONGORA": true
+  },
+  "110v": {
+   "SIRENA 110V NEGRA GONGORA": true,
+   "CLAVIJA AEREA 110V MACHO": true,
+   "CLAVIJA AEREA 110V HEMBRA": true
+  },
+  "negra": {
+   "SIRENA 110V NEGRA GONGORA": true
+  },
+  "sirena110v": {
+   "SIRENA 110V NEGRA GONGORA": true
+  },
+  "cm": {
+   "CAJA METALICA PARA ALARMA 28X28X7_6 CM": true,
+   "CABLE USB_ USB 50 CM": true
+  },
+  "gabinetegran": {
+   "CAJA METALICA PARA ALARMA 28X28X7_6 CM": true
+  },
+  "caja": {
+   "CAJA METALICA PARA ALARMA 28X28X7_6 CM": true,
+   "CAJA DE PASO CON TORNILLO PLASTICO 15X15": true,
+   "CAJA DE PASO CON TORNILLO 10X10": true,
+   "CAJA 4X2": true
+  },
+  "28x28x7": {
+   "CAJA METALICA PARA ALARMA 28X28X7_6 CM": true
+  },
+  "12v": {
+   "CARGADOR 12V_1 A CON LED INDICADOR": true,
+   "CARGADOR 12v_2 A": true,
+   "CARGADOR 12v_3 A": true,
+   "CARGADOR 12v_5 A": true,
+   "MICROFONO CCTV 12V": true
+  },
+  "cargador": {
+   "CARGADOR 12V_1 A CON LED INDICADOR": true,
+   "CARGADOR 12v_2 A": true,
+   "CARGADOR 12v_3 A": true,
+   "CARGADOR 12v_5 A": true
+  },
+  "indicador": {
+   "CARGADOR 12V_1 A CON LED INDICADOR": true
+  },
+  "micro": {
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true,
+   "CABLE HDMI A MICRO HDMI 1_8M": true
+  },
+  "garantia": {
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true,
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "ano": {
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true
+  },
+  "sd": {
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true
+  },
+  "64gb": {
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true
+  },
+  "microsd64ezviz": {
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true
+  },
+  "marca": {
+   "MICRO SD 64GB MARCA EZVIZ 1 AÑO DE GARANTIA": true,
+   "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": true
+  },
+  "video": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true,
+   "VIDEO BALUN HD": true,
+   "VIDEO BALUN HASTA 8MP": true
+  },
+  "2tb": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "duro": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "vigilancia": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "disenado": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "seagate": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "tamano": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "tb": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "disco": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "anos": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "funcinamiento": {
+   "DISCO DURO DE 2 TB SEAGATE DE 3_5 DE TAMAÑO, DISEÑADO PARA VÍDEO VIGILANCIA, CON FUNCINAMIENTO 24_7 3 AÑOS GARANTIA": true
+  },
+  "tp": {
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true,
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true,
+   "SWITCH 16P GIGABIT TP LINK": true,
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true
+  },
+  "switch": {
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true,
+   "SWITCH 5P MERCUSYS BASE 100": true,
+   "SWITCH 5 PUERTOS PIX-LINK 10_100": true,
+   "SWITCH 5P 10_100 TENDA": true,
+   "SWITCH 8P GIGABIT TENDA MAC 8K": true,
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true,
+   "SWITCH 8P MERCUSYS 10_100": true,
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true,
+   "SWITCH 16P GIGABIT TP LINK": true,
+   "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR": true,
+   "SWITCH KVM 2 PUERTOS USB": true,
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true,
+   "SWITCH 5P TPLINK GIGABIT 10_100_1000": true
+  },
+  "base": {
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true,
+   "SWITCH 5P MERCUSYS BASE 100": true,
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true
+  },
+  "100": {
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true,
+   "SWITCH 5P MERCUSYS BASE 100": true,
+   "SWITCH 5 PUERTOS PIX-LINK 10_100": true,
+   "SWITCH 5P 10_100 TENDA": true,
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true,
+   "SWITCH 8P MERCUSYS 10_100": true,
+   "SWITCH 5P TPLINK GIGABIT 10_100_1000": true,
+   "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true,
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true
+  },
+  "link": {
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true,
+   "SWITCH 5 PUERTOS PIX-LINK 10_100": true,
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true,
+   "SWITCH 16P GIGABIT TP LINK": true,
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true
+  },
+  "tl": {
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true,
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true,
+   "SWITCH 16P GIGABIT TP LINK": true,
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true
+  },
+  "sf1005d": {
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true
+  },
+  "5p": {
+   "SWITCH 5P 10_100 TP LINK BASE 100 TP LINK": true,
+   "SWITCH 5P MERCUSYS BASE 100": true,
+   "SWITCH 5P 10_100 TENDA": true,
+   "SWITCH 5P TPLINK GIGABIT 10_100_1000": true
+  },
+  "ms105": {
+   "SWITCH 5P MERCUSYS BASE 100": true
+  },
+  "mercusys": {
+   "SWITCH 5P MERCUSYS BASE 100": true,
+   "SWITCH 8P MERCUSYS 10_100": true
+  },
+  "pix": {
+   "SWITCH 5 PUERTOS PIX-LINK 10_100": true
+  },
+  "puertos": {
+   "SWITCH 5 PUERTOS PIX-LINK 10_100": true,
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true,
+   "SWITCH KVM 2 PUERTOS USB": true,
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true
+  },
+  "tenda": {
+   "SWITCH 5P 10_100 TENDA": true,
+   "SWITCH 8P GIGABIT TENDA MAC 8K": true,
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true
+  },
+  "s105": {
+   "SWITCH 5P 10_100 TENDA": true
+  },
+  "sg108m": {
+   "SWITCH 8P GIGABIT TENDA MAC 8K": true
+  },
+  "gigabit": {
+   "SWITCH 8P GIGABIT TENDA MAC 8K": true,
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true,
+   "SWITCH 16P GIGABIT TP LINK": true,
+   "SWITCH 5P TPLINK GIGABIT 10_100_1000": true
+  },
+  "8k": {
+   "SWITCH 8P GIGABIT TENDA MAC 8K": true
+  },
+  "8p": {
+   "SWITCH 8P GIGABIT TENDA MAC 8K": true,
+   "SWITCH 8P MERCUSYS 10_100": true,
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true
+  },
+  "mac": {
+   "SWITCH 8P GIGABIT TENDA MAC 8K": true
+  },
+  "escritorio": {
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true
+  },
+  "sf1008d": {
+   "SWITCH POE 8 PUERTOS ESCRITORIO BASE 100 TP LINK": true
+  },
+  "ms108": {
+   "SWITCH 8P MERCUSYS 10_100": true
+  },
+  "3e0508d": {
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true
+  },
+  "administrable": {
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true
+  },
+  "std": {
+   "SWITCH 8P GIGABIT HIKVISION _ NO ADMINISTRABLE": true
+  },
+  "sg1016d": {
+   "SWITCH 16P GIGABIT TP LINK": true
+  },
+  "16p": {
+   "SWITCH 16P GIGABIT TP LINK": true
+  },
+  "alta": {
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true
+  },
+  "mbpst": {
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true
+  },
+  "potencia": {
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true
+  },
+  "wr820n": {
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true
+  },
+  "300": {
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true
+  },
+  "router": {
+   "ROUTER INALAMBRICO ALTA POTENCIA 300 MBPST TP-LINK": true,
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true,
+   "ROUTER 2 ANTENAS HIKVISION 300MBPS": true
+  },
+  "puerto": {
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true
+  },
+  "300mpbs": {
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true
+  },
+  "5dbi": {
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true
+  },
+  "wan": {
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true
+  },
+  "n301": {
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true
+  },
+  "antenas": {
+   "ROUTER WIFI 300MPBS 2 ANTENAS TENDA 5DBI 1 PUERTO WAN Y 3 PUERTO": true,
+   "ROUTER 2 ANTENAS HIKVISION 300MBPS": true
+  },
+  "3wr3n": {
+   "ROUTER 2 ANTENAS HIKVISION 300MBPS": true
+  },
+  "us": {
+   "ROUTER 2 ANTENAS HIKVISION 300MBPS": true
+  },
+  "300mbps": {
+   "ROUTER 2 ANTENAS HIKVISION 300MBPS": true
+  },
+  "monitor": {
+   "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR": true,
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "3 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "5 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "7 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true
+  },
+  "conectar": {
+   "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR": true
+  },
+  "4x1": {
+   "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR": true
+  },
+  "swv": {
+   "SWITCH VGA 4X1 CONECTAR A 4 PC A 1 MONITOR": true
+  },
+  "usb": {
+   "SWITCH KVM 2 PUERTOS USB": true,
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true,
+   "CABLE USB_ USB 50 CM": true,
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true,
+   "EXTENSIÓN USB DE 5_0M DESOXIGENADO": true,
+   "EXTENSIÓN USB DE 10M DESOXIGENADO": true,
+   "EXTENDER USB RJ45 45 MTS": true,
+   "MOUSE INALAMBRICOS JR8 USB JERTECH": true
+  },
+  "kvm": {
+   "SWITCH KVM 2 PUERTOS USB": true
+  },
+  "interruptor": {
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true
+  },
+  "off": {
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true
+  },
+  "regleta": {
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true
+  },
+  "hub": {
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true
+  },
+  "on": {
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true
+  },
+  "gbps": {
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true
+  },
+  "7p": {
+   "HUB SWITCH USB 3_0 DE 7 PUERTOS E INTERRUPTOR ON OFF 5 GBPS": true
+  },
+  "ls1005g": {
+   "SWITCH 5P TPLINK GIGABIT 10_100_1000": true
+  },
+  "tplink": {
+   "SWITCH 5P TPLINK GIGABIT 10_100_1000": true
+  },
+  "1000": {
+   "SWITCH 5P TPLINK GIGABIT 10_100_1000": true,
+   "REGULADOR VOLTAJE FORZA 1000 VA": true
+  },
+  "baby": {
+   "GABINETE RACK 17X34X34 BABY": true
+  },
+  "gabinete": {
+   "GABINETE RACK 17X34X34 BABY": true,
+   "GABINETE RACK 17X40X34 M": true,
+   "GABINETE RACK VERTICAL NEGRO_BLANCO": true,
+   "GABINETE RACK 52X32X18 L": true,
+   "GABINETE RACK 52X51X17 XL": true
+  },
+  "17x34x34": {
+   "GABINETE RACK 17X34X34 BABY": true
+  },
+  "rack": {
+   "GABINETE RACK 17X34X34 BABY": true,
+   "GABINETE RACK 17X40X34 M": true,
+   "GABINETE RACK VERTICAL NEGRO_BLANCO": true,
+   "GABINETE RACK 52X32X18 L": true,
+   "GABINETE RACK 52X51X17 XL": true
+  },
+  "17x40x34": {
+   "GABINETE RACK 17X40X34 M": true
+  },
+  "negro": {
+   "GABINETE RACK VERTICAL NEGRO_BLANCO": true,
+   "PROTECTOR VARILLA DOMO PEQUEÑO BLANCO_NEGRO": true,
+   "MOUSE INALAMBRICO GENIUS NEGRO NX-7000": true
+  },
+  "vertical": {
+   "GABINETE RACK VERTICAL NEGRO_BLANCO": true
+  },
+  "52x32x18": {
+   "GABINETE RACK 52X32X18 L": true
+  },
+  "52x51x17": {
+   "GABINETE RACK 52X51X17 XL": true
+  },
+  "xl": {
+   "GABINETE RACK 52X51X17 XL": true
+  },
+  "cat": {
+   "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true,
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true,
+   "CONECTOR RJ45 CAT 5": true,
+   "CONECTOR RJ45 CAT 6 DOBLE HOLE": true,
+   "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": true,
+   "JACK CAT 6 UTP BLUE WG": true
+  },
+  "utp": {
+   "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M": true,
+   "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO": true,
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true,
+   "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true,
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true,
+   "JACK CAT 6 UTP BLUE WG": true
+  },
+  "rollo": {
+   "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": true,
+   "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": true
+  },
+  "100m": {
+   "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M": true
+  },
+  "categoria": {
+   "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M": true,
+   "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": true,
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true,
+   "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": true,
+   "CONECTOR RJ45 CATEGORIA 6 PLASTICO X UNIDAD": true
+  },
+  "interior": {
+   "ROLLO CABLE UTP CATEGORIA 5 BLANCO INTERIOR 100M": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true
+  },
+  "aleacion": {
+   "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M": true,
+   "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M": true
+  },
+  "lpsutpcat5e100ext": {
+   "CABLE UTP CATEGORÍA 5 ALEACION EXTERIOR 100M": true
+  },
+  "lpsutpcat6100ext": {
+   "CABLE UTP CATEGORÍA 6 ALEACION EXTERIOR 100M": true
+  },
+  "cobre": {
+   "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true,
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true
+  },
+  "cat6100": {
+   "ROLLO CABLE UTP CATEGORIA 6 EXTERIOR 100% COBRE": true
+  },
+  "carrete": {
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true,
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true
+  },
+  "xl500": {
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO": true
+  },
+  "305mtrs": {
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS BLANCO": true,
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true,
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true
+  },
+  "mts": {
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true,
+   "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": true,
+   "CABLE DE RED 2 MTS AMARILLO": true,
+   "CABLE DE RED 1 MTS AZUL": true,
+   "CABLE DE RED 2 MTS AZUL": true,
+   "CABLE DE RED 3 MTS AZUL": true,
+   "CABLE HDMI 1_8 MTS": true,
+   "CABLE HDMI 3 MTS ENCAUCHETADO": true,
+   "CABLE HDMI 5 MTS": true,
+   "CABLE HDMI 7 MTS": true,
+   "CABLE HDMI 10 MTS": true,
+   "CABLE HDMI 15 MTS": true,
+   "CABLE HDMI 25 MTS": true,
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "3 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "5 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "7 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true,
+   "EXTENDER USB RJ45 45 MTS": true
+  },
+  "chaqueta": {
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true
+  },
+  "305": {
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true,
+   "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": true
+  },
+  "lpsutpcat5ext": {
+   "CABLE UTP 305 MTS CATEGORÍA 5 EXTERIOR DOBLE CHAQUETA_ LPS": true
+  },
+  "enerline": {
+   "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": true
+  },
+  "lpsutpcat6ext": {
+   "CABLE UTP 305 MTS CATEGORÍA 6 EXTERIOR ENERLINE": true
+  },
+  "1ln5e": {
+   "CARRETE UTP CAT 5 INTERIOR 305MTRS 100% COBRE": true
+  },
+  "lps100": {
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true
+  },
+  "cobre305m": {
+   "CARRETE UTP CAT 6 EXTERIOR 305MTRS 100% COBRE": true
+  },
+  "red": {
+   "CABLE DE RED 2 MTS AMARILLO": true,
+   "CABLE DE RED 1 MTS AZUL": true,
+   "CABLE DE RED 2 MTS AZUL": true,
+   "CABLE DE RED 3 MTS AZUL": true,
+   "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": true
+  },
+  "amarillo": {
+   "CABLE DE RED 2 MTS AMARILLO": true
+  },
+  "yellow": {
+   "CABLE DE RED 2 MTS AMARILLO": true
+  },
+  "cord": {
+   "CABLE DE RED 2 MTS AMARILLO": true,
+   "CABLE DE RED 1 MTS AZUL": true,
+   "CABLE DE RED 2 MTS AZUL": true,
+   "CABLE DE RED 3 MTS AZUL": true
+  },
+  "patch": {
+   "CABLE DE RED 2 MTS AMARILLO": true,
+   "CABLE DE RED 1 MTS AZUL": true,
+   "CABLE DE RED 2 MTS AZUL": true,
+   "CABLE DE RED 3 MTS AZUL": true
+  },
+  "azul": {
+   "CABLE DE RED 1 MTS AZUL": true,
+   "CABLE DE RED 2 MTS AZUL": true,
+   "CABLE DE RED 3 MTS AZUL": true
+  },
+  "bluet": {
+   "CABLE DE RED 1 MTS AZUL": true,
+   "CABLE DE RED 2 MTS AZUL": true,
+   "CABLE DE RED 3 MTS AZUL": true
+  },
+  "200m": {
+   "CABLE NEOPRENO 2X20 200M": true
+  },
+  "2x20": {
+   "CABLE NEOPRENO 2X20 200M": true
+  },
+  "neopreno": {
+   "CABLE NEOPRENO 2X20 200M": true
+  },
+  "hdmi1": {
+   "CABLE HDMI 1_8 MTS": true
+  },
+  "hdmi3": {
+   "CABLE HDMI 3 MTS ENCAUCHETADO": true
+  },
+  "encauchetado": {
+   "CABLE HDMI 3 MTS ENCAUCHETADO": true
+  },
+  "hdmi5": {
+   "CABLE HDMI 5 MTS": true
+  },
+  "hdmi7": {
+   "CABLE HDMI 7 MTS": true
+  },
+  "hdmi10": {
+   "CABLE HDMI 10 MTS": true
+  },
+  "15": {
+   "CABLE HDMI 15 MTS": true,
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "CAJA DE PASO CON TORNILLO PLASTICO 15X15": true
+  },
+  "chp": {
+   "CABLE HDMI 15 MTS": true
+  },
+  "hdmi25": {
+   "CABLE HDMI 25 MTS": true
+  },
+  "25": {
+   "CABLE HDMI 25 MTS": true
+  },
+  "8m": {
+   "CABLE HDMI A MICRO HDMI 1_8M": true,
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "3m": {
+   "CABLE HDMI A MINI HDMI 3M": true
+  },
+  "filtro": {
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "3 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "5 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "7 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true,
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true
+  },
+  "vga1": {
+   "1_8 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "vga3m": {
+   "3 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "vga5m": {
+   "5 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "vga7m": {
+   "7 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "vga10m": {
+   "10 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "vga15m": {
+   "15 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "30": {
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "vga30m": {
+   "30 MTS CON DOBLE FILTRO PARA MONITOR": true
+  },
+  "5mm": {
+   "CABLE 2X1 2 RCA A PLUG JACK 3_5MM": true
+  },
+  "plug": {
+   "CABLE 2X1 2 RCA A PLUG JACK 3_5MM": true
+  },
+  "2x1": {
+   "CABLE 2X1 2 RCA A PLUG JACK 3_5MM": true
+  },
+  "rca": {
+   "CABLE 2X1 2 RCA A PLUG JACK 3_5MM": true,
+   "ADAPTADOR_CONVERTIDOR VGA A RCA": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true,
+   "CONECTOR BORNERA RCA MACHO 2 PINES": true,
+   "CONECTOR BORNERA BNC HEMBRA A RCA MACHO": true,
+   "CONVERTIDOR DE RCA A HDMI": true
+  },
+  "jack": {
+   "CABLE 2X1 2 RCA A PLUG JACK 3_5MM": true,
+   "JACK CAT 6 UTP BLUE WG": true
+  },
+  "5m": {
+   "CABLE OPTICO AUDIO 5M": true,
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true
+  },
+  "50": {
+   "CABLE USB_ USB 50 CM": true
+  },
+  "cableusb1": {
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true
+  },
+  "hembra": {
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true,
+   "CONECTOR BORNERA HEMBRA_MACHO": true,
+   "CONECTOR BORNERA BNC HEMBRA A RCA MACHO": true,
+   "CODO HDMI MACHO- HEMBRA": true,
+   "HDMI HEMBRA A HDMI HEMBRA 90 GRADOS": true,
+   "CLAVIJA AEREA 110V HEMBRA": true
+  },
+  "macho": {
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true,
+   "CONECTOR BORNERA HEMBRA_MACHO": true,
+   "CONECTOR BNC MACHO CON BORNERA": true,
+   "CONECTOR BORNERA RCA MACHO 2 PINES": true,
+   "CONECTOR BORNERA BNC HEMBRA A RCA MACHO": true,
+   "CODO HDMI MACHO- HEMBRA": true,
+   "CLAVIJA AEREA 110V MACHO": true
+  },
+  "extension": {
+   "CABLE EXTENSIÓN USB 1_5 MTS, MACHO _HEMBRA CON FILTRO": true,
+   "EXTENSIÓN USB DE 5_0M DESOXIGENADO": true,
+   "EXTENSIÓN USB DE 10M DESOXIGENADO": true
+  },
+  "cableusb5m": {
+   "EXTENSIÓN USB DE 5_0M DESOXIGENADO": true
+  },
+  "0m": {
+   "EXTENSIÓN USB DE 5_0M DESOXIGENADO": true
+  },
+  "desoxigenado": {
+   "EXTENSIÓN USB DE 5_0M DESOXIGENADO": true,
+   "EXTENSIÓN USB DE 10M DESOXIGENADO": true
+  },
+  "10m": {
+   "EXTENSIÓN USB DE 10M DESOXIGENADO": true
+  },
+  "cableusb10m": {
+   "EXTENSIÓN USB DE 10M DESOXIGENADO": true
+  },
+  "adaptador": {
+   "ADAPTADOR_CONVERTIDOR VGA A RCA": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true,
+   "CONVERTIR ADAPTADOR DE HDMI A VGA": true,
+   "ADAPTADOR MINI HDMI A HDMI": true
+  },
+  "convertidor": {
+   "ADAPTADOR_CONVERTIDOR VGA A RCA": true,
+   "CONVERTIDOR ADAPTADOR DE HDMI A RCA VIDEO FULL HD 1080P": true,
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true,
+   "CONVERTIDOR DE RCA A HDMI": true
+  },
+  "convertir": {
+   "CONVERTIR ADAPTADOR DE HDMI A VGA": true
+  },
+  "600va": {
+   "UPS INTERACTIVA FORZA 600VA_360W 120V": true
+  },
+  "601": {
+   "UPS INTERACTIVA FORZA 600VA_360W 120V": true
+  },
+  "360w": {
+   "UPS INTERACTIVA FORZA 600VA_360W 120V": true
+  },
+  "ups": {
+   "UPS INTERACTIVA FORZA 600VA_360W 120V": true
+  },
+  "bt": {
+   "UPS INTERACTIVA FORZA 600VA_360W 120V": true
+  },
+  "forza": {
+   "UPS INTERACTIVA FORZA 600VA_360W 120V": true,
+   "REGULADOR VOLTAJE FORZA 1000 VA": true
+  },
+  "120v": {
+   "UPS INTERACTIVA FORZA 600VA_360W 120V": true
+  },
+  "interactiva": {
+   "UPS INTERACTIVA FORZA 600VA_360W 120V": true
+  },
+  "conector": {
+   "CONECTOR BORNERA HEMBRA_MACHO": true,
+   "CONECTOR BNC MACHO CON BORNERA": true,
+   "CONECTOR BORNERA RCA MACHO 2 PINES": true,
+   "CONECTOR BORNERA BNC HEMBRA A RCA MACHO": true,
+   "CONECTOR RJ45 CAT 5": true,
+   "CONECTOR RJ45 CAT 6 DOBLE HOLE": true,
+   "CONECTOR RJ45 CATEGORIA 6 PLASTICO X UNIDAD": true,
+   "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": true
+  },
+  "bornera": {
+   "CONECTOR BORNERA HEMBRA_MACHO": true,
+   "CONECTOR BNC MACHO CON BORNERA": true,
+   "CONECTOR BORNERA RCA MACHO 2 PINES": true,
+   "CONECTOR BORNERA BNC HEMBRA A RCA MACHO": true
+  },
+  "borneradc": {
+   "CONECTOR BORNERA HEMBRA_MACHO": true
+  },
+  "bnc": {
+   "CONECTOR BNC MACHO CON BORNERA": true,
+   "CONECTOR BORNERA BNC HEMBRA A RCA MACHO": true
+  },
+  "bornerabnc": {
+   "CONECTOR BNC MACHO CON BORNERA": true
+  },
+  "pines": {
+   "CONECTOR BORNERA RCA MACHO 2 PINES": true
+  },
+  "bornerarca": {
+   "CONECTOR BORNERA RCA MACHO 2 PINES": true,
+   "CONECTOR BORNERA BNC HEMBRA A RCA MACHO": true
+  },
+  "rj45": {
+   "CONECTOR RJ45 CAT 5": true,
+   "CONECTOR RJ45 CAT 6 DOBLE HOLE": true,
+   "CONECTOR RJ45 CATEGORIA 6 PLASTICO X UNIDAD": true,
+   "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": true,
+   "PONCHADORA RJ45": true,
+   "CAPUCHONES RJ45 AZULES": true,
+   "EXTENDER USB RJ45 45 MTS": true
+  },
+  "rj45cat5": {
+   "CONECTOR RJ45 CAT 5": true
+  },
+  "hole": {
+   "CONECTOR RJ45 CAT 6 DOBLE HOLE": true
+  },
+  "rj45cat6": {
+   "CONECTOR RJ45 CATEGORIA 6 PLASTICO X UNIDAD": true
+  },
+  "unidad": {
+   "CONECTOR RJ45 CATEGORIA 6 PLASTICO X UNIDAD": true,
+   "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": true
+  },
+  "metalizado": {
+   "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": true
+  },
+  "aluminio": {
+   "CONECTOR RJ45 CAT 6 ALUMINIO METALIZADO, UNIDAD": true
+  },
+  "ponchadora": {
+   "PONCHADORA RJ45": true
+  },
+  "azules": {
+   "CAPUCHONES RJ45 AZULES": true
+  },
+  "capuchones": {
+   "CAPUCHONES RJ45 AZULES": true
+  },
+  "blue": {
+   "JACK CAT 6 UTP BLUE WG": true
+  },
+  "wg": {
+   "JACK CAT 6 UTP BLUE WG": true
+  },
+  "face": {
+   "FACE PLATE DOBLE": true,
+   "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": true
+  },
+  "plate": {
+   "FACE PLATE DOBLE": true,
+   "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": true
+  },
+  "lp3317v2wh": {
+   "FACE PLATE DOBLE": true
+  },
+  "lp3317h1wh": {
+   "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": true
+  },
+  "quest": {
+   "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": true
+  },
+  "sencillo": {
+   "FACE PLATE SENCILLO COLOR: BLANCO MARCA: QUEST": true
+  },
+  "activo": {
+   "EXTENDER HDMI ACTIVO 60M": true
+  },
+  "extender": {
+   "EXTENDER HDMI ACTIVO 60M": true,
+   "HDMI EXTENDER 30M PASIVO 1 LINEA": true,
+   "EXTENDER HDMI 30M 2 LINEA PASIVO": true,
+   "EXTENDER USB RJ45 45 MTS": true
+  },
+  "60m": {
+   "EXTENDER HDMI ACTIVO 60M": true
+  },
+  "pasivo": {
+   "HDMI EXTENDER 30M PASIVO 1 LINEA": true,
+   "EXTENDER HDMI 30M 2 LINEA PASIVO": true,
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true
+  },
+  "linea": {
+   "HDMI EXTENDER 30M PASIVO 1 LINEA": true,
+   "EXTENDER HDMI 30M 2 LINEA PASIVO": true
+  },
+  "extenderhdmi30m": {
+   "EXTENDER HDMI 30M 2 LINEA PASIVO": true
+  },
+  "45": {
+   "EXTENDER USB RJ45 45 MTS": true
+  },
+  "splitter": {
+   "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": true
+  },
+  "salidas": {
+   "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": true,
+   "DISTRIBUIDOR DE ENERGÍA 6 SALIDAS": true,
+   "DISTRIBUIDOR DE ENERGÍA 8 SALIDAS": true
+  },
+  "multiplicador": {
+   "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": true,
+   "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": true
+  },
+  "1x2": {
+   "MULTIPLICADOR SPLITTER HDMI 1X2 -1 ENTRADA 2 SALIDAS - 3D HD": true
+  },
+  "1x4": {
+   "MULTIPLICADOR SPLITTER HDMI 1X4 -1 ENTRADA 4 SALIDAS - 3D HD": true
+  },
+  "laptop": {
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true
+  },
+  "tv": {
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true
+  },
+  "hdmivga": {
+   "CABLE CONVERTIDOR DE HDMI A VGA PC LAPTOP TV MONITOR PASIVO": true
+  },
+  "hhc": {
+   "CODO HDMI MACHO- HEMBRA": true
+  },
+  "codo": {
+   "CODO HDMI MACHO- HEMBRA": true
+  },
+  "90": {
+   "CODO HDMI MACHO- HEMBRA": true,
+   "HDMI HEMBRA A HDMI HEMBRA 90 GRADOS": true
+  },
+  "hhh": {
+   "HDMI HEMBRA A HDMI HEMBRA 90 GRADOS": true
+  },
+  "grados": {
+   "HDMI HEMBRA A HDMI HEMBRA 90 GRADOS": true
+  },
+  "balun": {
+   "VIDEO BALUN HD": true,
+   "VIDEO BALUN HASTA 8MP": true
+  },
+  "promo": {
+   "VIDEO BALUN HD": true
+  },
+  "4k": {
+   "VIDEO BALUN HASTA 8MP": true
+  },
+  "8mp": {
+   "VIDEO BALUN HASTA 8MP": true
+  },
+  "distribuidor": {
+   "DISTRIBUIDOR DE ENERGÍA 6 SALIDAS": true,
+   "DISTRIBUIDOR DE ENERGÍA 8 SALIDAS": true
+  },
+  "energia": {
+   "DISTRIBUIDOR DE ENERGÍA 6 SALIDAS": true,
+   "DISTRIBUIDOR DE ENERGÍA 8 SALIDAS": true
+  },
+  "clavija": {
+   "CLAVIJA AEREA 110V MACHO": true,
+   "CLAVIJA AEREA 110V HEMBRA": true
+  },
+  "aerea": {
+   "CLAVIJA AEREA 110V MACHO": true,
+   "CLAVIJA AEREA 110V HEMBRA": true
+  },
+  "va": {
+   "REGULADOR VOLTAJE FORZA 1000 VA": true
+  },
+  "regulador": {
+   "REGULADOR VOLTAJE FORZA 1000 VA": true
+  },
+  "1001": {
+   "REGULADOR VOLTAJE FORZA 1000 VA": true
+  },
+  "fvr": {
+   "REGULADOR VOLTAJE FORZA 1000 VA": true
+  },
+  "voltaje": {
+   "REGULADOR VOLTAJE FORZA 1000 VA": true
+  },
+  "cam": {
+   "PROTECTOR LAMINA CAM BALA PEQUEÑA": true,
+   "PROTECTOR LAMINA CAM DOMO PEQUEÑA": true
+  },
+  "lamina": {
+   "PROTECTOR LAMINA CAM BALA PEQUEÑA": true,
+   "PROTECTOR LAMINA CAM DOMO PEQUEÑA": true
+  },
+  "protector": {
+   "PROTECTOR LAMINA CAM BALA PEQUEÑA": true,
+   "PROTECTOR LAMINA CAM DOMO PEQUEÑA": true,
+   "PROTECTOR VARILLA DOMO PEQUEÑO BLANCO_NEGRO": true
+  },
+  "pequena": {
+   "PROTECTOR LAMINA CAM BALA PEQUEÑA": true,
+   "PROTECTOR LAMINA CAM DOMO PEQUEÑA": true
+  },
+  "varilla": {
+   "PROTECTOR VARILLA DOMO PEQUEÑO BLANCO_NEGRO": true
+  },
+  "pequeno": {
+   "PROTECTOR VARILLA DOMO PEQUEÑO BLANCO_NEGRO": true
+  },
+  "boton": {
+   "BOTON DE PANICO": true
+  },
+  "panico": {
+   "BOTON DE PANICO": true
+  },
+  "pb67a": {
+   "BOTON DE PANICO": true
+  },
+  "12vdc": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "alcance": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "instalacion": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "70db": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "40m": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "carcasa": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "hap100": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "oculta": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "snr": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "pinhole": {
+   "MICROFONO TIPO PINHOLE PARA INSTALACIÓN OCULTA ALCANCE DE 5 - 40M^2 CARCASA PLASTICA SNR 70DB 12VDC": true
+  },
+  "brazo": {
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true
+  },
+  "tubo": {
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true
+  },
+  "expansivo": {
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true
+  },
+  "50cm": {
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true
+  },
+  "85cm": {
+   "BRAZO EXPANSIVO EN TUBO DE 50CM HASTA 85CM BLANCO": true
+  },
+  "15x15": {
+   "CAJA DE PASO CON TORNILLO PLASTICO 15X15": true
+  },
+  "paso": {
+   "CAJA DE PASO CON TORNILLO PLASTICO 15X15": true,
+   "CAJA DE PASO CON TORNILLO 10X10": true
+  },
+  "tornillo": {
+   "CAJA DE PASO CON TORNILLO PLASTICO 15X15": true,
+   "CAJA DE PASO CON TORNILLO 10X10": true
+  },
+  "10x10": {
+   "CAJA DE PASO CON TORNILLO 10X10": true
+  },
+  "cctv": {
+   "MICROFONO CCTV 12V": true
+  },
+  "jr8": {
+   "MOUSE INALAMBRICOS JR8 USB JERTECH": true
+  },
+  "jertech": {
+   "MOUSE INALAMBRICOS JR8 USB JERTECH": true
+  },
+  "inalambricos": {
+   "MOUSE INALAMBRICOS JR8 USB JERTECH": true
+  },
+  "mouse": {
+   "MOUSE INALAMBRICOS JR8 USB JERTECH": true,
+   "MOUSE INALAMBRICO GENIUS NEGRO NX-7000": true
+  },
+  "7000": {
+   "MOUSE INALAMBRICO GENIUS NEGRO NX-7000": true
+  },
+  "nx": {
+   "MOUSE INALAMBRICO GENIUS NEGRO NX-7000": true
+  },
+  "genius": {
+   "MOUSE INALAMBRICO GENIUS NEGRO NX-7000": true
+  }
+ }
+}

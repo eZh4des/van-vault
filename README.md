@@ -15,7 +15,7 @@ El proyecto está estructurado como una aplicación Android estándar y hace uso
 ## 📂 Estructura del Proyecto
 
 *   `app/`: Módulo principal de la aplicación Android.
-    *   `src/main/java/com/example/vanvault/`: Código fuente en Kotlin (ej. `MainActivity.kt`, carpeta `ui/`).
+    *   `src/main/java/com/vanvault/android/`: Código fuente en Kotlin (ej. `MainActivity.kt`, carpeta `ui/`).
     *   `src/main/res/`: Recursos de la aplicación (imágenes, strings, etc.).
     *   `build.gradle.kts`: Configuración de dependencias específicas del módulo de la app (Compose, Firebase, etc.).
 *   `build.gradle.kts` (raíz): Configuración a nivel de proyecto (plugins).
