@@ -1,4 +1,4 @@
-package com.example.vanvault
+package com.vanvault.android
 
 import org.junit.Test
 
