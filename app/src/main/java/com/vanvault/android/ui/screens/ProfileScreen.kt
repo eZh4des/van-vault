@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.screens
+package com.vanvault.android.ui.screens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -17,8 +17,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.vanvault.ui.components.NavItem
-import com.example.vanvault.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.components.NavItem
+import com.vanvault.android.ui.components.VanVaultBottomNavBar
 import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
