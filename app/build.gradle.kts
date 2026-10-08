@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.vanvault"
+    namespace = "com.vanvault.android"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.vanvault"
+        applicationId = "com.vanvault.android"
         minSdk = 29
         targetSdk = 37
         versionCode = 1
@@ -48,8 +48,15 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.compose.runtime.livedata)
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+    implementation(libs.mlkit.barcode.scanning)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.accompanist.permissions)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.screens
+package com.vanvault.android.ui.screens
 
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
@@ -23,7 +23,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.vanvault.R
+import com.vanvault.android.ui.components.VanVaultDialog
+import com.vanvault.android.R
 
 @Composable
 fun LoginScreen(
@@ -36,12 +37,15 @@ fun LoginScreen(
     var passwordVisible by remember { mutableStateOf(false) }
     var isLoading by remember { mutableStateOf(false) }
     
+    var showErrorDialog by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf("") }
+    
     val context = LocalContext.current
     val auth = FirebaseAuth.getInstance()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color.White
+        color = MaterialTheme.colorScheme.surface
     ) {
         Column(
             modifier = Modifier
@@ -55,13 +59,13 @@ fun LoginScreen(
             Box(
                 modifier = Modifier
                     .size(64.dp)
-                    .background(Color(0xFFDC2626), RoundedCornerShape(16.dp)),
+                    .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(16.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_cube),
                     contentDescription = "VanVault Logo",
-                    tint = Color.White,
+                    tint = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier.size(32.dp)
                 )
             }
@@ -72,7 +76,7 @@ fun LoginScreen(
                 text = "VanVault",
                 style = MaterialTheme.typography.headlineMedium.copy(
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -83,7 +87,7 @@ fun LoginScreen(
                 Text(
                     text = "Correo electrónico",
                     style = MaterialTheme.typography.bodySmall.copy(
-                        color = Color.Gray,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Medium
                     )
                 )
@@ -92,15 +96,15 @@ fun LoginScreen(
                     value = email,
                     onValueChange = { email = it },
                     modifier = Modifier.fillMaxWidth(),
-                    placeholder = { Text("correo@ejemplo.com", color = Color.LightGray) },
+                    placeholder = { Text("correo@ejemplo.com", color = MaterialTheme.colorScheme.onSurfaceVariant) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = Color.Black,
-                        unfocusedTextColor = Color.Black,
-                        unfocusedBorderColor = Color(0xFFE4E4E7),
-                        focusedBorderColor = Color(0xFFDC2626),
-                        cursorColor = Color(0xFFDC2626)
+                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        cursorColor = MaterialTheme.colorScheme.primary
                     ),
                     singleLine = true
                 )
@@ -113,7 +117,7 @@ fun LoginScreen(
                 Text(
                     text = "Contraseña",
                     style = MaterialTheme.typography.bodySmall.copy(
-                        color = Color.Gray,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Medium
                     )
                 )
@@ -122,22 +126,22 @@ fun LoginScreen(
                     value = password,
                     onValueChange = { password = it },
                     modifier = Modifier.fillMaxWidth(),
-                    placeholder = { Text("••••••••", color = Color.LightGray) },
+                    placeholder = { Text("••••••••", color = MaterialTheme.colorScheme.onSurfaceVariant) },
                     visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                     trailingIcon = {
                         val image = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff
                         IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                            Icon(imageVector = image, contentDescription = null, tint = Color.Gray)
+                            Icon(imageVector = image, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                     },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = Color.Black,
-                        unfocusedTextColor = Color.Black,
-                        unfocusedBorderColor = Color(0xFFE4E4E7),
-                        focusedBorderColor = Color(0xFFDC2626),
-                        cursorColor = Color(0xFFDC2626)
+                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        cursorColor = MaterialTheme.colorScheme.primary
                     ),
                     singleLine = true
                 )
@@ -148,7 +152,7 @@ fun LoginScreen(
                 TextButton(onClick = onForgotPasswordClick) {
                     Text(
                         text = "¿Olvidaste tu contraseña?",
-                        color = Color(0xFFDC2626),
+                        color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
@@ -173,11 +177,13 @@ fun LoginScreen(
                                         auth.signOut()
                                     }
                                 } else {
-                                    Toast.makeText(context, "Error: ${task.exception?.localizedMessage}", Toast.LENGTH_LONG).show()
+                                    errorMessage = "Error al iniciar sesión.\n\nVerifica que el correo y la contraseña sean correctos, o que la cuenta se encuentre registrada."
+                                    showErrorDialog = true
                                 }
                             }
                     } else {
-                        Toast.makeText(context, "Llena todos los campos", Toast.LENGTH_SHORT).show()
+                        errorMessage = "Por favor, llena todos los campos para poder iniciar sesión."
+                        showErrorDialog = true
                     }
                 },
                 modifier = Modifier
@@ -185,16 +191,16 @@ fun LoginScreen(
                     .height(50.dp),
                 shape = RoundedCornerShape(25.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFDC2626)
+                    containerColor = MaterialTheme.colorScheme.primary
                 ),
                 enabled = !isLoading
             ) {
                 if (isLoading) {
-                    CircularProgressIndicator(modifier = Modifier.size(24.dp), color = Color.White)
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.surface)
                 } else {
                     Text(
                         text = "Iniciar sesión",
-                        color = Color.White,
+                        color = MaterialTheme.colorScheme.surface,
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
@@ -210,13 +216,13 @@ fun LoginScreen(
             ) {
                 Text(
                     text = "¿No tienes una cuenta?",
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray)
+                    style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
                 )
                 TextButton(onClick = onRegisterClick) {
                     Text(
                         text = "Regístrate",
                         style = MaterialTheme.typography.bodyMedium.copy(
-                            color = Color(0xFFDC2626),
+                            color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold
                         )
                     )
@@ -224,6 +230,13 @@ fun LoginScreen(
             }
         }
     }
+
+    VanVaultDialog(
+        showDialog = showErrorDialog,
+        title = "Error de inicio de sesión",
+        message = errorMessage,
+        onDismiss = { showErrorDialog = false }
+    )
 }
 
 @Preview(showBackground = true)

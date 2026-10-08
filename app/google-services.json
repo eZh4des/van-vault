@@ -10,10 +10,15 @@
       "client_info": {
         "mobilesdk_app_id": "1:317119723442:android:e29f4f5f83b028108496ab",
         "android_client_info": {
-          "package_name": "com.example.vanvault"
+          "package_name": "com.vanvault.android"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "317119723442-vsuf7cic0d01269i725qgupftmn39rs0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBNC1JK44J11fHwB-6ofMWmEnsugQkaCNg"
@@ -21,7 +26,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317119723442-vsuf7cic0d01269i725qgupftmn39rs0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317119723442:android:33178a16dc01f6ee8496ab",
+        "android_client_info": {
+          "package_name": "com.vanvault.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317119723442-vsuf7cic0d01269i725qgupftmn39rs0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNC1JK44J11fHwB-6ofMWmEnsugQkaCNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317119723442-vsuf7cic0d01269i725qgupftmn39rs0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
