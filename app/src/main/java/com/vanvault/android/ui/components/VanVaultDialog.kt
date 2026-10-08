@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.components
+package com.vanvault.android.ui.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog

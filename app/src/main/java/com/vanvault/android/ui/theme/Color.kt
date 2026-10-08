@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.theme
+package com.vanvault.android.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

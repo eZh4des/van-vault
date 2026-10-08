@@ -1,4 +1,4 @@
-package com.example.vanvault.ui.theme
+package com.vanvault.android.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = PrimaryRedDark,
+    primary = PrimaryRed, // Antes era PrimaryRedDark (0xFFEF4444)
     background = BackgroundDark,
     surface = SurfaceDark,
     onPrimary = Color.White,
@@ -21,7 +21,7 @@ private val DarkColorScheme = darkColorScheme(
     onSurface = TextPrimaryDark,
     onSurfaceVariant = TextSecondaryDark,
     outline = OutlineDark,
-    error = PrimaryRedDark
+    error = PrimaryRed // Antes era PrimaryRedDark
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -39,7 +39,6 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun VanVaultTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // IMPORTANTE: Desactivar dynamicColor para que se respeten nuestros colores siempre
     dynamicColor: Boolean = false, 
     content: @Composable () -> Unit
 ) {
