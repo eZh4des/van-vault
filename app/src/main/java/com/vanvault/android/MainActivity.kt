@@ -5,21 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.*
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.vanvault.android.data.preferences.SettingsPreferences
 import com.vanvault.android.ui.components.NavItem
-import com.vanvault.android.ui.screens.AddProductScreen
-import com.vanvault.android.ui.screens.EditProductScreen
-import com.vanvault.android.ui.screens.ForgotPasswordScreen
-import com.vanvault.android.ui.screens.HomeScreen
-import com.vanvault.android.ui.screens.InventoryScreen
-import com.vanvault.android.ui.screens.LoginScreen
-import com.vanvault.android.ui.screens.ProfileScreen
-import com.vanvault.android.ui.screens.AccountDetailsScreen
-import com.vanvault.android.ui.screens.RegisterScreen
-import com.vanvault.android.ui.screens.ScannerScreen
+import com.vanvault.android.ui.screens.*
 import com.vanvault.android.ui.theme.VanVaultTheme
+import com.vanvault.android.ui.viewmodel.SettingsViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : ComponentActivity() {
@@ -32,7 +26,11 @@ class MainActivity : ComponentActivity() {
                 val auth = FirebaseAuth.getInstance()
                 val currentUser = auth.currentUser
 
-                // setuser app location
+                val settingsPreferences = remember { SettingsPreferences(this) }
+                val settingsViewModel: SettingsViewModel = viewModel(
+                    factory = SettingsViewModel.Factory(settingsPreferences)
+                )
+
                 val startDestination = if (currentUser != null && currentUser.isEmailVerified) {
                     "home"
                 } else {
@@ -112,11 +110,44 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate("login") {
                                     popUpTo(0) { inclusive = true }
                                 }
-                            }
+                            },
+                            onAppearanceClick = { navController.navigate("appearance") },
+                            onNotificationsClick = { navController.navigate("notifications") },
+                            onLanguageClick = { navController.navigate("language") },
+                            onHelpClick = { navController.navigate("help") }
                         )
                     }
                     composable("account_details") {
                         AccountDetailsScreen(
+                            onBackClick = { navController.navigateUp() }
+                        )
+                    }
+                    composable("appearance") {
+                        val settings by settingsViewModel.settings.collectAsState()
+                        AppearanceScreen(
+                            isDarkMode = settings.isDarkMode,
+                            onDarkModeChange = { settingsViewModel.setDarkMode(it) },
+                            onBackClick = { navController.navigateUp() }
+                        )
+                    }
+                    composable("notifications") {
+                        val settings by settingsViewModel.settings.collectAsState()
+                        NotificationsScreen(
+                            isNotificationsEnabled = settings.isNotificationsEnabled,
+                            onNotificationsChange = { settingsViewModel.setNotificationsEnabled(it) },
+                            onBackClick = { navController.navigateUp() }
+                        )
+                    }
+                    composable("language") {
+                        val settings by settingsViewModel.settings.collectAsState()
+                        LanguageScreen(
+                            currentLanguage = settings.language,
+                            onLanguageChange = { settingsViewModel.setLanguage(it) },
+                            onBackClick = { navController.navigateUp() }
+                        )
+                    }
+                    composable("help") {
+                        HelpScreen(
                             onBackClick = { navController.navigateUp() }
                         )
                     }

@@ -26,7 +26,11 @@ import com.google.firebase.auth.FirebaseAuth
 fun ProfileScreen(
     onNavigate: (NavItem) -> Unit,
     onAccountClick: () -> Unit,
-    onLogoutClick: () -> Unit
+    onLogoutClick: () -> Unit,
+    onAppearanceClick: () -> Unit,
+    onNotificationsClick: () -> Unit,
+    onLanguageClick: () -> Unit,
+    onHelpClick: () -> Unit
 ) {
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
@@ -59,10 +63,10 @@ fun ProfileScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SettingsOption(icon = Icons.Outlined.Person, title = "Tu cuenta", onClick = onAccountClick)
-            SettingsOption(icon = Icons.Outlined.Palette, title = "Apariencia")
-            SettingsOption(icon = Icons.Outlined.Notifications, title = "Notificaciones")
-            SettingsOption(icon = Icons.Outlined.Language, title = "Idioma")
-            SettingsOption(icon = Icons.AutoMirrored.Outlined.HelpOutline, title = "Ayuda")
+            SettingsOption(icon = Icons.Outlined.Palette, title = "Apariencia", onClick = onAppearanceClick)
+            SettingsOption(icon = Icons.Outlined.Notifications, title = "Notificaciones", onClick = onNotificationsClick)
+            SettingsOption(icon = Icons.Outlined.Language, title = "Idioma", onClick = onLanguageClick)
+            SettingsOption(icon = Icons.AutoMirrored.Outlined.HelpOutline, title = "Ayuda", onClick = onHelpClick)
             
             Spacer(modifier = Modifier.weight(1f))
             
