@@ -276,7 +276,7 @@ private fun UserCard(user: AdminUser) {
                 contentColor = MaterialTheme.colorScheme.onSurface
             ) {
                 Text(
-                    text = user.role.label,
+                    text = user.role.displayName,
                     style = MaterialTheme.typography.labelSmall,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
