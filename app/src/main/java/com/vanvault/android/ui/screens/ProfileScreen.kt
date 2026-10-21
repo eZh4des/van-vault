@@ -17,9 +17,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.ui.components.ConfirmDeleteDialog
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.viewmodel.ProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,9 +33,19 @@ fun ProfileScreen(
     onAppearanceClick: () -> Unit,
     onNotificationsClick: () -> Unit,
     onLanguageClick: () -> Unit,
-    onHelpClick: () -> Unit
+    onHelpClick: () -> Unit,
+    viewModel: ProfileViewModel = hiltViewModel()
 ) {
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
     var showLogoutDialog by remember { mutableStateOf(false) }
+
+    // Cuando el VM reporta logout completado, navegamos a login.
+    LaunchedEffect(state.loggedOut) {
+        if (state.loggedOut) {
+            onLogoutClick()
+            viewModel.onLogoutHandled()
+        }
+    }
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
@@ -91,8 +104,8 @@ fun ProfileScreen(
             itemName = null,
             confirmLabel = "Cerrar sesión",
             onConfirm = {
-                com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().signOut()
-                onLogoutClick()
+                viewModel.onLogout()
+                showLogoutDialog = false
             },
             onDismiss = { showLogoutDialog = false }
         )
