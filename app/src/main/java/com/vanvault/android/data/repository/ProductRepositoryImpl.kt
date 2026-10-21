@@ -96,6 +96,7 @@ class ProductRepositoryImpl @Inject constructor(
             "unitPrice" to (product.unitPrice.cents / 100.0)
         )
         database.getReference(INVENTORY_PATH).child(key).setValue(dto).await()
+        writeIndex(product, key)
     }
 
     override suspend fun update(product: Product): Result<Unit> = runCatching {
@@ -131,6 +132,26 @@ class ProductRepositoryImpl @Inject constructor(
     private suspend fun readProduct(key: String): Product? {
         val snap = database.getReference(INVENTORY_PATH).child(key).fetch()
         return snap.toDomainOrNull()
+    }
+
+    /**
+     * Escribe (o sobrescribe) las entradas del índice invertido para este producto.
+     *
+     * Crea `searchIndex/{token}/{productKey}: true` para CADA token del nombre + modelo.
+     * Esto permite que `search(query)` haga `orderByKey().startAt(token)` y
+     * resuelva en O(log n) en lugar de O(n).
+     *
+     * Si [ModelOrBarcode] cambia, los tokens viejos del modelo quedan como basura
+     * (mitigado en M2 con `update()`). Por ahora aceptable.
+     */
+    private suspend fun writeIndex(product: Product, key: String) {
+        val tokens = tokenize(product.name) + tokenize(product.modelOrBarcode)
+        if (tokens.isEmpty()) return
+        val updates = mutableMapOf<String, Any>()
+        for (token in tokens) {
+            updates["$INDEX_PATH/$token/$key"] = true
+        }
+        database.getReference().updateChildren(updates).await()
     }
 
     private fun DataSnapshot.toDomainOrNull(): Product? {
