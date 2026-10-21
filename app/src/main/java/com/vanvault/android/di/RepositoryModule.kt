@@ -24,4 +24,10 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindProductRepository(impl: ProductRepositoryImpl): ProductRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindUserRepository(
+        impl: com.vanvault.android.data.repository.UserRepositoryImpl
+    ): com.vanvault.android.domain.repository.UserRepository
 }

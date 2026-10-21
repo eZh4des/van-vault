@@ -159,7 +159,7 @@ class MainActivity : ComponentActivity() {
                                     else -> {}
                                 }
                             },
-                            onAccountClick = { navController.navigate("account_details") },
+                            onAccountClick = { navController.navigate("my_account") },
                             onLogoutClick = {
                                 navController.navigate("login") {
                                     popUpTo(0) { inclusive = true }
@@ -174,6 +174,19 @@ class MainActivity : ComponentActivity() {
                     composable("account_details") {
                         AccountDetailsScreen(
                             onBackClick = { navController.navigateUp() }
+                        )
+                    }
+                    composable("my_account") {
+                        MyAccountScreen(
+                            onBackClick = { navController.navigateUp() },
+                            onLogout = {
+                                navController.navigate("login") {
+                                    popUpTo(0) { inclusive = true }
+                                }
+                            },
+                            onChangePassword = {
+                                navController.navigate("account_details")
+                            }
                         )
                     }
                     composable("appearance") {

@@ -1,0 +1,122 @@
+package com.vanvault.android.data.repository
+
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.vanvault.android.domain.model.UserProfile
+import com.vanvault.android.domain.repository.UserRepository
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
+import javax.inject.Singleton
+
+/**
+ * Implementación Firebase de [UserRepository].
+ *
+ * Combina dos fuentes:
+ *  - [FirebaseAuth.currentUser] (uid, email, displayName)
+ *  - /users/{uid} en RTDB (phone)
+ *
+ * Si no hay sesión, `observeCurrentProfile()` emite `null`.
+ *
+ * DI: Hilt provee [FirebaseAuth] y [FirebaseDatabase] desde FirebaseModule.
+ */
+@Singleton
+class UserRepositoryImpl @Inject constructor(
+    private val auth: FirebaseAuth,
+    private val database: FirebaseDatabase
+) : UserRepository {
+
+    override fun observeCurrentProfile(): Flow<UserProfile?> = channelFlow {
+        // Track active valueListeners for cleanup (per uid).
+        // closure mutable hace que pueda agregar listeners desde distintos callbacks.
+        val activeProfileListeners = mutableMapOf<String, ValueEventListener>()
+
+        val authListener = AuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            if (user == null) {
+                trySend(null)
+            } else {
+                val profileRef = database.getReference(USER_PATH).child(user.uid)
+                // Si ya hay listener activo para este uid, no adjuntar otro
+                if (activeProfileListeners.containsKey(user.uid)) return@AuthStateListener
+
+                val valueListener = profileRef.addValueEventListener(
+                    object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            val phone = snapshot.child("phone").getValue(String::class.java)
+                            trySend(snapshotToProfile(user, phone))
+                        }
+                        override fun onCancelled(error: com.google.firebase.database.DatabaseError) {
+                            trySend(snapshotToProfile(user, null))
+                        }
+                    }
+                )
+                activeProfileListeners[user.uid] = valueListener
+                // Emisión inicial sin esperar RTDB
+                trySend(snapshotToProfile(user, null))
+            }
+        }
+        auth.addAuthStateListener(authListener)
+        awaitClose {
+            auth.removeAuthStateListener(authListener)
+            // Limpiar listeners de RTDB
+            activeProfileListeners.forEach { (uid, listener) ->
+                database.getReference(USER_PATH).child(uid).removeEventListener(listener)
+            }
+            activeProfileListeners.clear()
+        }
+    }
+
+    override suspend fun getCurrentProfile(): UserProfile? {
+        val user = auth.currentUser ?: return null
+        return try {
+            val snap = database.getReference(USER_PATH).child(user.uid).get().await()
+            val phone = snap.child("phone").getValue(String::class.java)
+            snapshotToProfile(user, phone)
+        } catch (e: Exception) {
+            snapshotToProfile(user, null)
+        }
+    }
+
+    override suspend fun updateProfile(displayName: String, phone: String?): Result<Unit> = runCatching {
+        val user = auth.currentUser ?: throw IllegalStateException("No hay sesión activa")
+        val updates = mapOf(
+            "name" to displayName,
+            "phone" to (phone ?: "")
+        )
+        database.getReference(USER_PATH).child(user.uid).updateChildren(updates).await()
+        // Sincronizar displayName también en FirebaseAuth
+        val profileUpdates = com.google.firebase.auth.UserProfileChangeRequest.Builder()
+            .setDisplayName(displayName)
+            .build()
+        user.updateProfile(profileUpdates).await()
+    }
+
+    override suspend fun signOut(): Result<Unit> = runCatching {
+        auth.signOut()
+    }
+
+    private fun snapshotToProfile(
+        user: com.google.firebase.auth.FirebaseUser,
+        phone: String?
+    ): UserProfile {
+        val name = user.displayName ?: user.email?.substringBefore("@") ?: "Usuario"
+        return UserProfile(
+            uid = user.uid,
+            displayName = name,
+            email = user.email ?: "",
+            phone = phone?.takeIf { it.isNotBlank() },
+            isEmailVerified = user.isEmailVerified
+        )
+    }
+
+    companion object {
+        const val USER_PATH = "users"
+    }
+}
