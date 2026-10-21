@@ -10,12 +10,21 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.vanvault.android.domain.model.Language
 import com.vanvault.android.domain.model.UserSettings
 import com.vanvault.android.domain.repository.SettingsRepository
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-class SettingsPreferences(private val context: Context) : SettingsRepository {
+class SettingsPreferences @Inject constructor(
+    @dagger.hilt.android.qualifiers.ApplicationContext private val context: Context
+) : SettingsRepository {
 
     private object PreferencesKeys {
         val DARK_MODE = booleanPreferencesKey("dark_mode")
@@ -50,4 +59,15 @@ class SettingsPreferences(private val context: Context) : SettingsRepository {
             preferences[PreferencesKeys.LANGUAGE] = language.code
         }
     }
+}
+
+/**
+ * Binding module: SettingsPreferences ↔ SettingsRepository.
+ */
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class SettingsModule {
+    @Binds
+    @Singleton
+    abstract fun bindSettingsRepository(impl: SettingsPreferences): SettingsRepository
 }

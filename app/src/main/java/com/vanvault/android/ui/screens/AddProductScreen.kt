@@ -1,6 +1,5 @@
 package com.vanvault.android.ui.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -12,31 +11,42 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.vanvault.android.data.models.Product
-import com.google.firebase.database.FirebaseDatabase
+import com.vanvault.android.ui.viewmodel.AddProductViewModel
 
+/**
+ * Pantalla "Agregar Producto" refactorizada con UDF + ViewModel.
+ *
+ * **Cambios (T01)**:
+ *  - NO importa `FirebaseDatabase`, `Product`, `Repository` directamente.
+ *  - Estado de formulario vive en [AddProductViewModel].
+ *  - La validación se ejecuta en el ViewModel, no en el Composable.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddProductScreen(
     navController: NavController,
     onBackClick: () -> Unit,
-    onScannerClick: () -> Unit
+    onScannerClick: () -> Unit,
+    viewModel: AddProductViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
-    var name by remember { mutableStateOf("") }
-    var modelOrBarcode by remember { mutableStateOf("") }
-    var quantity by remember { mutableStateOf("") }
-    var unitPrice by remember { mutableStateOf("") }
-    var isLoading by remember { mutableStateOf(false) }
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
 
-    // Observar el resultado del escáner en tiempo real
+    // Escuchar efectos one-shot (Saved → navegar atrás)
+    LaunchedEffect(viewModel) {
+        viewModel.effects.collect { effect ->
+            if (effect is AddProductViewModel.AddProductEffect.Saved) {
+                onBackClick()
+            }
+        }
+    }
+
+    // Observar el barcode que viene del ScannerScreen (sin acoplar a NavController desde VM)
     val scannedBarcode = navController.currentBackStackEntry
         ?.savedStateHandle
         ?.getLiveData<String>("scanned_barcode")
@@ -44,8 +54,7 @@ fun AddProductScreen(
 
     LaunchedEffect(scannedBarcode?.value) {
         scannedBarcode?.value?.let { barcode ->
-            modelOrBarcode = barcode
-            // Limpiamos el valor para no re-procesarlo
+            viewModel.onBarcodeScanned(barcode)
             navController.currentBackStackEntry?.savedStateHandle?.remove<String>("scanned_barcode")
         }
     }
@@ -54,12 +63,13 @@ fun AddProductScreen(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
-                title = {
-                    Text("Agregar Producto", fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
-                },
+                title = { Text("Agregar Producto", style = MaterialTheme.typography.titleLarge) },
                 navigationIcon = {
-                    IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Regresar")
+                    IconButton(
+                        onClick = onBackClick,
+                        modifier = Modifier.size(48.dp) // WCAG: ≥48dp touch target
+                    ) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver")
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
@@ -70,78 +80,104 @@ fun AddProductScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(24.dp),
+                .padding(horizontal = 24.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // Nombre del producto
             OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
+                value = state.name,
+                onValueChange = viewModel::onNameChange,
                 label = { Text("Nombre del producto") },
                 modifier = Modifier.fillMaxWidth(),
+                isError = state.nameError != null,
+                supportingText = state.nameError?.let { { Text(it, color = MaterialTheme.colorScheme.error) } },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                 shape = RoundedCornerShape(12.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFFDC2626),
-                    focusedLabelColor = Color(0xFFDC2626)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    errorBorderColor = MaterialTheme.colorScheme.error,
+                    errorLabelColor = MaterialTheme.colorScheme.error
                 )
             )
 
-            // Modelo / Código de barras
+            // Modelo / Código de barras + scanner
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 OutlinedTextField(
-                    value = modelOrBarcode,
-                    onValueChange = { modelOrBarcode = it },
+                    value = state.modelOrBarcode,
+                    onValueChange = viewModel::onModelChange,
                     label = { Text("Modelo / EAN-13") },
                     modifier = Modifier.weight(1f),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                     shape = RoundedCornerShape(12.dp),
+                    singleLine = true,
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color(0xFFDC2626),
-                        focusedLabelColor = Color(0xFFDC2626)
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        focusedLabelColor = MaterialTheme.colorScheme.primary
                     )
                 )
 
                 FilledIconButton(
                     onClick = onScannerClick,
-                    modifier = Modifier
-                        .size(56.dp)
-                        .padding(top = 6.dp),
+                    modifier = Modifier.size(56.dp),
                     shape = RoundedCornerShape(12.dp),
-                    colors = IconButtonDefaults.filledIconButtonColors(containerColor = Color(0xFFFEE2E2), contentColor = Color(0xFFDC2626))
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
                 ) {
-                    Icon(Icons.Default.QrCodeScanner, contentDescription = "Escanear", modifier = Modifier.size(28.dp))
+                    Icon(
+                        Icons.Default.QrCodeScanner,
+                        contentDescription = "Escanear código de barras",
+                        modifier = Modifier.size(28.dp)
+                    )
                 }
             }
 
             // Cantidad
             OutlinedTextField(
-                value = quantity,
-                onValueChange = { quantity = it },
+                value = state.quantity,
+                onValueChange = viewModel::onQuantityChange,
                 label = { Text("Cantidad en inventario") },
                 modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                ),
+                isError = state.quantityError != null,
+                supportingText = state.quantityError?.let { { Text(it, color = MaterialTheme.colorScheme.error) } },
+                singleLine = true,
                 shape = RoundedCornerShape(12.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFFDC2626),
-                    focusedLabelColor = Color(0xFFDC2626)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    errorBorderColor = MaterialTheme.colorScheme.error
                 )
             )
 
             // Precio Unitario
             OutlinedTextField(
-                value = unitPrice,
-                onValueChange = { unitPrice = it },
-                label = { Text("Precio unitario (COP, sin puntos ni comas)") },
+                value = state.unitPrice,
+                onValueChange = viewModel::onPriceChange,
+                label = { Text("Precio unitario (COP)") },
                 modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Decimal,
+                    imeAction = ImeAction.Done
+                ),
+                isError = state.priceError != null,
+                supportingText = state.priceError?.let { { Text(it, color = MaterialTheme.colorScheme.error) } },
+                singleLine = true,
                 shape = RoundedCornerShape(12.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFFDC2626),
-                    focusedLabelColor = Color(0xFFDC2626)
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    errorBorderColor = MaterialTheme.colorScheme.error
                 )
             )
 
@@ -149,49 +185,30 @@ fun AddProductScreen(
 
             // Botón Guardar
             Button(
-                onClick = {
-                    if (name.isBlank() || modelOrBarcode.isBlank() || quantity.isBlank() || unitPrice.isBlank()) {
-                        Toast.makeText(context, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
-                        return@Button
-                    }
-
-                    isLoading = true
-                    
-                    // Referencia a la tabla de inventario
-                    val dbRef = FirebaseDatabase.getInstance().getReference("inventory")
-                    
-                    // Generamos un ID de Firebase (Push ID) que es corto y cronológico
-                    val productId = dbRef.push().key ?: return@Button
-                    
-                    val product = Product(
-                        id = productId,
-                        name = name.trim(),
-                        modelOrBarcode = modelOrBarcode.trim(),
-                        quantity = quantity.toIntOrNull() ?: 0,
-                        unitPrice = unitPrice.toDoubleOrNull() ?: 0.0
-                    )
-
-                    dbRef.child(productId).setValue(product).addOnCompleteListener { task ->
-                        isLoading = false
-                        if (task.isSuccessful) {
-                            Toast.makeText(context, "Producto guardado", Toast.LENGTH_SHORT).show()
-                            onBackClick() // Devolver a la pantalla anterior
-                        } else {
-                            Toast.makeText(context, "Error al guardar el producto", Toast.LENGTH_LONG).show()
-                        }
-                    }
-                },
+                onClick = { viewModel.onSave() },
+                enabled = state.canSubmit,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
                 shape = RoundedCornerShape(28.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDC2626)),
-                enabled = !isLoading
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary,
+                    disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                    disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                )
             ) {
-                if (isLoading) {
-                    CircularProgressIndicator(color = MaterialTheme.colorScheme.background, modifier = Modifier.size(24.dp))
+                if (state.isSaving) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(24.dp),
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        strokeWidth = 2.dp
+                    )
                 } else {
-                    Text("Guardar Producto", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.background)
+                    Text(
+                        "Guardar Producto",
+                        style = MaterialTheme.typography.labelLarge
+                    )
                 }
             }
         }

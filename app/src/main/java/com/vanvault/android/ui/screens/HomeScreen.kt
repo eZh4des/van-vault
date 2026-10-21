@@ -9,14 +9,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     onLogoutClick: () -> Unit
 ) {
-    val user = FirebaseAuth.getInstance().currentUser
+    val user = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().currentUser
 
     Scaffold(
         topBar = {
@@ -24,7 +23,7 @@ fun HomeScreen(
                 title = { Text("VanVault Inicio") },
                 actions = {
                     TextButton(onClick = {
-                        FirebaseAuth.getInstance().signOut()
+                        com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().signOut()
                         onLogoutClick()
                     }) {
                         Text("Cerrar Sesión", color = Color(0xFFDC2626))

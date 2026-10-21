@@ -1,0 +1,300 @@
+Architecture & Design Patterns Review
+=====================================
+
+Executive Summary
+-----------------
+
+The app follows a **two-layer architecture** (UI + Data) with business logic scattered between them. Google recommends a **three-layer architecture** (UI -> Domain -> Data), which this app is missing entirely. Significant refactoring is needed to align with modern Android architecture best practices.
+
+
+1. Missing Domain Layer (Critical)
+----------------------------------
+
+**Current State**: Business logic lives in `ProductRepository` and directly inside Composables.
+
+**Recommended Structure**:
+
+  app/src/main/java/com/vanvault/android/
+  ├── ui/                    # UI Layer
+  │   ├── screens/
+  │   ├── components/
+  │   └── theme/
+  ├── domain/                # Domain Layer (MISSING)
+  │   ├── model/            # Domain entities
+  │   ├── repository/       # Repository interfaces
+  │   └── usecase/          # Use cases (e.g., SearchProductsUseCase)
+  └── data/                 # Data Layer
+      ├── repository/       # Repository implementations
+      ├── remote/           # Firebase, API clients
+      └── model/            # DTOs, data models
+
+### Recommended Changes:
+
+**1. Create domain entities** -- move `Product` to `domain/model/Product.kt`:
+
+```kotlin
+// domain/model/Product.kt
+data class Product(
+    val id: String,
+    val name: String,
+    val modelOrBarcode: String,
+    val quantity: Int,
+    val unitPrice: Double
+) {
+    val stockStatus: StockStatus
+        get() = when {
+            quantity <= 0 -> StockStatus.OUT_OF_STOCK
+            quantity < 5 -> StockStatus.LOW_STOCK
+            else -> StockStatus.AVAILABLE
+        }
+}
+
+enum class StockStatus { AVAILABLE, LOW_STOCK, OUT_OF_STOCK }
+```
+
+**2. Create repository interfaces in domain layer**:
+
+```kotlin
+// domain/repository/ProductRepository.kt
+interface ProductRepository {
+    suspend fun search(query: String, limit: Int = 30): ProductSearchResult
+    suspend fun findById(id: String): ProductResult
+    suspend fun save(product: Product): Result<Unit>
+    suspend fun update(product: Product): Result<Unit>
+    suspend fun delete(id: String): Result<Unit>
+}
+```
+
+**3. Create use cases**:
+
+```kotlin
+// domain/usecase/SearchProductsUseCase.kt
+class SearchProductsUseCase(private val repository: ProductRepository) {
+    suspend operator fun invoke(query: String): ProductSearchResult {
+        if (query.isBlank()) return ProductSearchResult.Error("Query cannot be empty")
+        return repository.search(query)
+    }
+}
+```
+
+
+2. UI Layer Issues
+------------------
+
+### 2.1 No ViewModels (High Priority)
+
+**Problem**: All screens use `remember { mutableStateOf() }` for state management. This violates the unidirectional data flow principle and mixes UI state with business logic.
+
+**Evidence** (`InventoryScreen.kt:44-62`):
+
+```kotlin
+var allProducts by remember { mutableStateOf<List<Product>>(emptyList()) }
+var searchResults by remember { mutableStateOf<List<Product>>(emptyList()) }
+var isLoading by remember { mutableStateOf(true) }
+val repository = remember { ProductRepository() }  // Direct instantiation
+```
+
+**Recommendation**: Introduce ViewModels for each screen:
+
+```kotlin
+// ui/screens/inventory/InventoryViewModel.kt
+@HiltViewModel
+class InventoryViewModel @Inject constructor(
+    private val searchProductsUseCase: SearchProductsUseCase,
+    private val getAllProductsUseCase: GetAllProductsUseCase
+) : ViewModel() {
+    private val _uiState = MutableStateFlow(InventoryUiState())
+    val uiState: StateFlow<InventoryUiState> = _uiState.asStateFlow()
+
+    fun onSearchQueryChanged(query: String) { ... }
+    fun onRefresh() { ... }
+}
+```
+
+### 2.2 Direct Firebase Usage in Composables (High Priority)
+
+**Problem**: Composables directly instantiate `FirebaseAuth` and `FirebaseDatabase`:
+- `HomeScreen.kt:19`: `FirebaseAuth.getInstance().currentUser`
+- `LoginScreen.kt:44`: `FirebaseAuth.getInstance()`
+- `InventoryScreen.kt:65`: `FirebaseDatabase.getInstance().getReference("inventory")`
+- `AddProductScreen.kt:161`: `FirebaseDatabase.getInstance().getReference("inventory")`
+
+**Recommendation**: Inject dependencies via Hilt/Dagger:
+
+```kotlin
+@Composable
+fun HomeScreen(
+    viewModel: HomeViewModel = hiltViewModel()
+) {
+    val user by viewModel.currentUser.collectAsState()
+    // ...
+}
+```
+
+### 2.3 Business Logic in UI Layer (Medium Priority)
+
+**Problem** (`InventoryScreen.kt:260-274`): Status calculation and formatting happens in the Composable:
+
+```kotlin
+val statusLabel = when {
+    product.quantity <= 0 -> "AGOTADO"
+    product.quantity < 5 -> "INSUFICIENTE"
+    else -> "DISPONIBLE"
+}
+// ...
+val format = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
+format.maximumFractionDigits = 0
+val formattedPrice = format.format(product.unitPrice)
+```
+
+**Recommendation**: Move to domain layer as shown in section 1.1.
+
+
+3. Data Layer Issues
+-------------------
+
+### 3.1 No Repository Interface Abstraction (Medium Priority)
+
+**Problem**: `ProductRepository` is a concrete class, not an interface. This makes testing and swapping implementations difficult.
+
+**Current** (`ProductRepository.kt:35`):
+
+```kotlin
+class ProductRepository(
+    private val inventoryPath: String = "inventory",
+    private val indexPath: String = "searchIndex"
+)
+```
+
+**Recommendation**: Define interface in domain layer and implement in data layer:
+
+```kotlin
+// domain/repository/ProductRepository.kt
+interface ProductRepository {
+    suspend fun search(query: String, limit: Int = 30): ProductSearchResult
+    // ...
+}
+
+// data/repository/ProductRepositoryImpl.kt
+class ProductRepositoryImpl @Inject constructor(
+    private val firebaseDatabase: FirebaseDatabase
+) : ProductRepository {
+    // ...
+}
+```
+
+### 3.2 Hardcoded Firebase Paths (Medium Priority)
+
+**Problem**: Paths are hardcoded strings scattered across screens and repository:
+- `"inventory"` in `InventoryScreen.kt:65`, `AddProductScreen.kt:161`
+- `"inventory"` and `"searchIndex"` in `ProductRepository.kt`
+
+**Recommendation**: Centralize in a configuration class:
+
+```kotlin
+object FirebaseConfig {
+    const val INVENTORY = "inventory"
+    const val SEARCH_INDEX = "searchIndex"
+    // For testing:
+    const val TEST_INVENTORY = "test_inventory"
+}
+```
+
+
+4. Object-Oriented Programming Issues
+------------------------------------
+
+### 4.1 Anemic Domain Model (Medium Priority)
+
+**Problem**: `Product` is a pure data class with no behavior:
+
+```kotlin
+data class Product(
+    val id: String = "",
+    val name: String = "",
+    val modelOrBarcode: String = "",
+    val quantity: Int = 0,
+    val unitPrice: Double = 0.0
+)
+```
+
+**Recommendation**: Add domain logic (see section 1.1).
+
+### 4.2 Utility Functions Should Be Methods or Separate Classes (Low Priority)
+
+**Problem**: `ProductSearchLogic.kt` contains standalone utility functions:
+
+```kotlin
+fun tokenize(text: String): Set<String> = ...
+fun normalizeProductKey(name: String): String? = ...
+fun intersectAll(sets: List<Set<String>>): Set<String> = ...
+```
+
+**Recommendation**: Either make them extension functions or group into a strategy/class:
+
+```kotlin
+class ProductSearchNormalizer {
+    fun tokenize(text: String): Set<String> = ...
+    fun normalizeKey(name: String): String? = ...
+}
+```
+
+
+5. Dependency Injection Gap
+--------------------------
+
+**Problem**: No DI framework. Components are manually instantiated:
+
+```kotlin
+val repository = remember { ProductRepository() }  // InventoryScreen.kt:62
+```
+
+**Recommendation**: Adopt Hilt (built on Dagger, recommended by Google):
+
+```kotlin
+// build.gradle.kts (app)
+implementation("com.google.dagger:hilt-android:2.50")
+kapt("com.google.dagger:hilt-android-compiler:2.50")
+
+// Application class
+@HiltAndroidApp
+class VanVaultApp : Application()
+```
+
+
+6. Missing Cross-Cutting Concerns
+---------------------------------
+
+| Concern       | Status | Recommendation                          |
+|---------------|--------|----------------------------------------|
+| Error Handling | Inconsistent | Use `Result<T>` or sealed classes consistently |
+| Logging       | Absent  | Add Logger interface                   |
+| Analytics    | Absent  | Add analytics tracking                 |
+| Testing      | Unit tests exist for `ProductSearchLogic` | Expand to use cases, ViewModels |
+
+
+7. Priority Recommendations Summary
+-----------------------------------
+
+| Priority | Change                                    | Impact                                              |
+|----------|-------------------------------------------|-----------------------------------------------------|
+| **1**    | Add ViewModels to all screens             | Separates UI state from business logic              |
+| **2**    | Extract Firebase logic from Composables   | Enables testing, follows DI                         |
+| **3**    | Create domain layer with use cases       | Aligns with Google's architecture                   |
+| **4**    | Introduce repository interfaces           | Enables testing and clean architecture              |
+| **5**    | Add Hilt dependency injection            | Manages dependencies consistently                  |
+| **6**    | Enrich domain models with behavior       | Follows OOP principles                             |
+
+
+8. File Reference Map
+--------------------
+
+| Current Location                              | Suggested New Location                                  |
+|-----------------------------------------------|--------------------------------------------------------|
+| `data/models/Product.kt`                      | `domain/model/Product.kt`                               |
+| `data/repository/ProductRepository.kt`         | `data/repository/ProductRepositoryImpl.kt`              |
+| `data/repository/ProductSearchLogic.kt`        | `domain/search/ProductSearchNormalizer.kt`             |
+| (new)                                         | `domain/repository/ProductRepository.kt` (interface)    |
+| (new)                                         | `domain/usecase/SearchProductsUseCase.kt`              |
+| (new)                                         | `domain/usecase/SaveProductUseCase.kt`                 |
+| `ui/screens/InventoryScreen.kt`                | `ui/screens/inventory/InventoryScreen.kt` + `InventoryViewModel.kt` |

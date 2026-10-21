@@ -25,91 +25,40 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vanvault.android.data.models.Product
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.vanvault.android.domain.model.Product
+import com.vanvault.android.domain.model.StockStatus
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.vanvault.android.data.repository.ProductRepository
-import com.vanvault.android.data.repository.ProductSearch
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import java.text.NumberFormat
-import java.util.Locale
+import com.vanvault.android.ui.viewmodel.InventoryViewModel
 
+/**
+ * Pantalla de Inventario refactorizada.
+ *
+ * **Cambios T02**: NO se importa el ServiceLocator ni se construye el
+ * ViewModel manualmente. `hiltViewModel()` resuelve todas las dependencias.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InventoryScreen(
     onNavigate: (NavItem) -> Unit = {},
     onAddProductClick: () -> Unit = {},
-    onEditProductClick: () -> Unit = {}
+    onEditProductClick: () -> Unit = {},
+    viewModel: InventoryViewModel = hiltViewModel()
 ) {
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
     var fabExpanded by remember { mutableStateOf(false) }
-    var allProducts by remember { mutableStateOf<List<Product>>(emptyList()) }
-    var searchResults by remember { mutableStateOf<List<Product>>(emptyList()) }
-    var isLoading by remember { mutableStateOf(true) }
-    var isRefreshing by remember { mutableStateOf(false) }
-
-    // Search states
-    var isSearchActive by remember { mutableStateOf(false) }
-    var searchQuery by remember { mutableStateOf("") }
-    var isSearching by remember { mutableStateOf(false) }
-    var searchJob by remember { mutableStateOf<Job?>(null) }
-    val scope = rememberCoroutineScope()
-    val repository = remember { ProductRepository() }
-
-    LaunchedEffect(Unit) {
-        val dbRef = FirebaseDatabase.getInstance().getReference("inventory")
-        dbRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val productList = mutableListOf<Product>()
-                for (child in snapshot.children) {
-                    val prod = child.getValue(Product::class.java)
-                    if (prod != null) {
-                        productList.add(prod)
-                    }
-                }
-                allProducts = productList
-                if (!isSearchActive) isLoading = false
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                if (!isSearchActive) isLoading = false
-            }
-        })
-    }
-
-    val displayProducts = if (isSearchActive && searchQuery.isNotBlank()) searchResults else allProducts
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
-            if (isSearchActive) {
+            if (state.isSearchActive) {
                 TopAppBar(
                     title = {
                         TextField(
-                            value = searchQuery,
-                            onValueChange = { newQuery ->
-                                searchQuery = newQuery
-                                searchJob?.cancel()
-                                searchJob = scope.launch {
-                                    delay(300) // debounce
-                                    if (newQuery.isNotBlank()) {
-                                        isSearching = true
-                                        val result = repository.search(newQuery)
-                                        searchResults = when (result) {
-                                            is ProductSearch.Results -> result.products
-                                            else -> emptyList()
-                                        }
-                                        isSearching = false
-                                    } else {
-                                        searchResults = emptyList()
-                                    }
-                                }
-                            },
+                            value = state.searchQuery,
+                            onValueChange = { viewModel.onSearchQueryChange(it) },
                             placeholder = { Text("Buscar producto...") },
                             singleLine = true,
                             modifier = Modifier.fillMaxWidth(),
@@ -122,15 +71,14 @@ fun InventoryScreen(
                         )
                     },
                     navigationIcon = {
-                        IconButton(onClick = { 
-                            isSearchActive = false
-                            searchQuery = ""
-                            searchResults = emptyList()
-                        }) {
+                        IconButton(
+                            onClick = { viewModel.onSearchActiveChange(false) },
+                            modifier = Modifier.size(48.dp) // WCAG: ≥48dp touch target
+                        ) {
                             Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Cerrar búsqueda")
                         }
                     },
-                    colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
                 )
             } else {
                 TopAppBar(
@@ -142,12 +90,15 @@ fun InventoryScreen(
                         )
                     },
                     actions = {
-                        IconButton(onClick = { isSearchActive = true }) {
-                            Icon(Icons.Default.Search, contentDescription = "Buscar")
+                        IconButton(
+                            onClick = { viewModel.onSearchActiveChange(true) },
+                            modifier = Modifier.size(48.dp)
+                        ) {
+                            Icon(Icons.Default.Search, contentDescription = "Buscar productos")
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.Transparent
+                        containerColor = MaterialTheme.colorScheme.background
                     )
                 )
             }
@@ -170,11 +121,11 @@ fun InventoryScreen(
                         verticalArrangement = Arrangement.spacedBy(12.dp),
                         modifier = Modifier.padding(bottom = 16.dp)
                     ) {
-                        FabOption(text = "Agregar producto", onClick = { 
+                        FabOption(text = "Agregar producto", onClick = {
                             fabExpanded = false
                             onAddProductClick()
                         })
-                        FabOption(text = "Editar producto", onClick = { 
+                        FabOption(text = "Editar producto", onClick = {
                             fabExpanded = false
                             onEditProductClick()
                         })
@@ -190,7 +141,7 @@ fun InventoryScreen(
                 ) {
                     Icon(
                         imageVector = if (fabExpanded) Icons.Default.Close else Icons.Default.Add,
-                        contentDescription = "Opciones",
+                        contentDescription = "Mostrar más opciones",
                         modifier = Modifier.size(28.dp)
                     )
                 }
@@ -202,7 +153,6 @@ fun InventoryScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            // Filter Chips
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -216,39 +166,30 @@ fun InventoryScreen(
                 FilterChipCustom(text = "Todos", isSelected = false)
             }
 
-            // Inventory List
-            if (isLoading || isSearching) {
-                Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+            if (state.isLoading || state.isSearching) {
+                Box(
+                    modifier = Modifier.weight(1f).fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
                     CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                 }
-            } else if (displayProducts.isEmpty()) {
-                Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+            } else if (state.visibleProducts.isEmpty()) {
+                Box(
+                    modifier = Modifier.weight(1f).fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
                     Text(
-                        if (isSearchActive && searchQuery.isNotBlank()) "No se encontraron resultados" else "No hay productos en el inventario",
-                        color = Color.Gray
+                        if (state.isSearchActive && state.searchQuery.isNotBlank())
+                            "No se encontraron resultados"
+                        else
+                            "No hay productos en el inventario",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             } else {
                 PullToRefreshBox(
-                    isRefreshing = isRefreshing,
-                    onRefresh = {
-                        isRefreshing = true
-                        val dbRef = FirebaseDatabase.getInstance().getReference("inventory")
-                        dbRef.get().addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                val snapshot = task.result
-                                val productList = mutableListOf<Product>()
-                                for (child in snapshot.children) {
-                                    val prod = child.getValue(Product::class.java)
-                                    if (prod != null) {
-                                        productList.add(prod)
-                                    }
-                                }
-                                allProducts = productList
-                            }
-                            isRefreshing = false
-                        }
-                    },
+                    isRefreshing = state.isRefreshing,
+                    onRefresh = { viewModel.onRefresh() },
                     modifier = Modifier.weight(1f).fillMaxWidth()
                 ) {
                     LazyColumn(
@@ -256,22 +197,9 @@ fun InventoryScreen(
                         contentPadding = PaddingValues(16.dp),
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        items(displayProducts) { product ->
-                            val statusLabel = when {
-                                product.quantity <= 0 -> "AGOTADO"
-                                product.quantity < 5 -> "INSUFICIENTE"
-                                else -> "DISPONIBLE"
-                            }
-                            
-                            val quantityColor = when {
-                                product.quantity <= 0 -> Color(0xFFDC2626) // Red
-                                product.quantity < 5 -> Color(0xFFF97316) // Orange
-                                else -> Color(0xFF059669) // Green
-                            }
-
-                            val format = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
-                            format.maximumFractionDigits = 0
-                            val formattedPrice = format.format(product.unitPrice)
+                        items(state.visibleProducts, key = { it.id }) { product ->
+                            val (statusLabel, quantityColor) = statusFor(product)
+                            val formattedPrice = product.unitPrice.toDisplayString()
 
                             InventoryItemCard(
                                 title = product.name,
@@ -284,7 +212,7 @@ fun InventoryScreen(
                             )
                         }
                         item {
-                            Spacer(modifier = Modifier.height(100.dp)) // Extra space for expanded FAB
+                            Spacer(modifier = Modifier.height(100.dp))
                         }
                     }
                 }
@@ -294,16 +222,29 @@ fun InventoryScreen(
 }
 
 @Composable
+private fun statusFor(product: Product): Pair<String, Color> {
+    val status = product.stockStatus
+    val (label, color) = when (status) {
+        StockStatus.AVAILABLE -> "DISPONIBLE" to MaterialTheme.colorScheme.primary
+        StockStatus.LOW_STOCK -> "INSUFICIENTE" to MaterialTheme.colorScheme.tertiary
+        StockStatus.OUT_OF_STOCK -> "AGOTADO" to MaterialTheme.colorScheme.error
+    }
+    return label to color
+}
+
+@Composable
 fun FabOption(text: String, onClick: () -> Unit) {
     Surface(
         shape = RoundedCornerShape(12.dp),
         color = MaterialTheme.colorScheme.primary,
         shadowElevation = 4.dp,
-        modifier = Modifier.clickable { onClick() }
+        modifier = Modifier
+            .heightIn(min = 48.dp) // WCAG: ≥48dp touch target
+            .clickable(onClick = onClick)
     ) {
         Text(
             text = text,
-            color = MaterialTheme.colorScheme.surface,
+            color = MaterialTheme.colorScheme.onPrimary,
             fontWeight = FontWeight.Medium,
             fontSize = 14.sp,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
@@ -315,21 +256,23 @@ fun FabOption(text: String, onClick: () -> Unit) {
 fun FilterChipCustom(text: String, isSelected: Boolean) {
     Box(
         modifier = Modifier
+            .heightIn(min = 48.dp)
             .background(
-                color = if (isSelected) Color(0xFFFEE2E2) else MaterialTheme.colorScheme.onPrimary,
+                color = if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(17.dp)
             )
             .border(
                 width = 1.dp,
-                color = if (isSelected) Color(0xFFDC2626) else Color(0xFFE4E4E7),
+                color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
                 shape = RoundedCornerShape(17.dp)
             )
+            .clickable { /* TODO T06 */ }
             .padding(horizontal = 16.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = text,
-            color = if (isSelected) Color(0xFFDC2626) else Color(0xFF71717A),
+            color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant,
             fontWeight = if (isSelected) FontWeight.Medium else FontWeight.Normal,
             fontSize = 14.sp
         )
@@ -342,7 +285,7 @@ fun InventoryItemCard(
     subtitle: String,
     statusLabel: String,
     quantity: String,
-    quantityColor: Color = Color(0xFFDC2626),
+    quantityColor: Color,
     priceLabel: String,
     price: String
 ) {
@@ -351,7 +294,7 @@ fun InventoryItemCard(
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
-        border = BorderStroke(1.dp, Color(0xFFE4E4E7))
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
     ) {
         Column(
             modifier = Modifier

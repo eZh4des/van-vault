@@ -5,31 +5,46 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.*
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.vanvault.android.data.preferences.SettingsPreferences
+import com.vanvault.android.domain.repository.SettingsRepository
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.screens.*
 import com.vanvault.android.ui.theme.VanVaultTheme
 import com.vanvault.android.ui.viewmodel.SettingsViewModel
-import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * MainActivity con `@AndroidEntryPoint` — Hilt provee dependencias aquí.
+ *
+ * T02 (Hilt): Ya NO usamos [com.vanvault.android.di.ServiceLocator] ni
+ * instanciamos Firebase manualmente. Todo se inyecta via `@Inject` /
+ * `@HiltViewModel`.
+ *
+ * Google Architecture (UI layer): Esta Activity es el "host" de la
+ * navegación. No conoce Firebase ni repositorios — solo compone pantallas.
+ */
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    /** Inyectado por Hilt (gracias a SettingsModule.bindSettingsRepository). */
+    @javax.inject.Inject
+    lateinit var settingsRepository: SettingsRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             VanVaultTheme {
                 val navController = rememberNavController()
-                val auth = FirebaseAuth.getInstance()
+                val auth = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth()
                 val currentUser = auth.currentUser
 
-                val settingsPreferences = remember { SettingsPreferences(this) }
-                val settingsViewModel: SettingsViewModel = viewModel(
-                    factory = SettingsViewModel.Factory(settingsPreferences)
-                )
+                // SettingsViewModel inyectado via Hilt (no necesita Factory).
+                // Usamos viewModel() directamente para activity-scoped VM.
+                val settingsViewModel: SettingsViewModel = hiltViewModel()
 
                 val startDestination = if (currentUser != null && currentUser.isEmailVerified) {
                     "home"
@@ -38,7 +53,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 NavHost(
-                    navController = navController, 
+                    navController = navController,
                     startDestination = startDestination,
                     enterTransition = { androidx.compose.animation.fadeIn() },
                     exitTransition = { androidx.compose.animation.fadeOut() },
@@ -72,9 +87,43 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable("home") {
+                        DashboardScreen(
+                            onOpenInventory = { navController.navigate("inventory") },
+                            onOpenSold = { navController.navigate("sold") },
+                            onOpenRoi = { navController.navigate("roi") },
+                            onOpenAdmin = { navController.navigate("admin") },
+                            onSeeAllSales = { navController.navigate("sold") },
+                            onNavigate = { navItem ->
+                                when (navItem) {
+                                    NavItem.HOME -> { /* ya estamos aquí */ }
+                                    NavItem.INVENTORY -> navController.navigate("inventory") {
+                                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                    NavItem.SALES -> navController.navigate("sold") {
+                                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                    NavItem.PROFILE -> navController.navigate("profile") {
+                                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                }
+                            }
+                        )
+                    }
+                    composable("inventory") {
                         InventoryScreen(
-                            onNavigate = { navItem -> 
-                                when(navItem) {
+                            onNavigate = { navItem ->
+                                when (navItem) {
+                                    NavItem.HOME -> navController.navigate("home") {
+                                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
                                     NavItem.PROFILE -> navController.navigate("profile") {
                                         popUpTo(navController.graph.startDestinationId) { saveState = true }
                                         launchSingleTop = true
@@ -87,6 +136,11 @@ class MainActivity : ComponentActivity() {
                             onEditProductClick = { navController.navigate("edit_product") }
                         )
                     }
+                    composable("available") {
+                        AvailableScreen(
+                            onBackClick = { navController.navigateUp() }
+                        )
+                    }
                     composable("edit_product") {
                         EditProductScreen(
                             navController = navController,
@@ -96,7 +150,7 @@ class MainActivity : ComponentActivity() {
                     composable("profile") {
                         ProfileScreen(
                             onNavigate = { navItem ->
-                                when(navItem) {
+                                when (navItem) {
                                     NavItem.HOME, NavItem.INVENTORY -> navController.navigate("home") {
                                         popUpTo(navController.graph.startDestinationId) { saveState = true }
                                         launchSingleTop = true
@@ -167,6 +221,21 @@ class MainActivity : ComponentActivity() {
                                     ?.set("scanned_barcode", barcode)
                                 navController.navigateUp()
                             }
+                        )
+                    }
+                    composable("sold") {
+                        SoldScreen(
+                            onBackClick = { navController.navigateUp() }
+                        )
+                    }
+                    composable("roi") {
+                        RoiScreen(
+                            onBackClick = { navController.navigateUp() }
+                        )
+                    }
+                    composable("admin") {
+                        AdminScreen(
+                            onBackClick = { navController.navigateUp() }
                         )
                     }
                 }

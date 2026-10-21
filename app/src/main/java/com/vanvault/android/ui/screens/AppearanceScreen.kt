@@ -54,7 +54,9 @@ fun AppearanceScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Card(
-                color = MaterialTheme.colorScheme.surface,
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surface
+                ),
                 shape = RoundedCornerShape(16.dp),
                 border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outline)
             ) {

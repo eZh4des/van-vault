@@ -2,9 +2,7 @@ package com.vanvault.android.ui.screens
 
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.database.FirebaseDatabase
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -45,7 +43,7 @@ fun RegisterScreen(
     var errorMessage by remember { mutableStateOf("") }
 
     val context = LocalContext.current
-    val auth = FirebaseAuth.getInstance()
+    val auth = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth()
 
     Scaffold(
         topBar = {
@@ -265,7 +263,7 @@ fun RegisterScreen(
                                                     ?.addOnCompleteListener { profileTask ->
                                                         if (profileTask.isSuccessful) {
                                                             // Guardar en Realtime Database
-                                                            val database = FirebaseDatabase.getInstance().reference
+                                                            val database = com.vanvault.android.di.FirebaseModule.provideFirebaseDatabase().reference
                                                             val userData = mapOf(
                                                                 "name" to name,
                                                                 "email" to email,

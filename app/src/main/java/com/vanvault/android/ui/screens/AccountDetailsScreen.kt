@@ -18,10 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -29,7 +27,7 @@ import com.google.firebase.database.ValueEventListener
 fun AccountDetailsScreen(
     onBackClick: () -> Unit
 ) {
-    val user = FirebaseAuth.getInstance().currentUser
+    val user = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().currentUser
     val userEmail = user?.email ?: ""
     
     // Estados para la base de datos
@@ -39,7 +37,7 @@ fun AccountDetailsScreen(
     // Recuperar datos de la base de datos
     LaunchedEffect(userEmail) {
         user?.uid?.let { uid ->
-            val ref = FirebaseDatabase.getInstance().getReference("users").child(uid)
+            val ref = com.vanvault.android.di.FirebaseModule.provideFirebaseDatabase().getReference("users").child(uid)
             ref.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val dbName = snapshot.child("name").getValue(String::class.java)

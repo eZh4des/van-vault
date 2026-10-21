@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
-import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,7 +75,7 @@ fun ProfileScreen(
                 title = "Cerrar sesión",
                 isDestructive = true,
                 onClick = {
-                    FirebaseAuth.getInstance().signOut()
+                    com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().signOut()
                     onLogoutClick()
                 }
             )

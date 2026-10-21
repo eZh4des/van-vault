@@ -21,7 +21,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -33,7 +32,7 @@ fun ForgotPasswordScreen(
     var isSent by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
-    val auth = FirebaseAuth.getInstance()
+    val auth = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth()
 
     Scaffold(
         topBar = {

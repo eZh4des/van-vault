@@ -1,8 +1,9 @@
-
 package com.vanvault.android.ui.screens
 
-import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -10,62 +11,61 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.vanvault.android.data.models.Product
-import com.google.firebase.database.FirebaseDatabase
-import com.vanvault.android.data.repository.ProductRepository
-import com.vanvault.android.data.repository.ProductSearch
 import com.vanvault.android.ui.components.VanVaultDialog
-import kotlinx.coroutines.launch
+import com.vanvault.android.ui.viewmodel.EditProductViewModel
 
+/**
+ * Pantalla "Editar Producto" refactorizada con UDF + ViewModel (T01).
+ *
+ * **Antes**: instanciaba `FirebaseDatabase.getInstance()`, `ProductRepository` y
+ * mantenía 10 `remember { mutableStateOf(...) }`.
+ * **Ahora**: delega todo al ViewModel; la UI solo emite eventos y renderiza estado.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditProductScreen(
     navController: NavController,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    viewModel: EditProductViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
-    
-    // Search states
-    var searchQuery by remember { mutableStateOf("") }
-    var isSearching by remember { mutableStateOf(false) }
-    var searchResults by remember { mutableStateOf<List<Product>>(emptyList()) }
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+
     var showNotFoundDialog by remember { mutableStateOf(false) }
-    val scope = rememberCoroutineScope()
-    val repository = remember { ProductRepository() }
-    
-    // Edited product states
-    var currentProductId by remember { mutableStateOf<String?>(null) }
-    var name by remember { mutableStateOf("") }
-    var modelOrBarcode by remember { mutableStateOf("") }
-    var quantity by remember { mutableStateOf("") }
-    var unitPrice by remember { mutableStateOf("") }
-    
-    var isSaving by remember { mutableStateOf(false) }
+    var showErrorDialog by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf("") }
 
-
+    LaunchedEffect(viewModel) {
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                EditProductViewModel.EditProductEffect.Saved -> onBackClick()
+                EditProductViewModel.EditProductEffect.NotFound -> showNotFoundDialog = true
+                is EditProductViewModel.EditProductEffect.Error -> {
+                    errorMessage = effect.message
+                    showErrorDialog = true
+                }
+            }
+        }
+    }
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
-                title = {
-                    Text("Editar Producto", fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
-                },
+                title = { Text("Editar Producto", style = MaterialTheme.typography.titleLarge) },
                 navigationIcon = {
-                    IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Regresar")
+                    IconButton(
+                        onClick = onBackClick,
+                        modifier = Modifier.size(48.dp)
+                    ) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver")
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
@@ -76,85 +76,74 @@ fun EditProductScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(24.dp),
+                .padding(horizontal = 24.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Search bar
-            Text("Busca por nombre de producto o coincidencia:", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 14.sp)
+            // Buscador
+            Text(
+                "Busca por nombre de producto o coincidencia:",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.bodyMedium
+            )
+
             OutlinedTextField(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
+                value = state.searchQuery,
+                onValueChange = viewModel::onQueryChange,
                 placeholder = { Text("Ej. panel solar 100w") },
                 modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
                 shape = RoundedCornerShape(12.dp),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                 trailingIcon = {
-                    IconButton(onClick = {
-                        if (searchQuery.isNotBlank()) {
-                            scope.launch {
-                                isSearching = true
-                                val result = repository.search(searchQuery.trim())
-                                isSearching = false
-                                when (result) {
-                                    is ProductSearch.Results -> {
-                                        searchResults = result.products
-                                        if (result.products.size == 1) {
-                                            val product = result.products.first()
-                                            currentProductId = product.id
-                                            name = product.name
-                                            modelOrBarcode = product.modelOrBarcode
-                                            quantity = product.quantity.toString()
-                                            unitPrice = product.unitPrice.toLong().toString()
-                                            searchResults = emptyList()
-                                        } else {
-                                            currentProductId = null
-                                        }
-                                    }
-                                    is ProductSearch.Empty -> {
-                                        searchResults = emptyList()
-                                        showNotFoundDialog = true
-                                    }
-                                    is ProductSearch.Error -> {
-                                        searchResults = emptyList()
-                                        Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                            }
-                        }
-                    }) {
-                        Icon(Icons.Default.Search, contentDescription = "Buscar", tint = MaterialTheme.colorScheme.primary)
+                    IconButton(
+                        onClick = { viewModel.onSearch() },
+                        modifier = Modifier.size(48.dp)
+                    ) {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Buscar producto",
+                            tint = MaterialTheme.colorScheme.primary
+                        )
                     }
                 },
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onBackground
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline
                 )
             )
 
-            if (isSearching) {
-                LinearProgressIndicator(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.primary)
+            if (state.isSearching) {
+                LinearProgressIndicator(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.primary,
+                    trackColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                )
             }
 
-            if (searchResults.isNotEmpty()) {
-                LazyColumn(modifier = Modifier.fillMaxWidth().heightIn(max = 200.dp)) {
-                    items(searchResults) { product ->
+            // Resultados de búsqueda (cuando hay varios)
+            if (state.searchResults.isNotEmpty()) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxWidth().heightIn(max = 200.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    items(state.searchResults, key = { it.id }) { product ->
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 4.dp)
-                                .clickable {
-                                    currentProductId = product.id
-                                    name = product.name
-                                    modelOrBarcode = product.modelOrBarcode
-                                    quantity = product.quantity.toString()
-                                    unitPrice = product.unitPrice.toLong().toString()
-                                    searchResults = emptyList()
-                                },
+                                .clickable { viewModel.onSelectFromList(product) },
+                            shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
-                                Text(product.name, fontWeight = FontWeight.SemiBold)
-                                Text("SKU: ${product.modelOrBarcode}", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                Text(
+                                    product.name,
+                                    style = MaterialTheme.typography.titleMedium
+                                )
+                                Text(
+                                    "SKU: ${product.modelOrBarcode}",
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
                             }
                         }
                     }
@@ -164,122 +153,119 @@ fun EditProductScreen(
             VanVaultDialog(
                 showDialog = showNotFoundDialog,
                 title = "Producto no encontrado",
-                message = "El producto no se encuentra agregado, por favor diríjase a la vista agregar producto y lo agrega.",
+                message = "El producto no se encuentra agregado. Por favor dirígete a la pantalla Agregar Producto.",
                 onDismiss = { showNotFoundDialog = false }
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
-            HorizontalDivider(color = MaterialTheme.colorScheme.outline)
-            Spacer(modifier = Modifier.height(8.dp))
+            VanVaultDialog(
+                showDialog = showErrorDialog,
+                title = "Error",
+                message = errorMessage,
+                onDismiss = { showErrorDialog = false }
+            )
 
-            // Edit form (only visible if a product is selected)
-            if (currentProductId != null) {
+            // Form de edición
+            if (state.isEditing) {
+                HorizontalDivider(color = MaterialTheme.colorScheme.outline)
+
                 OutlinedTextField(
-                    value = name,
-                    onValueChange = { name = it },
+                    value = state.name,
+                    onValueChange = viewModel::onNameChange,
                     label = { Text("Nombre del producto") },
                     modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary,
-                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground
+                        focusedLabelColor = MaterialTheme.colorScheme.primary
                     )
                 )
 
                 OutlinedTextField(
-                    value = modelOrBarcode,
-                    onValueChange = { modelOrBarcode = it },
+                    value = state.modelOrBarcode,
+                    onValueChange = viewModel::onModelChange,
                     label = { Text("Modelo / EAN-13") },
                     modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary,
-                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground
+                        focusedLabelColor = MaterialTheme.colorScheme.primary
                     )
                 )
 
                 OutlinedTextField(
-                    value = quantity,
-                    onValueChange = { quantity = it },
+                    value = state.quantity,
+                    onValueChange = viewModel::onQuantityChange,
                     label = { Text("Cantidad en inventario") },
                     modifier = Modifier.fillMaxWidth(),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Next
+                    ),
+                    singleLine = true,
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary,
-                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground
+                        focusedLabelColor = MaterialTheme.colorScheme.primary
                     )
                 )
 
                 OutlinedTextField(
-                    value = unitPrice,
-                    onValueChange = { unitPrice = it },
-                    label = { Text("Precio unitario (COP, sin puntos ni comas)") },
+                    value = state.unitPrice,
+                    onValueChange = viewModel::onPriceChange,
+                    label = { Text("Precio unitario (COP)") },
                     modifier = Modifier.fillMaxWidth(),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Decimal,
+                        imeAction = ImeAction.Done
+                    ),
+                    singleLine = true,
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary,
-                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground
+                        focusedLabelColor = MaterialTheme.colorScheme.primary
                     )
                 )
 
                 Spacer(modifier = Modifier.weight(1f))
 
                 Button(
-                    onClick = {
-                        if (name.isBlank() || modelOrBarcode.isBlank() || quantity.isBlank() || unitPrice.isBlank()) {
-                            Toast.makeText(context, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
-                            return@Button
-                        }
-
-                        isSaving = true
-                        val updatedProduct = Product(
-                            id = currentProductId!!,
-                            name = name.trim(),
-                            modelOrBarcode = modelOrBarcode.trim(),
-                            quantity = quantity.toIntOrNull() ?: 0,
-                            unitPrice = unitPrice.toDoubleOrNull() ?: 0.0
-                        )
-
-                        FirebaseDatabase.getInstance().getReference("inventory").child(currentProductId!!)
-                            .setValue(updatedProduct).addOnCompleteListener { task ->
-                                isSaving = false
-                                if (task.isSuccessful) {
-                                    Toast.makeText(context, "Producto actualizado correctamente", Toast.LENGTH_SHORT).show()
-                                    onBackClick()
-                                } else {
-                                    Toast.makeText(context, "Error al actualizar", Toast.LENGTH_LONG).show()
-                                }
-                            }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
+                    onClick = { viewModel.onSave() },
+                    enabled = state.canSubmit,
+                    modifier = Modifier.fillMaxWidth().height(56.dp),
                     shape = RoundedCornerShape(28.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
-                    enabled = !isSaving
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary,
+                        disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                        disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                    )
                 ) {
-                    if (isSaving) {
-                        CircularProgressIndicator(color = Color.White, modifier = Modifier.size(24.dp))
+                    if (state.isSaving) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(24.dp),
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            strokeWidth = 2.dp
+                        )
                     } else {
-                        Text("Guardar Cambios", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                        Text("Guardar Cambios", style = MaterialTheme.typography.labelLarge)
                     }
                 }
-            } else {
-                Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                    Text("Busca un producto para empezar a editar", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            } else if (!state.isSearching) {
+                Box(
+                    modifier = Modifier.weight(1f).fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        "Busca un producto para empezar a editar",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
             }
         }
     }
 }
-

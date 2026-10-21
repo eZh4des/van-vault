@@ -1,0 +1,287 @@
+package com.vanvault.android.ui.screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.vanvault.android.domain.model.AdminUser
+import com.vanvault.android.domain.model.PendingTask
+import com.vanvault.android.ui.components.M3TopBarWithBack
+import com.vanvault.android.ui.components.RedBanner
+import com.vanvault.android.ui.viewmodel.AdminViewModel
+
+/**
+ * AdminScreen — panel de administración.
+ *
+ * Diseño basado en `screen-admin.svg`:
+ *  - TopBar con back
+ *  - Resumen: total usuarios / activos
+ *  - Lista de usuarios con avatar + role + status
+ *  - Lista de tareas pendientes (alertas)
+ */
+@Composable
+fun AdminScreen(
+    onBackClick: () -> Unit,
+    viewModel: AdminViewModel = hiltViewModel()
+) {
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val scrollState = rememberScrollState()
+
+    Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
+        topBar = {
+            M3TopBarWithBack(
+                title = "Administración",
+                onBackClick = onBackClick
+            )
+        }
+    ) { innerPadding ->
+        if (state.isLoading || state.snapshot == null) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+            }
+        } else {
+            val snapshot = state.snapshot!!
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                    .verticalScroll(scrollState)
+                    .padding(16.dp)
+            ) {
+                // Resumen
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    StatCard(
+                        label = "Usuarios totales",
+                        value = "${snapshot.totalUsers}",
+                        modifier = Modifier.weight(1f)
+                    )
+                    StatCard(
+                        label = "Activos",
+                        value = "${snapshot.activeUsers}",
+                        accent = Color(0xFF059669),
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+
+                Spacer(Modifier.height(20.dp))
+
+                // Tareas pendientes
+                if (snapshot.pendingTasks.isNotEmpty()) {
+                    Text(
+                        text = "Tareas pendientes",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    snapshot.pendingTasks.forEach { task ->
+                        PendingTaskCard(task)
+                        Spacer(Modifier.height(8.dp))
+                    }
+                    Spacer(Modifier.height(12.dp))
+                }
+
+                // Equipo
+                Text(
+                    text = "Equipo",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(Modifier.height(8.dp))
+                snapshot.users.forEach { user ->
+                    UserCard(user)
+                    Spacer(Modifier.height(8.dp))
+                }
+                Spacer(Modifier.height(80.dp))
+            }
+        }
+    }
+}
+
+@Composable
+private fun StatCard(
+    label: String,
+    value: String,
+    accent: Color = Color(0xFFDC2626),
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        modifier = modifier.heightIn(min = 88.dp),
+        shape = RoundedCornerShape(16.dp),
+        color = MaterialTheme.colorScheme.surface,
+        border = androidx.compose.foundation.BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.outlineVariant
+        )
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = value,
+                style = MaterialTheme.typography.displaySmall,
+                fontWeight = FontWeight.Bold,
+                color = accent
+            )
+        }
+    }
+}
+
+@Composable
+private fun PendingTaskCard(task: PendingTask) {
+    val priorityColor = when (task.priority) {
+        PendingTask.Priority.HIGH -> Color(0xFFDC2626)
+        PendingTask.Priority.MEDIUM -> Color(0xFFF97316)
+        PendingTask.Priority.LOW -> Color(0xFF71717A)
+    }
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        color = MaterialTheme.colorScheme.surface,
+        border = androidx.compose.foundation.BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.outlineVariant
+        )
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(8.dp)
+                    .background(priorityColor, CircleShape)
+            )
+            Spacer(Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = task.title,
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Text(
+                    text = task.description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Surface(
+                shape = RoundedCornerShape(8.dp),
+                color = priorityColor.copy(alpha = 0.12f)
+            ) {
+                Text(
+                    text = task.priority.label,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Medium,
+                    color = priorityColor,
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun UserCard(user: AdminUser) {
+    val isActive = user.isActive
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        color = MaterialTheme.colorScheme.surface,
+        border = androidx.compose.foundation.BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.outlineVariant
+        )
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Avatar circular con iniciales
+            Surface(
+                shape = CircleShape,
+                color = if (isActive) Color(0xFFFEE2E2) else Color(0xFFE4E4E7),
+                modifier = Modifier.size(44.dp)
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Text(
+                        text = user.initials,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = if (isActive) Color(0xFFDC2626) else Color(0xFF71717A)
+                    )
+                }
+            }
+            Spacer(Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = user.displayName,
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = user.email,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(Modifier.height(2.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .size(8.dp)
+                            .background(
+                                color = if (isActive) Color(0xFF059669) else Color(0xFF71717A),
+                                shape = CircleShape
+                            )
+                    )
+                    Spacer(Modifier.width(4.dp))
+                    Text(
+                        text = user.lastSeenLabel,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+            Surface(
+                shape = RoundedCornerShape(8.dp),
+                color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                contentColor = MaterialTheme.colorScheme.onSurface
+            ) {
+                Text(
+                    text = user.role.label,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                )
+            }
+        }
+    }
+}

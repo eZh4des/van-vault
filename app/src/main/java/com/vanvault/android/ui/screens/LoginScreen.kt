@@ -2,7 +2,6 @@ package com.vanvault.android.ui.screens
 
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
-import com.google.firebase.auth.FirebaseAuth
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -41,7 +40,7 @@ fun LoginScreen(
     var errorMessage by remember { mutableStateOf("") }
     
     val context = LocalContext.current
-    val auth = FirebaseAuth.getInstance()
+    val auth = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
