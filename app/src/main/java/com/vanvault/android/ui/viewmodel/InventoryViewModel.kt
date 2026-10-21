@@ -108,6 +108,10 @@ class InventoryViewModel @Inject constructor(
     fun onRestoreProduct(product: Product) {
         viewModelScope.launch { addProduct(product) }
     }
+
+    fun onFilterChange(filter: StockFilter) {
+        _uiState.update { it.copy(filter = filter) }
+    }
 }
 
 /**
@@ -121,13 +125,46 @@ data class InventoryUiState(
     val isSearchActive: Boolean = false,
     val isLoading: Boolean = true,
     val isSearching: Boolean = false,
-    val isRefreshing: Boolean = false
+    val isRefreshing: Boolean = false,
+    val filter: StockFilter = StockFilter.ALL
 ) {
+    /**
+     * Productos visibles, respetando:
+     *  1. Búsqueda (si hay query activa, usa searchResults)
+     *  2. Filtro de stock (si no hay búsqueda, aplica el filtro seleccionado)
+     *  3. Lista completa (si no hay búsqueda NI filtro)
+     */
     val visibleProducts: List<Product>
-        get() = if (isSearchActive && searchQuery.isNotBlank()) searchResults else allProducts
+        get() = when {
+            isSearchActive && searchQuery.isNotBlank() -> searchResults
+            filter == StockFilter.ALL -> allProducts
+            else -> allProducts.filter { it.stockStatus == filter.toStockStatus() }
+        }
 
     val hasProducts: Boolean
         get() = allProducts.isNotEmpty()
 
+    /** Cuenta de productos por estado (para badges en los chips). */
+    fun countFor(s: StockStatus): Int = allProducts.count { it.stockStatus == s }
+
     fun stockOf(product: Product): StockStatus = product.stockStatus
+}
+
+/**
+ * Filtros del InventoryScreen. Cada uno mapea a un [StockStatus] del dominio.
+ *
+ * `ALL` es neutro (no aplica filtro de stock).
+ */
+enum class StockFilter(val label: String) {
+    AVAILABLE("Disponible"),
+    LOW_STOCK("Insuficiente"),
+    OUT_OF_STOCK("Agotado"),
+    ALL("Todos");
+
+    internal fun toStockStatus(): StockStatus = when (this) {
+        AVAILABLE -> StockStatus.AVAILABLE
+        LOW_STOCK -> StockStatus.LOW_STOCK
+        OUT_OF_STOCK -> StockStatus.OUT_OF_STOCK
+        ALL -> StockStatus.AVAILABLE  // no se usa cuando es ALL
+    }
 }
