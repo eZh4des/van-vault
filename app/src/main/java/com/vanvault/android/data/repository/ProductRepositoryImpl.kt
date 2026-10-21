@@ -96,21 +96,65 @@ class ProductRepositoryImpl @Inject constructor(
             "unitPrice" to (product.unitPrice.cents / 100.0)
         )
         database.getReference(INVENTORY_PATH).child(key).setValue(dto).await()
+        writeIndex(product, key)
     }
 
     override suspend fun update(product: Product): Result<Unit> = runCatching {
-        val key = normalizeProductKey(product.name)
+        val newKey = normalizeProductKey(product.name)
             ?: throw IllegalArgumentException("Nombre inválido para actualizar")
+
+        // Detectar rename: si la key nueva difiere del id actual, hay que
+        // reescribir el searchIndex (borrar tokens viejos, crear nuevos).
+        val oldKey = product.id.takeIf { it.isNotBlank() }?.let { normalizeProductKey(it) }
+        val isRename = oldKey != null && oldKey != newKey
+
         val dto = mapOf(
             "model" to product.modelOrBarcode,
             "quantity" to product.quantity,
             "unitPrice" to (product.unitPrice.cents / 100.0)
         )
-        database.getReference(INVENTORY_PATH).child(key).setValue(dto).await()
+
+        if (isRename) {
+            // oldKey es no-null garantizado por la condicion de isRename.
+            val safeOldKey = oldKey!!
+            // Rename en Firebase: borrar viejo, escribir nuevo
+            database.getReference(INVENTORY_PATH).child(safeOldKey).removeValue().await()
+            database.getReference(INVENTORY_PATH).child(newKey).setValue(dto).await()
+            removeIndexFor(safeOldKey)
+        } else {
+            database.getReference(INVENTORY_PATH).child(newKey).setValue(dto).await()
+        }
+        // Reindexar con el nombre/modelo actuales
+        writeIndex(product, newKey)
+    }
+
+    /**
+     * Elimina las entradas del searchIndex que apuntan a un producto.
+     * Útil cuando se renombra o elimina un producto.
+     *
+     * Implementación: scan completo del searchIndex. Para nuestro tamaño
+     * (~400 tokens) es eficiente. Si creciera a millones, usaríamos un
+     * Map<token, Set<productKey>> en memoria o Algolia/Elastic.
+     */
+    private suspend fun removeIndexFor(productKey: String) {
+        val ref = database.getReference(INDEX_PATH)
+        val snapshot = ref.get().await()
+        val updates = mutableMapOf<String, Any?>()
+        for (tokenSnap in snapshot.children) {
+            if (tokenSnap.hasChild(productKey)) {
+                updates["${tokenSnap.key}/$productKey"] = null
+            }
+        }
+        if (updates.isNotEmpty()) {
+            database.getReference().updateChildren(updates).await()
+        }
     }
 
     override suspend fun delete(id: String): Result<Unit> = runCatching {
         database.getReference(INVENTORY_PATH).child(id).removeValue().await()
+        // Limpiar entradas del searchIndex para que la busqueda no devuelva
+        // un producto que ya no existe.
+        removeIndexFor(id)
     }
 
     // ---------- Internals ----------
@@ -131,6 +175,26 @@ class ProductRepositoryImpl @Inject constructor(
     private suspend fun readProduct(key: String): Product? {
         val snap = database.getReference(INVENTORY_PATH).child(key).fetch()
         return snap.toDomainOrNull()
+    }
+
+    /**
+     * Escribe (o sobrescribe) las entradas del índice invertido para este producto.
+     *
+     * Crea `searchIndex/{token}/{productKey}: true` para CADA token del nombre + modelo.
+     * Esto permite que `search(query)` haga `orderByKey().startAt(token)` y
+     * resuelva en O(log n) en lugar de O(n).
+     *
+     * Si [ModelOrBarcode] cambia, los tokens viejos del modelo quedan como basura
+     * (mitigado en M2 con `update()`). Por ahora aceptable.
+     */
+    private suspend fun writeIndex(product: Product, key: String) {
+        val tokens = tokenize(product.name) + tokenize(product.modelOrBarcode)
+        if (tokens.isEmpty()) return
+        val updates = mutableMapOf<String, Any>()
+        for (token in tokens) {
+            updates["$INDEX_PATH/$token/$key"] = true
+        }
+        database.getReference().updateChildren(updates).await()
     }
 
     private fun DataSnapshot.toDomainOrNull(): Product? {
