@@ -100,14 +100,52 @@ class ProductRepositoryImpl @Inject constructor(
     }
 
     override suspend fun update(product: Product): Result<Unit> = runCatching {
-        val key = normalizeProductKey(product.name)
+        val newKey = normalizeProductKey(product.name)
             ?: throw IllegalArgumentException("Nombre inválido para actualizar")
+
+        // Detectar rename: si la key nueva difiere del id actual, hay que
+        // reescribir el searchIndex (borrar tokens viejos, crear nuevos).
+        val oldKey = product.id.takeIf { it.isNotBlank() }?.let { normalizeProductKey(it) }
+        val isRename = oldKey != null && oldKey != newKey
+
         val dto = mapOf(
             "model" to product.modelOrBarcode,
             "quantity" to product.quantity,
             "unitPrice" to (product.unitPrice.cents / 100.0)
         )
-        database.getReference(INVENTORY_PATH).child(key).setValue(dto).await()
+
+        if (isRename && oldKey != null) {
+            // Rename en Firebase: borrar viejo, escribir nuevo
+            database.getReference(INVENTORY_PATH).child(oldKey).removeValue().await()
+            database.getReference(INVENTORY_PATH).child(newKey).setValue(dto).await()
+            removeIndexFor(oldKey)
+        } else {
+            database.getReference(INVENTORY_PATH).child(newKey).setValue(dto).await()
+        }
+        // Reindexar con el nombre/modelo actuales
+        writeIndex(product, newKey)
+    }
+
+    /**
+     * Elimina las entradas del searchIndex que apuntan a un producto.
+     * Útil cuando se renombra o elimina un producto.
+     *
+     * Implementación: scan completo del searchIndex. Para nuestro tamaño
+     * (~400 tokens) es eficiente. Si creciera a millones, usaríamos un
+     * Map<token, Set<productKey>> en memoria o Algolia/Elastic.
+     */
+    private suspend fun removeIndexFor(productKey: String) {
+        val ref = database.getReference(INDEX_PATH)
+        val snapshot = ref.get().await()
+        val updates = mutableMapOf<String, Any?>()
+        for (tokenSnap in snapshot.children) {
+            if (tokenSnap.hasChild(productKey)) {
+                updates["${tokenSnap.key}/$productKey"] = null
+            }
+        }
+        if (updates.isNotEmpty()) {
+            database.getReference().updateChildren(updates).await()
+        }
     }
 
     override suspend fun delete(id: String): Result<Unit> = runCatching {
