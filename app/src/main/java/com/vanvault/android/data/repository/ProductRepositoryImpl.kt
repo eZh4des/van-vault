@@ -114,11 +114,13 @@ class ProductRepositoryImpl @Inject constructor(
             "unitPrice" to (product.unitPrice.cents / 100.0)
         )
 
-        if (isRename && oldKey != null) {
+        if (isRename) {
+            // oldKey es no-null garantizado por la condicion de isRename.
+            val safeOldKey = oldKey!!
             // Rename en Firebase: borrar viejo, escribir nuevo
-            database.getReference(INVENTORY_PATH).child(oldKey).removeValue().await()
+            database.getReference(INVENTORY_PATH).child(safeOldKey).removeValue().await()
             database.getReference(INVENTORY_PATH).child(newKey).setValue(dto).await()
-            removeIndexFor(oldKey)
+            removeIndexFor(safeOldKey)
         } else {
             database.getReference(INVENTORY_PATH).child(newKey).setValue(dto).await()
         }
