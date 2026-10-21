@@ -32,6 +32,7 @@ import com.vanvault.android.domain.model.StockStatus
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
 import com.vanvault.android.ui.viewmodel.InventoryViewModel
+import com.vanvault.android.ui.viewmodel.StockFilter
 
 /**
  * Pantalla de Inventario refactorizada.
@@ -160,10 +161,30 @@ fun InventoryScreen(
                     .padding(horizontal = 16.dp, vertical = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                FilterChipCustom(text = "Disponible", isSelected = true)
-                FilterChipCustom(text = "Insuficiente", isSelected = false)
-                FilterChipCustom(text = "Agotado", isSelected = false)
-                FilterChipCustom(text = "Todos", isSelected = false)
+                StockFilterChip(
+                    filter = StockFilter.AVAILABLE,
+                    currentFilter = state.filter,
+                    count = state.countFor(StockStatus.AVAILABLE),
+                    onClick = { viewModel.onFilterChange(StockFilter.AVAILABLE) }
+                )
+                StockFilterChip(
+                    filter = StockFilter.LOW_STOCK,
+                    currentFilter = state.filter,
+                    count = state.countFor(StockStatus.LOW_STOCK),
+                    onClick = { viewModel.onFilterChange(StockFilter.LOW_STOCK) }
+                )
+                StockFilterChip(
+                    filter = StockFilter.OUT_OF_STOCK,
+                    currentFilter = state.filter,
+                    count = state.countFor(StockStatus.OUT_OF_STOCK),
+                    onClick = { viewModel.onFilterChange(StockFilter.OUT_OF_STOCK) }
+                )
+                StockFilterChip(
+                    filter = StockFilter.ALL,
+                    currentFilter = state.filter,
+                    count = state.allProducts.size,
+                    onClick = { viewModel.onFilterChange(StockFilter.ALL) }
+                )
             }
 
             if (state.isLoading || state.isSearching) {
@@ -252,30 +273,72 @@ fun FabOption(text: String, onClick: () -> Unit) {
     }
 }
 
+/**
+ * Chip de filtro de stock — interactivo, con contador y resaltado del seleccionado.
+ *
+ * Cumple WCAG 2.5.8 (touch target ≥ 48dp) y Nielsen #1 (visibilidad del estado).
+ */
 @Composable
-fun FilterChipCustom(text: String, isSelected: Boolean) {
+private fun StockFilterChip(
+    filter: StockFilter,
+    currentFilter: StockFilter,
+    count: Int,
+    onClick: () -> Unit
+) {
+    val isSelected = filter == currentFilter
+    val backgroundColor = when (filter) {
+        StockFilter.AVAILABLE -> if (isSelected) MaterialTheme.colorScheme.primaryContainer
+                                  else MaterialTheme.colorScheme.surfaceContainerLow
+        StockFilter.LOW_STOCK -> if (isSelected) MaterialTheme.colorScheme.tertiaryContainer
+                                  else MaterialTheme.colorScheme.surfaceContainerLow
+        StockFilter.OUT_OF_STOCK -> if (isSelected) MaterialTheme.colorScheme.errorContainer
+                                    else MaterialTheme.colorScheme.surfaceContainerLow
+        StockFilter.ALL -> if (isSelected) MaterialTheme.colorScheme.secondaryContainer
+                          else MaterialTheme.colorScheme.surfaceContainerLow
+    }
+    val borderColor = when (filter) {
+        StockFilter.AVAILABLE -> MaterialTheme.colorScheme.primary
+        StockFilter.LOW_STOCK -> MaterialTheme.colorScheme.tertiary
+        StockFilter.OUT_OF_STOCK -> MaterialTheme.colorScheme.error
+        StockFilter.ALL -> MaterialTheme.colorScheme.secondary
+    }
+    val textColor = when (filter) {
+        StockFilter.AVAILABLE -> MaterialTheme.colorScheme.onPrimaryContainer
+        StockFilter.LOW_STOCK -> MaterialTheme.colorScheme.onTertiaryContainer
+        StockFilter.OUT_OF_STOCK -> MaterialTheme.colorScheme.onErrorContainer
+        StockFilter.ALL -> MaterialTheme.colorScheme.onSecondaryContainer
+    }
+
     Box(
         modifier = Modifier
             .heightIn(min = 48.dp)
-            .background(
-                color = if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
-                shape = RoundedCornerShape(17.dp)
-            )
-            .border(
-                width = 1.dp,
-                color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
-                shape = RoundedCornerShape(17.dp)
-            )
-            .clickable { /* TODO T06 */ }
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .background(color = backgroundColor, shape = RoundedCornerShape(17.dp))
+            .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(17.dp))
+            .clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = text,
-            color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant,
-            fontWeight = if (isSelected) FontWeight.Medium else FontWeight.Normal,
-            fontSize = 14.sp
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = filter.label,
+                color = textColor,
+                fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
+                fontSize = 14.sp
+            )
+            Spacer(Modifier.width(6.dp))
+            Surface(
+                shape = androidx.compose.foundation.shape.CircleShape,
+                color = borderColor.copy(alpha = 0.85f)
+            ) {
+                Text(
+                    text = "$count",
+                    color = MaterialTheme.colorScheme.surface,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 1.dp)
+                )
+            }
+        }
     }
 }
 
