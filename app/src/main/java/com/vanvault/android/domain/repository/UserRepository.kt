@@ -39,6 +39,15 @@ interface UserRepository {
         phone: String?
     ): Result<UserProfile>
 
+    /**
+     * Inicia sesion con email + contrasena.
+     *
+     * @return [Result.success] con el [UserProfile] si las credenciales son validas
+     *         [Result.failure] con mensaje legible si falla (cuenta no existe,
+     *         contrasena incorrecta, email no verificado, etc)
+     */
+    suspend fun loginUser(email: String, password: String): Result<UserProfile>
+
     /** Actualiza los datos del perfil del usuario actual. */
     suspend fun updateProfile(displayName: String, phone: String?): Result<Unit>
 

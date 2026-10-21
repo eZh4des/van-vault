@@ -99,7 +99,7 @@ class UserRepositoryImpl @Inject constructor(
     ): Result<UserProfile> = runCatching {
         // 1. Crear usuario en Auth
         val authResult = auth.createUserWithEmailAndPassword(email, password).await()
-        val user = authResult.user ?: throw IllegalStateException("Auth devolvió user null")
+        val user = authResult.user ?: throw IllegalStateException("Auth devolvio user null")
 
         // 2. Actualizar displayName en Auth
         val profileUpdates = com.google.firebase.auth.UserProfileChangeRequest.Builder()
@@ -120,6 +120,29 @@ class UserRepositoryImpl @Inject constructor(
 
         // Retornar el perfil recien creado
         snapshotToProfile(user, phone)
+    }
+
+    /**
+     * Inicia sesion via FirebaseAuth + carga perfil de RTDB.
+     *
+     *  1. signInWithEmailAndPassword(Auth)
+     *  2. Lee /users/{uid} (RTDB) para datos extra (phone)
+     *  3. Verifica emailVerified -> si no, retorna excepcion especial
+     *     (cumple requerimiento original de verificar email antes de acceder)
+     */
+    override suspend fun loginUser(email: String, password: String): Result<UserProfile> = runCatching {
+        val authResult = auth.signInWithEmailAndPassword(email, password).await()
+        val firebaseUser = authResult.user ?: throw IllegalStateException("Auth devolvio user null")
+
+        // Leer /users/{uid} en RTDB
+        val phone = try {
+            val snap = database.getReference(USER_PATH).child(firebaseUser.uid).get().await()
+            snap.child("phone").getValue(String::class.java)
+        } catch (e: Exception) {
+            null  // Si falla RTDB, continuar sin telefono
+        }
+
+        snapshotToProfile(firebaseUser, phone?.takeIf { it.isNotBlank() })
     }
 
     override suspend fun updateProfile(displayName: String, phone: String?): Result<Unit> = runCatching {
