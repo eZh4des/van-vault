@@ -1,7 +1,5 @@
 package com.vanvault.android.ui.screens
 
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,7 +11,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -22,25 +19,31 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vanvault.android.ui.components.VanVaultDialog
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.R
+import com.vanvault.android.ui.components.VanVaultDialog
+import com.vanvault.android.ui.viewmodel.LoginEffect
+import com.vanvault.android.ui.viewmodel.LoginViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
     onRegisterClick: () -> Unit = {},
     onForgotPasswordClick: () -> Unit = {},
-    onLoginSuccess: () -> Unit = {}
+    onLoginSuccess: () -> Unit = {},
+    viewModel: LoginViewModel = hiltViewModel()
 ) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var passwordVisible by remember { mutableStateOf(false) }
-    var isLoading by remember { mutableStateOf(false) }
-    
-    var showErrorDialog by remember { mutableStateOf(false) }
-    var errorMessage by remember { mutableStateOf("") }
-    
-    val context = LocalContext.current
-    val auth = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth()
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+
+    // Consume eventos one-shot del VM (Nielsen #5)
+    LaunchedEffect(viewModel) {
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                is LoginEffect.Success -> onLoginSuccess()
+            }
+        }
+    }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -92,8 +95,8 @@ fun LoginScreen(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 OutlinedTextField(
-                    value = email,
-                    onValueChange = { email = it },
+                    value = state.email,
+                    onValueChange = viewModel::onEmailChange,
                     modifier = Modifier.fillMaxWidth(),
                     placeholder = { Text("correo@ejemplo.com", color = MaterialTheme.colorScheme.onSurfaceVariant) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -122,14 +125,14 @@ fun LoginScreen(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 OutlinedTextField(
-                    value = password,
-                    onValueChange = { password = it },
+                    value = state.password,
+                    onValueChange = viewModel::onPasswordChange,
                     modifier = Modifier.fillMaxWidth(),
                     placeholder = { Text("••••••••", color = MaterialTheme.colorScheme.onSurfaceVariant) },
-                    visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    visualTransformation = if (state.passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                     trailingIcon = {
-                        val image = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff
-                        IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                        val image = if (state.passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff
+                        IconButton(onClick = viewModel::onTogglePasswordVisibility) {
                             Icon(imageVector = image, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                     },
@@ -161,30 +164,7 @@ fun LoginScreen(
 
             // Login Button
             Button(
-                onClick = {
-                    if (email.isNotEmpty() && password.isNotEmpty()) {
-                        isLoading = true
-                        auth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener { task ->
-                                isLoading = false
-                                if (task.isSuccessful) {
-                                    val user = auth.currentUser
-                                    if (user?.isEmailVerified == true) {
-                                        onLoginSuccess()
-                                    } else {
-                                        Toast.makeText(context, "Verifica tu correo electrónico primero", Toast.LENGTH_LONG).show()
-                                        auth.signOut()
-                                    }
-                                } else {
-                                    errorMessage = "Error al iniciar sesión.\n\nVerifica que el correo y la contraseña sean correctos, o que la cuenta se encuentre registrada."
-                                    showErrorDialog = true
-                                }
-                            }
-                    } else {
-                        errorMessage = "Por favor, llena todos los campos para poder iniciar sesión."
-                        showErrorDialog = true
-                    }
-                },
+                onClick = { viewModel.onLogin() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
@@ -192,9 +172,9 @@ fun LoginScreen(
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary
                 ),
-                enabled = !isLoading
+                enabled = !state.isSubmitting
             ) {
-                if (isLoading) {
+                if (state.isSubmitting) {
                     CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.surface)
                 } else {
                     Text(
@@ -231,10 +211,10 @@ fun LoginScreen(
     }
 
     VanVaultDialog(
-        showDialog = showErrorDialog,
+        showDialog = state.errorMessage != null,
         title = "Error de inicio de sesión",
-        message = errorMessage,
-        onDismiss = { showErrorDialog = false }
+        message = state.errorMessage ?: "",
+        onDismiss = { viewModel.onErrorShown() }
     )
 }
 
