@@ -9,7 +9,7 @@ import androidx.compose.material.icons.automirrored.outlined.HelpOutline
 import androidx.compose.material.icons.automirrored.outlined.Logout
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.vanvault.android.ui.components.ConfirmDeleteDialog
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
 
@@ -31,6 +32,8 @@ fun ProfileScreen(
     onLanguageClick: () -> Unit,
     onHelpClick: () -> Unit
 ) {
+    var showLogoutDialog by remember { mutableStateOf(false) }
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
@@ -74,13 +77,25 @@ fun ProfileScreen(
                 icon = Icons.AutoMirrored.Outlined.Logout,
                 title = "Cerrar sesión",
                 isDestructive = true,
-                onClick = {
-                    com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().signOut()
-                    onLogoutClick()
-                }
+                onClick = { showLogoutDialog = true }
             )
             Spacer(modifier = Modifier.height(16.dp))
         }
+    }
+
+    if (showLogoutDialog) {
+        ConfirmDeleteDialog(
+            showDialog = true,
+            title = "¿Cerrar sesión?",
+            message = "Tendrás que volver a iniciar sesión para acceder a tu inventario.",
+            itemName = null,
+            confirmLabel = "Cerrar sesión",
+            onConfirm = {
+                com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().signOut()
+                onLogoutClick()
+            },
+            onDismiss = { showLogoutDialog = false }
+        )
     }
 }
 
