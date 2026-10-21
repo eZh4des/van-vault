@@ -9,7 +9,7 @@ import androidx.compose.material.icons.automirrored.outlined.HelpOutline
 import androidx.compose.material.icons.automirrored.outlined.Logout
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,8 +17,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.vanvault.android.ui.components.ConfirmDeleteDialog
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.viewmodel.ProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,8 +33,20 @@ fun ProfileScreen(
     onAppearanceClick: () -> Unit,
     onNotificationsClick: () -> Unit,
     onLanguageClick: () -> Unit,
-    onHelpClick: () -> Unit
+    onHelpClick: () -> Unit,
+    viewModel: ProfileViewModel = hiltViewModel()
 ) {
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+    var showLogoutDialog by remember { mutableStateOf(false) }
+
+    // Cuando el VM reporta logout completado, navegamos a login.
+    LaunchedEffect(state.loggedOut) {
+        if (state.loggedOut) {
+            onLogoutClick()
+            viewModel.onLogoutHandled()
+        }
+    }
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
@@ -74,13 +90,25 @@ fun ProfileScreen(
                 icon = Icons.AutoMirrored.Outlined.Logout,
                 title = "Cerrar sesión",
                 isDestructive = true,
-                onClick = {
-                    com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().signOut()
-                    onLogoutClick()
-                }
+                onClick = { showLogoutDialog = true }
             )
             Spacer(modifier = Modifier.height(16.dp))
         }
+    }
+
+    if (showLogoutDialog) {
+        ConfirmDeleteDialog(
+            showDialog = true,
+            title = "¿Cerrar sesión?",
+            message = "Tendrás que volver a iniciar sesión para acceder a tu inventario.",
+            itemName = null,
+            confirmLabel = "Cerrar sesión",
+            onConfirm = {
+                viewModel.onLogout()
+                showLogoutDialog = false
+            },
+            onDismiss = { showLogoutDialog = false }
+        )
     }
 }
 
