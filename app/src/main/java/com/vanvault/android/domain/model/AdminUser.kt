@@ -1,26 +1,29 @@
 package com.vanvault.android.domain.model
 
 /**
- * Usuario administrador que aparece en el panel de admin.
+ * Usuario (cualquier rol) que aparece en el panel de administracion.
  *
- * Modelo plano (no un User genérico) — Pragmatic tip: "Code close to the
- * problem domain". El admin solo necesita estos campos para su pantalla.
+ * Modelo plano (no un User generico) — Pragmatic tip: "Code close to the
+ * problem domain". El panel de admin solo necesita estos campos.
+ *
+ * **Reutiliza** [UserRole] del dominio para mantener consistencia con
+ * el sistema de roles. El enum interno [Role] antiguo (OWNER/ADMIN/EMPLOYEE/VIEWER)
+ * se removio: ahora la fuente unica es [UserRole].
  */
 data class AdminUser(
     val id: String,
     val displayName: String,
     val email: String,
-    val role: Role,
-    val initials: String,        // para el avatar circular
+    val role: UserRole,
+    val initials: String,
     val isActive: Boolean,
-    val lastSeenLabel: String    // "Hace 5 min", "Ayer", "Desconectado"
+    val lastSeenLabel: String
 ) {
-    enum class Role(val label: String) {
-        OWNER("Propietario"),
-        ADMIN("Administrador"),
-        EMPLOYEE("Empleado"),
-        VIEWER("Visualizador")
-    }
+    /**
+     * Alias de displayName para uso en tablas (donde el header dice
+     * "Nombre y apellido"). Mismo patron que UserProfile.fullName.
+     */
+    val fullName: String get() = displayName
 }
 
 /**

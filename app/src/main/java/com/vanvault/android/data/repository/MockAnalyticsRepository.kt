@@ -205,7 +205,7 @@ class MockAnalyticsRepository @Inject constructor() {
                     id = "u1",
                     displayName = "Carlos Ramírez",
                     email = "carlos@vanvault.co",
-                    role = AdminUser.Role.OWNER,
+                    role = com.vanvault.android.domain.model.UserRole.ADMIN,
                     initials = "CR",
                     isActive = true,
                     lastSeenLabel = "En línea"
@@ -214,7 +214,7 @@ class MockAnalyticsRepository @Inject constructor() {
                     id = "u2",
                     displayName = "Diana Pérez",
                     email = "diana@vanvault.co",
-                    role = AdminUser.Role.ADMIN,
+                    role = com.vanvault.android.domain.model.UserRole.ADMIN,
                     initials = "DP",
                     isActive = true,
                     lastSeenLabel = "Hace 5 min"
@@ -223,7 +223,7 @@ class MockAnalyticsRepository @Inject constructor() {
                     id = "u3",
                     displayName = "Andrés López",
                     email = "andres@vanvault.co",
-                    role = AdminUser.Role.EMPLOYEE,
+                    role = com.vanvault.android.domain.model.UserRole.CLIENT,
                     initials = "AL",
                     isActive = true,
                     lastSeenLabel = "Hace 1 hora"
@@ -232,7 +232,7 @@ class MockAnalyticsRepository @Inject constructor() {
                     id = "u4",
                     displayName = "María González",
                     email = "maria@vanvault.co",
-                    role = AdminUser.Role.EMPLOYEE,
+                    role = com.vanvault.android.domain.model.UserRole.CLIENT,
                     initials = "MG",
                     isActive = false,
                     lastSeenLabel = "Ayer"
@@ -241,7 +241,7 @@ class MockAnalyticsRepository @Inject constructor() {
                     id = "u5",
                     displayName = "Pedro Sánchez",
                     email = "pedro@vanvault.co",
-                    role = AdminUser.Role.VIEWER,
+                    role = com.vanvault.android.domain.model.UserRole.CLIENT,
                     initials = "PS",
                     isActive = true,
                     lastSeenLabel = "Hace 30 min"

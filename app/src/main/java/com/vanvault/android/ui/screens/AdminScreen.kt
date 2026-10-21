@@ -104,17 +104,17 @@ fun AdminScreen(
                     Spacer(Modifier.height(12.dp))
                 }
 
-                // Equipo
+                // Equipo (vista adaptativa al zoom)
                 Text(
                     text = "Equipo",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
                 Spacer(Modifier.height(8.dp))
-                snapshot.users.forEach { user ->
-                    UserCard(user)
-                    Spacer(Modifier.height(8.dp))
-                }
+                com.vanvault.android.ui.components.ResponsiveUsersTable(
+                    users = snapshot.users,
+                    modifier = Modifier.heightIn(max = 600.dp)
+                )
                 Spacer(Modifier.height(80.dp))
             }
         }
@@ -276,7 +276,7 @@ private fun UserCard(user: AdminUser) {
                 contentColor = MaterialTheme.colorScheme.onSurface
             ) {
                 Text(
-                    text = user.role.label,
+                    text = user.role.displayName,
                     style = MaterialTheme.typography.labelSmall,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)

@@ -36,7 +36,8 @@ interface UserRepository {
         email: String,
         password: String,
         displayName: String,
-        phone: String?
+        phone: String?,
+        role: com.vanvault.android.domain.model.UserRole
     ): Result<UserProfile>
 
     /**

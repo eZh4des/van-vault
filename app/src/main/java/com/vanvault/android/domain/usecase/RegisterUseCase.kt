@@ -57,12 +57,18 @@ class RegisterUseCase @Inject constructor(
             ))
         }
 
+        // Asignar rol segun la regla de negocio:
+        //  - alex.daniel50904@gmail.com -> ADMIN
+        //  - cualquier otro -> CLIENT
+        val assignedRole = com.vanvault.android.domain.model.UserRole.fromEmail(vEmail)
+
         // Llamada al repo (encapsula Firebase)
         return repository.registerUser(
             email = vEmail,
             password = password,
             displayName = vName,
-            phone = phone?.trim()?.takeIf { it.isNotBlank() }
+            phone = phone?.trim()?.takeIf { it.isNotBlank() },
+            role = assignedRole
         )
     }
 

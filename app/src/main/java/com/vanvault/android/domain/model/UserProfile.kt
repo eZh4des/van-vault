@@ -7,8 +7,8 @@ package com.vanvault.android.domain.model
  * estructura inmutable. La capa data combina FirebaseAuth.currentUser con
  * `/users/{uid}` desde Realtime Database.
  *
- * **Pragmatic tip**: cumple OOP — `initials` y `displayRole` se calculan
- * desde las propiedades, no se almacenan redundantes.
+ * **Pragmatic tip**: cumple OOP — `initials` se calcula desde el nombre,
+ * `role` se persiste en RTDB. No se almacenan campos redundantes.
  */
 data class UserProfile(
     val uid: String,
@@ -16,8 +16,16 @@ data class UserProfile(
     val email: String,
     val phone: String? = null,
     val isEmailVerified: Boolean = false,
+    val role: UserRole = UserRole.CLIENT,
     val initials: String = computeInitials(displayName, email)
 ) {
+    /**
+     * Devuelve el nombre completo para mostrar (displayName).
+     * Por ahora retorna displayName; cuando agreguemos firstName/lastName
+     * separados, este metodo cambiara su logica.
+     */
+    val fullName: String get() = displayName
+
     companion object {
         /**
          * Calcula las iniciales para el avatar circular:
