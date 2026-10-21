@@ -150,6 +150,9 @@ class ProductRepositoryImpl @Inject constructor(
 
     override suspend fun delete(id: String): Result<Unit> = runCatching {
         database.getReference(INVENTORY_PATH).child(id).removeValue().await()
+        // Limpiar entradas del searchIndex para que la busqueda no devuelva
+        // un producto que ya no existe.
+        removeIndexFor(id)
     }
 
     // ---------- Internals ----------
