@@ -1,8 +1,5 @@
 package com.vanvault.android.ui.screens
 
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
-import com.google.firebase.auth.UserProfileChangeRequest
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -14,7 +11,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -22,28 +18,37 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.ui.components.VanVaultDialog
+import com.vanvault.android.ui.viewmodel.RegisterEffect
+import com.vanvault.android.ui.viewmodel.RegisterViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(
     onBackClick: () -> Unit = {},
-    onLoginClick: () -> Unit = {}
+    onLoginClick: () -> Unit = {},
+    viewModel: RegisterViewModel = hiltViewModel()
 ) {
-    var name by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
     var passwordVisible by remember { mutableStateOf(false) }
-    var isLoading by remember { mutableStateOf(false) }
-    var isRegistered by remember { mutableStateOf(false) }
-    
-    // Variables para el Dialog de Error
-    var showErrorDialog by remember { mutableStateOf(false) }
-    var errorMessage by remember { mutableStateOf("") }
+    var showSuccess by remember { mutableStateOf(false) }
+    var registeredEmail by remember { mutableStateOf("") }
 
-    val context = LocalContext.current
-    val auth = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth()
+    // Consume eventos one-shot del VM (Nielsen #5: el usuario decide cuando
+    // continuar). Aqui navegamos al login tras exito.
+    LaunchedEffect(viewModel) {
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                is RegisterEffect.Success -> {
+                    registeredEmail = effect.email
+                    showSuccess = true
+                    viewModel.onErrorShown()  // limpia error tambien
+                }
+            }
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -80,7 +85,7 @@ fun RegisterScreen(
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
-            if (isRegistered) {
+            if (showSuccess) {
                 Text(
                     text = "¡Registro Exitoso!",
                     style = MaterialTheme.typography.headlineMedium,
@@ -88,13 +93,13 @@ fun RegisterScreen(
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 Text(
-                    text = "Hemos enviado un enlace de validación a $email. Por favor, revisa tu correo (y bandeja de spam) y haz clic en el enlace para verificar tu cuenta.",
+                    text = "Hemos enviado un enlace de validación a $registeredEmail. Por favor, revisa tu correo (y bandeja de spam) y haz clic en el enlace para verificar tu cuenta.",
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(bottom = 32.dp),
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 Button(
-                    onClick = onLoginClick, 
+                    onClick = onLoginClick,
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                 ) {
@@ -113,8 +118,8 @@ fun RegisterScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
-                        value = name,
-                        onValueChange = { name = it },
+                        value = state.name,
+                        onValueChange = viewModel::onNameChange,
                         modifier = Modifier.fillMaxWidth(),
                         placeholder = { Text("Ej. Juan Pérez", color = MaterialTheme.colorScheme.onSurfaceVariant) },
                         shape = RoundedCornerShape(12.dp),
@@ -142,8 +147,8 @@ fun RegisterScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
-                        value = email,
-                        onValueChange = { email = it },
+                        value = state.email,
+                        onValueChange = viewModel::onEmailChange,
                         modifier = Modifier.fillMaxWidth(),
                         placeholder = { Text("correo@ejemplo.com", color = MaterialTheme.colorScheme.onSurfaceVariant) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -172,8 +177,8 @@ fun RegisterScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
-                        value = password,
-                        onValueChange = { password = it },
+                        value = state.password,
+                        onValueChange = viewModel::onPasswordChange,
                         modifier = Modifier.fillMaxWidth(),
                         placeholder = { Text("••••••••", color = MaterialTheme.colorScheme.onSurfaceVariant) },
                         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
@@ -209,8 +214,8 @@ fun RegisterScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
-                        value = confirmPassword,
-                        onValueChange = { confirmPassword = it },
+                        value = state.confirmPassword,
+                        onValueChange = viewModel::onConfirmPasswordChange,
                         modifier = Modifier.fillMaxWidth(),
                         placeholder = { Text("••••••••", color = MaterialTheme.colorScheme.onSurfaceVariant) },
                         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
@@ -237,77 +242,7 @@ fun RegisterScreen(
 
                 // Register Button
                 Button(
-                    onClick = {
-                        val emailRegex = "^[A-Za-z0-9+_.-]+@gmail\\.com$".toRegex()
-                        val passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$".toRegex()
-
-                        if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty() && name.isNotEmpty()) {
-                            if (!email.matches(emailRegex)) {
-                                errorMessage = "El correo debe terminar obligatoriamente en @gmail.com."
-                                showErrorDialog = true
-                                return@Button
-                            }
-                            
-                            if (password == confirmPassword) {
-                                if (password.matches(passwordRegex)) {
-                                    isLoading = true
-                                    auth.createUserWithEmailAndPassword(email, password)
-                                        .addOnCompleteListener { task ->
-                                            if (task.isSuccessful) {
-                                                val user = auth.currentUser
-                                                val profileUpdates = UserProfileChangeRequest.Builder()
-                                                    .setDisplayName(name)
-                                                    .build()
-
-                                                user?.updateProfile(profileUpdates)
-                                                    ?.addOnCompleteListener { profileTask ->
-                                                        if (profileTask.isSuccessful) {
-                                                            // Guardar en Realtime Database
-                                                            val database = com.vanvault.android.di.FirebaseModule.provideFirebaseDatabase().reference
-                                                            val userData = mapOf(
-                                                                "name" to name,
-                                                                "email" to email,
-                                                                "phone" to "No registrado"
-                                                            )
-                                                            user.uid.let { uid ->
-                                                                database.child("users").child(uid).setValue(userData)
-                                                            }
-
-                                                            user.sendEmailVerification()
-                                                                .addOnCompleteListener { verificationTask ->
-                                                                    isLoading = false
-                                                                    if (verificationTask.isSuccessful) {
-                                                                        isRegistered = true
-                                                                    } else {
-                                                                        errorMessage = "Error al enviar correo de validación: ${verificationTask.exception?.localizedMessage}"
-                                                                        showErrorDialog = true
-                                                                    }
-                                                                }
-                                                        } else {
-                                                            isLoading = false
-                                                            errorMessage = "Error al guardar el nombre de perfil."
-                                                            showErrorDialog = true
-                                                        }
-                                                    }
-                                            } else {
-                                                isLoading = false
-                                                errorMessage = "Error de registro: ${task.exception?.localizedMessage}"
-                                                showErrorDialog = true
-                                            }
-                                        }
-                                } else {
-                                    errorMessage = "Contraseña débil.\n\nPor tu seguridad, la contraseña debe tener al menos 8 caracteres e incluir como mínimo:\n• Una letra mayúscula.\n• Una letra minúscula.\n• Un número."
-                                    showErrorDialog = true
-                                }
-                            } else {
-                                errorMessage = "Las contraseñas no coinciden. Por favor, verifícalas."
-                                showErrorDialog = true
-                            }
-                        } else {
-                            errorMessage = "Por favor, llena todos los campos para poder registrarte."
-                            showErrorDialog = true
-                        }
-                    },
+                    onClick = { viewModel.onRegister() },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
@@ -315,9 +250,9 @@ fun RegisterScreen(
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary
                     ),
-                    enabled = !isLoading
+                    enabled = !state.isSubmitting
                 ) {
-                    if (isLoading) {
+                    if (state.isSubmitting) {
                         CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.onPrimary)
                     } else {
                         Text(
@@ -355,10 +290,10 @@ fun RegisterScreen(
     }
 
     VanVaultDialog(
-        showDialog = showErrorDialog,
+        showDialog = state.errorMessage != null,
         title = "Aviso de seguridad",
-        message = errorMessage,
-        onDismiss = { showErrorDialog = false }
+        message = state.errorMessage ?: "",
+        onDismiss = { viewModel.onErrorShown() }
     )
 }
 
