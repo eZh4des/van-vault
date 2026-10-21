@@ -7,8 +7,12 @@ import kotlinx.coroutines.flow.Flow
  * Repositorio de Usuario (Auth + Profile).
  *
  * Combina dos fuentes:
- *  - [FirebaseAuth.currentUser] para identidad (uid, email, displayName)
- *  - `/users/{uid}` en Realtime Database para datos extra (phone, prefs)
+ *  - [FirebaseAuth] (createUser, updateProfile, sendEmailVerification, signOut)
+ *  - `/users/{uid}` en Realtime Database para datos extra (name, phone)
+ *
+ * **Importante para M9 (fix RegisterScreen)**: la UI NO debe llamar a
+ * Firebase directamente. Toda la lógica de registro vive en este repo
+ * vía [registerUser].
  */
 interface UserRepository {
     /** Devuelve el perfil actual o null si no hay sesión. Cold flow. */
@@ -16,6 +20,24 @@ interface UserRepository {
 
     /** Snapshot del perfil actual. */
     suspend fun getCurrentProfile(): UserProfile?
+
+    /**
+     * Registra un nuevo usuario.
+     *
+     * Pasos:
+     *  1. FirebaseAuth.createUserWithEmailAndPassword
+     *  2. UserProfileChangeRequest con displayName (en Auth)
+     *  3. /users/{uid} en RTDB con { name, email, phone: null }
+     *  4. sendEmailVerification()
+     *
+     * @return [Result.success] con el [UserProfile] creado si todo OK
+     */
+    suspend fun registerUser(
+        email: String,
+        password: String,
+        displayName: String,
+        phone: String?
+    ): Result<UserProfile>
 
     /** Actualiza los datos del perfil del usuario actual. */
     suspend fun updateProfile(displayName: String, phone: String?): Result<Unit>

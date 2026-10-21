@@ -84,6 +84,44 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
+    /**
+     * Registro end-to-end:
+     *  1. createUser en Auth
+     *  2. updateProfile(displayName) en Auth
+     *  3. /users/{uid} en RTDB
+     *  4. sendEmailVerification
+     */
+    override suspend fun registerUser(
+        email: String,
+        password: String,
+        displayName: String,
+        phone: String?
+    ): Result<UserProfile> = runCatching {
+        // 1. Crear usuario en Auth
+        val authResult = auth.createUserWithEmailAndPassword(email, password).await()
+        val user = authResult.user ?: throw IllegalStateException("Auth devolvió user null")
+
+        // 2. Actualizar displayName en Auth
+        val profileUpdates = com.google.firebase.auth.UserProfileChangeRequest.Builder()
+            .setDisplayName(displayName)
+            .build()
+        user.updateProfile(profileUpdates).await()
+
+        // 3. Guardar en RTDB /users/{uid}
+        val updates = mapOf(
+            "name" to displayName,
+            "email" to email,
+            "phone" to (phone ?: "")
+        )
+        database.getReference(USER_PATH).child(user.uid).updateChildren(updates).await()
+
+        // 4. Enviar email de verificacion
+        user.sendEmailVerification().await()
+
+        // Retornar el perfil recien creado
+        snapshotToProfile(user, phone)
+    }
+
     override suspend fun updateProfile(displayName: String, phone: String?): Result<Unit> = runCatching {
         val user = auth.currentUser ?: throw IllegalStateException("No hay sesión activa")
         val updates = mapOf(
