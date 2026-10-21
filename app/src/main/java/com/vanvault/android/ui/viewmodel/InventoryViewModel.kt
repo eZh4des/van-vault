@@ -11,6 +11,10 @@ import com.vanvault.android.domain.usecase.ObserveInventoryUseCase
 import com.vanvault.android.domain.usecase.SearchProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -18,11 +22,13 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 import javax.inject.Inject
 
 /**
@@ -56,8 +62,12 @@ class InventoryViewModel @Inject constructor(
     private val _effects = MutableSharedFlow<InventoryEffect>(extraBufferCapacity = 4)
     val effects: SharedFlow<InventoryEffect> = _effects.asSharedFlow()
 
-    // Lista maestra observada de Firebase (SSOT)
+    // Lista maestra observada de Firebase (SSOT) CON TIMEOUT DE 3s
+    // Pragmatic Tip: si Firebase tarda mas de 3s (red lenta, RTDB
+    // sobrecargado), emitimos lista vacia para que la UI no se quede
+    // colgada en loading infinito.
     val inventory: StateFlow<List<Product>> = observeInventory()
+        .mapWithTimeout()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     private var searchJob: Job? = null
@@ -66,8 +76,15 @@ class InventoryViewModel @Inject constructor(
         inventory
             .onEach { products ->
                 _uiState.update { state ->
-                    if (!state.isSearchActive) state.copy(allProducts = products)
-                    else state
+                    val isFirstLoad = state.isLoading && state.allProducts.isEmpty()
+                    val updates = if (!state.isSearchActive) {
+                        state.copy(
+                            allProducts = products,
+                            isLoading = false,    // siempre false despues de la primera emision
+                            loadTimedOut = products.isEmpty() && isFirstLoad  // si timeout = empty
+                        )
+                    } else state
+                    updates
                 }
             }
             .launchIn(viewModelScope)
@@ -166,7 +183,9 @@ data class InventoryUiState(
     val isLoading: Boolean = true,
     val isSearching: Boolean = false,
     val isRefreshing: Boolean = false,
-    val filter: StockFilter = StockFilter.ALL
+    val filter: StockFilter = StockFilter.ALL,
+    /** True si el fetch inicial de inventario tardo mas de 3s o fallo. */
+    val loadTimedOut: Boolean = false
 ) {
     /**
      * Productos visibles, respetando:
@@ -184,10 +203,50 @@ data class InventoryUiState(
     val hasProducts: Boolean
         get() = allProducts.isNotEmpty()
 
+    /**
+     * Pantalla "vacia" cuando:
+     *  - Cargo el inventario (loadTimedOut = true), O
+     *  - Cargo OK pero no hay productos con quantity >= 1
+     */
+    val isEmpty: Boolean
+        get() = allProducts.none { it.quantity >= 1 }
+
     /** Cuenta de productos por estado (para badges en los chips). */
     fun countFor(s: StockStatus): Int = allProducts.count { it.stockStatus == s }
 
     fun stockOf(product: Product): StockStatus = product.stockStatus
+}
+
+/**
+ * Extiende un Flow con timeout de 3s.
+ *
+ * - Si el upstream emite un valor dentro de 3s: lo pasa tal cual.
+ * - Si pasan 3s sin emision: emite una lista vacia (no propaga TimeoutCancellation).
+ * - Si el upstream emite DESPUES de 3s: ese valor igual se propaga (no se
+ *   silencia para siempre).
+ */
+private fun <T> Flow<T>.mapWithTimeout(): Flow<T> = kotlinx.coroutines.flow.flow {
+    val upstream = this@mapWithTimeout
+    coroutineScope {
+        val job = launch {
+            try {
+                upstream.collect { value -> emit(value) }
+            } catch (e: TimeoutCancellationException) {
+                // No deberia pasar aqui, pero defensivo
+            }
+        }
+        // Lanza un job que duerme 3s y luego emite empty
+        val timeoutJob = launch {
+            kotlinx.coroutines.delay(3_000)
+            // Solo emitir empty si todavia no hay nada
+            if (!job.isCompleted) {
+                @Suppress("UNCHECKED_CAST")
+                emit(emptyList<T>() as T)
+            }
+        }
+        job.join()
+        timeoutJob.cancel()
+    }
 }
 
 /**

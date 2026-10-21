@@ -58,21 +58,55 @@ class ProductRepositoryImpl @Inject constructor(
         val words = tokenize(query)
         if (words.isEmpty()) return ProductSearchResult.Empty
         return try {
+            // 1) Intentar con el searchIndex (O(log n) gracias a orderByKey)
             val keySets = coroutineScope {
                 words.map { w -> async { keysForWordPrefix(w) } }.awaitAll()
             }
             val keys = organizeCandidates(intersectAll(keySets))
-            if (keys.isEmpty()) return ProductSearchResult.Empty
 
-            val page = keys.take(limit)
-            val products = coroutineScope {
-                page.map { key -> async { readProduct(key) } }.awaitAll().filterNotNull()
+            // 2) Si el index esta vacio o no matchea, fallback a busqueda lineal
+            //    en /inventory. Esto soporta datos legacy que fueron subidos
+            //    sin searchIndex (ej. import manual desde Firebase Console
+            //    o REST API). Tambien cubre el caso donde el index y los
+            //    productos no estan sincronizados.
+            val products = if (keys.isNotEmpty()) {
+                val page = keys.take(limit)
+                coroutineScope {
+                    page.map { key -> async { readProduct(key) } }.awaitAll().filterNotNull()
+                }
+            } else {
+                linearSearch(words, limit)
             }
+
             if (products.isEmpty()) ProductSearchResult.Empty
-            else ProductSearchResult.Success(products, hasMore = keys.size > limit)
+            else ProductSearchResult.Success(products, hasMore = products.size >= limit)
         } catch (e: Exception) {
             ProductSearchResult.Error(e.message ?: "No se pudo consultar el inventario")
         }
+    }
+
+    /**
+     * Busqueda lineal (fallback) en /inventory cuando el searchIndex no
+     * devuelve resultados. Es O(n) pero solo se activa como red de seguridad.
+     *
+     * Filtra productos cuyos tokens (de nombre + modelo) contienen TODAS
+     * las palabras de la query (interseccion).
+     */
+    private suspend fun linearSearch(words: Set<String>, limit: Int): List<Product> {
+        val all = readAllInventory()
+        return all.filter { product ->
+            val productTokens = tokenize(product.name) + tokenize(product.modelOrBarcode)
+            words.all { w -> productTokens.any { it.contains(w) } }
+        }.take(limit)
+    }
+
+    /**
+     * Lee TODOS los productos de /inventory. Usado solo por linearSearch
+     * (fallback). Para datasets grandes (>10k) seria preferible paginar.
+     */
+    private suspend fun readAllInventory(): List<Product> {
+        val snap = database.getReference(INVENTORY_PATH).get().await()
+        return snap.children.mapNotNull { it.toDomainOrNull() }
     }
 
     override suspend fun findByName(name: String): ProductLookupResult {

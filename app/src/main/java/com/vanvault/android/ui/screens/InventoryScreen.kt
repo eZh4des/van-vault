@@ -224,17 +224,39 @@ fun InventoryScreen(
                     CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                 }
             } else if (state.visibleProducts.isEmpty()) {
-                Box(
-                    modifier = Modifier.weight(1f).fillMaxWidth(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        if (state.isSearchActive && state.searchQuery.isNotBlank())
-                            "No se encontraron resultados"
-                        else
-                            "No hay productos en el inventario",
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                // Diferentes empty states segun el contexto:
+                val isSearchEmpty = state.isSearchActive && state.searchQuery.isNotBlank()
+                when {
+                    isSearchEmpty -> InlineEmptyState(
+                        iconVector = androidx.compose.material.icons.Icons.Filled.Search,
+                        title = "Sin resultados",
+                        description = "No encontramos productos que coincidan con \"${state.searchQuery}\".",
+                        actionLabel = "Limpiar busqueda",
+                        onAction = { viewModel.onSearchQueryChange("") }
                     )
+                    state.loadTimedOut -> InlineEmptyState(
+                        iconVector = androidx.compose.material.icons.Icons.Filled.Close,
+                        title = "No se pudo cargar el inventario",
+                        description = "Verifica tu conexion a Internet e intenta de nuevo.",
+                        actionLabel = "Reintentar",
+                        onAction = viewModel::onRefresh
+                    )
+                    state.isEmpty -> InlineEmptyState(
+                        iconVector = androidx.compose.material.icons.Icons.Filled.Add,
+                        title = "Inventario vacio",
+                        description = "Por favor agregue productos al inventario para comenzar.",
+                        actionLabel = "Agregar producto",
+                        onAction = onAddProductClick
+                    )
+                    else -> Box(
+                        modifier = Modifier.weight(1f).fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "No hay productos para mostrar",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             } else {
                 PullToRefreshBox(
@@ -479,6 +501,73 @@ private fun StockFilterChip(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 1.dp)
                 )
+            }
+        }
+    }
+}
+
+/**
+ * Empty state inline (sin redibujar toda la pantalla).
+ *
+ * Se usa en InventoryScreen para 3 escenarios:
+ *  - Sin resultados de busqueda
+ *  - Timeout / fallo de carga
+ *  - Inventario vacio (aun sin agregar productos)
+ *
+ * Cumple WCAG 2.5.8: action button >= 48dp.
+ * Cumple Nielsen #1: feedback visual del estado del sistema.
+ */
+@Composable
+private fun InlineEmptyState(
+    iconVector: androidx.compose.ui.graphics.vector.ImageVector,
+    title: String,
+    description: String,
+    actionLabel: String? = null,
+    onAction: (() -> Unit)? = null
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(32.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Surface(
+            shape = androidx.compose.foundation.shape.CircleShape,
+            color = MaterialTheme.colorScheme.surfaceContainerLow,
+            modifier = Modifier.size(96.dp)
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Icon(
+                    imageVector = iconVector,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(48.dp)
+                )
+            }
+        }
+        Spacer(Modifier.height(20.dp))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurface,
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center
+        )
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = description,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center
+        )
+        if (actionLabel != null && onAction != null) {
+            Spacer(Modifier.height(24.dp))
+            Button(
+                onClick = onAction,
+                modifier = Modifier.heightIn(min = 48.dp)
+            ) {
+                Text(actionLabel)
             }
         }
     }
