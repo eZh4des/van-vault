@@ -11,9 +11,12 @@ import com.vanvault.android.domain.usecase.ObserveInventoryUseCase
 import com.vanvault.android.domain.usecase.SearchProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -45,6 +48,13 @@ class InventoryViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(InventoryUiState())
     val uiState: StateFlow<InventoryUiState> = _uiState.asStateFlow()
+
+    /**
+     * Eventos one-shot (Snackbar, navegación, dialogs). No persisten en rotación.
+     * El UI los consume con `LaunchedEffect { effects.collect { ... } }`.
+     */
+    private val _effects = MutableSharedFlow<InventoryEffect>(extraBufferCapacity = 4)
+    val effects: SharedFlow<InventoryEffect> = _effects.asSharedFlow()
 
     // Lista maestra observada de Firebase (SSOT)
     val inventory: StateFlow<List<Product>> = observeInventory()
@@ -99,19 +109,49 @@ class InventoryViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Elimina un producto con posibilidad de Undo vía Snackbar.
+     *
+     * - Emite `Deleted(product)` para que la UI muestre un Snackbar.
+     * - El timeout del Snackbar (default 4s) decide si el delete persiste.
+     *
+     * Nota: PRAGMA "Tracer Bullets" — emitimos primero el evento y luego
+     * esperamos el resultado. Si el snackbar se cierra sin undo, el delete
+     * ya está hecho. Si undo se pulsa, restauramos vía `onRestoreProduct`.
+     */
+    fun onDeleteWithUndo(product: Product) {
+        viewModelScope.launch {
+            deleteProduct(product.id)
+            _effects.tryEmit(InventoryEffect.Deleted(product))
+        }
+    }
+
+    /** Restaura un producto eliminado (Undo del Snackbar). */
+    fun onRestoreProduct(product: Product) {
+        viewModelScope.launch { addProduct(product) }
+    }
+
+    /** Elimina sin posibilidad de undo (uso legacy). */
+    @Deprecated("Use onDeleteWithUndo for Nielsen #5 compliance")
     fun onDeleteProduct(id: String) {
         viewModelScope.launch {
             deleteProduct(id)
         }
     }
 
-    fun onRestoreProduct(product: Product) {
-        viewModelScope.launch { addProduct(product) }
-    }
-
     fun onFilterChange(filter: StockFilter) {
         _uiState.update { it.copy(filter = filter) }
     }
+}
+
+/**
+ * Eventos one-shot del VM. El UI los consume sin persistencia.
+ *
+ * `Deleted(product)` incluye el producto eliminado para que el UI
+ * pueda mostrar el Snackbar Undo y restaurar vía [onRestoreProduct].
+ */
+sealed interface InventoryEffect {
+    data class Deleted(val product: Product) : InventoryEffect
 }
 
 /**
