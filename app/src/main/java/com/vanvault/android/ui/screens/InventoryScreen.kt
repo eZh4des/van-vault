@@ -30,10 +30,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.Product
 import com.vanvault.android.domain.model.StockStatus
+import com.vanvault.android.ui.components.ConfirmDeleteDialog
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.viewmodel.InventoryEffect
 import com.vanvault.android.ui.viewmodel.InventoryViewModel
 import com.vanvault.android.ui.viewmodel.StockFilter
+import kotlinx.coroutines.launch
 
 /**
  * Pantalla de Inventario refactorizada.
@@ -52,8 +55,33 @@ fun InventoryScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     var fabExpanded by remember { mutableStateOf(false) }
 
+    // === Estado local para dialog y snackbar (no debe persistir en rotación) ===
+    val snackbarHostState = remember { SnackbarHostState() }
+    var productPendingDelete by remember { mutableStateOf<Product?>(null) }
+    val scope = rememberCoroutineScope()
+
+    // Reaccion a eventos one-shot del VM (Snackbar Undo tras eliminar)
+    LaunchedEffect(viewModel) {
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                is InventoryEffect.Deleted -> {
+                    val result = snackbarHostState.showSnackbar(
+                        message = "Producto eliminado",
+                        actionLabel = "Deshacer",
+                        withDismissAction = true,
+                        duration = androidx.compose.material3.SnackbarDuration.Short
+                    )
+                    if (result == androidx.compose.material3.SnackbarResult.ActionPerformed) {
+                        viewModel.onRestoreProduct(effect.product)
+                    }
+                }
+            }
+        }
+    }
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             if (state.isSearchActive) {
                 TopAppBar(
@@ -230,7 +258,9 @@ fun InventoryScreen(
                                 quantity = "${product.quantity} unidades",
                                 quantityColor = quantityColor,
                                 priceLabel = "PRECIO UNITARIO",
-                                price = formattedPrice
+                                price = formattedPrice,
+                                onClick = { /* TODO: detail */ },
+                                onLongClick = { productPendingDelete = product }
                             )
                         }
                         item {
@@ -239,6 +269,24 @@ fun InventoryScreen(
                     }
                 }
             }
+        }
+
+        // Dialog de confirmación antes de eliminar (Nielsen #3)
+        val toDelete = productPendingDelete
+        if (toDelete != null) {
+            ConfirmDeleteDialog(
+                showDialog = true,
+                title = "¿Eliminar producto?",
+                message = "Esta acción no se puede deshacer fácilmente. " +
+                          "El producto volverá a aparecer si usas 'Deshacer'.",
+                itemName = toDelete.name,
+                confirmLabel = "Eliminar",
+                onConfirm = {
+                    viewModel.onDeleteWithUndo(toDelete)
+                    productPendingDelete = null
+                },
+                onDismiss = { productPendingDelete = null }
+            )
         }
     }
 }
