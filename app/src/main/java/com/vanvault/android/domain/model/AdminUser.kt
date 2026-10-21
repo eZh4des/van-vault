@@ -18,7 +18,13 @@ data class AdminUser(
     val initials: String,
     val isActive: Boolean,
     val lastSeenLabel: String
-)
+) {
+    /**
+     * Alias de displayName para uso en tablas (donde el header dice
+     * "Nombre y apellido"). Mismo patron que UserProfile.fullName.
+     */
+    val fullName: String get() = displayName
+}
 
 /**
  * Snapshot para el panel de Admin.
