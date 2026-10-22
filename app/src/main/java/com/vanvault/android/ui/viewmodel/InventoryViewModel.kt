@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -67,7 +68,7 @@ class InventoryViewModel @Inject constructor(
     // sobrecargado), emitimos lista vacia para que la UI no se quede
     // colgada en loading infinito.
     val inventory: StateFlow<List<Product>> = observeInventory()
-        .mapWithTimeout()
+        .mapWithTimeout<List<Product>>(timeoutMs = 3_000, fallback = emptyList())
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     private var searchJob: Job? = null
@@ -218,34 +219,31 @@ data class InventoryUiState(
 }
 
 /**
- * Extiende un Flow con timeout de 3s.
+ * Extiende un Flow con un timeout para la PRIMERA emision.
  *
- * - Si el upstream emite un valor dentro de 3s: lo pasa tal cual.
- * - Si pasan 3s sin emision: emite una lista vacia (no propaga TimeoutCancellation).
- * - Si el upstream emite DESPUES de 3s: ese valor igual se propaga (no se
- *   silencia para siempre).
+ * Comportamiento:
+ *  - Si el upstream emite el primer valor dentro de [timeoutMs] ms: lo
+ *    pasa tal cual. Despues propaga todos los valores del upstream.
+ *  - Si pasan [timeoutMs] ms sin emision: emite [fallback] UNA vez,
+ *    y luego sigue propagando lo que el upstream emita (puede que
+ *    llegue despues).
+ *
+ * Implementacion: usa [withTimeoutOrNull] que es la primitiva estandar
+ * de kotlinx.coroutines para este patron. Evita el anti-patron de llamar
+ * `emit` desde un `launch` interno (que viola el contrato de Flow y causa
+ * `IllegalStateException: Flow invariant violated` -> app crash).
  */
-private fun <T> Flow<T>.mapWithTimeout(): Flow<T> = kotlinx.coroutines.flow.flow {
+private fun <T> Flow<T>.mapWithTimeout(timeoutMs: Long = 3_000, fallback: T): Flow<T> = flow<T> {
     val upstream = this@mapWithTimeout
-    coroutineScope {
-        val job = launch {
-            try {
-                upstream.collect { value -> emit(value) }
-            } catch (e: TimeoutCancellationException) {
-                // No deberia pasar aqui, pero defensivo
-            }
-        }
-        // Lanza un job que duerme 3s y luego emite empty
-        val timeoutJob = launch {
-            kotlinx.coroutines.delay(3_000)
-            // Solo emitir empty si todavia no hay nada
-            if (!job.isCompleted) {
-                @Suppress("UNCHECKED_CAST")
-                emit(emptyList<T>() as T)
-            }
-        }
-        job.join()
-        timeoutJob.cancel()
+    val first = withTimeoutOrNull<T?>(timeoutMs) { upstream.first() }
+    if (first != null) {
+        // Upstream respondio a tiempo: primer valor + resto
+        emit(first)
+        upstream.collect { emit(it) }
+    } else {
+        // Upstream no respondio: emitir fallback y seguir escuchando
+        emit(fallback)
+        upstream.collect { emit(it) }
     }
 }
 
