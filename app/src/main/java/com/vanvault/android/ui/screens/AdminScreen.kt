@@ -22,6 +22,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.AdminUser
 import com.vanvault.android.domain.model.PendingTask
 import com.vanvault.android.ui.components.M3TopBarWithBack
+import com.vanvault.android.ui.util.A11y.merged
 import com.vanvault.android.ui.components.RedBanner
 import com.vanvault.android.ui.viewmodel.AdminViewModel
 import com.vanvault.android.ui.theme.successColor
@@ -214,7 +215,13 @@ private fun PendingTaskCard(task: PendingTask) {
 private fun UserCard(user: AdminUser) {
     val isActive = user.isActive
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            // T09: anunciar el usuario completo como una unidad
+            .merged(
+                description = "${user.fullName}, ${user.email}, rol ${user.role.displayName}, ${user.lastSeenLabel}",
+                state = if (isActive) "Activo" else "Inactivo"
+            ),
         shape = RoundedCornerShape(12.dp),
         color = MaterialTheme.colorScheme.surface,
         border = androidx.compose.foundation.BorderStroke(

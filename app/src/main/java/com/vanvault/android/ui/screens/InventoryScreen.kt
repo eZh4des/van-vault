@@ -34,6 +34,7 @@ import com.vanvault.android.ui.components.EmptyState
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.OfflineBanner
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.util.A11y.merged
 import com.vanvault.android.ui.util.rememberIsOnline
 import com.vanvault.android.ui.viewmodel.InventoryEffect
 import com.vanvault.android.ui.viewmodel.InventoryViewModel
@@ -380,7 +381,14 @@ fun InventoryItemCard(
     onLongClick: (() -> Unit)? = null
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            // T09: TalkBack anuncia la card completa como una unidad
+            // en vez de leer 5 nodos hijos separados.
+            .merged(
+                description = "$title, $subtitle, $statusLabel, $quantity, $price",
+                state = statusLabel
+            ),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
@@ -491,6 +499,11 @@ private fun StockFilterChip(
             .background(color = backgroundColor, shape = RoundedCornerShape(17.dp))
             .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(17.dp))
             .clickable(onClick = onClick)
+            // T09: estado de seleccion anunciado por TalkBack
+            .merged(
+                description = "Filtro ${filter.label}",
+                state = if (isSelected) "Seleccionado" else "No seleccionado"
+            )
             .padding(horizontal = 12.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {
