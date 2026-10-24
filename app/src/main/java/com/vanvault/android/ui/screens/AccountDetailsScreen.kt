@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -78,7 +77,7 @@ fun AccountDetailsScreen(
                         Text(
                             text = "Mi cuenta",
                             fontWeight = FontWeight.SemiBold,
-                            fontSize = 20.sp,
+                            style = MaterialTheme.typography.titleLarge,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                     },
@@ -121,7 +120,7 @@ fun AccountDetailsScreen(
                     Text(
                         text = initials,
                         color = MaterialTheme.colorScheme.primary,
-                        fontSize = 32.sp,
+                        style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
                 }
@@ -129,13 +128,13 @@ fun AccountDetailsScreen(
                 Text(
                     text = name,
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 20.sp,
+                    style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = userEmail,
-                    fontSize = 14.sp,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
@@ -166,7 +165,7 @@ fun SectionHeader(title: String) {
     ) {
         Text(
             text = title,
-            fontSize = 12.sp,
+            style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontWeight = FontWeight.SemiBold
         )
@@ -185,7 +184,7 @@ fun AccountListItem(label: String, value: String?, showDivider: Boolean) {
         ) {
             Text(
                 text = label,
-                fontSize = 16.sp,
+                style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.weight(0.4f) // Le damos el 40% del espacio a la columna 1 (Label)
@@ -196,7 +195,7 @@ fun AccountListItem(label: String, value: String?, showDivider: Boolean) {
             if (value != null) {
                 Text(
                     text = value,
-                    fontSize = 14.sp,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.End,
                     modifier = Modifier.weight(0.6f) // Le damos el 60% del espacio a la columna 2 (Valor) para que pueda crecer a la izquierda

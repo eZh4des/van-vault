@@ -9,7 +9,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 /**
  * TopBar reutilizable con botón back — coincide con todos los SVGs del proyecto.
@@ -39,8 +38,7 @@ fun M3TopBarWithBack(
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp
+                fontWeight = FontWeight.SemiBold
             )
         },
         navigationIcon = {

@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.ui.components.ConfirmDeleteDialog
@@ -55,7 +54,7 @@ fun ProfileScreen(
                     Text(
                         "Ajustes",
                         fontWeight = FontWeight.Bold,
-                        fontSize = 24.sp
+                        style = MaterialTheme.typography.headlineSmall
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -145,7 +144,7 @@ fun SettingsOption(
             Spacer(modifier = Modifier.width(16.dp))
             Text(
                 text = title,
-                fontSize = 16.sp,
+                style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium,
                 color = contentColor,
                 modifier = Modifier.weight(1f)

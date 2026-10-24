@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.vanvault.android.domain.model.Language
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,7 +31,7 @@ fun LanguageScreen(
                     Text(
                         "Idioma",
                         fontWeight = FontWeight.Bold,
-                        fontSize = 24.sp
+                        style = MaterialTheme.typography.headlineSmall
                     )
                 },
                 navigationIcon = {
@@ -96,13 +95,13 @@ private fun LanguageOption(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = language.displayName,
-                    fontSize = 16.sp,
+                    style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = language.code,
-                    fontSize = 14.sp,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
