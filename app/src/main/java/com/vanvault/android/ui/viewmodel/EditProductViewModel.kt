@@ -82,6 +82,8 @@ class EditProductViewModel @Inject constructor(
                 searchResults = emptyList()
             )
         }
+        // Guardar el snapshot original para detectar cambios sin guardar (T08)
+        _uiState.update { it.markOriginal() }
     }
 
     fun onNameChange(v: String) = _uiState.update { it.copy(name = v) }
@@ -143,4 +145,19 @@ data class EditProductUiState(
                 quantity.isNotBlank() &&
                 unitPrice.isNotBlank() &&
                 !isSaving
+
+    /**
+     * Indica si el formulario de edicion difiere de los valores originales
+     * (permite confirmar antes de descartar, T08 / Nielsen #5).
+     */
+    var originalSnapshot: String? = null
+        private set
+
+    fun markOriginal(): EditProductUiState {
+        originalSnapshot = "$name|$modelOrBarcode|$quantity|$unitPrice"
+        return this
+    }
+
+    val hasUnsavedChanges: Boolean
+        get() = isEditing && originalSnapshot != "$name|$modelOrBarcode|$quantity|$unitPrice"
 }

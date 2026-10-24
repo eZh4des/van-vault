@@ -102,6 +102,17 @@ data class AddProductUiState(
                 quantity.isNotBlank() &&
                 unitPrice.isNotBlank() &&
                 !isSaving
+
+    /**
+     * Indica si hay datos capturados sin guardar.
+     *
+     * Permite confirmar antes de descartar (T08 / Nielsen #5).
+     */
+    val hasUnsavedChanges: Boolean
+        get() = name.isNotBlank() ||
+                modelOrBarcode.isNotBlank() ||
+                quantity.isNotBlank() ||
+                unitPrice.isNotBlank()
 }
 
 private object ProductValidators {

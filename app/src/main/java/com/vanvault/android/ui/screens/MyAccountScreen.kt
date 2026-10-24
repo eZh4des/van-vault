@@ -22,7 +22,7 @@ import com.vanvault.android.domain.model.UserProfile
 import com.vanvault.android.ui.components.AccountInfoItem
 import com.vanvault.android.ui.components.AccountSectionHeader
 import com.vanvault.android.ui.components.AvatarCircle
-import com.vanvault.android.ui.components.ConfirmDeleteDialog
+import com.vanvault.android.ui.components.ConfirmActionDialog
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.viewmodel.MyAccountViewModel
 import kotlinx.coroutines.launch
@@ -106,12 +106,13 @@ fun MyAccountScreen(
     }
 
     if (showLogoutDialog) {
-        ConfirmDeleteDialog(
+        ConfirmActionDialog(
             showDialog = true,
             title = "¿Cerrar sesión?",
             message = "Tendrás que volver a iniciar sesión para acceder a tu inventario.",
             itemName = state.profile?.email,
             confirmLabel = "Cerrar sesión",
+            isDestructive = false,
             onConfirm = {
                 viewModel.onSignOut()
                 onLogout()
