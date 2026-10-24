@@ -15,7 +15,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.vanvault.android.domain.model.Language
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.util.minTouchTarget
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.util.A11y.merged
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -50,10 +52,10 @@ fun LanguageScreen(
             )
         }
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
+        ScrollableColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
                 .padding(horizontal = 16.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {

@@ -20,9 +20,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.components.M3TextField
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.components.VanVaultDialog
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.viewmodel.RegisterEffect
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.viewmodel.RegisterViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,10 +80,10 @@ fun RegisterScreen(
         },
         containerColor = MaterialTheme.colorScheme.surface
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
+        ScrollableColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
                 .padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -165,8 +169,7 @@ fun RegisterScreen(
                 Button(
                     onClick = { viewModel.onRegister() },
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
+                        .fillMaxWidth(),
                     shape = RoundedCornerShape(25.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary

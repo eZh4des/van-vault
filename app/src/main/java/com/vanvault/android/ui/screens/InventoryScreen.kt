@@ -7,6 +7,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -194,46 +196,8 @@ fun InventoryScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            // T07: banner de conexion perdida
-            OfflineBanner(
-                isOnline = isOnline,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                onRetry = viewModel::onRefresh
-            )
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState())
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                StockFilterChip(
-                    filter = StockFilter.AVAILABLE,
-                    currentFilter = state.filter,
-                    count = state.countFor(StockStatus.AVAILABLE),
-                    onClick = { viewModel.onFilterChange(StockFilter.AVAILABLE) }
-                )
-                StockFilterChip(
-                    filter = StockFilter.LOW_STOCK,
-                    currentFilter = state.filter,
-                    count = state.countFor(StockStatus.LOW_STOCK),
-                    onClick = { viewModel.onFilterChange(StockFilter.LOW_STOCK) }
-                )
-                StockFilterChip(
-                    filter = StockFilter.OUT_OF_STOCK,
-                    currentFilter = state.filter,
-                    count = state.countFor(StockStatus.OUT_OF_STOCK),
-                    onClick = { viewModel.onFilterChange(StockFilter.OUT_OF_STOCK) }
-                )
-                StockFilterChip(
-                    filter = StockFilter.ALL,
-                    currentFilter = state.filter,
-                    count = state.allProducts.size,
-                    onClick = { viewModel.onFilterChange(StockFilter.ALL) }
-                )
-            }
-
+            // T11: el contenido fijo (banner + chips) va dentro del LazyColumn
+            // para que tambien scrollee al 200% de fuente.
             if (state.isLoading || state.isSearching) {
                 Box(
                     modifier = Modifier.weight(1f).fillMaxWidth(),
@@ -287,6 +251,54 @@ fun InventoryScreen(
                         contentPadding = PaddingValues(16.dp),
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
+                        // T11: banner + chips dentro del LazyColumn para que
+                        // tambien scrolleen al 200% de fuente (WCAG 1.4.10)
+                        item(key = "offline_banner") {
+                            OfflineBanner(
+                                isOnline = isOnline,
+                                modifier = Modifier.padding(bottom = 8.dp),
+                                onRetry = viewModel::onRefresh
+                            )
+                        }
+                        item(key = "filter_chips") {
+                            // T11: FlowRow en vez de horizontalScroll.
+                            // WCAG 1.4.10 prohibe el scroll BIDIMENSIONAL:
+                            // los chips se reacomodan en varias lineas en vez
+                            // de unscrollear horizontalmente.
+                            FlowRow(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = 8.dp),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalArrangement = Arrangement.spacedBy(8.dp),
+                                maxItemsInEachRow = 2
+                            ) {
+                                StockFilterChip(
+                                    filter = StockFilter.AVAILABLE,
+                                    currentFilter = state.filter,
+                                    count = state.countFor(StockStatus.AVAILABLE),
+                                    onClick = { viewModel.onFilterChange(StockFilter.AVAILABLE) }
+                                )
+                                StockFilterChip(
+                                    filter = StockFilter.LOW_STOCK,
+                                    currentFilter = state.filter,
+                                    count = state.countFor(StockStatus.LOW_STOCK),
+                                    onClick = { viewModel.onFilterChange(StockFilter.LOW_STOCK) }
+                                )
+                                StockFilterChip(
+                                    filter = StockFilter.OUT_OF_STOCK,
+                                    currentFilter = state.filter,
+                                    count = state.countFor(StockStatus.OUT_OF_STOCK),
+                                    onClick = { viewModel.onFilterChange(StockFilter.OUT_OF_STOCK) }
+                                )
+                                StockFilterChip(
+                                    filter = StockFilter.ALL,
+                                    currentFilter = state.filter,
+                                    count = state.allProducts.size,
+                                    onClick = { viewModel.onFilterChange(StockFilter.ALL) }
+                                )
+                            }
+                        }
                         items(state.visibleProducts, key = { it.id }) { product ->
                             val (statusLabel, quantityColor) = statusFor(product)
                             val formattedPrice = product.unitPrice.toDisplayString()
@@ -435,7 +447,10 @@ fun InventoryItemCard(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Row(
+            // T11: FlowRow en vez de Row — al 200% de fuente los bloques
+            // de informacion se apilan verticalmente en vez de encogerse
+            // (WCAG 1.4.4 Resize Text).
+            FlowRow(
                 modifier = Modifier
                     .fillMaxWidth()
                     .combinedClickable(
@@ -443,7 +458,8 @@ fun InventoryItemCard(
                         onLongClick = onLongClick
                     ),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                maxItemsInEachRow = 2
             ) {
                 Column {
                     Text(

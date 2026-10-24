@@ -52,73 +52,6 @@ fun SoldScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            // Banner rojo (coincide con screen-sold.svg)
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                shape = RoundedCornerShape(12.dp),
-                color = MaterialTheme.colorScheme.primaryContainer
-            ) {
-                Row(
-                    modifier = Modifier.padding(20.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Surface(
-                        shape = CircleShape,
-                        color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(48.dp)
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Icon(
-                                imageVector = Icons.Filled.ReceiptLong,
-                                contentDescription = null,
-                                tint = Color.White,
-                                modifier = Modifier.size(24.dp)
-                            )
-                        }
-                    }
-                    Spacer(Modifier.width(16.dp))
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = "PRODUCTOS VENDIDOS",
-                            style = MaterialTheme.typography.labelMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                        Spacer(Modifier.height(4.dp))
-                        Text(
-                            text = "Historial reciente",
-                            style = MaterialTheme.typography.headlineSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                    }
-                }
-            }
-
-            // Resumen
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                SummaryChip(
-                    label = "Total vendido",
-                    value = "${state.totalSold} und.",
-                    modifier = Modifier.weight(1f)
-                )
-                SummaryChip(
-                    label = "Ingresos",
-                    value = com.vanvault.android.domain.model.Money.fromDouble(state.totalRevenue / 100.0)
-                        .toDisplayString(),
-                    modifier = Modifier.weight(1f)
-                )
-            }
-
-            Spacer(Modifier.height(16.dp))
-
             // Lista
             if (state.isLoading) {
                 Box(
@@ -142,6 +75,74 @@ fun SoldScreen(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
+                    // T11: banner + resumen dentro del LazyColumn para que
+                    // tambien scrolleen al 200% de fuente (WCAG 1.4.10)
+                    item(key = "sold_banner") {
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = 8.dp),
+                            shape = RoundedCornerShape(12.dp),
+                            color = MaterialTheme.colorScheme.primaryContainer
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(20.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Surface(
+                                    shape = CircleShape,
+                                    color = MaterialTheme.colorScheme.primary,
+                                    modifier = Modifier.size(48.dp)
+                                ) {
+                                    Box(contentAlignment = Alignment.Center) {
+                                        Icon(
+                                            imageVector = Icons.Filled.ReceiptLong,
+                                            contentDescription = null,
+                                            tint = MaterialTheme.colorScheme.onPrimary,
+                                            modifier = Modifier.size(24.dp)
+                                        )
+                                    }
+                                }
+                                Spacer(Modifier.width(16.dp))
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = "PRODUCTOS VENDIDOS",
+                                        style = MaterialTheme.typography.labelMedium,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                                    )
+                                    Spacer(Modifier.height(4.dp))
+                                    Text(
+                                        text = "Historial reciente",
+                                        style = MaterialTheme.typography.headlineSmall,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    item(key = "sold_summary") {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            SummaryChip(
+                                label = "Total vendido",
+                                value = "${state.totalSold} und.",
+                                modifier = Modifier.weight(1f)
+                            )
+                            SummaryChip(
+                                label = "Ingresos",
+                                value = com.vanvault.android.domain.model.Money
+                                    .fromDouble(state.totalRevenue / 100.0)
+                                    .toDisplayString(),
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
+                    }
                     items(state.items, key = { it.id }) { item ->
                         SoldItemCard(item)
                     }
@@ -194,9 +195,12 @@ private fun SoldItemCard(item: SoldItem) {
             color = MaterialTheme.colorScheme.outlineVariant
         )
     ) {
-        Row(
+        // T11: FlowRow — al 200% de fuente el precio baja de linea en vez
+        // de encogerse (WCAG 1.4.4 Resize Text)
+        FlowRow(
             modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            maxItemsInEachRow = 3
         ) {
             Surface(
                 shape = RoundedCornerShape(8.dp),
