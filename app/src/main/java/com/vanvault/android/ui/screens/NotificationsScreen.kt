@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vanvault.android.ui.theme.PrimaryRed
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -84,7 +83,7 @@ fun NotificationsScreen(
                         onCheckedChange = onNotificationsChange,
                         colors = SwitchDefaults.colors(
                             checkedThumbColor = Color.White,
-                            checkedTrackColor = PrimaryRed.copy(alpha = 0.7f),
+                            checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
                             uncheckedThumbColor = Color.Gray,
                             uncheckedTrackColor = Color.LightGray
                         )

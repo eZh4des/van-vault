@@ -23,7 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vanvault.android.ui.theme.PrimaryRed
+
 
 data class FaqItem(
     val question: String,
@@ -128,7 +128,7 @@ private fun FaqItem(faq: FaqItem) {
                 Icon(
                     imageVector = if (expanded) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,
                     contentDescription = if (expanded) "Colapsar" else "Expandir",
-                    tint = PrimaryRed
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
 
