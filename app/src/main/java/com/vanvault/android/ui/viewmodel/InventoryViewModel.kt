@@ -160,6 +160,33 @@ class InventoryViewModel @Inject constructor(
     fun onFilterChange(filter: StockFilter) {
         _uiState.update { it.copy(filter = filter) }
     }
+
+    /**
+     * Busca productos para el selector de eliminacion (FAB "Eliminar producto").
+     *
+     * Usa el mismo [SearchProductsUseCase] que la busqueda principal, pero
+     * con debounce propio para no interferir con el estado de la pantalla.
+     */
+    fun onSearchForDeletion(query: String) {
+        _uiState.update { it.copy(deleteQuery = query, isSearchingDeletion = true) }
+        viewModelScope.launch {
+            kotlinx.coroutines.delay(300)
+            val result = searchProducts(query)
+            _uiState.update { state ->
+                state.copy(
+                    isSearchingDeletion = false,
+                    deleteCandidates = when (result) {
+                        is ProductSearchResult.Success -> result.products
+                        else -> emptyList()
+                    }
+                )
+            }
+        }
+    }
+
+    fun onClearDeletionCandidates() {
+        _uiState.update { it.copy(deleteCandidates = emptyList(), deleteQuery = "") }
+    }
 }
 
 /**
@@ -186,7 +213,11 @@ data class InventoryUiState(
     val isRefreshing: Boolean = false,
     val filter: StockFilter = StockFilter.ALL,
     /** True si el fetch inicial de inventario tardo mas de 3s o fallo. */
-    val loadTimedOut: Boolean = false
+    val loadTimedOut: Boolean = false,
+    // --- Selector de eliminacion (FAB "Eliminar producto") ---
+    val deleteQuery: String = "",
+    val deleteCandidates: List<Product> = emptyList(),
+    val isSearchingDeletion: Boolean = false
 ) {
     /**
      * Productos visibles, respetando:
