@@ -30,8 +30,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.Product
 import com.vanvault.android.domain.model.StockStatus
 import com.vanvault.android.ui.components.ConfirmDeleteDialog
+import com.vanvault.android.ui.components.EmptyState
 import com.vanvault.android.ui.components.NavItem
+import com.vanvault.android.ui.components.OfflineBanner
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.util.rememberIsOnline
 import com.vanvault.android.ui.viewmodel.InventoryEffect
 import com.vanvault.android.ui.viewmodel.InventoryViewModel
 import com.vanvault.android.ui.viewmodel.StockFilter
@@ -53,6 +56,9 @@ fun InventoryScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     var fabExpanded by remember { mutableStateOf(false) }
+
+    // T07: estado de conexion en tiempo real
+    val isOnline by rememberIsOnline()
 
     // === Estado local para dialog y snackbar (no debe persistir en rotación) ===
     val snackbarHostState = remember { SnackbarHostState() }
@@ -182,6 +188,13 @@ fun InventoryScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
+            // T07: banner de conexion perdida
+            OfflineBanner(
+                isOnline = isOnline,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                onRetry = viewModel::onRefresh
+            )
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -226,22 +239,22 @@ fun InventoryScreen(
                 // Diferentes empty states segun el contexto:
                 val isSearchEmpty = state.isSearchActive && state.searchQuery.isNotBlank()
                 when {
-                    isSearchEmpty -> InlineEmptyState(
-                        iconVector = androidx.compose.material.icons.Icons.Filled.Search,
+                    isSearchEmpty -> EmptyState(
+                        icon = androidx.compose.material.icons.Icons.Filled.Search,
                         title = "Sin resultados",
                         description = "No encontramos productos que coincidan con \"${state.searchQuery}\".",
                         actionLabel = "Limpiar busqueda",
                         onAction = { viewModel.onSearchQueryChange("") }
                     )
-                    state.loadTimedOut -> InlineEmptyState(
-                        iconVector = androidx.compose.material.icons.Icons.Filled.Close,
+                    state.loadTimedOut -> EmptyState(
+                        icon = androidx.compose.material.icons.Icons.Filled.Close,
                         title = "No se pudo cargar el inventario",
                         description = "Verifica tu conexion a Internet e intenta de nuevo.",
                         actionLabel = "Reintentar",
                         onAction = viewModel::onRefresh
                     )
-                    state.isEmpty -> InlineEmptyState(
-                        iconVector = androidx.compose.material.icons.Icons.Filled.Add,
+                    state.isEmpty -> EmptyState(
+                        icon = androidx.compose.material.icons.Icons.Filled.Add,
                         title = "Inventario vacio",
                         description = "Por favor agregue productos al inventario para comenzar.",
                         actionLabel = "Agregar producto",
@@ -504,70 +517,4 @@ private fun StockFilterChip(
         }
     }
 }
-
-/**
- * Empty state inline (sin redibujar toda la pantalla).
- *
- * Se usa en InventoryScreen para 3 escenarios:
- *  - Sin resultados de busqueda
- *  - Timeout / fallo de carga
- *  - Inventario vacio (aun sin agregar productos)
- *
- * Cumple WCAG 2.5.8: action button >= 48dp.
- * Cumple Nielsen #1: feedback visual del estado del sistema.
- */
-@Composable
-private fun InlineEmptyState(
-    iconVector: androidx.compose.ui.graphics.vector.ImageVector,
-    title: String,
-    description: String,
-    actionLabel: String? = null,
-    onAction: (() -> Unit)? = null
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Surface(
-            shape = androidx.compose.foundation.shape.CircleShape,
-            color = MaterialTheme.colorScheme.surfaceContainerLow,
-            modifier = Modifier.size(96.dp)
-        ) {
-            Box(contentAlignment = Alignment.Center) {
-                Icon(
-                    imageVector = iconVector,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(48.dp)
-                )
-            }
-        }
-        Spacer(Modifier.height(20.dp))
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.onSurface,
-            textAlign = androidx.compose.ui.text.style.TextAlign.Center
-        )
-        Spacer(Modifier.height(8.dp))
-        Text(
-            text = description,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = androidx.compose.ui.text.style.TextAlign.Center
-        )
-        if (actionLabel != null && onAction != null) {
-            Spacer(Modifier.height(24.dp))
-            Button(
-                onClick = onAction,
-                modifier = Modifier.heightIn(min = 48.dp)
-            ) {
-                Text(actionLabel)
-            }
-        }
-    }
-}
+

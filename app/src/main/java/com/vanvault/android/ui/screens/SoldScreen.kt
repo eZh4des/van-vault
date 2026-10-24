@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.SoldItem
+import com.vanvault.android.ui.components.EmptyState
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.viewmodel.SoldViewModel
 
@@ -126,6 +127,15 @@ fun SoldScreen(
                 ) {
                     CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                 }
+            } else if (state.items.isEmpty()) {
+                // T07: estado vacio con accion clara
+                EmptyState(
+                    icon = Icons.Filled.ShoppingCart,
+                    title = "Sin ventas registradas",
+                    description = "Cuando registres una venta aparecera aqui el historial con su total.",
+                    actionLabel = "Ir al inventario",
+                    onAction = onBackClick
+                )
             } else {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),

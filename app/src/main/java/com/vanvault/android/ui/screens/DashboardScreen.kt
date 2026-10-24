@@ -23,7 +23,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.KpiMetric
 import com.vanvault.android.domain.model.RecentMovement
 import com.vanvault.android.ui.components.NavItem
+import com.vanvault.android.ui.components.OfflineBanner
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.util.rememberIsOnline
 import com.vanvault.android.ui.viewmodel.DashboardViewModel
 import com.vanvault.android.ui.theme.successColor
 import com.vanvault.android.ui.theme.warningColor
@@ -61,6 +63,9 @@ fun DashboardScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val snapshot = state.snapshot
 
+    // T07: estado de conexion
+    val isOnline by rememberIsOnline()
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         bottomBar = {
@@ -75,19 +80,25 @@ fun DashboardScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            if (state.isLoading && snapshot == null) {
-                CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.Center),
-                    color = MaterialTheme.colorScheme.primary
+            Column(modifier = Modifier.fillMaxSize()) {
+                OfflineBanner(
+                    isOnline = isOnline,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                    onRetry = viewModel::onRefresh
                 )
-            } else if (snapshot != null) {
-                DashboardContent(
-                    snapshot = snapshot,
-                    onOpenInventory = onOpenInventory,
-                    onOpenSold = onOpenSold,
-                    onOpenRoi = onOpenRoi,
-                    onSeeAllSales = onSeeAllSales
-                )
+                if (state.isLoading && snapshot == null) {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                    }
+                } else if (snapshot != null) {
+                    DashboardContent(
+                        snapshot = snapshot,
+                        onOpenInventory = onOpenInventory,
+                        onOpenSold = onOpenSold,
+                        onOpenRoi = onOpenRoi,
+                        onSeeAllSales = onSeeAllSales
+                    )
+                }
             }
         }
     }
