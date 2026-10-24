@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -19,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.vanvault.android.ui.components.M3TextField
 import com.vanvault.android.ui.components.VanVaultDialog
 import com.vanvault.android.ui.viewmodel.RegisterEffect
 import com.vanvault.android.ui.viewmodel.RegisterViewModel
@@ -106,135 +108,56 @@ fun RegisterScreen(
             } else {
 
                 // Nombre Field
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Nombre completo",
-                        style = MaterialTheme.typography.bodySmall.copy(
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Medium
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    OutlinedTextField(
-                        value = state.name,
-                        onValueChange = viewModel::onNameChange,
-                        modifier = Modifier.fillMaxWidth(),
-                        placeholder = { Text("Ej. Juan Pérez", color = MaterialTheme.colorScheme.onSurfaceVariant) },
-                        shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.outline,
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        cursorColor = MaterialTheme.colorScheme.primary
-                    ),
-                        singleLine = true
-                    )
-                }
+                M3TextField(
+                    value = state.name,
+                    onValueChange = viewModel::onNameChange,
+                    label = "Nombre completo",
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next,
+                    supportingText = "Ej. Juan Pérez"
+                )
 
                 Spacer(modifier = Modifier.height(20.dp))
 
                 // Email Field
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Correo electrónico",
-                        style = MaterialTheme.typography.bodySmall.copy(
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Medium
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    OutlinedTextField(
-                        value = state.email,
-                        onValueChange = viewModel::onEmailChange,
-                        modifier = Modifier.fillMaxWidth(),
-                        placeholder = { Text("correo@ejemplo.com", color = MaterialTheme.colorScheme.onSurfaceVariant) },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                        shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.outline,
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        cursorColor = MaterialTheme.colorScheme.primary
-                    ),
-                        singleLine = true
-                    )
-                }
+                M3TextField(
+                    value = state.email,
+                    onValueChange = viewModel::onEmailChange,
+                    label = "Correo electrónico",
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Next,
+                    supportingText = "Ej. correo@ejemplo.com"
+                )
 
                 Spacer(modifier = Modifier.height(20.dp))
 
                 // Password Field
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Contraseña",
-                        style = MaterialTheme.typography.bodySmall.copy(
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Medium
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    OutlinedTextField(
-                        value = state.password,
-                        onValueChange = viewModel::onPasswordChange,
-                        modifier = Modifier.fillMaxWidth(),
-                        placeholder = { Text("••••••••", color = MaterialTheme.colorScheme.onSurfaceVariant) },
-                        visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                        trailingIcon = {
-                            val image = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff
-                            IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                                Icon(imageVector = image, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
-                            }
-                        },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                        shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.outline,
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        cursorColor = MaterialTheme.colorScheme.primary
-                    ),
-                        singleLine = true
-                    )
-                }
+                M3TextField(
+                    value = state.password,
+                    onValueChange = viewModel::onPasswordChange,
+                    label = "Contraseña",
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Next,
+                    isPassword = true,
+                    passwordVisible = passwordVisible,
+                    onTogglePasswordVisibility = { passwordVisible = !passwordVisible },
+                    supportingText = "Mín. 8 caracteres, mayúscula, minúscula y número"
+                )
 
                 Spacer(modifier = Modifier.height(20.dp))
 
                 // Confirm Password Field
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "Confirmar contraseña",
-                        style = MaterialTheme.typography.bodySmall.copy(
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Medium
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    OutlinedTextField(
-                        value = state.confirmPassword,
-                        onValueChange = viewModel::onConfirmPasswordChange,
-                        modifier = Modifier.fillMaxWidth(),
-                        placeholder = { Text("••••••••", color = MaterialTheme.colorScheme.onSurfaceVariant) },
-                        visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                        trailingIcon = {
-                            val image = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff
-                            IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                                Icon(imageVector = image, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
-                            }
-                        },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                        shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.outline,
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        cursorColor = MaterialTheme.colorScheme.primary
-                    ),
-                        singleLine = true
-                    )
-                }
+                // Confirm Password Field
+                M3TextField(
+                    value = state.confirmPassword,
+                    onValueChange = viewModel::onConfirmPasswordChange,
+                    label = "Confirmar contraseña",
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Done,
+                    isPassword = true,
+                    passwordVisible = passwordVisible,
+                    onTogglePasswordVisibility = { passwordVisible = !passwordVisible }
+                )
 
                 Spacer(modifier = Modifier.height(40.dp))
 
