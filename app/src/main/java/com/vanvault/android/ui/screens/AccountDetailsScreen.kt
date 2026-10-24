@@ -20,11 +20,14 @@ import androidx.compose.ui.unit.dp
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.vanvault.android.ui.util.minTouchTarget
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AccountDetailsScreen(
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    onChangePasswordClick: () -> Unit = {},
+    onTwoFactorClick: () -> Unit = {}
 ) {
     val user = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().currentUser
     val userEmail = user?.email ?: ""
@@ -147,8 +150,18 @@ fun AccountDetailsScreen(
 
             // Seguridad Section
             SectionHeader(title = "SEGURIDAD")
-            AccountListItem(label = "Cambiar contraseña", value = null, showDivider = true)
-            AccountListItem(label = "Autenticación de dos factores", value = "Desactivado", showDivider = false)
+            AccountListItem(
+                label = "Cambiar contraseña",
+                value = null,
+                showDivider = true,
+                onClick = onChangePasswordClick
+            )
+            AccountListItem(
+                label = "Autenticación de dos factores",
+                value = "Desactivado",
+                showDivider = false,
+                onClick = onTwoFactorClick
+            )
             
             Spacer(modifier = Modifier.height(32.dp))
         }
@@ -172,13 +185,27 @@ fun SectionHeader(title: String) {
     }
 }
 
+/**
+ * Fila de informacion de la cuenta.
+ *
+ * @param onClick accion opcional. Si es null la fila es puramente
+ *   informativa (no clickeable) — evita el "boton muerto" que teniamos
+ *   antes con `.clickable { /* TODO */ }`.
+ */
 @Composable
-fun AccountListItem(label: String, value: String?, showDivider: Boolean) {
+fun AccountListItem(
+    label: String,
+    value: String?,
+    showDivider: Boolean,
+    onClick: (() -> Unit)? = null
+) {
     Column {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { /* TODO */ }
+                .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
+                // T10: area tactil minima 48dp cuando es interactiva
+                .then(if (onClick != null) Modifier.minTouchTarget() else Modifier)
                 .padding(horizontal = 16.dp, vertical = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {

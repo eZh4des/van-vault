@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.util.A11y.merged
 
 
@@ -108,6 +109,8 @@ private fun FaqItem(faq: FaqItem) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable { expanded = !expanded }
+            // T10: area tactil minima 48dp (WCAG 2.5.8)
+            .minTouchTarget()
             // T09: anunciar el estado expandido/contraido
             .merged(
                 description = faq.question,

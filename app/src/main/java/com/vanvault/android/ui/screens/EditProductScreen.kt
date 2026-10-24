@@ -20,10 +20,15 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.components.ConfirmActionDialog
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.components.M3TextField
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.components.VanVaultDialog
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.viewmodel.EditProductViewModel
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.util.A11y.merged
 
 /**
@@ -141,6 +146,8 @@ fun EditProductScreen(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable { viewModel.onSelectFromList(product) }
+                                // T10: area tactil minima 48dp (WCAG 2.5.8)
+                                .minTouchTarget()
                                 // T09: anunciar el producto como una unidad
                                 .merged(
                                     description = "${product.name}, SKU ${product.modelOrBarcode}, ${product.quantity} unidades, ${product.unitPrice.toDisplayString()}"

@@ -181,7 +181,9 @@ class MainActivity : ComponentActivity() {
                     }
                     composable("account_details") {
                         AccountDetailsScreen(
-                            onBackClick = { navController.navigateUp() }
+                            onBackClick = { navController.navigateUp() },
+                            onChangePasswordClick = { navController.navigate("forgot_password") },
+                            onTwoFactorClick = { navController.navigate("my_account") }
                         )
                     }
                     composable("my_account") {

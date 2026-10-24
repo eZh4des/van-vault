@@ -18,10 +18,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.components.ConfirmActionDialog
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.components.NavItem
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.util.A11y.merged
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.viewmodel.ProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -130,6 +135,8 @@ fun SettingsOption(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() }
+            // T10: area tactil minima 48dp (WCAG 2.5.8)
+            .minTouchTarget()
             // T09: agrupar la fila en un solo nodo accesible
             .merged(
                 description = title,

@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.vanvault.android.domain.model.Language
+import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.util.A11y.merged
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -86,6 +87,8 @@ private fun LanguageOption(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onSelect() }
+            // T10: area tactil minima 48dp (WCAG 2.5.8)
+            .minTouchTarget()
             // T09: indicar el idioma seleccionado
             .merged(
                 description = language.displayName,
