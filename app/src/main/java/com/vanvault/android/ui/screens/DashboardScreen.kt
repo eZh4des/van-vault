@@ -25,6 +25,8 @@ import com.vanvault.android.domain.model.RecentMovement
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
 import com.vanvault.android.ui.viewmodel.DashboardViewModel
+import com.vanvault.android.ui.theme.successColor
+import com.vanvault.android.ui.theme.warningColor
 
 /**
  * DashboardScreen — pantalla principal (route "home").
@@ -192,7 +194,7 @@ private fun DashboardContent(
             ) {
                 Text(
                     text = "Ver todas",
-                    color = Color(0xFFDC2626),
+                    color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.SemiBold
                 )
             }
@@ -247,14 +249,14 @@ private fun SimpleKpiCard(
                 )
                 Surface(
                     shape = CircleShape,
-                    color = Color(0xFFFEE2E2),
+                    color = MaterialTheme.colorScheme.primaryContainer,
                     modifier = Modifier.size(28.dp)
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         Icon(
                             imageVector = iconFor(metric.icon),
                             contentDescription = null,
-                            tint = Color(0xFFDC2626),
+                            tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(14.dp)
                         )
                     }
@@ -325,12 +327,13 @@ private fun SaleRow(movement: RecentMovement) {
     }
 }
 
+@Composable
 private fun accentColorFor(accent: KpiMetric.AccentColor): Color = when (accent) {
-    KpiMetric.AccentColor.PRIMARY -> Color(0xFFDC2626)
-    KpiMetric.AccentColor.SUCCESS -> Color(0xFF059669)
-    KpiMetric.AccentColor.WARNING -> Color(0xFFF97316)
-    KpiMetric.AccentColor.ERROR -> Color(0xFFDC2626)
-    KpiMetric.AccentColor.NEUTRAL -> Color(0xFF71717A)
+    KpiMetric.AccentColor.PRIMARY -> MaterialTheme.colorScheme.primary
+    KpiMetric.AccentColor.SUCCESS -> MaterialTheme.successColor
+    KpiMetric.AccentColor.WARNING -> MaterialTheme.warningColor
+    KpiMetric.AccentColor.ERROR -> MaterialTheme.colorScheme.error
+    KpiMetric.AccentColor.NEUTRAL -> MaterialTheme.colorScheme.onSurfaceVariant
 }
 
 @Composable

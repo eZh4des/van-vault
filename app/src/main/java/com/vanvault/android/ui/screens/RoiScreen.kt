@@ -26,6 +26,8 @@ import com.vanvault.android.domain.model.MonthlyRoiPoint
 import com.vanvault.android.domain.model.RoiMetrics
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.viewmodel.RoiViewModel
+import com.vanvault.android.ui.theme.successColor
+import com.vanvault.android.ui.theme.warningColor
 
 /**
  * RoiScreen — análisis financiero del inventario.
@@ -78,14 +80,14 @@ fun RoiScreen(
                     MetricCard(
                         label = "Ingresos",
                         value = metrics.totalRevenue.toDisplayString(),
-                        accent = Color(0xFF059669),
+                        accent = MaterialTheme.successColor,
                         icon = Icons.Filled.ArrowUpward,
                         modifier = Modifier.weight(1f)
                     )
                     MetricCard(
                         label = "Costos",
                         value = metrics.totalCost.toDisplayString(),
-                        accent = Color(0xFF71717A),
+                        accent = MaterialTheme.colorScheme.onSurfaceVariant,
                         icon = Icons.Filled.South,
                         modifier = Modifier.weight(1f)
                     )
@@ -98,14 +100,14 @@ fun RoiScreen(
                     MetricCard(
                         label = "Ganancia",
                         value = metrics.netProfit.toDisplayString(),
-                        accent = Color(0xFFDC2626),
+                        accent = MaterialTheme.colorScheme.primary,
                         icon = Icons.Filled.TrendingUp,
                         modifier = Modifier.weight(1f)
                     )
                     MetricCard(
                         label = "ROI anual",
                         value = "${"%.1f".format(metrics.roiPercent)}%",
-                        accent = Color(0xFFF97316),
+                        accent = MaterialTheme.warningColor,
                         icon = Icons.Filled.Percent,
                         modifier = Modifier.weight(1f)
                     )
@@ -162,14 +164,14 @@ fun RoiScreen(
                         ) {
                             Surface(
                                 shape = CircleShape,
-                                color = Color(0xFFFEE2E2),
+                                color = MaterialTheme.colorScheme.primaryContainer,
                                 modifier = Modifier.size(40.dp)
                             ) {
                                 Box(contentAlignment = Alignment.Center) {
                                     Icon(
                                         imageVector = Icons.Filled.Autorenew,
                                         contentDescription = null,
-                                        tint = Color(0xFFDC2626),
+                                        tint = MaterialTheme.colorScheme.primary,
                                         modifier = Modifier.size(20.dp)
                                     )
                                 }
@@ -191,7 +193,7 @@ fun RoiScreen(
                                 text = "%.1fx".format(metrics.inventoryTurnover),
                                 style = MaterialTheme.typography.headlineMedium,
                                 fontWeight = FontWeight.Bold,
-                                color = Color(0xFFDC2626)
+                                color = MaterialTheme.colorScheme.primary
                             )
                         }
                     }
@@ -254,8 +256,8 @@ private fun MetricCard(
  */
 @Composable
 private fun SimpleBarChart(data: List<MonthlyRoiPoint>) {
-    val revenueColor = Color(0xFF059669)
-    val costColor = Color(0xFF71717A)
+    val revenueColor = MaterialTheme.successColor
+    val costColor = MaterialTheme.colorScheme.onSurfaceVariant
     val maxValue = (data.maxOfOrNull { it.revenue.cents } ?: 0).coerceAtLeast(1)
     val barWidthDp = 10.dp
     val spacingDp = 4.dp

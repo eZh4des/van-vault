@@ -35,8 +35,8 @@ fun RedBanner(
     Surface(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        color = Color(0xFFFEE2E2),
-        contentColor = Color(0xFF410002)
+        color = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
@@ -45,7 +45,7 @@ fun RedBanner(
             if (icon != null) {
                 Surface(
                     shape = RoundedCornerShape(24.dp),
-                    color = Color(0xFFDC2626),
+                    color = MaterialTheme.colorScheme.primary,
                     contentColor = Color.White,
                     modifier = Modifier.size(40.dp)
                 ) {
@@ -64,13 +64,13 @@ fun RedBanner(
                     text = title,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF410002)
+                    color = MaterialTheme.colorScheme.onPrimaryContainer
                 )
                 if (description != null) {
                     Text(
                         text = description,
                         style = MaterialTheme.typography.bodyMedium,
-                        color = Color(0xFF7F1D1D)
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
                 }
             }
@@ -80,7 +80,7 @@ fun RedBanner(
                     Text(
                         text = actionLabel,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFFDC2626)
+                        color = MaterialTheme.colorScheme.primary
                     )
                     Spacer(Modifier.width(4.dp))
                     Icon(

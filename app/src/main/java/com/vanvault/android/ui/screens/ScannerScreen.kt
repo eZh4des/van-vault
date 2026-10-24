@@ -78,7 +78,7 @@ fun ScannerScreen(
                             Icon(
                                 imageVector = if (isFlashOn) Icons.Default.FlashOn else Icons.Default.FlashOff,
                                 contentDescription = "Alternar Flash",
-                                tint = if (isFlashOn) Color(0xFFFACC15) else MaterialTheme.colorScheme.onBackground // Yellow if on
+                                tint = if (isFlashOn) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onBackground // Yellow if on
                             )
                         }
                     }
@@ -169,7 +169,7 @@ fun ScannerScreen(
                                 .align(Alignment.Center)
                                 .fillMaxWidth(0.85f) // 85% screen width
                                 .height(150.dp) // Reduced height for rectangle shape
-                                .border(2.dp, Color(0xFFDC2626), RoundedCornerShape(16.dp))
+                                .border(2.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(16.dp))
                                 .background(Color.Transparent)
                         )
                         
@@ -194,7 +194,7 @@ fun ScannerScreen(
                         )
                         Button(
                             onClick = { cameraPermissionState.launchPermissionRequest() },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDC2626))
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                         ) {
                             Text("Conceder Permiso")
                         }

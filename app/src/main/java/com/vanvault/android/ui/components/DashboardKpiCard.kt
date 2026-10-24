@@ -14,6 +14,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.vanvault.android.domain.model.KpiMetric
+import com.vanvault.android.ui.theme.successColor
+import com.vanvault.android.ui.theme.warningColor
 
 /**
  * Tarjeta KPI reutilizable para Dashboard, ROI y Admin.
@@ -92,12 +94,13 @@ fun DashboardKpiCard(
     }
 }
 
+@Composable
 private fun accentColorFor(accent: KpiMetric.AccentColor): Color = when (accent) {
-    KpiMetric.AccentColor.PRIMARY -> Color(0xFFDC2626)    // brand rojo
-    KpiMetric.AccentColor.SUCCESS -> Color(0xFF059669)    // verde positivo
-    KpiMetric.AccentColor.WARNING -> Color(0xFFF97316)    // naranja alerta
-    KpiMetric.AccentColor.ERROR -> Color(0xFFDC2626)      // rojo error
-    KpiMetric.AccentColor.NEUTRAL -> Color(0xFF71717A)    // gris
+    KpiMetric.AccentColor.PRIMARY -> MaterialTheme.colorScheme.primary    // brand rojo
+    KpiMetric.AccentColor.SUCCESS -> MaterialTheme.successColor    // verde positivo
+    KpiMetric.AccentColor.WARNING -> MaterialTheme.warningColor    // naranja alerta
+    KpiMetric.AccentColor.ERROR -> MaterialTheme.colorScheme.error      // rojo error
+    KpiMetric.AccentColor.NEUTRAL -> MaterialTheme.colorScheme.onSurfaceVariant    // gris
 }
 
 @Composable

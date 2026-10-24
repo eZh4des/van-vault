@@ -86,13 +86,13 @@ fun ForgotPasswordScreen(
                 Box(
                     modifier = Modifier
                         .size(80.dp)
-                        .background(Color(0xFFFEE2E2), CircleShape),
+                        .background(MaterialTheme.colorScheme.primaryContainer, CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = Icons.Default.LockReset,
                         contentDescription = null,
-                        tint = Color(0xFFDC2626),
+                        tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(40.dp)
                     )
                 }

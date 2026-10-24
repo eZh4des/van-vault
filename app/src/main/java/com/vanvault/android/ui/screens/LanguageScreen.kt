@@ -16,7 +16,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vanvault.android.domain.model.Language
-import com.vanvault.android.ui.theme.PrimaryRed
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -82,7 +81,7 @@ private fun LanguageOption(
         shape = RoundedCornerShape(16.dp),
         border = BorderStroke(
             1.dp,
-            if (isSelected) PrimaryRed else MaterialTheme.colorScheme.outline
+            if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
         ),
         modifier = Modifier
             .fillMaxWidth()
@@ -111,7 +110,7 @@ private fun LanguageOption(
                 Icon(
                     imageVector = Icons.Filled.Check,
                     contentDescription = "Seleccionado",
-                    tint = PrimaryRed
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
         }

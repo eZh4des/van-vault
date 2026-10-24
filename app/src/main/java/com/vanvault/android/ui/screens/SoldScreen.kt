@@ -57,7 +57,7 @@ fun SoldScreen(
                     .fillMaxWidth()
                     .padding(16.dp),
                 shape = RoundedCornerShape(12.dp),
-                color = Color(0xFFFEE2E2)
+                color = MaterialTheme.colorScheme.primaryContainer
             ) {
                 Row(
                     modifier = Modifier.padding(20.dp),
@@ -65,7 +65,7 @@ fun SoldScreen(
                 ) {
                     Surface(
                         shape = CircleShape,
-                        color = Color(0xFFDC2626),
+                        color = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(48.dp)
                     ) {
                         Box(contentAlignment = Alignment.Center) {
@@ -83,14 +83,14 @@ fun SoldScreen(
                             text = "PRODUCTOS VENDIDOS",
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF7F1D1D)
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Spacer(Modifier.height(4.dp))
                         Text(
                             text = "Historial reciente",
                             style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF410002)
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                     }
                 }
@@ -190,7 +190,7 @@ private fun SoldItemCard(item: SoldItem) {
         ) {
             Surface(
                 shape = RoundedCornerShape(8.dp),
-                color = Color(0xFFFEE2E2),
+                color = MaterialTheme.colorScheme.primaryContainer,
                 modifier = Modifier.size(48.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
@@ -198,7 +198,7 @@ private fun SoldItemCard(item: SoldItem) {
                         text = "${item.quantitySold}×",
                         style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFFDC2626)
+                        color = MaterialTheme.colorScheme.primary
                     )
                 }
             }
@@ -230,7 +230,7 @@ private fun SoldItemCard(item: SoldItem) {
                     text = item.total.toDisplayString(),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFFDC2626)
+                    color = MaterialTheme.colorScheme.primary
                 )
                 Spacer(Modifier.height(2.dp))
                 Text(
