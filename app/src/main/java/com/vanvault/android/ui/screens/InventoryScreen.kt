@@ -31,11 +31,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.Product
 import com.vanvault.android.domain.model.StockStatus
+import com.vanvault.android.ui.components.SkeletonProductList
 import com.vanvault.android.ui.components.ConfirmActionDialog
+import com.vanvault.android.ui.components.SkeletonProductList
 import com.vanvault.android.ui.components.DeleteProductPickerDialog
+import com.vanvault.android.ui.components.SkeletonProductList
 import com.vanvault.android.ui.components.EmptyState
+import com.vanvault.android.ui.components.SkeletonProductList
 import com.vanvault.android.ui.components.NavItem
+import com.vanvault.android.ui.components.SkeletonProductList
 import com.vanvault.android.ui.components.OfflineBanner
+import com.vanvault.android.ui.components.SkeletonProductList
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
 import com.vanvault.android.ui.util.A11y.merged
 import com.vanvault.android.ui.util.rememberIsOnline
@@ -196,15 +202,27 @@ fun InventoryScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
+            // T12: LinearProgressIndicator durante operaciones > 1s (busqueda).
+            // Es indeterminado y no interrumpe la interaccion.
+            if (state.isSearching && !state.isLoading) {
+                LinearProgressIndicator(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(3.dp),
+                    color = MaterialTheme.colorScheme.primary,
+                    trackColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                )
+            }
+
             // T11: el contenido fijo (banner + chips) va dentro del LazyColumn
             // para que tambien scrollee al 200% de fuente.
             if (state.isLoading || state.isSearching) {
-                Box(
-                    modifier = Modifier.weight(1f).fillMaxWidth(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
-                }
+                // T12: skeleton en vez de spinner — comunica la estructura
+                // final y evita el salto de layout (Item 11)
+                SkeletonProductList(
+                    modifier = Modifier.padding(16.dp),
+                    itemCount = 5
+                )
             } else if (state.visibleProducts.isEmpty()) {
                 // Diferentes empty states segun el contexto:
                 val isSearchEmpty = state.isSearchActive && state.searchQuery.isNotBlank()

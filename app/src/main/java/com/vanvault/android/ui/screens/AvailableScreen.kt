@@ -19,6 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.Product
 import com.vanvault.android.domain.model.StockStatus
+import com.vanvault.android.ui.components.SkeletonProductList
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.viewmodel.InventoryViewModel
 
@@ -59,12 +60,11 @@ fun AvailableScreen(
         ) {
             // === Lista ===
             if (state.isLoading) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
-                }
+                // T12: skeleton de lista de productos (Item 11)
+                SkeletonProductList(
+                    modifier = Modifier.padding(16.dp),
+                    itemCount = 4
+                )
             } else if (availableProducts.isEmpty()) {
                 Box(
                     modifier = Modifier.fillMaxSize().padding(32.dp),

@@ -21,8 +21,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.AdminUser
 import com.vanvault.android.domain.model.PendingTask
+import com.vanvault.android.ui.components.SkeletonUserCard
+import com.vanvault.android.ui.components.SkeletonMetricCard
+import com.vanvault.android.ui.components.SkeletonUserCard
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.util.A11y.merged
+import com.vanvault.android.ui.components.SkeletonUserCard
+import com.vanvault.android.ui.components.SkeletonMetricCard
+import com.vanvault.android.ui.components.SkeletonUserCard
 import com.vanvault.android.ui.components.RedBanner
 import com.vanvault.android.ui.viewmodel.AdminViewModel
 import com.vanvault.android.ui.theme.successColor
@@ -55,13 +61,20 @@ fun AdminScreen(
         }
     ) { innerPadding ->
         if (state.isLoading || state.snapshot == null) {
-            Box(
+            // T12: skeleton de usuarios + metricas (Item 11)
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPadding),
-                contentAlignment = Alignment.Center
+                    .padding(innerPadding)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    SkeletonMetricCard(modifier = Modifier.weight(1f))
+                    SkeletonMetricCard(modifier = Modifier.weight(1f))
+                }
+                Spacer(Modifier.height(12.dp))
+                repeat(4) { SkeletonUserCard() }
             }
         } else {
             val snapshot = state.snapshot!!

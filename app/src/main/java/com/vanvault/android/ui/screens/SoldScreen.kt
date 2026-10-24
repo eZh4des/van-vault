@@ -18,7 +18,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.SoldItem
+import com.vanvault.android.ui.components.SkeletonSoldItem
 import com.vanvault.android.ui.components.EmptyState
+import com.vanvault.android.ui.components.SkeletonSoldItem
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.viewmodel.SoldViewModel
 
@@ -54,11 +56,14 @@ fun SoldScreen(
         ) {
             // Lista
             if (state.isLoading) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
+                // T12: skeleton de items de venta (Item 11)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                    repeat(4) { SkeletonSoldItem() }
                 }
             } else if (state.items.isEmpty()) {
                 // T07: estado vacio con accion clara

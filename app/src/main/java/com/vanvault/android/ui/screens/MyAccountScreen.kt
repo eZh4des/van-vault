@@ -19,10 +19,15 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.UserProfile
+import com.vanvault.android.ui.components.SkeletonProfileHeader
 import com.vanvault.android.ui.components.AccountInfoItem
+import com.vanvault.android.ui.components.SkeletonProfileHeader
 import com.vanvault.android.ui.components.AccountSectionHeader
+import com.vanvault.android.ui.components.SkeletonProfileHeader
 import com.vanvault.android.ui.components.AvatarCircle
+import com.vanvault.android.ui.components.SkeletonProfileHeader
 import com.vanvault.android.ui.components.ConfirmActionDialog
+import com.vanvault.android.ui.components.SkeletonProfileHeader
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.viewmodel.MyAccountViewModel
 import kotlinx.coroutines.launch
@@ -83,7 +88,8 @@ fun MyAccountScreen(
                 modifier = Modifier.fillMaxSize().padding(innerPadding),
                 contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                // T12: skeleton del encabezado de perfil (Item 11)
+                SkeletonProfileHeader()
             }
         } else if (state.profile == null) {
             // Sesión expirada o sin usuario

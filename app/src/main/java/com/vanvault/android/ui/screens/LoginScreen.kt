@@ -22,8 +22,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.text.input.ImeAction
 import com.vanvault.android.R
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.M3TextField
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.VanVaultDialog
 import com.vanvault.android.ui.viewmodel.LoginEffect
 import com.vanvault.android.ui.viewmodel.LoginViewModel
@@ -125,27 +128,14 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             // Login Button
-            Button(
+            // T12: LoadingButton — retroalimentacion de carga + estado disabled
+            LoadingButton(
+                text = "Iniciar sesión",
                 onClick = { viewModel.onLogin() },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(25.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                ),
-                enabled = !state.isSubmitting
-            ) {
-                if (state.isSubmitting) {
-                    CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.surface)
-                } else {
-                    Text(
-                        text = "Iniciar sesión",
-                        color = MaterialTheme.colorScheme.surface,
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                }
-            }
+                modifier = Modifier.fillMaxWidth(),
+                isLoading = state.isSubmitting,
+                loadingText = "Iniciando…"
+            )
 
             Spacer(modifier = Modifier.weight(1f))
 

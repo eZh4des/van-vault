@@ -20,12 +20,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.M3TextField
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.VanVaultDialog
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.viewmodel.RegisterEffect
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.viewmodel.RegisterViewModel
 
@@ -166,27 +172,14 @@ fun RegisterScreen(
                 Spacer(modifier = Modifier.height(40.dp))
 
                 // Register Button
-                Button(
+                // T12: LoadingButton con estado disabled + spinner
+                LoadingButton(
+                    text = "Registrarse",
                     onClick = { viewModel.onRegister() },
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    shape = RoundedCornerShape(25.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary
-                    ),
-                    enabled = !state.isSubmitting
-                ) {
-                    if (state.isSubmitting) {
-                        CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.onPrimary)
-                    } else {
-                        Text(
-                            text = "Registrarse",
-                            color = MaterialTheme.colorScheme.onPrimary,
-                            fontWeight = FontWeight.Bold,
-                            style = MaterialTheme.typography.bodyLarge
-                        )
-                    }
-                }
+                    modifier = Modifier.fillMaxWidth(),
+                    isLoading = state.isSubmitting,
+                    loadingText = "Creando cuenta…"
+                )
             }
 
             Spacer(modifier = Modifier.weight(1f))
