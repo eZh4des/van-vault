@@ -21,6 +21,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.ui.components.ConfirmDeleteDialog
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
+import com.vanvault.android.ui.util.A11y.merged
 import com.vanvault.android.ui.viewmodel.ProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -128,6 +129,11 @@ fun SettingsOption(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() }
+            // T09: agrupar la fila en un solo nodo accesible
+            .merged(
+                description = title,
+                state = if (isDestructive) "Accion destructiva" else null
+            )
     ) {
         Row(
             modifier = Modifier

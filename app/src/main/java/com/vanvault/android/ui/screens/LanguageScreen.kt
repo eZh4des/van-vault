@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.vanvault.android.domain.model.Language
+import com.vanvault.android.ui.util.A11y.merged
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -85,6 +86,11 @@ private fun LanguageOption(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onSelect() }
+            // T09: indicar el idioma seleccionado
+            .merged(
+                description = language.displayName,
+                state = if (isSelected) "Seleccionado" else null
+            )
     ) {
         Row(
             modifier = Modifier

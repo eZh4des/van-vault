@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.vanvault.android.ui.util.A11y.merged
 
 
 data class FaqItem(
@@ -107,6 +108,11 @@ private fun FaqItem(faq: FaqItem) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable { expanded = !expanded }
+            // T09: anunciar el estado expandido/contraido
+            .merged(
+                description = faq.question,
+                state = if (expanded) "Expandido" else "Contraido"
+            )
     ) {
         Column(
             modifier = Modifier

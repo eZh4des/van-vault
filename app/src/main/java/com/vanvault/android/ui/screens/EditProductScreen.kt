@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import com.vanvault.android.ui.components.M3TextField
 import com.vanvault.android.ui.components.VanVaultDialog
 import com.vanvault.android.ui.viewmodel.EditProductViewModel
+import com.vanvault.android.ui.util.A11y.merged
 
 /**
  * Pantalla "Editar Producto" refactorizada con UDF + ViewModel (T01).
@@ -131,7 +132,11 @@ fun EditProductScreen(
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable { viewModel.onSelectFromList(product) },
+                                .clickable { viewModel.onSelectFromList(product) }
+                                // T09: anunciar el producto como una unidad
+                                .merged(
+                                    description = "${product.name}, SKU ${product.modelOrBarcode}, ${product.quantity} unidades, ${product.unitPrice.toDisplayString()}"
+                                ),
                             shape = RoundedCornerShape(12.dp),
                             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                         ) {
