@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.*
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -37,14 +39,20 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            VanVaultTheme {
+            // SettingsViewModel inyectado via Hilt (activity-scoped).
+            // Se declara FUERA del VanVaultTheme porque necesitamos observar
+            // su estado para decidir si el tema es claro u oscuro.
+            val settingsViewModel: SettingsViewModel = hiltViewModel()
+            val settings by settingsViewModel.settings.collectAsStateWithLifecycle()
+
+            // T05: el tema efectivo combina la preferencia del usuario con el
+            // modo del sistema (ThemeMode.SYSTEM -> isSystemInDarkTheme()).
+            val isDarkTheme = settings.isDarkThemeActive(isSystemInDarkTheme())
+
+            VanVaultTheme(darkTheme = isDarkTheme) {
                 val navController = rememberNavController()
                 val auth = com.vanvault.android.di.FirebaseModule.provideFirebaseAuth()
                 val currentUser = auth.currentUser
-
-                // SettingsViewModel inyectado via Hilt (no necesita Factory).
-                // Usamos viewModel() directamente para activity-scoped VM.
-                val settingsViewModel: SettingsViewModel = hiltViewModel()
 
                 val startDestination = if (currentUser != null && currentUser.isEmailVerified) {
                     "home"
@@ -192,8 +200,8 @@ class MainActivity : ComponentActivity() {
                     composable("appearance") {
                         val settings by settingsViewModel.settings.collectAsState()
                         AppearanceScreen(
-                            isDarkMode = settings.isDarkMode,
-                            onDarkModeChange = { settingsViewModel.setDarkMode(it) },
+                            themeMode = settings.themeMode,
+                            onThemeModeChange = { settingsViewModel.setThemeMode(it) },
                             onBackClick = { navController.navigateUp() }
                         )
                     }
