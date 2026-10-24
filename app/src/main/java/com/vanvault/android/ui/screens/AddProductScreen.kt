@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.vanvault.android.ui.components.M3TextField
 import com.vanvault.android.ui.viewmodel.AddProductViewModel
 
 /**
@@ -84,22 +85,14 @@ fun AddProductScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // Nombre del producto
-            OutlinedTextField(
+            M3TextField(
                 value = state.name,
                 onValueChange = viewModel::onNameChange,
-                label = { Text("Nombre del producto") },
-                modifier = Modifier.fillMaxWidth(),
+                label = "Nombre del producto",
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next,
                 isError = state.nameError != null,
-                supportingText = state.nameError?.let { { Text(it, color = MaterialTheme.colorScheme.error) } },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-                shape = RoundedCornerShape(12.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    focusedLabelColor = MaterialTheme.colorScheme.primary,
-                    errorBorderColor = MaterialTheme.colorScheme.error,
-                    errorLabelColor = MaterialTheme.colorScheme.error
-                )
+                errorMessage = state.nameError
             )
 
             // Modelo / Código de barras + scanner
@@ -108,18 +101,13 @@ fun AddProductScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                OutlinedTextField(
+                M3TextField(
                     value = state.modelOrBarcode,
                     onValueChange = viewModel::onModelChange,
-                    label = { Text("Modelo / EAN-13") },
+                    label = "Modelo / EAN-13",
                     modifier = Modifier.weight(1f),
-                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-                    shape = RoundedCornerShape(12.dp),
-                    singleLine = true,
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary
-                    )
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next
                 )
 
                 FilledIconButton(
@@ -140,45 +128,25 @@ fun AddProductScreen(
             }
 
             // Cantidad
-            OutlinedTextField(
+            M3TextField(
                 value = state.quantity,
                 onValueChange = viewModel::onQuantityChange,
-                label = { Text("Cantidad en inventario") },
-                modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Next
-                ),
+                label = "Cantidad en inventario",
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next,
                 isError = state.quantityError != null,
-                supportingText = state.quantityError?.let { { Text(it, color = MaterialTheme.colorScheme.error) } },
-                singleLine = true,
-                shape = RoundedCornerShape(12.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    focusedLabelColor = MaterialTheme.colorScheme.primary,
-                    errorBorderColor = MaterialTheme.colorScheme.error
-                )
+                errorMessage = state.quantityError
             )
 
             // Precio Unitario
-            OutlinedTextField(
+            M3TextField(
                 value = state.unitPrice,
                 onValueChange = viewModel::onPriceChange,
-                label = { Text("Precio unitario (COP)") },
-                modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Decimal,
-                    imeAction = ImeAction.Done
-                ),
+                label = "Precio unitario (COP)",
+                keyboardType = KeyboardType.Decimal,
+                imeAction = ImeAction.Done,
                 isError = state.priceError != null,
-                supportingText = state.priceError?.let { { Text(it, color = MaterialTheme.colorScheme.error) } },
-                singleLine = true,
-                shape = RoundedCornerShape(12.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    focusedLabelColor = MaterialTheme.colorScheme.primary,
-                    errorBorderColor = MaterialTheme.colorScheme.error
-                )
+                errorMessage = state.priceError
             )
 
             Spacer(modifier = Modifier.weight(1f))

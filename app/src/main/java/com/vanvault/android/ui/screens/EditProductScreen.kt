@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.vanvault.android.ui.components.M3TextField
 import com.vanvault.android.ui.components.VanVaultDialog
 import com.vanvault.android.ui.viewmodel.EditProductViewModel
 
@@ -168,66 +169,36 @@ fun EditProductScreen(
             if (state.isEditing) {
                 HorizontalDivider(color = MaterialTheme.colorScheme.outline)
 
-                OutlinedTextField(
+                M3TextField(
                     value = state.name,
                     onValueChange = viewModel::onNameChange,
-                    label = { Text("Nombre del producto") },
-                    modifier = Modifier.fillMaxWidth(),
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary
-                    )
+                    label = "Nombre del producto",
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next
                 )
 
-                OutlinedTextField(
+                M3TextField(
                     value = state.modelOrBarcode,
                     onValueChange = viewModel::onModelChange,
-                    label = { Text("Modelo / EAN-13") },
-                    modifier = Modifier.fillMaxWidth(),
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary
-                    )
+                    label = "Modelo / EAN-13",
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next
                 )
 
-                OutlinedTextField(
+                M3TextField(
                     value = state.quantity,
                     onValueChange = viewModel::onQuantityChange,
-                    label = { Text("Cantidad en inventario") },
-                    modifier = Modifier.fillMaxWidth(),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
-                        imeAction = ImeAction.Next
-                    ),
-                    singleLine = true,
-                    shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary
-                    )
+                    label = "Cantidad en inventario",
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
                 )
 
-                OutlinedTextField(
+                M3TextField(
                     value = state.unitPrice,
                     onValueChange = viewModel::onPriceChange,
-                    label = { Text("Precio unitario (COP)") },
-                    modifier = Modifier.fillMaxWidth(),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Decimal,
-                        imeAction = ImeAction.Done
-                    ),
-                    singleLine = true,
-                    shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary
-                    )
+                    label = "Precio unitario (COP)",
+                    keyboardType = KeyboardType.Decimal,
+                    imeAction = ImeAction.Done
                 )
 
                 Spacer(modifier = Modifier.weight(1f))
