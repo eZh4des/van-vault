@@ -1,5 +1,6 @@
 package com.vanvault.android.ui.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.vanvault.android.ui.components.ConfirmActionDialog
 import com.vanvault.android.ui.components.M3TextField
 import com.vanvault.android.ui.viewmodel.AddProductViewModel
 
@@ -37,6 +39,12 @@ fun AddProductScreen(
     viewModel: AddProductViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    var showDiscardDialog by remember { mutableStateOf(false) }
+
+    // T08: confirma antes de descartar datos capturados sin guardar (Nielsen #5)
+    BackHandler(enabled = state.hasUnsavedChanges && !state.isSaving) {
+        showDiscardDialog = true
+    }
 
     // Escuchar efectos one-shot (Saved → navegar atrás)
     LaunchedEffect(viewModel) {
@@ -181,4 +189,15 @@ fun AddProductScreen(
             }
         }
     }
+
+    // T08: confirmar descarte de cambios
+    ConfirmActionDialog(
+        showDialog = showDiscardDialog,
+        title = "¿Descartar los cambios?",
+        message = "Los datos capturados del producto se perderan si sales sin guardar.",
+        confirmLabel = "Descartar",
+        isDestructive = true,
+        onConfirm = onBackClick,
+        onDismiss = { showDiscardDialog = false }
+    )
 }

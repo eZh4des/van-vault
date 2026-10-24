@@ -1,5 +1,6 @@
 package com.vanvault.android.ui.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.vanvault.android.ui.components.ConfirmActionDialog
 import com.vanvault.android.ui.components.M3TextField
 import com.vanvault.android.ui.components.VanVaultDialog
 import com.vanvault.android.ui.viewmodel.EditProductViewModel
@@ -42,7 +44,13 @@ fun EditProductScreen(
 
     var showNotFoundDialog by remember { mutableStateOf(false) }
     var showErrorDialog by remember { mutableStateOf(false) }
+    var showDiscardDialog by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
+
+    // T08: confirma antes de descartar cambios sin guardar (Nielsen #5)
+    BackHandler(enabled = state.hasUnsavedChanges && !state.isSaving) {
+        showDiscardDialog = true
+    }
 
     LaunchedEffect(viewModel) {
         viewModel.effects.collect { effect ->
@@ -244,4 +252,15 @@ fun EditProductScreen(
             }
         }
     }
+
+    // T08: confirmar descarte de cambios
+    ConfirmActionDialog(
+        showDialog = showDiscardDialog,
+        title = "¿Descartar los cambios?",
+        message = "Las modificaciones del producto se perderan si sales sin guardar.",
+        confirmLabel = "Descartar",
+        isDestructive = true,
+        onConfirm = onBackClick,
+        onDismiss = { showDiscardDialog = false }
+    )
 }
