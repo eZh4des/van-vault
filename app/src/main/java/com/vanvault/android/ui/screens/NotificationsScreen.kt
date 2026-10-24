@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,7 +27,7 @@ fun NotificationsScreen(
                     Text(
                         "Notificaciones",
                         fontWeight = FontWeight.Bold,
-                        fontSize = 24.sp
+                        style = MaterialTheme.typography.headlineSmall
                     )
                 },
                 navigationIcon = {
@@ -68,13 +67,13 @@ fun NotificationsScreen(
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = "Notificaciones push",
-                            fontSize = 16.sp,
+                            style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
                             text = if (isNotificationsEnabled) "Activadas" else "Desactivadas",
-                            fontSize = 14.sp,
+                            style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }

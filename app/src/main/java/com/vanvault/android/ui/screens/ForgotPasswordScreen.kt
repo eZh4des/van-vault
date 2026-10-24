@@ -185,7 +185,7 @@ fun ForgotPasswordScreen(
                             text = "Enviar enlace",
                             color = MaterialTheme.colorScheme.onPrimary,
                             fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp
+                            style = MaterialTheme.typography.bodyLarge
                         )
                     }
                 }

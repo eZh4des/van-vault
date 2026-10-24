@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -29,7 +28,7 @@ fun AppearanceScreen(
                     Text(
                         "Apariencia",
                         fontWeight = FontWeight.Bold,
-                        fontSize = 24.sp
+                        style = MaterialTheme.typography.headlineSmall
                     )
                 },
                 navigationIcon = {
@@ -69,13 +68,13 @@ fun AppearanceScreen(
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = "Modo oscuro",
-                            fontSize = 16.sp,
+                            style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
                             text = if (isDarkMode) "Activado" else "Desactivado",
-                            fontSize = 14.sp,
+                            style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }

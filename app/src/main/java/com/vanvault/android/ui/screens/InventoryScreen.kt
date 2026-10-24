@@ -25,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.Product
@@ -116,7 +115,7 @@ fun InventoryScreen(
                         Text(
                             "Inventario",
                             fontWeight = FontWeight.Bold,
-                            fontSize = 24.sp
+                            style = MaterialTheme.typography.headlineSmall
                         )
                     },
                     actions = {
@@ -338,7 +337,7 @@ fun FabOption(text: String, onClick: () -> Unit) {
             text = text,
             color = MaterialTheme.colorScheme.onPrimary,
             fontWeight = FontWeight.Medium,
-            fontSize = 14.sp,
+            style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
         )
     }
@@ -382,13 +381,13 @@ fun InventoryItemCard(
             Text(
                 text = title,
                 fontWeight = FontWeight.SemiBold,
-                fontSize = 16.sp,
+                style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onBackground
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = subtitle,
-                fontSize = 14.sp,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -405,7 +404,7 @@ fun InventoryItemCard(
                 Column {
                     Text(
                         text = statusLabel,
-                        fontSize = 10.sp,
+                        style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Normal
                     )
@@ -413,14 +412,14 @@ fun InventoryItemCard(
                     Text(
                         text = quantity,
                         color = quantityColor,
-                        fontSize = 16.sp,
+                        style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.Medium
                     )
                 }
                 Column(horizontalAlignment = Alignment.End) {
                     Text(
                         text = priceLabel,
-                        fontSize = 10.sp,
+                        style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Normal
                     )
@@ -428,7 +427,7 @@ fun InventoryItemCard(
                     Text(
                         text = price,
                         color = MaterialTheme.colorScheme.onBackground,
-                        fontSize = 16.sp,
+                        style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.Bold
                     )
                 }
@@ -487,7 +486,7 @@ private fun StockFilterChip(
                 text = filter.label,
                 color = textColor,
                 fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
-                fontSize = 14.sp
+                style = MaterialTheme.typography.bodyMedium
             )
             Spacer(Modifier.width(6.dp))
             Surface(
