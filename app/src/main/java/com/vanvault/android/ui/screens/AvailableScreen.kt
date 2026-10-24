@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.vanvault.android.ui.theme.successColor
+import com.vanvault.android.ui.theme.successContainerColor
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.Product
@@ -63,10 +65,10 @@ fun AvailableScreen(
             ) {
                 Surface(
                     shape = RoundedCornerShape(17.dp),
-                    color = Color(0xFFFEE2E2),
+                    color = MaterialTheme.colorScheme.primaryContainer,
                     border = androidx.compose.foundation.BorderStroke(
                         width = 1.dp,
-                        color = Color(0xFFDC2626)
+                        color = MaterialTheme.colorScheme.primary
                     )
                 ) {
                     Row(
@@ -76,7 +78,7 @@ fun AvailableScreen(
                         Icon(
                             imageVector = Icons.Filled.CheckCircle,
                             contentDescription = null,
-                            tint = Color(0xFFDC2626),
+                            tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(16.dp)
                         )
                         Spacer(Modifier.width(6.dp))
@@ -84,12 +86,12 @@ fun AvailableScreen(
                             text = "Activos",
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFFDC2626)
+                            color = MaterialTheme.colorScheme.primary
                         )
                         Spacer(Modifier.width(8.dp))
                         Surface(
                             shape = androidx.compose.foundation.shape.CircleShape,
-                            color = Color(0xFFDC2626)
+                            color = MaterialTheme.colorScheme.primary
                         ) {
                             Text(
                                 text = "${availableProducts.size}",
@@ -170,14 +172,14 @@ private fun AvailableItemCard(product: Product) {
         ) {
             Surface(
                 shape = androidx.compose.foundation.shape.CircleShape,
-                color = Color(0xFFDCFCE7),
+                color = MaterialTheme.successContainerColor,
                 modifier = Modifier.size(40.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Filled.Inventory2,
                         contentDescription = null,
-                        tint = Color(0xFF059669),
+                        tint = MaterialTheme.successColor,
                         modifier = Modifier.size(20.dp)
                     )
                 }
@@ -202,7 +204,7 @@ private fun AvailableItemCard(product: Product) {
                     Icon(
                         imageVector = Icons.Filled.CheckCircle,
                         contentDescription = null,
-                        tint = Color(0xFF059669),
+                        tint = MaterialTheme.successColor,
                         modifier = Modifier.size(14.dp)
                     )
                     Spacer(Modifier.width(4.dp))
@@ -210,7 +212,7 @@ private fun AvailableItemCard(product: Product) {
                         text = "${product.quantity} disponibles",
                         style = MaterialTheme.typography.labelSmall,
                         fontWeight = FontWeight.Medium,
-                        color = Color(0xFF059669)
+                        color = MaterialTheme.successColor
                     )
                 }
             }

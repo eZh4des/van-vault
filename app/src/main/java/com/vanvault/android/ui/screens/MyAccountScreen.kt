@@ -144,8 +144,8 @@ private fun MyAccountContent(
                 initials = profile.initials,
                 contentDescription = "Avatar de ${profile.displayName}",
                 size = 80.dp,
-                backgroundColor = Color(0xFFFEE2E2),
-                contentColor = Color(0xFFDC2626),
+                backgroundColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.primary,
                 fontSizeSp = 32
             )
             Spacer(Modifier.height(12.dp))

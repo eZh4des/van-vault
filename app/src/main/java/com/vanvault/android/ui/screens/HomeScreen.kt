@@ -26,7 +26,7 @@ fun HomeScreen(
                         com.vanvault.android.di.FirebaseModule.provideFirebaseAuth().signOut()
                         onLogoutClick()
                     }) {
-                        Text("Cerrar Sesión", color = Color(0xFFDC2626))
+                        Text("Cerrar Sesión", color = MaterialTheme.colorScheme.primary)
                     }
                 }
             )
@@ -55,7 +55,7 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = user?.email ?: "Usuario desconocido",
-                style = MaterialTheme.typography.titleMedium.copy(color = Color(0xFFDC2626))
+                style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary)
             )
         }
     }

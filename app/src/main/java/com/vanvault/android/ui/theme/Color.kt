@@ -126,3 +126,52 @@ val DarkSurfaceContainerLow = Color(0xFF231918)
 val DarkSurfaceContainer = Color(0xFF271D1C)
 val DarkSurfaceContainerHigh = Color(0xFF322826)
 val DarkSurfaceContainerHighest = Color(0xFF3D3231)
+
+// ============================================================================
+// PALETA PARA USOS NO-COMPOSABLE
+// ============================================================================
+
+/**
+ * Constantes semánticas para contextos donde NO se puede usar
+ * `MaterialTheme.colorScheme.*` (ej: valores por defecto de parámetros de
+ * funciones no-@Composable, o constantes de companion object).
+ *
+ * **Preferencia**: dentro de un @Composable, siempre usar
+ * `MaterialTheme.colorScheme.<rol>` para respetar el tema activo
+ * (light/dark). Usar estas constantes solo como fallback.
+ *
+ * Ver [com.vanvault.android.ui.theme.MaterialTheme.successColor] y
+ * [com.vanvault.android.ui.theme.MaterialTheme.warningColor] para los
+ * roles extendidos.
+ */
+object VanVaultPalette {
+    /** Rojo de marca (equivalente a primary en light). */
+    val BrandPrimary = LightPrimary
+
+    /** Contenedor rojo suave (equivalente a primaryContainer en light). */
+    val BrandPrimaryContainer = LightPrimaryContainer
+
+    /** Texto sobre rojo suave. */
+    val OnBrandPrimaryContainer = LightOnPrimaryContainer
+
+    /** Verde de estado positivo. */
+    val Success = LightSuccess
+
+    /** Contenedor verde suave. */
+    val SuccessContainer = LightSuccessContainer
+
+    /** Naranja de estado de alerta. */
+    val Warning = LightWarning
+
+    /** Contenedor naranja suave. */
+    val WarningContainer = LightWarningContainer
+
+    /** Gris neutro para texto secundario. */
+    val Neutral = Color(0xFF71717A)
+
+    /** Gris neutro en tema oscuro. */
+    val NeutralDark = Color(0xFFA1A1AA)
+
+    /** Borde suave (equivalente a outlineVariant). */
+    val BorderSoft = LightOutlineVariant
+}

@@ -35,8 +35,8 @@ fun AvatarCircle(
     contentDescription: String?,
     modifier: Modifier = Modifier,
     size: Dp = 80.dp,
-    backgroundColor: Color = Color(0xFFFEE2E2),
-    contentColor: Color = Color(0xFFDC2626),
+    backgroundColor: Color = MaterialTheme.colorScheme.primaryContainer,
+    contentColor: Color = MaterialTheme.colorScheme.primary,
     fontSizeSp: Int = 32
 ) {
     Surface(

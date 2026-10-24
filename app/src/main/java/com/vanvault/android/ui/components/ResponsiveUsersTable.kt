@@ -19,7 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.vanvault.android.domain.model.AdminUser
-import com.vanvault.android.domain.model.UserRole
+import com.vanvault.android.domain.model.UserRole
+import com.vanvault.android.ui.theme.successColor
 
 /**
  * Tabla responsive de usuarios — vista adaptativa al zoom.
@@ -350,7 +351,7 @@ private fun ActiveIndicator(isActive: Boolean) {
             modifier = Modifier
                 .size(10.dp)
                 .background(
-                    color = if (isActive) Color(0xFF059669) else Color(0xFF71717A),
+                    color = if (isActive) MaterialTheme.successColor else MaterialTheme.colorScheme.onSurfaceVariant,
                     shape = CircleShape
                 )
         )

@@ -23,7 +23,9 @@ import com.vanvault.android.domain.model.AdminUser
 import com.vanvault.android.domain.model.PendingTask
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.components.RedBanner
-import com.vanvault.android.ui.viewmodel.AdminViewModel
+import com.vanvault.android.ui.viewmodel.AdminViewModel
+import com.vanvault.android.ui.theme.successColor
+import com.vanvault.android.ui.theme.warningColor
 
 /**
  * AdminScreen — panel de administración.
@@ -82,7 +84,7 @@ fun AdminScreen(
                     StatCard(
                         label = "Activos",
                         value = "${snapshot.activeUsers}",
-                        accent = Color(0xFF059669),
+                        accent = MaterialTheme.successColor,
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -125,7 +127,7 @@ fun AdminScreen(
 private fun StatCard(
     label: String,
     value: String,
-    accent: Color = Color(0xFFDC2626),
+    accent: Color = MaterialTheme.colorScheme.primary,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -157,9 +159,9 @@ private fun StatCard(
 @Composable
 private fun PendingTaskCard(task: PendingTask) {
     val priorityColor = when (task.priority) {
-        PendingTask.Priority.HIGH -> Color(0xFFDC2626)
-        PendingTask.Priority.MEDIUM -> Color(0xFFF97316)
-        PendingTask.Priority.LOW -> Color(0xFF71717A)
+        PendingTask.Priority.HIGH -> MaterialTheme.colorScheme.primary
+        PendingTask.Priority.MEDIUM -> MaterialTheme.warningColor
+        PendingTask.Priority.LOW -> MaterialTheme.colorScheme.onSurfaceVariant
     }
     Surface(
         modifier = Modifier.fillMaxWidth(),
@@ -227,7 +229,7 @@ private fun UserCard(user: AdminUser) {
             // Avatar circular con iniciales
             Surface(
                 shape = CircleShape,
-                color = if (isActive) Color(0xFFFEE2E2) else Color(0xFFE4E4E7),
+                color = if (isActive) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.outlineVariant,
                 modifier = Modifier.size(44.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
@@ -235,7 +237,7 @@ private fun UserCard(user: AdminUser) {
                         text = user.initials,
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
-                        color = if (isActive) Color(0xFFDC2626) else Color(0xFF71717A)
+                        color = if (isActive) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
@@ -258,7 +260,7 @@ private fun UserCard(user: AdminUser) {
                         modifier = Modifier
                             .size(8.dp)
                             .background(
-                                color = if (isActive) Color(0xFF059669) else Color(0xFF71717A),
+                                color = if (isActive) MaterialTheme.successColor else MaterialTheme.colorScheme.onSurfaceVariant,
                                 shape = CircleShape
                             )
                     )
