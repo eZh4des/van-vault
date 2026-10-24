@@ -29,7 +29,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.Product
 import com.vanvault.android.domain.model.StockStatus
-import com.vanvault.android.ui.components.ConfirmDeleteDialog
+import com.vanvault.android.ui.components.ConfirmActionDialog
+import com.vanvault.android.ui.components.DeleteProductPickerDialog
 import com.vanvault.android.ui.components.EmptyState
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.OfflineBanner
@@ -61,9 +62,10 @@ fun InventoryScreen(
     // T07: estado de conexion en tiempo real
     val isOnline by rememberIsOnline()
 
-    // === Estado local para dialog y snackbar (no debe persistir en rotación) ===
+    // Estado local para dialog y snackbar (no debe persistir en rotación)
     val snackbarHostState = remember { SnackbarHostState() }
     var productPendingDelete by remember { mutableStateOf<Product?>(null) }
+    var showDeletePicker by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
 
     // Reaccion a eventos one-shot del VM (Snackbar Undo tras eliminar)
@@ -165,7 +167,10 @@ fun InventoryScreen(
                             fabExpanded = false
                             onEditProductClick()
                         })
-                        FabOption(text = "Eliminar producto", onClick = { fabExpanded = false })
+                        FabOption(text = "Eliminar producto", onClick = {
+                            fabExpanded = false
+                            showDeletePicker = true
+                        })
                     }
                 }
 
@@ -309,7 +314,7 @@ fun InventoryScreen(
         // Dialog de confirmación antes de eliminar (Nielsen #3)
         val toDelete = productPendingDelete
         if (toDelete != null) {
-            ConfirmDeleteDialog(
+            ConfirmActionDialog(
                 showDialog = true,
                 title = "¿Eliminar producto?",
                 message = "Esta acción no se puede deshacer fácilmente. " +
@@ -323,6 +328,24 @@ fun InventoryScreen(
                 onDismiss = { productPendingDelete = null }
             )
         }
+
+        // Selector de producto a eliminar (FAB "Eliminar producto")
+        DeleteProductPickerDialog(
+            showDialog = showDeletePicker,
+            query = state.deleteQuery,
+            candidates = state.deleteCandidates,
+            isSearching = state.isSearchingDeletion,
+            onQueryChange = viewModel::onSearchForDeletion,
+            onProductSelected = { product ->
+                showDeletePicker = false
+                viewModel.onClearDeletionCandidates()
+                productPendingDelete = product
+            },
+            onDismiss = {
+                showDeletePicker = false
+                viewModel.onClearDeletionCandidates()
+            }
+        )
     }
 }
 

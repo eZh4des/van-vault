@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.vanvault.android.ui.components.ConfirmDeleteDialog
+import com.vanvault.android.ui.components.ConfirmActionDialog
 import com.vanvault.android.ui.components.NavItem
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
 import com.vanvault.android.ui.util.A11y.merged
@@ -97,12 +97,13 @@ fun ProfileScreen(
     }
 
     if (showLogoutDialog) {
-        ConfirmDeleteDialog(
+        ConfirmActionDialog(
             showDialog = true,
             title = "¿Cerrar sesión?",
             message = "Tendrás que volver a iniciar sesión para acceder a tu inventario.",
             itemName = null,
             confirmLabel = "Cerrar sesión",
+            isDestructive = false,
             onConfirm = {
                 viewModel.onLogout()
                 showLogoutDialog = false
