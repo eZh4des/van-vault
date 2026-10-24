@@ -3,6 +3,7 @@ package com.vanvault.android.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vanvault.android.domain.model.Language
+import com.vanvault.android.domain.model.ThemeMode
 import com.vanvault.android.domain.model.UserSettings
 import com.vanvault.android.domain.repository.SettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,7 @@ import javax.inject.Inject
 /**
  * ViewModel para Settings (Appearance, Notifications, Language).
  *
- * DI: Hilt provee [SettingsRepository] automáticamente.
+ * DI: Hilt provee [SettingsRepository].
  */
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
@@ -25,13 +26,14 @@ class SettingsViewModel @Inject constructor(
     val settings: StateFlow<UserSettings> = repository.settings
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
+            started = SharingStarted.WhileSubscribed(5_000),
             initialValue = UserSettings()
         )
 
-    fun setDarkMode(enabled: Boolean) {
+    /** Cambia el modo de tema (system / light / dark) y lo persiste. */
+    fun setThemeMode(mode: ThemeMode) {
         viewModelScope.launch {
-            repository.setDarkMode(enabled)
+            repository.setThemeMode(mode)
         }
     }
 
