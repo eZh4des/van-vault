@@ -1,8 +1,6 @@
 package com.vanvault.android.ui.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
@@ -11,7 +9,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -21,13 +18,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.text.input.ImeAction
-import com.vanvault.android.R
 import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.M3TextField
-import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
-import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.VanVaultDialog
+import com.vanvault.android.ui.components.VanVaultLogo
 import com.vanvault.android.ui.viewmodel.LoginEffect
 import com.vanvault.android.ui.viewmodel.LoginViewModel
 
@@ -64,20 +59,8 @@ fun LoginScreen(
         ) {
             Spacer(modifier = Modifier.height(80.dp))
 
-            // Logo
-            Box(
-                modifier = Modifier
-                    .size(64.dp)
-                    .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(16.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_cube),
-                    contentDescription = "VanVault Logo",
-                    tint = MaterialTheme.colorScheme.onPrimary,
-                    modifier = Modifier.size(32.dp)
-                )
-            }
+            // Logo — mismo icono adaptive que usa el launcher
+            VanVaultLogo(modifier = Modifier.size(64.dp))
 
             Spacer(modifier = Modifier.height(16.dp))
 
