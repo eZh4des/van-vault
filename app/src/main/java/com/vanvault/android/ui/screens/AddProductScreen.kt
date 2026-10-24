@@ -18,10 +18,15 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ConfirmActionDialog
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.M3TextField
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.viewmodel.AddProductViewModel
 
@@ -163,32 +168,15 @@ fun AddProductScreen(
             Spacer(modifier = Modifier.weight(1f))
 
             // Botón Guardar
-            Button(
+            // T12: LoadingButton — feedback de guardado + estado disabled
+            LoadingButton(
+                text = "Guardar Producto",
                 onClick = { viewModel.onSave() },
+                modifier = Modifier.fillMaxWidth(),
+                isLoading = state.isSaving,
                 enabled = state.canSubmit,
-                modifier = Modifier
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(28.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    contentColor = MaterialTheme.colorScheme.onPrimary,
-                    disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                    disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-                )
-            ) {
-                if (state.isSaving) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(24.dp),
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        strokeWidth = 2.dp
-                    )
-                } else {
-                    Text(
-                        "Guardar Producto",
-                        style = MaterialTheme.typography.labelLarge
-                    )
-                }
-            }
+                loadingText = "Guardando…"
+            )
         }
     }
 

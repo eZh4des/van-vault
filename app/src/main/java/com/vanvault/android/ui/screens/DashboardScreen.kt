@@ -22,8 +22,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.KpiMetric
 import com.vanvault.android.domain.model.RecentMovement
+import com.vanvault.android.ui.components.SkeletonMetricCard
 import com.vanvault.android.ui.components.NavItem
+import com.vanvault.android.ui.components.SkeletonMetricCard
 import com.vanvault.android.ui.components.OfflineBanner
+import com.vanvault.android.ui.components.SkeletonMetricCard
 import com.vanvault.android.ui.components.VanVaultBottomNavBar
 import com.vanvault.android.ui.util.rememberIsOnline
 import com.vanvault.android.ui.viewmodel.DashboardViewModel
@@ -87,8 +90,21 @@ fun DashboardScreen(
                     onRetry = viewModel::onRefresh
                 )
                 if (state.isLoading && snapshot == null) {
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                    // T12: skeletons de KPIs (Item 11)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            SkeletonMetricCard(modifier = Modifier.weight(1f))
+                            SkeletonMetricCard(modifier = Modifier.weight(1f))
+                        }
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            SkeletonMetricCard(modifier = Modifier.weight(1f))
+                            SkeletonMetricCard(modifier = Modifier.weight(1f))
+                        }
                     }
                 } else if (snapshot != null) {
                     DashboardContent(

@@ -24,6 +24,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.vanvault.android.domain.model.MonthlyRoiPoint
 import com.vanvault.android.domain.model.RoiMetrics
+import com.vanvault.android.ui.components.SkeletonMetricCard
 import com.vanvault.android.ui.components.M3TopBarWithBack
 import com.vanvault.android.ui.viewmodel.RoiViewModel
 import com.vanvault.android.ui.theme.successColor
@@ -63,11 +64,21 @@ fun RoiScreen(
                 .padding(16.dp)
         ) {
             if (state.isLoading || state.metrics == null) {
-                Box(
-                    modifier = Modifier.fillMaxWidth().height(200.dp),
-                    contentAlignment = Alignment.Center
+                // T12: skeletons de metricas (Item 11)
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        SkeletonMetricCard(modifier = Modifier.weight(1f))
+                        SkeletonMetricCard(modifier = Modifier.weight(1f))
+                    }
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        SkeletonMetricCard(modifier = Modifier.weight(1f))
+                        SkeletonMetricCard(modifier = Modifier.weight(1f))
+                    }
+                    Spacer(Modifier.height(12.dp))
+                    SkeletonMetricCard(modifier = Modifier.fillMaxWidth())
                 }
             } else {
                 val metrics = state.metrics!!

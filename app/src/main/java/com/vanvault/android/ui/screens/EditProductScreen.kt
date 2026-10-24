@@ -21,10 +21,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.vanvault.android.ui.util.minTouchTarget
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.ConfirmActionDialog
 import com.vanvault.android.ui.util.minTouchTarget
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.M3TextField
 import com.vanvault.android.ui.util.minTouchTarget
+import com.vanvault.android.ui.components.LoadingButton
 import com.vanvault.android.ui.components.VanVaultDialog
 import com.vanvault.android.ui.util.minTouchTarget
 import com.vanvault.android.ui.viewmodel.EditProductViewModel
@@ -223,28 +226,15 @@ fun EditProductScreen(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Button(
+                // T12: LoadingButton — feedback de guardado + estado disabled
+                LoadingButton(
+                    text = "Guardar Cambios",
                     onClick = { viewModel.onSave() },
+                    modifier = Modifier.fillMaxWidth(),
+                    isLoading = state.isSaving,
                     enabled = state.canSubmit,
-                    modifier = Modifier.fillMaxWidth().height(56.dp),
-                    shape = RoundedCornerShape(28.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onPrimary,
-                        disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                        disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-                    )
-                ) {
-                    if (state.isSaving) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(24.dp),
-                            color = MaterialTheme.colorScheme.onPrimary,
-                            strokeWidth = 2.dp
-                        )
-                    } else {
-                        Text("Guardar Cambios", style = MaterialTheme.typography.labelLarge)
-                    }
-                }
+                    loadingText = "Guardando…"
+                )
             } else if (!state.isSearching) {
                 Box(
                     modifier = Modifier.weight(1f).fillMaxWidth(),
