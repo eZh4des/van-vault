@@ -18,8 +18,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.components.ConfirmActionDialog
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.components.M3TextField
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.viewmodel.AddProductViewModel
 
 /**
@@ -85,10 +88,10 @@ fun AddProductScreen(
             )
         }
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
+        ScrollableColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
                 .padding(horizontal = 24.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -164,8 +167,7 @@ fun AddProductScreen(
                 onClick = { viewModel.onSave() },
                 enabled = state.canSubmit,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp),
+                    .fillMaxWidth(),
                 shape = RoundedCornerShape(28.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary,

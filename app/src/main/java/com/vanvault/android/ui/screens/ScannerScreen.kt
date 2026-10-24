@@ -86,6 +86,9 @@ fun ScannerScreen(
             )
         }
     ) { innerPadding ->
+        // T11: exento de reflow — es una vista de camara a pantalla completa.
+        // El overlay de escaneo tiene dimension fija por diseño y no contiene
+        // texto que pueda recortarse al 200% de fuente.
         Column(
             modifier = Modifier
                 .fillMaxSize()

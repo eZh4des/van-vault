@@ -229,9 +229,12 @@ private fun UserCard(user: AdminUser) {
             color = MaterialTheme.colorScheme.outlineVariant
         )
     ) {
-        Row(
+        // T11: FlowRow — al 200% de fuente el badge de rol baja de linea
+        // en vez de encogerse (WCAG 1.4.4 Resize Text)
+        FlowRow(
             modifier = Modifier.padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            maxItemsInEachRow = 3
         ) {
             // Avatar circular con iniciales
             Surface(

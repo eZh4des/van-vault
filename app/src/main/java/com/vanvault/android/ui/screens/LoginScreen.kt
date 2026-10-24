@@ -23,6 +23,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.text.input.ImeAction
 import com.vanvault.android.R
 import com.vanvault.android.ui.components.M3TextField
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.components.VanVaultDialog
 import com.vanvault.android.ui.viewmodel.LoginEffect
 import com.vanvault.android.ui.viewmodel.LoginViewModel
@@ -50,10 +51,12 @@ fun LoginScreen(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.surface
     ) {
-        Column(
+        // T11: scroll vertical para que el contenido no se corte al 200% de fuente
+        ScrollableColumn(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 24.dp),
+                .fillMaxSize(),
+            contentPadding = PaddingValues(horizontal = 24.dp),
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(80.dp))
@@ -125,8 +128,7 @@ fun LoginScreen(
             Button(
                 onClick = { viewModel.onLogin() },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp),
+                    .fillMaxWidth(),
                 shape = RoundedCornerShape(25.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary

@@ -18,6 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.components.M3TextField
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -54,10 +55,10 @@ fun ForgotPasswordScreen(
         },
         containerColor = MaterialTheme.colorScheme.surface
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
+        ScrollableColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
                 .padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -135,7 +136,7 @@ fun ForgotPasswordScreen(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // Submit Button
+                // Botón Enviar (sin altura fija: el texto escala al 200%)
                 Button(
                     onClick = {
                         if (email.isNotEmpty()) {
@@ -154,8 +155,7 @@ fun ForgotPasswordScreen(
                         }
                     },
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
+                        .fillMaxWidth(),
                     shape = RoundedCornerShape(25.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary

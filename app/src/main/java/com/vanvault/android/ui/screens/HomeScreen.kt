@@ -7,6 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.vanvault.android.ui.components.ScrollableColumn
 import com.vanvault.android.ui.components.ConfirmActionDialog
 
 /**
@@ -36,10 +37,10 @@ fun HomeScreen(
             )
         }
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
+        ScrollableColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
                 .padding(24.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally

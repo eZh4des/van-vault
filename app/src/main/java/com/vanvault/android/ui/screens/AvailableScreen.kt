@@ -57,54 +57,6 @@ fun AvailableScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            // === Chip "Activos" (coincide con screen-available.svg) ===
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
-            ) {
-                Surface(
-                    shape = RoundedCornerShape(17.dp),
-                    color = MaterialTheme.colorScheme.primaryContainer,
-                    border = androidx.compose.foundation.BorderStroke(
-                        width = 1.dp,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.CheckCircle,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(16.dp)
-                        )
-                        Spacer(Modifier.width(6.dp))
-                        Text(
-                            text = "Activos",
-                            style = MaterialTheme.typography.labelMedium,
-                            fontWeight = FontWeight.SemiBold,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Spacer(Modifier.width(8.dp))
-                        Surface(
-                            shape = androidx.compose.foundation.shape.CircleShape,
-                            color = MaterialTheme.colorScheme.primary
-                        ) {
-                            Text(
-                                text = "${availableProducts.size}",
-                                style = MaterialTheme.typography.labelSmall,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.White,
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
-                            )
-                        }
-                    }
-                }
-            }
-
             // === Lista ===
             if (state.isLoading) {
                 Box(
@@ -146,6 +98,56 @@ fun AvailableScreen(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
+                    // T11: el chip "Activos" va dentro del LazyColumn para que
+                    // tambien scrollee al 200% de fuente (WCAG 1.4.10)
+                    item(key = "activos_chip") {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp)
+                        ) {
+                            Surface(
+                                shape = RoundedCornerShape(17.dp),
+                                color = MaterialTheme.colorScheme.primaryContainer,
+                                border = androidx.compose.foundation.BorderStroke(
+                                    width = 1.dp,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                            ) {
+                                Row(
+                                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Filled.CheckCircle,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.primary,
+                                        modifier = Modifier.size(16.dp)
+                                    )
+                                    Spacer(Modifier.width(6.dp))
+                                    Text(
+                                        text = "Activos",
+                                        style = MaterialTheme.typography.labelMedium,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = MaterialTheme.colorScheme.primary
+                                    )
+                                    Spacer(Modifier.width(8.dp))
+                                    Surface(
+                                        shape = androidx.compose.foundation.shape.CircleShape,
+                                        color = MaterialTheme.colorScheme.primary
+                                    ) {
+                                        Text(
+                                            text = "${availableProducts.size}",
+                                            style = MaterialTheme.typography.labelSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color.White,
+                                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
                     items(availableProducts, key = { it.id }) { product ->
                         AvailableItemCard(product)
                     }

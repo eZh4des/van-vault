@@ -230,11 +230,15 @@ private fun ExpandedUserRow(user: AdminUser) {
             .semantics { contentDescription = userCardDescription(user) },
         color = MaterialTheme.colorScheme.surface
     ) {
-        Row(
+        // T11: FlowRow — con fuente al 200% las celdas de la tabla se
+        // reorganizan en varias lineas en vez de desbordarse
+        // (WCAG 1.4.4 Resize Text / 1.4.10 Reflow)
+        FlowRow(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp, vertical = 14.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            maxItemsInEachRow = 4
         ) {
             Row(
                 modifier = Modifier.weight(2.5f),
