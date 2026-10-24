@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.vanvault.android.domain.model.Language
+import com.vanvault.android.domain.model.ThemeMode
 import com.vanvault.android.domain.model.UserSettings
 import com.vanvault.android.domain.repository.SettingsRepository
 import dagger.Binds
@@ -22,19 +23,28 @@ import javax.inject.Singleton
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
+/**
+ * Implementacion de [SettingsRepository] sobre DataStore Preferences.
+ *
+ * Persiste:
+ *  - `theme_mode` (string: system/light/dark) — T05
+ *  - `notifications_enabled` (boolean)
+ *  - `language` (string)
+ */
+@Singleton
 class SettingsPreferences @Inject constructor(
-    @dagger.hilt.android.qualifiers.ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context
 ) : SettingsRepository {
 
     private object PreferencesKeys {
-        val DARK_MODE = booleanPreferencesKey("dark_mode")
+        val THEME_MODE = stringPreferencesKey("theme_mode")
         val NOTIFICATIONS_ENABLED = booleanPreferencesKey("notifications_enabled")
         val LANGUAGE = stringPreferencesKey("language")
     }
 
     override val settings: Flow<UserSettings> = context.dataStore.data.map { preferences ->
         UserSettings(
-            isDarkMode = preferences[PreferencesKeys.DARK_MODE] ?: false,
+            themeMode = ThemeMode.fromStorageKey(preferences[PreferencesKeys.THEME_MODE]),
             isNotificationsEnabled = preferences[PreferencesKeys.NOTIFICATIONS_ENABLED] ?: true,
             language = preferences[PreferencesKeys.LANGUAGE]?.let { code ->
                 Language.entries.find { it.code == code }
@@ -42,9 +52,9 @@ class SettingsPreferences @Inject constructor(
         )
     }
 
-    override suspend fun setDarkMode(enabled: Boolean) {
+    override suspend fun setThemeMode(mode: ThemeMode) {
         context.dataStore.edit { preferences ->
-            preferences[PreferencesKeys.DARK_MODE] = enabled
+            preferences[PreferencesKeys.THEME_MODE] = mode.storageKey
         }
     }
 
